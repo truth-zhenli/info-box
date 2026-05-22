@@ -55,8 +55,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
 /* 页脚 */
 .footer{text-align:center;color:#bbb;font-size:12px;margin-top:30px}
-.visitor-badge{display:inline-block;margin-top:6px;font-size:11px;color:#ccc}
-.visitor-badge img{vertical-align:middle;border-radius:4px}
 
 /* ===== 移动端 ===== */
 @media (max-width: 800px){
@@ -97,14 +95,13 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
 <div class="footer">
   📬 每天6:00自动推送 · 看到好文章点☆收藏，自动进入季度精选
-  <div class="visitor-badge"><img src="https://visitor-badge.laobi.icu/badge?page_id=truth-zhenli.info-box" alt="访客"></div>
-</div>
+  </div>
 </div>
 
 <script>
 /* ========== 数据 ========== */
 const DATA = [
-  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"16篇·4专题"},
+  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"4专题", papers:13},
 
 ];
 
@@ -157,8 +154,7 @@ function render(){
         html += `<div class="month-name">${MONTH_NAMES[m-1]}</div>`;
         if(hasData){
           const totalPapers = items.reduce((sum, d) => {
-            const match = d.desc && d.desc.match(/(\d+)篇/);
-            return sum + (match ? parseInt(match[1]) : 0);
+            return sum + (d.papers || 0);
           }, 0);
           html += `<div class="month-count">${items.length}期 · ${totalPapers}篇</div>`;
         } else {
