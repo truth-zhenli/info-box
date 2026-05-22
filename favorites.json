@@ -2,8 +2,8 @@
   {
     "title": "Component-dependent transport and spatial distribution of crude oil fractions confined in kerogen nanopore",
     "link": "https://www.sciencedirect.com/science/article/pii/S1995822626002694",
-    "cnTitle": "原油组分在干酪根纳米孔中的传输与空间分布",
-    "journal": "油田化学 ⭐分子模拟Petroleum Science",
+    "cnTitle": "åæ²¹ç»åå¨å¹²éªæ ¹çº³ç±³å­ä¸­çä¼ è¾ä¸ç©ºé´åå¸",
+    "journal": "æ²¹ç°åå­¦ â­åå­æ¨¡æPetroleum Science",
     "authors": "SD Yuan, JC Fang | Petroleum Science (Elsevier) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -11,8 +11,8 @@
   {
     "title": "Alteration of Calcite Wettability by Asphaltenes and Its Reversal by Surfactants",
     "link": "https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c00861",
-    "cnTitle": "沥青质对方解石润湿性的改变及表面活性剂的逆转机制",
-    "journal": "油田化学 ⭐分子模拟Langmuir",
+    "cnTitle": "æ²¥éè´¨å¯¹æ¹è§£ç³æ¶¦æ¹¿æ§çæ¹ååè¡¨é¢æ´»æ§åçéè½¬æºå¶",
+    "journal": "æ²¹ç°åå­¦ â­åå­æ¨¡æLangmuir",
     "authors": "J Tetteh, AE Shoukry, L Qin, J Kubelka, M Piri | Langmuir (ACS) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -20,7 +20,7 @@
   {
     "title": "Spatial statistics for screening molecular structures",
     "link": "https://arxiv.org/abs/2605.17147",
-    "cnTitle": "基于空间统计学的分子结构筛选方法",
+    "cnTitle": "åºäºç©ºé´ç»è®¡å­¦çåå­ç»æç­éæ¹æ³",
     "journal": "AI/MLarXiv",
     "authors": "P Ray, SR Kalidindi | arXiv:2605.17147",
     "date": "2026-05-22",
@@ -29,8 +29,8 @@
   {
     "title": "Tensor Channel Equivariant Graph Neural Networks for Molecular Polarizability Prediction",
     "link": "https://arxiv.org/abs/2605.16891",
-    "cnTitle": "张量通道等变图神经网络用于分子极化率预测",
-    "journal": "AI/ML分子模拟arXiv",
+    "cnTitle": "å¼ éééç­åå¾ç¥ç»ç½ç»ç¨äºåå­æåçé¢æµ",
+    "journal": "AI/MLåå­æ¨¡æarXiv",
     "authors": "JP Filling, D Franzen, M Wand | arXiv:2605.16891",
     "date": "2026-05-22",
     "starred": false
@@ -38,7 +38,7 @@
   {
     "title": "Molecular design of electrolyte additives for aqueous zinc-ion batteries via reinforcement learning and quantum chemistry calculations",
     "link": "https://pubs.aip.org/aip/jcp/article/164/19/194302/3391432",
-    "cnTitle": "强化学习结合量子化学计算设计水系锌离子电池电解液添加剂",
+    "cnTitle": "å¼ºåå­¦ä¹ ç»åéå­åå­¦è®¡ç®è®¾è®¡æ°´ç³»éç¦»å­çµæ± çµè§£æ¶²æ·»å å",
     "journal": "AI/MLJ. Chem. Phys.",
     "authors": "B Wang, GL Chai, Z Hou | J. Chem. Phys. (AIP) 2026",
     "date": "2026-05-22",
@@ -47,7 +47,7 @@
   {
     "title": "A data-driven Fourier-mixture neural-network method for density estimation",
     "link": "https://arxiv.org/abs/2605.18019",
-    "cnTitle": "数据驱动的傅里叶混合神经网络密度估计方法",
+    "cnTitle": "æ°æ®é©±å¨çåéå¶æ··åç¥ç»ç½ç»å¯åº¦ä¼°è®¡æ¹æ³",
     "journal": "AI/MLarXiv",
     "authors": "DM Dang, V Entoma | arXiv:2605.18019",
     "date": "2026-05-22",
@@ -56,16 +56,16 @@
   {
     "title": "Machine-Learning Predictions of Photoluminescence in Molecules Exhibiting Thermally Activated Delayed Fluorescence with Implicit Experimental Validation",
     "link": "https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00425",
-    "cnTitle": "机器学习预测热激活延迟荧光（TADF）分子的光致发光性质",
+    "cnTitle": "æºå¨å­¦ä¹ é¢æµç­æ¿æ´»å»¶è¿è§åï¼TADFï¼åå­çåè´ååæ§è´¨",
     "journal": "AI/MLJ. Chem. Inf. Model.",
     "authors": "D Huang, JM Cole | J. Chem. Inf. Model. (ACS) 2026",
     "date": "2026-05-22",
     "starred": false
   },
   {
-    "title": "Deep learning and process simulation-enabled discovery of high-performance MOFs for CO₂/CH₄ separation: An integrated molecular-to-process screening framework",
+    "title": "Deep learning and process simulation-enabled discovery of high-performance MOFs for COâ/CHâ separation: An integrated molecular-to-process screening framework",
     "link": "https://www.sciencedirect.com/science/article/pii/S1385894726047637",
-    "cnTitle": "深度学习+过程模拟发现高性能MOF用于CO₂/CH₄分离",
+    "cnTitle": "æ·±åº¦å­¦ä¹ +è¿ç¨æ¨¡æåç°é«æ§è½MOFç¨äºCOâ/CHâåç¦»",
     "journal": "AI/MLChem. Eng. J.",
     "authors": "D Jung, H Yang, D Kim et al. | Chem. Eng. J. (Elsevier) 2026",
     "date": "2026-05-22",
@@ -74,8 +74,8 @@
   {
     "title": "Fully elucidating catalyst-driven combustion mechanisms in double-base propellants through molecular dynamics simulations",
     "link": "https://www.sciencedirect.com/science/article/pii/S0016236126015954",
-    "cnTitle": "深度学习力场+MD全面解析双基推进剂中催化剂驱动的燃烧反应机理",
-    "journal": "分子模拟AI/MLFuel",
+    "cnTitle": "æ·±åº¦å­¦ä¹ ååº+MDå¨é¢è§£æååºæ¨è¿åä¸­å¬ååé©±å¨ççç§ååºæºç",
+    "journal": "åå­æ¨¡æAI/MLFuel",
     "authors": "M Wen, J Han, X Zhang et al. | Fuel (Elsevier) 2027",
     "date": "2026-05-22",
     "starred": false
@@ -83,8 +83,8 @@
   {
     "title": "Integrated Machine Learning and Molecular Dynamics for Functional Nanoparticle Design: Synthesis, Characterization, Force-Field Development, and Property Prediction",
     "link": "https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.5c05632",
-    "cnTitle": "集成机器学习与分子动力学设计功能性纳米粒子",
-    "journal": "AI/ML分子模拟Langmuir",
+    "cnTitle": "éææºå¨å­¦ä¹ ä¸åå­å¨åå­¦è®¾è®¡åè½æ§çº³ç±³ç²å­",
+    "journal": "AI/MLåå­æ¨¡æLangmuir",
     "authors": "M Moirangthem et al. | Langmuir (ACS) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -92,8 +92,8 @@
   {
     "title": "Machine Learning Interatomic Potentials for Energy Materials: Architectures, Training Strategies, and Applications",
     "link": "https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/aenm.71046",
-    "cnTitle": "机器学习原子间势在能源材料中的应用——架构、训练策略与应用综述",
-    "journal": "综述AI/MLAdv. Energy Mater.",
+    "cnTitle": "æºå¨å­¦ä¹ åå­é´å¿å¨è½æºææä¸­çåºç¨ââæ¶æãè®­ç»ç­ç¥ä¸åºç¨ç»¼è¿°",
+    "journal": "ç»¼è¿°AI/MLAdv. Energy Mater.",
     "authors": "IK Park, S Pourasad, J Mun et al. | Advanced Energy Materials (Wiley) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -101,23 +101,23 @@
   {
     "title": "Predicting temperature-dependent optoelectronic properties of semiconductor defects with equivariant neural networks",
     "link": "https://www.nature.com/articles/s41524-026-02111-z",
-    "cnTitle": "等变图神经网络预测半导体缺陷的温变光电性质",
+    "cnTitle": "ç­åå¾ç¥ç»ç½ç»é¢æµåå¯¼ä½ç¼ºé·çæ¸©ååçµæ§è´¨",
     "journal": "AI/MLnpj Comput. Mater.",
     "authors": "X Zhu, P Rinke, DA Egger | npj Computational Materials (Nature) 2026",
     "date": "2026-05-22",
-    "starred": false
+    "starred": true
   },
   {
-    "title": "Humidity sensor based on PEDOT:PSS/CeO₂ composite material for respiratory monitoring of anesthetized patients",
+    "title": "Humidity sensor based on PEDOT:PSS/CeOâ composite material for respiratory monitoring of anesthetized patients",
     "link": "https://www.sciencedirect.com/science/article/pii/S0169433226014662",
-    "cnTitle": "PEDOT:PSS/CeO₂复合材料湿度传感器用于麻醉患者呼吸监测",
+    "cnTitle": "PEDOT:PSS/CeOâå¤åæææ¹¿åº¦ä¼ æå¨ç¨äºéº»éæ£èå¼å¸çæµ",
     "journal": "Appl. Surf. Sci.",
     "authors": "J Yang et al. | Applied Surface Science (Elsevier) 2026",
     "date": "2026-05-22",
     "starred": false
   },
   {
-    "title": "速度测试",
+    "title": "éåº¦æµè¯",
     "link": "https://test.com",
     "cnTitle": "",
     "journal": "",
@@ -126,11 +126,11 @@
     "starred": false
   },
   {
-    "title": "测试实时收藏",
+    "title": "æµè¯å®æ¶æ¶è",
     "link": "https://example.com/test",
-    "cnTitle": "测试论文",
-    "journal": "测试期刊",
-    "authors": "测试作者",
+    "cnTitle": "æµè¯è®ºæ",
+    "journal": "æµè¯æå",
+    "authors": "æµè¯ä½è",
     "date": "2026-05-22",
     "starred": false
   },
@@ -155,9 +155,9 @@
   {
     "title": "BROWSER_TEST_PAPER",
     "link": "https://test-browser.com",
-    "cnTitle": "浏览器测试",
-    "journal": "测试",
-    "authors": "测试",
+    "cnTitle": "æµè§å¨æµè¯",
+    "journal": "æµè¯",
+    "authors": "æµè¯",
     "date": "2026-05-22",
     "starred": false
   },
