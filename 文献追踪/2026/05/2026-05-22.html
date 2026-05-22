@@ -329,6 +329,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
         star.innerHTML = '☆'; star.title = '点击收藏';
         star.style.color = '#ccc'; star.style.textShadow = 'none';
         star.dataset.fileFav = 'false';
+        /* 通知服务端取消收藏 */
+        try{ fetch('http://localhost:7898/fav', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:false})}); }catch(ex){}
       } else {
         localStorage.setItem(key, JSON.stringify({
           title: title, link: link, cnTitle: cnTitle,
@@ -337,6 +339,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
         star.innerHTML = '★'; star.title = '已收藏';
         star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
         star.dataset.fileFav = 'true';
+        /* 通知服务端收藏 */
+        try{ fetch('http://localhost:7898/fav', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true})}); }catch(ex){}
       }
     };
   });
