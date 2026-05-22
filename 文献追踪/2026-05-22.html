@@ -338,6 +338,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
           }));
           star.innerHTML = '\u2605'; star.title = '已收藏';
           star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
+          navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true}));
         }
       };
     });
@@ -381,11 +382,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
           }));
           star.innerHTML = '\u2605'; star.title = '已收藏';
           star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
+          navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true}));
         }
       };
-      titleEl.parentNode.insertBefore(star, titleEl);
     });
   }
+})();
 })();
 </script></body>
 </html>
