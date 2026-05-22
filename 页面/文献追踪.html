@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💭 人生感悟 - 碎片化信息盒</title>
+<title>📰 文献追踪 - 碎片化信息盒</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}
 .container{max-width:1100px;margin:0 auto}
-.header{background:linear-gradient(135deg,#f12711 0%,#f5af19 100%);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px}
+.header{background:linear-gradient(135deg,#006064 0%,#00897b 100%);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px}
 .header h1{font-size:22px;font-weight:700}
 .header .sub{font-size:13px;opacity:.7;margin-top:4px}
 
 .nav-bar{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
 .nav-link{display:inline-block;padding:5px 11px;border-radius:6px;font-size:12.5px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap}
 .nav-link:hover{background:#eef2f7;color:#1a1a2e}
-.nav-link.active{background:#2c3e50;color:#fff;font-weight:600}
+.nav-link.active{background:#006064;color:#fff;font-weight:600}
 
 .entry{display:flex;align-items:baseline;padding:10px 0;border-bottom:1px solid #f0f0f0}
 .entry:last-child{border-bottom:none}
@@ -29,7 +29,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .pagination{display:flex;gap:6px;margin-top:14px;padding-top:10px;border-top:1px solid #eee;align-items:center;flex-wrap:wrap}
 .page-btn{display:inline-block;padding:4px 12px;border-radius:4px;font-size:13px;cursor:pointer;border:1px solid #ddd;background:#fff;color:#555;transition:all .15s;user-select:none}
 .page-btn:hover{background:#eee}
-.page-btn.active{background:#2c3e50;color:#fff;border-color:#2c3e50;font-weight:600}
+.page-btn.active{background:#006064;color:#fff;border-color:#006064;font-weight:600}
 .page-btn.disabled{opacity:.3;cursor:default}
 .page-info{font-size:12px;color:#999;margin-left:8px}
 .empty-tip{text-align:center;color:#ccc;font-size:14px;padding:40px 0}
@@ -41,23 +41,15 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 @media (max-width: 480px) {
   body { padding: 12px 10px; }
   .container { max-width: 100%; }
-  
-  /* Header */
   .header { padding: 16px 18px; border-radius: 10px; margin-bottom: 14px; }
   .header h1 { font-size: 18px; }
   .header .sub { font-size: 12px; }
-  
-  /* Nav */
   .nav-bar { padding: 8px 6px; gap: 2px; border-radius: 8px; }
   .nav-link { padding: 6px 8px; font-size: 11px; }
-  
-  /* Entries - stack date on top on mobile */
   .entry { flex-direction: column; align-items: flex-start; padding: 10px 0; gap: 3px; }
   .entry-date { font-size: 11px; min-width: auto; color: #aaa; }
   .entry-link { font-size: 14px; line-height: 1.5; }
   .entry-desc { font-size: 12px; margin-left: 0; max-width: 100%; white-space: normal; display: block; margin-top: 2px; color: #999; }
-  
-  /* Pagination */
   .pagination { gap: 4px; }
   .page-btn { padding: 6px 10px; font-size: 12px; }
 }
@@ -74,28 +66,30 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <body>
 <div class="container">
 <div class="header">
-  <h1>💭 人生感悟</h1>
-  <div class="sub">最新在最前，每页10条</div>
+  <h1>📰 文献追踪</h1>
+  <div class="sub">每日文献推送，最新在最前</div>
 </div>
   <div class="nav-bar">
     <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
     <a class="nav-link " href="科研动态.html">🔬 科研动态</a>
     <a class="nav-link " href="学术知识.html">📖 学术知识</a>
     <a class="nav-link " href="国际形势.html">🌍 国际形势</a>
-    <a class="nav-link active" href="人生感悟.html">💭 人生感悟</a>
+    <a class="nav-link " href="人生感悟.html">💭 人生感悟</a>
     <a class="nav-link " href="实用小妙招.html">🛠️ 小妙招</a>
-    <a class="nav-link " href="文献追踪.html">📰 文献追踪</a>
+    <a class="nav-link active" href="文献追踪.html">📰 文献追踪</a>
     <a class="nav-link " href="其他.html">📌 其他</a>
   </div>
 
 <div id="list"></div>
 <div class="pagination" id="page"></div>
 
-<div class="footer">💡 有好东西发消息说"存档"我就分类收录</div>
+<div class="footer">📬 每天 6:00 自动推送 Google Scholar 最新文献</div>
 </div>
 
 <script>
-const DATA = [];
+const DATA = [
+  {date:"2026-05-22", title:"每日文献追踪 — 稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"含32篇文献，4个专题分区"},
+];
 
 const PER_PAGE = 10;
 
