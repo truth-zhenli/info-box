@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate quarterly精选 pages — localStorage-first, dual-fallback GitHub restore."""
+"""Generate quarterly精选 pages — localStorage, local fav_server, GitHub triple fallback."""
 
 import os, json
 
@@ -14,6 +14,7 @@ quarters = [
 
 for q in quarters:
     qi = q["q"]
+    months_json = json.dumps(q["months"])
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -62,13 +63,13 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link {"active" if qi==4 else ""}" href="4季度精选.html">❄️ Q4</a>
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">localStorage即时响应 + GitHub持久化（API→raw双fallback）</div>
+<div class="footer">localStorage即时 + 本地fav_server + GitHub跨设备同步</div>
 </div>
 <script>
 (function(){{
   var listEl = document.getElementById('list');
   var quarter = {qi};
-  var allowedMonths = {json.dumps(q["months"])};
+  var allowedMonths = {months_json};
   var paperMap = {{}};
   var rendered = false;
 
@@ -137,17 +138,33 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   }}
   render(paperMap);
 
-  /* 第二步：从本地 fav_server 读取 favorites.json（不走VPN） */
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:7898/fav', false);
-  xhr.send();
-  if(xhr.status === 200){{
-    var favs = JSON.parse(xhr.responseText);
-    processFavs(favs);
-  }}
+  /* 第二步：从本地 fav_server 读取（同机器，快） */
+  try {{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:7898/fav', false);
+    xhr.send();
+    if(xhr.status === 200){{
+      processFavs(JSON.parse(xhr.responseText));
+    }}
+  }} catch(e){{}}
   if(Object.keys(paperMap).length === 0 && !rendered){{
     listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
   }}
+
+  /* 第三步：从 GitHub 补充（跨设备） */
+  function fetchGitHub(url, cb){{
+    fetch(url + '?t=' + new Date().getTime())
+      .then(function(r){{ return r.json(); }})
+      .then(cb)
+      .catch(function(){{}});
+  }}
+  /* API（无CDN）→ raw（更易访问） */
+  fetchGitHub('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', function(data){{
+    try {{ processFavs(JSON.parse(atob(data.content))); }} catch(e){{}}
+  }});
+  setTimeout(function(){{
+    fetchGitHub('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json', processFavs);
+  }}, 500);
 }})();
 </script>
 </body>
@@ -156,6 +173,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html — localStorage + 双fallback API/raw")
+    print(f"✓ {qi}季度精选.html — localStorage + localhost + GitHub triple")
 
-print("\nDone! 双fallback部署完成。")
+print("\nDone! 三层fallback: localStorage→localhost→GitHub")
