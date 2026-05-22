@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Generate quarterly精选 pages — now client-side dynamic.
-These pages fetch favorites.json from GitHub and render client-side,
-so they reflect star clicks instantly."""
+"""Generate quarterly精选 pages — localStorage-first, GitHub-supplement.
+Instant same-browser response + cross-browser durability."""
 
 import os, json
 
@@ -64,45 +63,88 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link {"active" if qi==4 else ""}" href="4季度精选.html">❄️ Q4</a>
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">数据实时读取 favorites.json · 刷新页面即可看到最新收藏</div>
+<div class="footer">数据实时读取 localStorage + favorites.json · 点星星即刻生效</div>
 </div>
 <script>
 (function(){{
   var listEl = document.getElementById('list');
   var quarter = {qi};
   var allowedMonths = {json.dumps(q["months"])};
+  var paperMap = {{}};
+  var rendered = false;
 
-  /* 从GitHub实时拉取 favorites.json（加时间戳防缓存） */
+  function render(papers){{
+    var keys = Object.keys(papers);
+    if(keys.length === 0) return;  // 等GitHub补充
+    rendered = true;
+    var sorted = keys.sort(function(a,b){{
+      return papers[b].date.localeCompare(papers[a].date);
+    }});
+    var html = '';
+    sorted.forEach(function(k){{
+      var p = papers[k];
+      html += '<div class="paper-card">';
+      html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
+      if(p.cnTitle) html += '<div class="paper-cn">' + p.cnTitle + '</div>';
+      if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
+      if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
+      html += '<div class="paper-date">📅 ' + p.date + '</div>';
+      html += '</div>';
+    }});
+    listEl.innerHTML = html;
+  }}
+
+  /* 第一步：从 localStorage 读取（即时！同浏览器点星星秒级响应） */
+  for(var i = 0; i < localStorage.length; i++){{
+    var key = localStorage.key(i);
+    if(key && key.indexOf('fav_') === 0){{
+      try{{
+        var val = JSON.parse(localStorage.getItem(key));
+        if(val && val.title && val.date){{
+          var m = parseInt(val.date.split('-')[1]);
+          if(allowedMonths.indexOf(m) >= 0){{
+            var uid = val.title + '|||' + val.link;
+            paperMap[uid] = {{
+              title: val.title, link: val.link,
+              cnTitle: val.cnTitle || '', journal: val.journal || '',
+              authors: val.authors || '', date: val.date
+            }};
+          }}
+        }}
+      }}catch(e){{}}
+    }}
+  }}
+  render(paperMap);
+
+  /* 第二步：从 GitHub favorites.json 补充（跨设备/浏览器持久化） */
   var ts = new Date().getTime();
   fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + ts)
     .then(function(r){{ return r.json(); }})
     .then(function(favs){{
-      var papers = favs.filter(function(p){{
-        if(!p.starred || !p.date) return false;
+      var changed = false;
+      favs.forEach(function(p){{
+        if(!p.starred || !p.date) return;
         var m = parseInt(p.date.split('-')[1]);
-        return allowedMonths.indexOf(m) >= 0;
+        if(allowedMonths.indexOf(m) < 0) return;
+        var uid = p.title + '|||' + p.link;
+        if(!paperMap[uid]){{
+          paperMap[uid] = {{
+            title: p.title, link: p.link,
+            cnTitle: p.cnTitle || '', journal: p.journal || '',
+            authors: p.authors || '', date: p.date
+          }};
+          changed = true;
+        }}
       }});
-      papers.sort(function(a,b){{ return b.date.localeCompare(a.date); }});
-
-      if(papers.length === 0){{
+      if(changed || !rendered) render(paperMap);
+      if(Object.keys(paperMap).length === 0 && !rendered){{
         listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
-        return;
       }}
-
-      var html = '';
-      papers.forEach(function(p){{
-        html += '<div class="paper-card">';
-        html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
-        if(p.cnTitle) html += '<div class="paper-cn">' + p.cnTitle + '</div>';
-        if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
-        if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
-        html += '<div class="paper-date">📅 ' + p.date + '</div>';
-        html += '</div>';
-      }});
-      listEl.innerHTML = html;
     }})
     .catch(function(err){{
-      listEl.innerHTML = '<div class="empty-tip"><span class="big">⚠️</span>加载失败，请刷新重试<br><small>' + err.message + '</small></div>';
+      if(!rendered && Object.keys(paperMap).length === 0){{
+        listEl.innerHTML = '<div class="empty-tip"><span class="big">⚠️</span>加载失败，请刷新重试<br><small>' + err.message + '</small></div>';
+      }}
     }});
 }})();
 </script>
@@ -112,6 +154,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html — dynamic (fetches from GitHub)")
+    print(f"✓ {qi}季度精选.html — localStorage-first + GitHub supplement")
 
-print("\nDone! Quarterly pages now real-time.")
+print("\nDone! 季度精选页：localStorage即时响应 + GitHub跨设备持久化")
