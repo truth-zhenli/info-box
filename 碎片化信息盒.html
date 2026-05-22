@@ -11,7 +11,7 @@ body{
   font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
   background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px
 }
-.container{max-width:880px;margin:0 auto}@media(min-width:1100px){.container{max-width:960px}}
+.container{max-width:1100px;margin:0 auto}@media(min-width:1200px){.container{max-width:1200px}}
 
 /* Banner */
 .banner{
@@ -48,7 +48,7 @@ body{
 .nav-link.active{background:#2c3e50;color:#fff;font-weight:600}
 
 /* Cards */
-.cards{display:flex;flex-direction:column;gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .card{
   background:#fff;border-radius:12px;padding:18px 22px;
   box-shadow:0 2px 8px rgba(0,0,0,.06);text-decoration:none;color:#333;
@@ -64,8 +64,7 @@ body{
 .card-info{flex:1}
 .card-title{font-size:16px;font-weight:600}
 .card-desc{font-size:13px;color:#999;margin-top:1px}
-.card-arrow{font-size:18px;color:#ccc;transition:all .2s}
-.card:hover .card-arrow{color:#0f3460;transform:translateX(4px)}
+
 
 /* Card accent borders */
 .card-research{border-left:4px solid #d32f2f}
@@ -74,6 +73,13 @@ body{
 .card-life{border-left:4px solid #7b1fa2}
 .card-tips{border-left:4px solid #2e7d32}
 .card-other{border-left:4px solid #78909c}
+
+/* Grid: cards fill height */
+.card{flex-direction:column;align-items:flex-start;gap:6px;padding:20px}
+.card:hover{transform:translateY(-3px)}
+.card-icon{font-size:28px;width:auto;margin-bottom:4px}
+.card-title{font-size:15px}
+.card-desc{font-size:12px;color:#888}
 
 .footer{
   text-align:center;color:#bbb;font-size:12px;margin-top:36px;
@@ -155,14 +161,7 @@ body{
   <div class="sub">看到好文章发链接给我，说"存档"我就加好</div>
 </div>
 
-<div class="nav-bar">
-  <a class="nav-link" href="页面/科研动态.html">🔬 科研动态</a>
-  <a class="nav-link" href="页面/学术知识.html">📖 学术知识</a>
-  <a class="nav-link" href="页面/国际形势.html">🌍 国际形势</a>
-  <a class="nav-link" href="页面/人生感悟.html">💭 人生感悟</a>
-  <a class="nav-link" href="页面/实用小妙招.html">🛠️ 小妙招</a>
-  <a class="nav-link" href="页面/其他.html">📌 其他</a>
-</div>
+
 
 <div class="cards">
 
@@ -172,7 +171,7 @@ body{
       <div class="card-title">科研动态</div>
       <div class="card-desc">论文、学术新闻、科研工具</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
   <a class="card card-knowledge" href="页面/学术知识.html">
@@ -181,7 +180,7 @@ body{
       <div class="card-title">学术知识</div>
       <div class="card-desc">专业知识点、学术干货、深度资料</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
   <a class="card card-world" href="页面/国际形势.html">
@@ -190,7 +189,7 @@ body{
       <div class="card-title">国际形势</div>
       <div class="card-desc">经济、政治、科技政策</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
   <a class="card card-life" href="页面/人生感悟.html">
@@ -199,7 +198,7 @@ body{
       <div class="card-title">人生感悟</div>
       <div class="card-desc">人生哲学、值得收藏的观点</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
   <a class="card card-tips" href="页面/实用小妙招.html">
@@ -208,7 +207,7 @@ body{
       <div class="card-title">实用小妙招</div>
       <div class="card-desc">生活技巧、效率工具、经验分享</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
   <a class="card card-other" href="页面/其他.html">
@@ -217,7 +216,7 @@ body{
       <div class="card-title">其他</div>
       <div class="card-desc">不好分类的放这里</div>
     </div>
-    <div class="card-arrow">→</div>
+    
   </a>
 
 </div>
