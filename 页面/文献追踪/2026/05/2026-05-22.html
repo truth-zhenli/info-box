@@ -311,9 +311,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     var authors = star.dataset.authors || '';
     var date = star.dataset.date || '';
     var key = 'fav_' + date + '_' + idx;
-
     var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
-    var isFav = stored && stored.title;
+    var fileFav = star.dataset.fileFav === 'true';
+    var isFav = stored ? (stored.title ? true : false) : fileFav;
+
+    /* final fallback: fetch from GitHub favorites.json */
+    if(!isFav && !stored){
+      try{
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + Date.now(), false);
+        xhr.send();
+        if(xhr.status === 200){
+          var serverFavs = JSON.parse(xhr.responseText);
+          for(var fi = 0; fi < serverFavs.length; fi++){
+            if(serverFavs[fi].title === title && serverFavs[fi].link === link && serverFavs[fi].starred){
+              isFav = true;
+              star.dataset.fileFav = 'true';
+              break;
+            }
+          }
+        }
+      }catch(ex){}
+    }
 
     star.innerHTML = isFav ? '★' : '☆';
     star.style.color = isFav ? '#f5a623' : '#ccc';
