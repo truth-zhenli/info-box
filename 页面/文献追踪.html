@@ -24,53 +24,44 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .year-title{font-size:20px;font-weight:700;color:#006064;margin:14px 0 10px;display:flex;align-items:center;gap:10px}
 .year-title small{font-size:13px;font-weight:400;color:#999;opacity:.8}
 
-/* 季度四列布局 */
-.quarter-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:10px}
-.quarter-col{display:flex;flex-direction:column;gap:8px}
-.quarter-label{font-size:13px;font-weight:700;color:#006064;text-align:center;padding:4px;background:#e0f2f1;border-radius:8px 8px 0 0;margin-bottom:2px}
+/* 月份网格 */
+.month-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.month-col{flex:1;min-width:300px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 
-.month-card{background:#fff;border-radius:10px;padding:14px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer;transition:all .2s;text-align:center;border:2px solid #f0f0f0}
-.month-card:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(0,0,0,.1)}
-.month-card.has-data{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-color:#00897b}
-.month-card.no-data{background:#fafafa;color:#ccc;cursor:default;border-color:#eee}
-.month-card .month-name{font-size:14px;font-weight:600}
-.month-card .month-count{font-size:11px;color:#888;margin-top:3px}
-.month-card.has-data .month-count{color:#006064;font-weight:600}
+.month-label{font-size:14px;font-weight:700;color:#006064;text-align:center;padding:6px 0 8px;border-bottom:2px solid #e0f2f1;margin-bottom:6px}
+
+/* 日历网格 */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-header{text-align:center;font-size:10px;color:#999;padding:4px 0;font-weight:600}
+.cal-day{text-align:center;padding:4px 0;font-size:12px;border-radius:6px;cursor:default;transition:all .12s;color:#ccc;background:#fafafa;min-height:28px;display:flex;align-items:center;justify-content:center}
+.cal-day.has-data{background:#e0f2f1;color:#006064;font-weight:600;cursor:pointer}
+.cal-day.has-data:hover{background:#00897b;color:#fff;transform:scale(1.1);box-shadow:0 2px 8px rgba(0,137,123,.3)}
+.cal-day.today{background:#ff7043;color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(255,112,67,.4)}
+.cal-day.today.has-data{background:#ff7043;color:#fff}
+.cal-day.today.has-data:hover{background:#d84315}
+.cal-day.empty{background:transparent;cursor:default}
+.cal-day.other-month{color:#eee}
 
 /* 季度精选入口 */
-.fav-entry{display:block;background:linear-gradient(135deg,#fff8e1,#ffecb3);border:2px solid #f5a623;border-radius:10px;padding:12px 8px;text-align:center;text-decoration:none;color:#e65100;font-size:13px;font-weight:600;transition:all .2s;margin-top:4px}
+.fav-entry{display:block;background:linear-gradient(135deg,#fff8e1,#ffecb3);border:2px solid #f5a623;border-radius:10px;padding:8px;text-align:center;text-decoration:none;color:#e65100;font-size:12px;font-weight:600;transition:all .2s;margin-top:6px}
 .fav-entry:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(0,0,0,.1);background:linear-gradient(135deg,#ffe082,#ffd54f)}
-.fav-entry .count{font-size:11px;font-weight:400;opacity:.7;display:block;margin-top:2px}
-
-/* 每日展开 */
-.month-days{display:none;background:#fff;border-radius:12px;padding:12px 16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.month-days.open{display:block}
-.day-item{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid #f0f0f0;gap:8px}
-.day-item:last-child{border-bottom:none}
-.day-badge{display:inline-block;background:#e0f2f1;color:#006064;padding:2px 10px;border-radius:5px;font-size:11px;font-weight:600;min-width:44px;text-align:center}
-.day-link{color:#2980b9;text-decoration:none;font-size:13px;flex:1}
-.day-link:hover{color:#e74c3c;text-decoration:underline}
-.day-desc{font-size:11px;color:#999;flex-shrink:0;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.day-fav{font-size:12px;color:#f5a623;min-width:16px;text-align:center}
+.fav-entry .count{font-size:10px;font-weight:400;opacity:.7;display:block;margin-top:1px}
 
 /* 页脚 */
 .footer{text-align:center;color:#bbb;font-size:12px;margin-top:30px}
 
-/* ===== 移动端 ===== */
-@media (max-width: 800px){
-  .quarter-row{grid-template-columns:repeat(2,1fr)}
-  .day-desc{max-width:100px}
+@media (max-width:800px){
+  .month-col{min-width:280px}
 }
-@media (max-width: 480px){
+@media (max-width:480px){
   body{padding:12px 10px}
-  .quarter-row{grid-template-columns:repeat(2,1fr);gap:6px}
-  .month-card{padding:10px 6px}
+  .month-col{min-width:100%;padding:8px}
+  .cal-day{font-size:11px;padding:3px 0;min-height:24px}
   .header{padding:16px 18px;border-radius:10px;margin-bottom:14px}
   .header h1{font-size:18px}
   .nav-bar{padding:8px 6px;gap:2px;border-radius:8px}
   .nav-link{padding:6px 8px;font-size:11px}
-  .day-desc{display:none}
-  .quarter-label{font-size:11px}
+  .month-label{font-size:13px}
 }
 </style>
 </head>
@@ -78,7 +69,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <div class="container">
 <div class="header">
   <h1>📰 文献追踪</h1>
-  <div class="sub">按季度查看 · 点击月份展开每日列表 · ☆收藏好文章 · ★自动进入季度精选</div>
+  <div class="sub">全日历视图 · 今日高亮 · 有内容的日期可点击跳转 · 每篇文献右上角☆收藏自动进入季度精选</div>
 </div>
 <div class="nav-bar">
   <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
@@ -94,164 +85,138 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <div id="year-view"></div>
 
 <div class="footer">
-  📬 每天6:00自动推送 · 看到好文章点☆收藏，自动进入季度精选
-  </div>
+  📬 每天6:00自动推送 · 点击日期跳转当日文献 · ☆收藏自动进入季度精选
+</div>
 </div>
 
 <script>
-/* ========== 数据 ========== */
+/* ========== 数据：日期 → 文献信息 ========== */
 const DATA = [
-  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"4专题", papers:13},
-
+  {date:"2026-05-22", title:"计算材料学 · 人工智能 · 分子模拟", link:"../文献追踪/2026/05/2026-05-22.html", desc:"4专题", papers:13},
 ];
 
-/* 季度定义 */
-const QUARTERS = [
-  {q:1, label:'一季度', months:[1,2,3], emoji:'🌸', color:'#e91e63'},
-  {q:2, label:'二季度', months:[4,5,6], emoji:'☀️', color:'#ff6f00'},
-  {q:3, label:'三季度', months:[7,8,9], emoji:'🍂', color:'#2e7d32'},
-  {q:4, label:'四季度', months:[10,11,12], emoji:'❄️', color:'#1565c0'}
-];
+/* 星期缩写 */
+const DAY_NAMES = ['日','一','二','三','四','五','六'];
 const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
-/* ========== 渲染 ========== */
-function render(){
-  const root = document.getElementById('year-view');
-  let html = '';
+/* 构建日期→数据映射 */
+var dateMap = {};
+DATA.forEach(function(d){ dateMap[d.date] = d; });
 
-  // 按年份分组
-  const years = {};
-  DATA.forEach(d => {
-    const y = d.date.slice(0,4);
+/* 获取今天日期 */
+var today = new Date();
+var todayStr = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+
+/* 渲染日历 */
+function render(){
+  var root = document.getElementById('year-view');
+  var html = '';
+
+  /* 按年份分组 */
+  var years = {};
+  DATA.forEach(function(d){
+    var y = d.date.slice(0,4);
     if(!years[y]) years[y] = [];
     years[y].push(d);
   });
 
-  Object.keys(years).sort().reverse().forEach(year => {
-    const yearData = years[year];
-    html += `<div class="year-title">${year}年 <small>共 ${yearData.length} 期</small></div>`;
+  Object.keys(years).sort().reverse().forEach(function(year){
+    var yearData = years[year];
+    html += '<div class="year-title">' + year + '年 <small>共 ' + yearData.length + ' 期</small></div>';
+    html += '<div class="month-row">';
 
-    // 按月份统计
-    const byMonth = {};
-    yearData.forEach(d => {
-      const m = parseInt(d.date.slice(5,7));
-      if(!byMonth[m]) byMonth[m] = [];
-      byMonth[m].push(d);
-    });
+    /* 每3个月一行（按季度） */
+    var quarters = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]];
+    var qEmojis = ['🌸','☀️','🍂','❄️'];
+    var qColors = ['#e91e63','#ff6f00','#2e7d32','#1565c0'];
 
-    html += '<div class="quarter-row">';
+    for(var qi = 0; qi < 4; qi++){
+      html += '<div class="month-col">';
+      html += '<div style="font-size:12px;font-weight:700;color:' + qColors[qi] + ';text-align:center;margin-bottom:2px">' + qEmojis[qi] + ' Q' + (qi+1) + '</div>';
 
-    QUARTERS.forEach(q => {
-      html += '<div class="quarter-col">';
-      html += `<div class="quarter-label">${q.emoji} ${q.label}</div>`;
+      quarters[qi].forEach(function(m){
+        var monthStr = year + '-' + String(m).padStart(2,'0');
 
-      // 该季度三个月
-      q.months.forEach(m => {
-        const items = byMonth[m] || [];
-        const hasData = items.length > 0;
-        const cls = hasData ? 'month-card has-data' : 'month-card no-data';
-        html += `<div class="${cls}" data-year="${year}" data-month="${m}">`;
-        html += `<div class="month-name">${MONTH_NAMES[m-1]}</div>`;
-        if(hasData){
-          const totalPapers = items.reduce((sum, d) => {
-            return sum + (d.papers || 0);
-          }, 0);
-          html += `<div class="month-count">${items.length}期 · ${totalPapers}篇</div>`;
-        } else {
-          html += `<div class="month-count">—</div>`;
+        html += '<div class="month-label">' + MONTH_NAMES[m-1] + '</div>';
+
+        /* 日历表头 */
+        html += '<div class="cal-grid">';
+        DAY_NAMES.forEach(function(dn){
+          html += '<div class="cal-header">' + dn + '</div>';
+        });
+
+        /* 当月第一天是星期几 */
+        var firstDay = new Date(parseInt(year), m-1, 1).getDay();
+        /* 当月天数 */
+        var daysInMonth = new Date(parseInt(year), m, 0).getDate();
+
+        /* 填充空白格（月初） */
+        for(var e = 0; e < firstDay; e++){
+          html += '<div class="cal-day empty"></div>';
         }
-        html += '</div>';
+
+        /* 填充日期 */
+        for(var d = 1; d <= daysInMonth; d++){
+          var dateStr = monthStr + '-' + String(d).padStart(2,'0');
+          var hasData = dateMap[dateStr] ? true : false;
+          var isToday = (dateStr === todayStr);
+          var cls = 'cal-day';
+          if(hasData) cls += ' has-data';
+          if(isToday) cls += ' today';
+          if(!hasData && !isToday) cls += ' empty';
+
+          var extra = '';
+          if(hasData && dateMap[dateStr]){
+            extra = ' onclick="window.location.href=\'' + dateMap[dateStr].link + '\'" title="' + dateMap[dateStr].title + ' · ' + dateMap[dateStr].papers + '篇"';
+          } else if(isToday){
+            extra = ' title="今天"';
+          }
+
+          html += '<div class="' + cls + '"' + extra + '>' + d + '</div>';
+        }
+
+        html += '</div>'; /* cal-grid */
       });
 
-      // 季度精选入口
-      html += `<a class="fav-entry" href="${q.q}季度精选.html" target="_blank">`;
-      html += `★ ${q.label}精选`;
-      html += `<span class="count" data-q="${q.q}">加载中...</span>`;
-      html += `</a>`;
+      /* 季度精选入口 */
+      html += '<a class="fav-entry" href="' + (qi+1) + '季度精选.html" target="_blank">';
+      html += '★ Q' + (qi+1) + '精选';
+      html += '<span class="count" data-q="' + (qi+1) + '">加载中...</span>';
+      html += '</a>';
 
-      html += '</div>'; // quarter-col
-    });
-
-    html += '</div>'; // quarter-row
-
-    // 每个月份的展开区域
-    for(let m = 1; m <= 12; m++){
-      const items = byMonth[m] || [];
-      if(items.length === 0) continue;
-      html += `<div class="month-days" data-year="${year}" data-month="${m}">`;
-      items.sort((a,b) => b.date.localeCompare(a.date)).forEach(d => {
-        const day = d.date.slice(5);
-        html += `<div class="day-item">`;
-        html += `<span class="day-badge">${day}</span>`;
-        html += `<a class="day-link" href="${d.link}" target="_blank">${d.title}</a>`;
-        html += `<span class="day-desc">${d.desc || ''}</span>`;
-        html += `<span class="day-fav" data-date="${d.date}"></span>`;
-        html += `</div>`;
-      });
-      html += '</div>';
+      html += '</div>'; /* month-col */
     }
+
+    html += '</div>'; /* month-row */
   });
 
   root.innerHTML = html;
-
-  // 更新收藏统计
   updateFavCounts();
 }
 
-/* ========== 月份点击展开 ========== */
-document.addEventListener('click', function(e){
-  const card = e.target.closest('.month-card');
-  if(!card || card.classList.contains('no-data')) return;
-  const year = card.dataset.year;
-  const month = card.dataset.month;
-  const target = document.querySelector(`.month-days[data-year="${year}"][data-month="${month}"]`);
-  if(!target) return;
-  const isOpen = target.classList.contains('open');
-  document.querySelectorAll('.month-days.open').forEach(el => el.classList.remove('open'));
-  if(!isOpen) target.classList.add('open');
-});
-
 /* ========== 收藏统计 ========== */
 function updateFavCounts(){
-  // 统计每个季度的收藏数
-  const qCounts = {1:0, 2:0, 3:0, 4:0};
+  var qCounts = {1:0, 2:0, 3:0, 4:0};
 
-  for(let i = 0; i < localStorage.length; i++){
-    const key = localStorage.key(i);
+  for(var i = 0; i < localStorage.length; i++){
+    var key = localStorage.key(i);
     if(key && key.startsWith('fav_')){
       try{
-        const val = JSON.parse(localStorage.getItem(key));
+        var val = JSON.parse(localStorage.getItem(key));
         if(val && val.date){
-          // 从日期判断所属季度
-          const m = parseInt(val.date.slice(5,7));
-          const q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
+          var m = parseInt(val.date.slice(5,7));
+          var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
           qCounts[q]++;
         }
       }catch(e){}
     }
   }
 
-  document.querySelectorAll('.fav-entry .count').forEach(el => {
-    const q = parseInt(el.dataset.q);
-    const c = qCounts[q] || 0;
-    el.textContent = c > 0 ? `★ ${c}篇` : '暂无收藏';
+  document.querySelectorAll('.fav-entry .count').forEach(function(el){
+    var q = parseInt(el.dataset.q);
+    var c = qCounts[q] || 0;
+    el.textContent = c > 0 ? '★ ' + c + '篇' : '暂无收藏';
     if(c > 0) el.style.color = '#e65100';
-  });
-
-  // 每日收藏标识
-  document.querySelectorAll('.day-fav').forEach(el => {
-    const date = el.dataset.date;
-    let count = 0;
-    for(let i = 0; i < localStorage.length; i++){
-      const key = localStorage.key(i);
-      if(key && key.startsWith('fav_')){
-        try{
-          const val = JSON.parse(localStorage.getItem(key));
-          if(val && val.date && val.date === date) count++;
-        }catch(e){}
-      }
-    }
-    el.textContent = count > 0 ? '★' : '';
   });
 }
 
