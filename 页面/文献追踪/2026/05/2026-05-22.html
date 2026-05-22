@@ -301,9 +301,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 <script>
 /* ★ 收藏功能 v3 — 全走 GitHub API（不用 localhost） */
 (function(){
-  var GH_TOKEN = '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';
+  var GH_TOKEN = localStorage.getItem('gh_star_token');
   var GH_REPO = 'truth-zhenli/info-box';
   var GH_PATH = 'favorites.json';
+
+  /* 首次使用：弹窗让用户贴 token */
+  if(!GH_TOKEN){
+    GH_TOKEN = prompt('请输入 GitHub Token（只需输入一次，保存在浏览器中）\n创建：https://github.com/settings/tokens?type=beta');
+    if(GH_TOKEN){
+      localStorage.setItem('gh_star_token', GH_TOKEN);
+    } else {
+      console.error('No GitHub token provided - stars will not sync');
+      return;
+    }
+  }
 
   function saveStarToGitHub(data){
     fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
