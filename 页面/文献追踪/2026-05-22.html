@@ -105,6 +105,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     GH_TOKEN = prompt('请输入 GitHub Token（只需输入一次，保存在浏览器中）\n创建：https://github.com/settings/tokens?type=beta');
     if(GH_TOKEN){
       localStorage.setItem('gh_star_token', GH_TOKEN);
+      console.log('Token saved to localStorage ✓');
     } else {
       console.error('No GitHub token provided - stars will not sync');
       return;
@@ -118,7 +119,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     .then(function(r){ return r.json(); })
     .then(function(fileInfo){
       if(!fileInfo || !fileInfo.content) return;
-      var favs = JSON.parse(atob(fileInfo.content));
+      var favs = JSON.parse(decodeURIComponent(escape(atob(fileInfo.content))));
       var sha = fileInfo.sha;
       var found = false;
       for(var i = 0; i < favs.length; i++){
@@ -173,7 +174,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
         .then(function(r){ return r.json(); })
         .then(function(data){
           if(!data || !data.content) return;
-          var all = JSON.parse(atob(data.content));
+          var all = JSON.parse(decodeURIComponent(escape(atob(data.content))));
           for(var fi = 0; fi < all.length; fi++){
             if(all[fi].title === title && all[fi].link === link && all[fi].starred){
               localStorage.setItem(key, JSON.stringify(all[fi]));
