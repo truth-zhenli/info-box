@@ -129,9 +129,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
           content: btoa(unescape(encodeURIComponent(JSON.stringify(favs, null, 2)))),
           sha: sha
         })
-      }).catch(function(){});
+      }).catch(function(e){ console.error('GitHub PUT failed:', e); });
     })
-    .catch(function(){});
+    .catch(function(e){ console.error('GitHub GET failed:', e); });
   }
 
   var stars = document.querySelectorAll('.star-btn');
@@ -174,7 +174,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
             }
           }
         })
-        .catch(function(){});
+        .catch(function(e){ console.error('GitHub read failed:', e); });
       }
 
       star.onclick = function(e){
