@@ -77,19 +77,33 @@ def sync_file(filepath, fav_map):
     original = html
     changes = 0
 
-    pattern = r'(<span class="star-btn"[^>]*?data-title="([^"]*?)"[^>]*?data-link="([^"]*?)"[^>]*?>)[★☆](</span>)'
+    # Match star-btn and update both textContent AND data-star attribute
+    # Pattern: <span class="star-btn" ...>★</span> or ☆
+    pattern = r'(<span class="star-btn"[^>]*?)>([★☆])(</span>)'
 
     def repl(m):
         nonlocal changes
-        prefix = m.group(1)
-        title = m.group(2)
-        link = m.group(3)
-        suffix = m.group(4)
+        prefix = m.group(1)  # everything before >
+        current = m.group(2)
+        suffix = m.group(3)
+
+        # Extract title and link from data attributes
+        title_match = re.search(r'data-title="([^"]*?)"', prefix)
+        link_match = re.search(r'data-link="([^"]*?)"', prefix)
+        title = title_match.group(1) if title_match else ""
+        link = link_match.group(1) if link_match else ""
+
         wanted = star_state(fav_map, title, link)
-        current = "★" if "★" in m.group(0) else "☆"
         if wanted != current:
             changes += 1
-        return f"{prefix}{wanted}{suffix}"
+
+        # Always ensure data-star attribute is set
+        if 'data-star="' in prefix:
+            prefix = re.sub(r'data-star="[★☆]"', f'data-star="{wanted}"', prefix)
+        else:
+            prefix += f' data-star="{wanted}"'
+
+        return f"{prefix}>{wanted}{suffix}"
 
     html = re.sub(pattern, repl, html)
 
