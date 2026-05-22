@@ -80,6 +80,38 @@ body{
   padding-top:20px;border-top:1px solid #e0d8d0
 }
 .footer b{color:#888}
+
+
+/* ===== 移动端优化 ===== */
+@media (max-width: 480px) {
+  body { padding: 12px 10px; }
+  .container { max-width: 100%; }
+  
+  /* Banner */
+  .banner { padding: 24px 18px 20px; border-radius: 12px; margin-bottom: 18px; }
+  .banner-icon { font-size: 36px; }
+  .banner h1 { font-size: 20px; }
+  .banner .sub { font-size: 12px; }
+  
+  /* Nav */
+  .nav-bar { padding: 8px 6px; gap: 2px; border-radius: 8px; }
+  .nav-link { padding: 6px 8px; font-size: 11px; }
+  
+  /* Cards */
+  .card { padding: 14px 16px; border-radius: 10px; gap: 10px; }
+  .card-icon { font-size: 24px; width: 34px; }
+  .card-title { font-size: 14px; }
+  .card-desc { font-size: 12px; }
+  .card-arrow { font-size: 15px; }
+  
+  .footer { font-size: 11px; margin-top: 24px; }
+}
+
+@media (max-width: 360px) {
+  .nav-bar { flex-direction: column; align-items: stretch; }
+  .nav-link { text-align: center; }
+}
+
 </style>
 </head>
 <body>
@@ -88,7 +120,7 @@ body{
 <div class="banner">
   <div class="banner-icon">📦</div>
   <h1>碎片化信息盒</h1>
-  <div class="sub">看到好文章发链接给我，说"存档"我就分类加好</div>
+  <div class="sub">看到好文章发链接给我，说"存档"我就加好</div>
 </div>
 
 <div class="nav-bar">
@@ -159,8 +191,8 @@ body{
 </div>
 
 <div class="footer">
-  发消息说 <b>"存档——分类名——链接 说明"</b> 或直接发链接我会自动分类<br>
-  也可以用 <b>"备忘" "存一下" "记录一下"</b>
+  发消息说 <b>"存档+链接"</b> 我会自动分类收录<br>
+  也可以说 <b>"备忘" "存一下"</b>
 </div>
 
 </div>
