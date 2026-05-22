@@ -328,7 +328,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       restored[key] = true;
     }
   });
-  
   /* 第三步：从 GitHub API 读取（跨设备持久化，无CDN缓存） */
   function applyServerData(favs, restored){
     favs.forEach(function(f){
@@ -365,6 +364,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       applyServerData(JSON.parse(xhr3.responseText), restored);
     }
   }catch(ex3){}
+  
+  /* 第四步：绑定点击事件 */
   stars.forEach(function(star){
     var idx = star.dataset.idx;
     var title = star.dataset.title;
