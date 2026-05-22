@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📦 碎片化信息盒</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px
+}
+.container{max-width:620px;margin:0 auto}
+
+/* Banner */
+.banner{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  color:#fff;padding:36px 30px 28px;border-radius:16px;margin-bottom:28px;
+  text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.12);
+  position:relative;overflow:hidden
+}
+.banner::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:160px;height:160px;border-radius:50%;
+  background:rgba(255,255,255,.03)
+}
+.banner::after{
+  content:'';position:absolute;bottom:-60px;left:-30px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.02)
+}
+.banner-icon{font-size:48px;margin-bottom:6px;position:relative}
+.banner h1{font-size:26px;font-weight:700;position:relative}
+.banner .sub{font-size:14px;opacity:.65;margin-top:4px;position:relative}
+
+.nav-bar{
+  background:#fff;border-radius:10px;padding:10px 14px;
+  margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);
+  display:flex;flex-wrap:wrap;gap:3px;justify-content:center
+}
+.nav-link{
+  display:inline-block;padding:5px 11px;border-radius:6px;
+  font-size:12.5px;text-decoration:none;color:#555;
+  transition:all .15s;white-space:nowrap
+}
+.nav-link:hover{background:#eef2f7;color:#1a1a2e}
+.nav-link.active{background:#2c3e50;color:#fff;font-weight:600}
+
+/* Cards */
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{
+  background:#fff;border-radius:12px;padding:18px 22px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);text-decoration:none;color:#333;
+  display:flex;align-items:center;gap:14px;
+  transition:all .2s;border:1px solid transparent
+}
+.card:hover{
+  box-shadow:0 4px 16px rgba(0,0,0,.1);
+  transform:translateY(-2px);
+  border-color:#ddd
+}
+.card-icon{font-size:30px;width:42px;text-align:center}
+.card-info{flex:1}
+.card-title{font-size:16px;font-weight:600}
+.card-desc{font-size:13px;color:#999;margin-top:1px}
+.card-arrow{font-size:18px;color:#ccc;transition:all .2s}
+.card:hover .card-arrow{color:#0f3460;transform:translateX(4px)}
+
+/* Card accent borders */
+.card-research{border-left:4px solid #d32f2f}
+.card-knowledge{border-left:4px solid #1a237e}
+.card-world{border-left:4px solid #e65100}
+.card-life{border-left:4px solid #7b1fa2}
+.card-tips{border-left:4px solid #2e7d32}
+.card-other{border-left:4px solid #78909c}
+
+.footer{
+  text-align:center;color:#bbb;font-size:12px;margin-top:36px;
+  padding-top:20px;border-top:1px solid #e0d8d0
+}
+.footer b{color:#888}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="banner">
+  <div class="banner-icon">📦</div>
+  <h1>碎片化信息盒</h1>
+  <div class="sub">看到好文章发链接给我，说"存档"我就分类加好</div>
+</div>
+
+<div class="nav-bar">
+  <a class="nav-link" href="页面/科研动态.html">🔬 科研动态</a>
+  <a class="nav-link" href="页面/学术知识.html">📖 学术知识</a>
+  <a class="nav-link" href="页面/国际形势.html">🌍 国际形势</a>
+  <a class="nav-link" href="页面/人生感悟.html">💭 人生感悟</a>
+  <a class="nav-link" href="页面/实用小妙招.html">🛠️ 小妙招</a>
+  <a class="nav-link" href="页面/其他.html">📌 其他</a>
+</div>
+
+<div class="cards">
+
+  <a class="card card-research" href="页面/科研动态.html">
+    <div class="card-icon">🔬</div>
+    <div class="card-info">
+      <div class="card-title">科研动态</div>
+      <div class="card-desc">论文、学术新闻、科研工具</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="card card-knowledge" href="页面/学术知识.html">
+    <div class="card-icon">📖</div>
+    <div class="card-info">
+      <div class="card-title">学术知识</div>
+      <div class="card-desc">专业知识点、学术干货、深度资料</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="card card-world" href="页面/国际形势.html">
+    <div class="card-icon">🌍</div>
+    <div class="card-info">
+      <div class="card-title">国际形势</div>
+      <div class="card-desc">经济、政治、科技政策</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="card card-life" href="页面/人生感悟.html">
+    <div class="card-icon">💭</div>
+    <div class="card-info">
+      <div class="card-title">人生感悟</div>
+      <div class="card-desc">人生哲学、值得收藏的观点</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="card card-tips" href="页面/实用小妙招.html">
+    <div class="card-icon">🛠️</div>
+    <div class="card-info">
+      <div class="card-title">实用小妙招</div>
+      <div class="card-desc">生活技巧、效率工具、经验分享</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="card card-other" href="页面/其他.html">
+    <div class="card-icon">📌</div>
+    <div class="card-info">
+      <div class="card-title">其他</div>
+      <div class="card-desc">不好分类的放这里</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+</div>
+
+<div class="footer">
+  发消息说 <b>"存档——分类名——链接 说明"</b> 或直接发链接我会自动分类<br>
+  也可以用 <b>"备忘" "存一下" "记录一下"</b>
+</div>
+
+</div>
+</body>
+</html>

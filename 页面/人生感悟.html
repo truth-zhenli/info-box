@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💭 人生感悟 - 碎片化信息盒</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}
+.container{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#2c3e50,#34495e);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px}
+.header h1{font-size:22px;font-weight:700}
+.header .sub{font-size:13px;opacity:.7;margin-top:4px}
+
+.nav-bar{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
+.nav-link{display:inline-block;padding:5px 11px;border-radius:6px;font-size:12.5px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap}
+.nav-link:hover{background:#eef2f7;color:#1a1a2e}
+.nav-link.active{background:#2c3e50;color:#fff;font-weight:600}
+
+.entry{display:flex;align-items:baseline;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.entry:last-child{border-bottom:none}
+.entry-date{font-size:12px;color:#bbb;min-width:75px;flex-shrink:0}
+.entry-link{color:#2980b9;text-decoration:none;font-size:14px;transition:color .15s;word-break:break-all}
+.entry-link:hover{color:#e74c3c;text-decoration:underline}
+.entry-desc{font-size:12px;color:#999;margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:250px}
+.entry-page{display:none}
+.entry-page.active{display:block}
+
+.pagination{display:flex;gap:6px;margin-top:14px;padding-top:10px;border-top:1px solid #eee;align-items:center;flex-wrap:wrap}
+.page-btn{display:inline-block;padding:4px 12px;border-radius:4px;font-size:13px;cursor:pointer;border:1px solid #ddd;background:#fff;color:#555;transition:all .15s;user-select:none}
+.page-btn:hover{background:#eee}
+.page-btn.active{background:#2c3e50;color:#fff;border-color:#2c3e50;font-weight:600}
+.page-btn.disabled{opacity:.3;cursor:default}
+.page-info{font-size:12px;color:#999;margin-left:8px}
+.empty-tip{text-align:center;color:#ccc;font-size:14px;padding:40px 0}
+
+.footer{text-align:center;color:#ccc;font-size:12px;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>💭 人生感悟</h1>
+  <div class="sub">最新在最前，每页10条</div>
+</div>
+  <div class="nav-bar">
+    <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
+    <a class="nav-link " href="科研动态.html">🔬 科研动态</a>
+    <a class="nav-link " href="学术知识.html">📖 学术知识</a>
+    <a class="nav-link " href="国际形势.html">🌍 国际形势</a>
+    <a class="nav-link active" href="人生感悟.html">💭 人生感悟</a>
+    <a class="nav-link " href="实用小妙招.html">🛠️ 小妙招</a>
+    <a class="nav-link " href="其他.html">📌 其他</a>
+  </div>
+
+<div id="list"></div>
+<div class="pagination" id="page"></div>
+
+<div class="footer">💡 有好东西发消息说"存档"我就加进来</div>
+</div>
+
+<script>
+const DATA = [];
+
+const PER_PAGE = 10;
+
+function render(){
+  const listEl = document.getElementById('list');
+  const pageEl = document.getElementById('page');
+  const total = DATA.length;
+  const totalPages = Math.ceil(total / PER_PAGE) || 1;
+
+  if(total === 0){
+    listEl.innerHTML = '<div class="empty-tip">✨ 暂无内容</div>';
+    pageEl.innerHTML = '';
+    return;
+  }
+
+  let allHtml = '';
+  for(let p = 0; p < totalPages; p++){
+    const start = p * PER_PAGE;
+    const end = Math.min(start + PER_PAGE, total);
+    let pageHtml = '';
+    for(let i = start; i < end; i++){
+      const item = DATA[i];
+      pageHtml += '<div class="entry">' +
+        '<span class="entry-date">' + item.date + '</span>' +
+        '<a class="entry-link" href="' + item.link + '" target="_blank">' + item.title + '</a>' +
+        (item.desc ? '<span class="entry-desc">— ' + item.desc + '</span>' : '') +
+      '</div>';
+    }
+    allHtml += '<div class="entry-page' + (p === 0 ? ' active' : '') + '" data-page="' + p + '">' + pageHtml + '</div>';
+  }
+  listEl.innerHTML = allHtml;
+
+  let ph = '<span class="page-btn" id="prevPage">‹</span>';
+  for(let p = 0; p < totalPages; p++){
+    ph += '<span class="page-btn page-num' + (p === 0 ? ' active' : '') + '" data-page="' + p + '">' + (p+1) + '</span>';
+  }
+  ph += '<span class="page-btn" id="nextPage">›</span>';
+  ph += '<span class="page-info">共 ' + total + ' 条</span>';
+  pageEl.innerHTML = ph;
+}
+
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('.page-btn');
+  if(!btn) return;
+  const pages = document.querySelectorAll('.entry-page');
+  const nums = document.querySelectorAll('.page-num');
+  let current = 0;
+  pages.forEach(p => { if(p.classList.contains('active')) current = parseInt(p.dataset.page); });
+
+  let target = current;
+  if(btn.id === 'prevPage') target = Math.max(0, current - 1);
+  else if(btn.id === 'nextPage') target = Math.min(pages.length - 1, current + 1);
+  else if(btn.classList.contains('page-num')) target = parseInt(btn.dataset.page);
+
+  if(target === current) return;
+  pages.forEach(p => p.classList.remove('active'));
+  document.querySelector('.entry-page[data-page="' + target + '"]').classList.add('active');
+  nums.forEach(n => n.classList.remove('active'));
+  nums.forEach(n => { if(parseInt(n.dataset.page) === target) n.classList.add('active'); });
+});
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
