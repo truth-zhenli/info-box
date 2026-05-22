@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Generate quarterly精选 pages — localStorage-first, GitHub-API-supplement.
-Instant same-browser response + cross-browser durability (via GitHub API, no CDN cache)."""
+"""Generate quarterly精选 pages — localStorage-first, dual-fallback GitHub restore."""
 
 import os, json
 
@@ -63,7 +62,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link {"active" if qi==4 else ""}" href="4季度精选.html">❄️ Q4</a>
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">localStorage即时响应 + GitHub API实时持久化 · 清缓存不丢失</div>
+<div class="footer">localStorage即时响应 + GitHub持久化（API→raw双fallback）</div>
 </div>
 <script>
 (function(){{
@@ -75,7 +74,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 
   function render(papers){{
     var keys = Object.keys(papers);
-    if(keys.length === 0) return;  // 等GitHub补充
+    if(keys.length === 0) return;
     rendered = true;
     var sorted = keys.sort(function(a,b){{
       return papers[b].date.localeCompare(papers[a].date);
@@ -94,7 +93,29 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     listEl.innerHTML = html;
   }}
 
-  /* 第一步：从 localStorage 读取（即时！同浏览器点星星秒级响应） */
+  function processFavs(favs){{
+    var changed = false;
+    favs.forEach(function(p){{
+      if(!p.starred || !p.date) return;
+      var m = parseInt(p.date.split('-')[1]);
+      if(allowedMonths.indexOf(m) < 0) return;
+      var uid = p.title + '|||' + p.link;
+      if(!paperMap[uid]){{
+        paperMap[uid] = {{
+          title: p.title, link: p.link,
+          cnTitle: p.cnTitle || '', journal: p.journal || '',
+          authors: p.authors || '', date: p.date
+        }};
+        changed = true;
+      }}
+    }});
+    if(changed || !rendered) render(paperMap);
+    if(Object.keys(paperMap).length === 0 && !rendered){{
+      listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
+    }}
+  }}
+
+  /* 第一步：从 localStorage 读取（即时！） */
   for(var i = 0; i < localStorage.length; i++){{
     var key = localStorage.key(i);
     if(key && key.indexOf('fav_') === 0){{
@@ -116,36 +137,17 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   }}
   render(paperMap);
 
-  /* 第二步：从 GitHub API 补充（跨设备持久化，无CDN缓存，实时） */
-  fetch('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json?t=' + new Date().getTime())
-    .then(function(r){{ return r.json(); }})
-    .then(function(data){{
-      var favs = JSON.parse(atob(data.content));
-      var changed = false;
-      favs.forEach(function(p){{
-        if(!p.starred || !p.date) return;
-        var m = parseInt(p.date.split('-')[1]);
-        if(allowedMonths.indexOf(m) < 0) return;
-        var uid = p.title + '|||' + p.link;
-        if(!paperMap[uid]){{
-          paperMap[uid] = {{
-            title: p.title, link: p.link,
-            cnTitle: p.cnTitle || '', journal: p.journal || '',
-            authors: p.authors || '', date: p.date
-          }};
-          changed = true;
-        }}
-      }});
-      if(changed || !rendered) render(paperMap);
-      if(Object.keys(paperMap).length === 0 && !rendered){{
-        listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
-      }}
-    }})
-    .catch(function(err){{
-      if(!rendered && Object.keys(paperMap).length === 0){{
-        listEl.innerHTML = '<div class="empty-tip"><span class="big">⚠️</span>加载失败，请刷新重试<br><small>' + err.message + '</small></div>';
-      }}
-    }});
+  /* 第二步：从本地 fav_server 读取 favorites.json（不走VPN） */
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://localhost:7898/fav', false);
+  xhr.send();
+  if(xhr.status === 200){{
+    var favs = JSON.parse(xhr.responseText);
+    processFavs(favs);
+  }}
+  if(Object.keys(paperMap).length === 0 && !rendered){{
+    listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
+  }}
 }})();
 </script>
 </body>
@@ -154,6 +156,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html — localStorage + GitHub API (no CDN)")
+    print(f"✓ {qi}季度精选.html — localStorage + 双fallback API/raw")
 
-print("\nDone! 季度精选页：localStorage即时响应 + GitHub API实时持久化")
+print("\nDone! 双fallback部署完成。")
