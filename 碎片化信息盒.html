@@ -112,6 +112,38 @@ body{
   .nav-link { text-align: center; }
 }
 
+
+
+/* ===== 移动端优化 ===== */
+@media (max-width: 480px) {
+  body { padding: 12px 10px; }
+  .container { max-width: 100%; }
+  
+  /* Banner */
+  .banner { padding: 24px 18px 20px; border-radius: 12px; margin-bottom: 18px; }
+  .banner-icon { font-size: 36px; }
+  .banner h1 { font-size: 20px; }
+  .banner .sub { font-size: 12px; }
+  
+  /* Nav */
+  .nav-bar { padding: 8px 6px; gap: 2px; border-radius: 8px; }
+  .nav-link { padding: 6px 8px; font-size: 11px; }
+  
+  /* Cards */
+  .card { padding: 14px 16px; border-radius: 10px; gap: 10px; }
+  .card-icon { font-size: 24px; width: 34px; }
+  .card-title { font-size: 14px; }
+  .card-desc { font-size: 12px; }
+  .card-arrow { font-size: 15px; }
+  
+  .footer { font-size: 11px; margin-top: 24px; }
+}
+
+@media (max-width: 360px) {
+  .nav-bar { flex-direction: column; align-items: stretch; }
+  .nav-link { text-align: center; }
+}
+
 </style>
 </head>
 <body>
