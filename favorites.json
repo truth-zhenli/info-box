@@ -133,5 +133,14 @@
     "authors": "测试作者",
     "date": "2026-05-22",
     "starred": false
+  },
+  {
+    "title": "test",
+    "link": "",
+    "cnTitle": "",
+    "journal": "",
+    "authors": "",
+    "date": "",
+    "starred": true
   }
 ]
