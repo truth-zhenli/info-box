@@ -295,5 +295,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 </div>
 
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
+
+<script>
+/* ☆ 收藏功能 — localStorage 持久化，跨页面共享 */
+(function(){
+  document.querySelectorAll('.paper-card').forEach(function(card){
+    var titleEl = card.querySelector('.paper-title-en a');
+    if(!titleEl) return;
+    var title = titleEl.textContent.trim();
+    var paperId = 'fav_' + btoa(title).replace(/[^a-zA-Z0-9]/g, '_');
+    var star = document.createElement('span');
+    star.textContent = localStorage.getItem(paperId) === 'true' ? '★' : '☆';
+    star.style.cssText = 'cursor:pointer;font-size:22px;margin-right:8px;user-select:none;display:inline-block;vertical-align:middle;transition:transform .15s';
+    star.title = localStorage.getItem(paperId) === 'true' ? '已收藏' : '点击收藏';
+    star.onclick = function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      var isFav = localStorage.getItem(paperId) === 'true';
+      if(isFav){
+        localStorage.removeItem(paperId);
+        star.textContent = '☆';
+        star.title = '点击收藏';
+      } else {
+        localStorage.setItem(paperId, 'true');
+        star.textContent = '★';
+        star.title = '已收藏';
+        star.style.transform = 'scale(1.3)';
+        setTimeout(function(){ star.style.transform = 'scale(1)'; }, 200);
+      }
+    };
+    // 插入到标题前面
+    titleEl.parentNode.insertBefore(star, titleEl);
+  });
+})();
+</script>
 </body>
 </html>

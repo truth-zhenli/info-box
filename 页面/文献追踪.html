@@ -8,148 +8,224 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}
 .container{max-width:1100px;margin:0 auto}
+
+/* 头部 */
 .header{background:linear-gradient(135deg,#006064 0%,#00897b 100%);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px}
 .header h1{font-size:22px;font-weight:700}
 .header .sub{font-size:13px;opacity:.7;margin-top:4px}
 
+/* 导航 */
 .nav-bar{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
 .nav-link{display:inline-block;padding:5px 11px;border-radius:6px;font-size:12.5px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap}
 .nav-link:hover{background:#eef2f7;color:#1a1a2e}
 .nav-link.active{background:#006064;color:#fff;font-weight:600}
 
-.entry{display:flex;align-items:baseline;padding:10px 0;border-bottom:1px solid #f0f0f0}
-.entry:last-child{border-bottom:none}
-.entry-date{font-size:12px;color:#bbb;min-width:75px;flex-shrink:0}
-.entry-link{color:#2980b9;text-decoration:none;font-size:14px;transition:color .15s;word-break:break-all}
-.entry-link:hover{color:#e74c3c;text-decoration:underline}
-.entry-desc{font-size:12px;color:#999;margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:250px}
-.entry-page{display:none}
-.entry-page.active{display:block}
+/* 年份标题 */
+.year-title{font-size:22px;font-weight:700;color:#006064;margin:12px 0 10px;display:flex;align-items:center;gap:10px}
+.year-title small{font-size:13px;font-weight:400;color:#999;opacity:.8}
 
-.pagination{display:flex;gap:6px;margin-top:14px;padding-top:10px;border-top:1px solid #eee;align-items:center;flex-wrap:wrap}
-.page-btn{display:inline-block;padding:4px 12px;border-radius:4px;font-size:13px;cursor:pointer;border:1px solid #ddd;background:#fff;color:#555;transition:all .15s;user-select:none}
-.page-btn:hover{background:#eee}
-.page-btn.active{background:#006064;color:#fff;border-color:#006064;font-weight:600}
-.page-btn.disabled{opacity:.3;cursor:default}
-.page-info{font-size:12px;color:#999;margin-left:8px}
-.empty-tip{text-align:center;color:#ccc;font-size:14px;padding:40px 0}
+/* 月份网格 3行×4列 */
+.month-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.month-card{background:#fff;border-radius:12px;padding:16px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer;transition:all .2s;text-align:center;border:2px solid transparent;position:relative}
+.month-card:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(0,0,0,.1)}
+.month-card.has-data{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-color:#00897b}
+.month-card.no-data{background:#fafafa;color:#ccc;cursor:default;border-color:#eee}
+.month-card .month-name{font-size:16px;font-weight:600}
+.month-card .month-count{font-size:12px;color:#888;margin-top:4px}
+.month-card.has-data .month-count{color:#006064;font-weight:600}
+.month-card .fav-count{font-size:11px;color:#e65100;margin-top:2px;display:none}
+.month-card .fav-count.has-fav{display:block}
 
+/* 展开的每日列表 */
+.month-days{display:none;background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.month-days.open{display:block}
+.day-item{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0;gap:10px}
+.day-item:last-child{border-bottom:none}
+.day-badge{display:inline-block;background:#e0f2f1;color:#006064;padding:2px 12px;border-radius:6px;font-size:12px;font-weight:600;min-width:50px;text-align:center}
+.day-link{color:#2980b9;text-decoration:none;font-size:14px;flex:1}
+.day-link:hover{color:#e74c3c;text-decoration:underline}
+.day-desc{font-size:12px;color:#999;flex-shrink:0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.day-fav{font-size:13px;color:#e65100;min-width:18px;text-align:center}
+
+/* 页脚 */
 .footer{text-align:center;color:#ccc;font-size:12px;margin-top:30px}
 
-
-/* ===== 移动端优化 ===== */
-@media (max-width: 480px) {
-  body { padding: 12px 10px; }
-  .container { max-width: 100%; }
-  .header { padding: 16px 18px; border-radius: 10px; margin-bottom: 14px; }
-  .header h1 { font-size: 18px; }
-  .header .sub { font-size: 12px; }
-  .nav-bar { padding: 8px 6px; gap: 2px; border-radius: 8px; }
-  .nav-link { padding: 6px 8px; font-size: 11px; }
-  .entry { flex-direction: column; align-items: flex-start; padding: 10px 0; gap: 3px; }
-  .entry-date { font-size: 11px; min-width: auto; color: #aaa; }
-  .entry-link { font-size: 14px; line-height: 1.5; }
-  .entry-desc { font-size: 12px; margin-left: 0; max-width: 100%; white-space: normal; display: block; margin-top: 2px; color: #999; }
-  .pagination { gap: 4px; }
-  .page-btn { padding: 6px 10px; font-size: 12px; }
+/* ===== 移动端 ===== */
+@media (max-width: 700px){
+  .month-grid{grid-template-columns:repeat(3,1fr)}
+  .day-desc{max-width:120px}
 }
-
-@media (max-width: 360px) {
-  .nav-bar { flex-direction: column; align-items: stretch; }
-  .nav-link { text-align: center; }
-  .header { padding: 14px 12px; }
-  .header h1 { font-size: 16px; }
+@media (max-width: 480px){
+  body{padding:12px 10px}
+  .month-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .month-card{padding:14px 8px}
+  .header{padding:16px 18px;border-radius:10px;margin-bottom:14px}
+  .header h1{font-size:18px}
+  .nav-bar{padding:8px 6px;gap:2px;border-radius:8px}
+  .nav-link{padding:6px 8px;font-size:11px}
+  .day-desc{display:none}
 }
-
+@media (max-width: 360px){
+  .month-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-bar{flex-direction:column;align-items:stretch}
+  .nav-link{text-align:center}
+}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
   <h1>📰 文献追踪</h1>
-  <div class="sub">每日文献推送，最新在最前</div>
+  <div class="sub">每日文献推送 · 点击月份查看每日列表 · ☆收藏好文章</div>
 </div>
-  <div class="nav-bar">
-    <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
-    <a class="nav-link " href="科研动态.html">🔬 科研动态</a>
-    <a class="nav-link " href="学术知识.html">📖 学术知识</a>
-    <a class="nav-link " href="国际形势.html">🌍 国际形势</a>
-    <a class="nav-link " href="人生感悟.html">💭 人生感悟</a>
-    <a class="nav-link " href="实用小妙招.html">🛠️ 小妙招</a>
-    <a class="nav-link active" href="文献追踪.html">📰 文献追踪</a>
-    <a class="nav-link " href="其他.html">📌 其他</a>
-  </div>
+<div class="nav-bar">
+  <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
+  <a class="nav-link " href="科研动态.html">🔬 科研动态</a>
+  <a class="nav-link " href="学术知识.html">📖 学术知识</a>
+  <a class="nav-link " href="国际形势.html">🌍 国际形势</a>
+  <a class="nav-link " href="人生感悟.html">💭 人生感悟</a>
+  <a class="nav-link " href="实用小妙招.html">🛠️ 小妙招</a>
+  <a class="nav-link active" href="文献追踪.html">📰 文献追踪</a>
+  <a class="nav-link " href="其他.html">📌 其他</a>
+</div>
 
-<div id="list"></div>
-<div class="pagination" id="page"></div>
+<div id="year-view"></div>
 
-<div class="footer">📬 每天 6:00 自动推送 Google Scholar 最新文献</div>
+<div class="footer">📬 每天6:00自动推送 · 看到好文章点☆收藏，找我整理精选集</div>
 </div>
 
 <script>
+/* ========== 数据 ========== */
 const DATA = [
-  {date:"2026-05-22", title:"每日文献追踪 — 稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"含32篇文献，4个专题分区"},
+  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"32篇·4专题"},
+
 ];
 
-const PER_PAGE = 10;
-
+/* ========== 渲染 ========== */
 function render(){
-  const listEl = document.getElementById('list');
-  const pageEl = document.getElementById('page');
-  const total = DATA.length;
-  const totalPages = Math.ceil(total / PER_PAGE) || 1;
+  const root = document.getElementById('year-view');
+  let html = '';
 
-  if(total === 0){
-    listEl.innerHTML = '<div class="empty-tip">✨ 暂无内容</div>';
-    pageEl.innerHTML = '';
-    return;
-  }
+  // 按年份分组
+  const years = {};
+  DATA.forEach(d => {
+    const y = d.date.slice(0,4);
+    if(!years[y]) years[y] = [];
+    years[y].push(d);
+  });
 
-  let allHtml = '';
-  for(let p = 0; p < totalPages; p++){
-    const start = p * PER_PAGE;
-    const end = Math.min(start + PER_PAGE, total);
-    let pageHtml = '';
-    for(let i = start; i < end; i++){
-      const item = DATA[i];
-      pageHtml += '<div class="entry">' +
-        '<span class="entry-date">' + item.date + '</span>' +
-        '<a class="entry-link" href="' + item.link + '" target="_blank">' + item.title + '</a>' +
-        (item.desc ? '<span class="entry-desc">— ' + item.desc + '</span>' : '') +
-      '</div>';
+  // 月份名称
+  const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+  Object.keys(years).sort().reverse().forEach(year => {
+    html += `<div class="year-title">${year}年 <small>共 ${years[year].length} 期</small></div>`;
+    html += '<div class="month-grid">';
+
+    // 按月份统计
+    const byMonth = {};
+    years[year].forEach(d => {
+      const m = parseInt(d.date.slice(5,7));
+      if(!byMonth[m]) byMonth[m] = [];
+      byMonth[m].push(d);
+    });
+
+    for(let m = 1; m <= 12; m++){
+      const items = byMonth[m] || [];
+      const hasData = items.length > 0;
+      const cls = hasData ? 'month-card has-data' : 'month-card no-data';
+      html += `<div class="${cls}" data-year="${year}" data-month="${m}">`;
+      html += `<div class="month-name">${monthNames[m-1]}</div>`;
+      if(hasData){
+        const totalPapers = items.reduce((sum, d) => {
+          const match = d.desc && d.desc.match(/(\d+)篇/);
+          return sum + (match ? parseInt(match[1]) : 0);
+        }, 0);
+        html += `<div class="month-count">${items.length}期 · ${totalPapers}篇</div>`;
+        html += `<div class="fav-count" data-month="${m}">☆ 0收藏</div>`;
+      } else {
+        html += `<div class="month-count">—</div>`;
+      }
+      html += '</div>';
     }
-    allHtml += '<div class="entry-page' + (p === 0 ? ' active' : '') + '" data-page="' + p + '">' + pageHtml + '</div>';
-  }
-  listEl.innerHTML = allHtml;
+    html += '</div>';
 
-  let ph = '<span class="page-btn" id="prevPage">‹</span>';
-  for(let p = 0; p < totalPages; p++){
-    ph += '<span class="page-btn page-num' + (p === 0 ? ' active' : '') + '" data-page="' + p + '">' + (p+1) + '</span>';
-  }
-  ph += '<span class="page-btn" id="nextPage">›</span>';
-  ph += '<span class="page-info">共 ' + total + ' 条</span>';
-  pageEl.innerHTML = ph;
+    // 每个月份的展开区域
+    for(let m = 1; m <= 12; m++){
+      const items = byMonth[m] || [];
+      if(items.length === 0) continue;
+      html += `<div class="month-days" data-year="${year}" data-month="${m}">`;
+      items.sort((a,b) => b.date.localeCompare(a.date)).forEach(d => {
+        const day = d.date.slice(5);
+        // 检查该期是否有收藏
+        html += `<div class="day-item">`;
+        html += `<span class="day-badge">${day}</span>`;
+        html += `<a class="day-link" href="${d.link}" target="_blank">${d.title}</a>`;
+        html += `<span class="day-desc">${d.desc || ''}</span>`;
+        html += `<span class="day-fav" data-date="${d.date}"></span>`;
+        html += `</div>`;
+      });
+      html += '</div>';
+    }
+  });
+
+  root.innerHTML = html;
+
+  // 统计收藏数
+  updateFavCounts();
 }
 
+/* ========== 月份点击展开 ========== */
 document.addEventListener('click', function(e){
-  const btn = e.target.closest('.page-btn');
-  if(!btn) return;
-  const pages = document.querySelectorAll('.entry-page');
-  const nums = document.querySelectorAll('.page-num');
-  let current = 0;
-  pages.forEach(p => { if(p.classList.contains('active')) current = parseInt(p.dataset.page); });
-
-  let target = current;
-  if(btn.id === 'prevPage') target = Math.max(0, current - 1);
-  else if(btn.id === 'nextPage') target = Math.min(pages.length - 1, current + 1);
-  else if(btn.classList.contains('page-num')) target = parseInt(btn.dataset.page);
-
-  if(target === current) return;
-  pages.forEach(p => p.classList.remove('active'));
-  document.querySelector('.entry-page[data-page="' + target + '"]').classList.add('active');
-  nums.forEach(n => n.classList.remove('active'));
-  nums.forEach(n => { if(parseInt(n.dataset.page) === target) n.classList.add('active'); });
+  const card = e.target.closest('.month-card');
+  if(!card || card.classList.contains('no-data')) return;
+  const year = card.dataset.year;
+  const month = card.dataset.month;
+  const target = document.querySelector(`.month-days[data-year="${year}"][data-month="${month}"]`);
+  if(!target) return;
+  const isOpen = target.classList.contains('open');
+  // 关闭其他
+  document.querySelectorAll('.month-days.open').forEach(el => el.classList.remove('open'));
+  if(!isOpen) target.classList.add('open');
 });
+
+/* ========== 收藏统计 ========== */
+function updateFavCounts(){
+  const totalFavs = {};
+  for(let i = 0; i < localStorage.length; i++){
+    const key = localStorage.key(i);
+    if(key && key.startsWith('fav_') && localStorage.getItem(key) === 'true'){
+      const month = parseInt(key.split('_')[1].slice(0,6)); // fav_202605_hash
+      const ym = key.split('_')[1].slice(0,6); // 202605
+      if(!totalFavs[ym]) totalFavs[ym] = 0;
+      totalFavs[ym]++;
+    }
+  }
+
+  // 更新月份卡片收藏数
+  document.querySelectorAll('.fav-count').forEach(el => {
+    const m = el.dataset.month;
+    const year = el.closest('.month-grid')?.previousElementSibling?.textContent?.slice(0,4) || '2026';
+    const ym = year + String(m).padStart(2,'0');
+    const fav = totalFavs[ym] || 0;
+    if(fav > 0){
+      el.textContent = `★ ${fav}收藏`;
+      el.classList.add('has-fav');
+    }
+  });
+
+  // 更新每日收藏标识
+  document.querySelectorAll('.day-fav').forEach(el => {
+    const date = el.dataset.date;
+    let count = 0;
+    for(let i = 0; i < localStorage.length; i++){
+      const key = localStorage.key(i);
+      if(key && key.startsWith('fav_') && key.includes(date) && localStorage.getItem(key) === 'true'){
+        count++;
+      }
+    }
+    el.textContent = count > 0 ? `★${count}` : '';
+  });
+}
 
 document.addEventListener('DOMContentLoaded', render);
 </script>
