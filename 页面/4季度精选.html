@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❄️ 四季度精选 - 碎片化信息盒</title>
+<title>❄️ 2026年四季度精选 - 碎片化信息盒</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}
@@ -26,6 +26,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .meta-tag{display:inline-block;background:#fce4ec;color:#1565c0;padding:2px 8px;border-radius:8px;font-size:11px}
 .paper-authors{font-size:11px;color:#999;margin-bottom:2px}
 .paper-date{font-size:11px;color:#aaa}
+.loading{text-align:center;color:#aaa;font-size:14px;padding:40px 0}
 .footer{text-align:center;color:#ccc;font-size:12px;margin-top:30px}
 @media (max-width:480px){body{padding:12px 10px}.header{padding:16px 16px}.header h1{font-size:17px}.nav-bar{padding:8px 6px}.nav-link{font-size:11px;padding:5px 7px}.paper-card{padding:14px 14px}}
 </style>
@@ -34,15 +35,58 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <div class="container">
 <div class="header">
   <h1>❄️ 2026年四季度精选</h1>
-  <div class="sub">10月 · 11月 · 12月 — 你收藏的好文章</div>
+  <div class="sub">10月 · 11月 · 12月 — 实时加载你收藏的好文章</div>
 </div>
 <div class="nav-bar">
     <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
     <a class="nav-link" href="文献追踪.html">📰 文献追踪</a>
-    <a class="nav-link " href="1季度精选.html">🌸 Q1</a><a class="nav-link " href="2季度精选.html">☀️ Q2</a><a class="nav-link " href="3季度精选.html">🍂 Q3</a><a class="nav-link active" href="4季度精选.html">❄️ Q4</a>
+    <a class="nav-link " href="1季度精选.html">🌸 Q1</a>
+    <a class="nav-link " href="2季度精选.html">☀️ Q2</a>
+    <a class="nav-link " href="3季度精选.html">🍂 Q3</a>
+    <a class="nav-link active" href="4季度精选.html">❄️ Q4</a>
   </div>
-<div id="list"><div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div></div>
-<div class="footer">收藏的数据来源于 favorites.json 文件，刷新不丢失</div>
+<div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
+<div class="footer">数据实时读取 favorites.json · 刷新页面即可看到最新收藏</div>
 </div>
+<script>
+(function(){
+  var listEl = document.getElementById('list');
+  var quarter = 4;
+  var allowedMonths = [10, 11, 12];
+
+  /* 从GitHub实时拉取 favorites.json（加时间戳防缓存） */
+  var ts = new Date().getTime();
+  fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + ts)
+    .then(function(r){ return r.json(); })
+    .then(function(favs){
+      var papers = favs.filter(function(p){
+        if(!p.starred || !p.date) return false;
+        var m = parseInt(p.date.split('-')[1]);
+        return allowedMonths.indexOf(m) >= 0;
+      });
+      papers.sort(function(a,b){ return b.date.localeCompare(a.date); });
+
+      if(papers.length === 0){
+        listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
+        return;
+      }
+
+      var html = '';
+      papers.forEach(function(p){
+        html += '<div class="paper-card">';
+        html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
+        if(p.cnTitle) html += '<div class="paper-cn">' + p.cnTitle + '</div>';
+        if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
+        if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
+        html += '<div class="paper-date">📅 ' + p.date + '</div>';
+        html += '</div>';
+      });
+      listEl.innerHTML = html;
+    })
+    .catch(function(err){
+      listEl.innerHTML = '<div class="empty-tip"><span class="big">⚠️</span>加载失败，请刷新重试<br><small>' + err.message + '</small></div>';
+    });
+})();
+</script>
 </body>
 </html>

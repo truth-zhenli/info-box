@@ -124,5 +124,14 @@
     "authors": "",
     "date": "",
     "starred": false
+  },
+  {
+    "title": "测试实时收藏",
+    "link": "https://example.com/test",
+    "cnTitle": "测试论文",
+    "journal": "测试期刊",
+    "authors": "测试作者",
+    "date": "2026-05-22",
+    "starred": true
   }
 ]
