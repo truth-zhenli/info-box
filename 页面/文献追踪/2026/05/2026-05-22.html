@@ -299,98 +299,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
 
 <script>
-/* ★ 收藏功能 v3 — 全走 GitHub API（不用 localhost） */
+/* ★ 收藏功能 v9 — 本地 fav_server + localStorage */
 (function(){
-  var GH_TOKEN = localStorage.getItem('gh_star_token');
-  var GH_REPO = 'truth-zhenli/info-box';
-  var GH_PATH = 'favorites.json';
-
-  /* 首次使用：弹窗让用户贴 token */
-  if(!GH_TOKEN){
-    GH_TOKEN = prompt('请输入 GitHub Token（只需输入一次，保存在浏览器中）\n创建：https://github.com/settings/tokens?type=beta');
-    if(GH_TOKEN){
-      localStorage.setItem('gh_star_token', GH_TOKEN);
-    } else {
-      console.error('No GitHub token provided - stars will not sync');
-      return;
-    }
-  }
-
-  function saveStarToGitHub(data){
-    fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
-      headers: {'Authorization': 'Bearer ' + GH_TOKEN}
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(fileInfo){
-      if(!fileInfo || !fileInfo.content) return;
-      var favs = JSON.parse(decodeURIComponent(escape(atob(fileInfo.content))));
-      var sha = fileInfo.sha;
-      var found = false;
-      for(var i = 0; i < favs.length; i++){
-        if(favs[i].title === data.title && favs[i].link === data.link){
-          favs[i].starred = data.starred;
-          found = true;
-          break;
-        }
-      }
-      if(!found) favs.push(data);
-      fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
-        method: 'PUT',
-        headers: {
-          'Authorization': 'Bearer ' + GH_TOKEN,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: data.starred ? '⭐ 收藏: ' + data.title.slice(0,50) : '⭐ 取消收藏: ' + data.title.slice(0,50),
-          content: btoa(unescape(encodeURIComponent(JSON.stringify(favs, null, 2)))),
-          sha: sha
-        })
-      }).catch(function(e){ console.error('GitHub PUT failed:', e); });
-    })
-    .catch(function(e){ console.error('GitHub GET failed:', e); });
-  }
-
+  var FAV_SERVER = 'http://127.0.0.1:7898';
   var stars = document.querySelectorAll('.star-btn');
-  stars.forEach(function(star){
-    var idx = star.dataset.idx;
+  stars.forEach(function(star, i){
     var title = star.dataset.title;
     var link = star.dataset.link;
     var cnTitle = star.dataset.cn || '';
     var journal = star.dataset.journal || '';
     var authors = star.dataset.authors || '';
     var date = star.dataset.date || '';
-    var key = 'fav_' + date + '_' + idx;
+    var key = 'fav_' + date + '_' + i;
 
+    function applyFav(isFav){
+      star.textContent = isFav ? '★' : '☆';
+      star.style.color = isFav ? '#f5a623' : '#ccc';
+      star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+      star.title = isFav ? '已收藏' : '点击收藏';
+    }
+
+    /* 从 localStorage 恢复 */
     var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
-    var isFav = stored && stored.title;
+    applyFav(stored && stored.title);
 
-    star.textContent = isFav ? '★' : '☆';
-    star.style.color = isFav ? '#f5a623' : '#ccc';
-    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
-    star.title = isFav ? '已收藏' : '点击收藏';
-
-    /* 异步从 GitHub API 恢复 */
-    if(!isFav){
-      fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
-        headers: {'Authorization': 'Bearer ' + GH_TOKEN}
-      })
+    /* 如果 fav_server 在运行，从它同步（跨文件） */
+    fetch(FAV_SERVER + '/favorites.json?_=' + Date.now())
       .then(function(r){ return r.json(); })
-      .then(function(data){
-        if(!data || !data.content) return;
-          var all = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+      .then(function(all){
         for(var fi = 0; fi < all.length; fi++){
           if(all[fi].title === title && all[fi].link === link && all[fi].starred){
             localStorage.setItem(key, JSON.stringify(all[fi]));
-            star.textContent = '★';
-            star.style.color = '#f5a623';
-            star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
-            star.title = '已收藏';
+            applyFav(true);
             break;
           }
         }
       })
       .catch(function(){});
-    }
 
     star.onclick = function(e){
       e.stopPropagation(); e.preventDefault();
@@ -398,15 +343,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       var wasFav = stored && stored.title;
       if(wasFav){
         localStorage.removeItem(key);
-        star.textContent = '☆'; star.title = '点击收藏';
-        star.style.color = '#ccc'; star.style.textShadow = 'none';
-        saveStarToGitHub({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date, starred:false});
+        applyFav(false);
       } else {
-        localStorage.setItem(key, JSON.stringify({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date}));
-        star.textContent = '★'; star.title = '已收藏';
-        star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
-        saveStarToGitHub({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date, starred:true});
+        var data = {title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date};
+        localStorage.setItem(key, JSON.stringify(data));
+        applyFav(true);
       }
+      /* POST 到本地 fav_server */
+      fetch(FAV_SERVER + '/fav', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(wasFav ? {title:title, link:link} : {title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date})
+      }).catch(function(){});
     };
   });
 })();
