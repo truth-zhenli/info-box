@@ -53,39 +53,73 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   var listEl = document.getElementById('list');
   var quarter = 2;
   var allowedMonths = [4, 5, 6];
-
-  /* 从GitHub实时拉取 favorites.json（加时间戳防缓存） */
+  
+  /* 第一步：从localStorage扫描所有收藏（即时！点了星星立刻能看见） */
+  var paperMap = {};
+  for(var i = 0; i < localStorage.length; i++){
+    var key = localStorage.key(i);
+    if(key && key.indexOf('fav_') === 0){
+      try{
+        var val = JSON.parse(localStorage.getItem(key));
+        if(val && val.title && val.date){
+          var m = parseInt(val.date.split('-')[1]);
+          if(allowedMonths.indexOf(m) >= 0){
+            var uid = val.title + '|||' + val.link;
+            paperMap[uid] = {
+              title: val.title, link: val.link,
+              cnTitle: val.cnTitle || '', journal: val.journal || '',
+              authors: val.authors || '', date: val.date
+            };
+          }
+        }
+      }catch(e){}
+    }
+  }
+  
+  function render(papers){
+    var keys = Object.keys(papers);
+    var sorted = keys.sort(function(a,b){
+      return papers[b].date.localeCompare(papers[a].date);
+    });
+    if(sorted.length === 0){
+      listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
+      return;
+    }
+    var html = '';
+    sorted.forEach(function(k){
+      var p = papers[k];
+      html += '<div class="paper-card">';
+      html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
+      if(p.cnTitle) html += '<div class="paper-cn">' + p.cnTitle + '</div>';
+      if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
+      if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
+      html += '<div class="paper-date">📅 ' + p.date + '</div>';
+      html += '</div>';
+    });
+    listEl.innerHTML = html;
+  }
+  
+  render(paperMap);
+  
+  /* 第二步：从GitHub拉取 favorites.json 补充localStorage没有的数据 */
   var ts = new Date().getTime();
   fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + ts)
     .then(function(r){ return r.json(); })
     .then(function(favs){
-      var papers = favs.filter(function(p){
-        if(!p.starred || !p.date) return false;
+      var changed = false;
+      favs.forEach(function(p){
+        if(!p.starred || !p.date) return;
         var m = parseInt(p.date.split('-')[1]);
-        return allowedMonths.indexOf(m) >= 0;
+        if(allowedMonths.indexOf(m) < 0) return;
+        var uid = p.title + '|||' + p.link;
+        if(!paperMap[uid]){
+          paperMap[uid] = p;
+          changed = true;
+        }
       });
-      papers.sort(function(a,b){ return b.date.localeCompare(a.date); });
-
-      if(papers.length === 0){
-        listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
-        return;
-      }
-
-      var html = '';
-      papers.forEach(function(p){
-        html += '<div class="paper-card">';
-        html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
-        if(p.cnTitle) html += '<div class="paper-cn">' + p.cnTitle + '</div>';
-        if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
-        if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
-        html += '<div class="paper-date">📅 ' + p.date + '</div>';
-        html += '</div>';
-      });
-      listEl.innerHTML = html;
+      if(changed) render(paperMap);
     })
-    .catch(function(err){
-      listEl.innerHTML = '<div class="empty-tip"><span class="big">⚠️</span>加载失败，请刷新重试<br><small>' + err.message + '</small></div>';
-    });
+    .catch(function(){});
 })();
 </script>
 </body>

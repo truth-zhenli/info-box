@@ -299,9 +299,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
 
 <script>
-/* ★ 收藏功能 v3 - 真相来源: localStorage > GitHub > false（不依赖HTML的data-file-fav）*/
+/* ★ 收藏功能 v4 - localStorage > GitHub 覆盖（GitHub只补充新浏览器第一次加载）*/
 (function(){
   var stars = document.querySelectorAll('.star-btn');
+  var restored = {};
   
   /* 第一步：全部初始化为未收藏 */
   stars.forEach(function(star){
@@ -312,7 +313,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     star.dataset.fileFav = 'false';
   });
   
-  /* 第二步：从localStorage恢复 */
+  /* 第二步：从localStorage恢复（localStorage是权威，GitHub不能覆盖它）*/
   stars.forEach(function(star){
     var idx = star.dataset.idx;
     var date = star.dataset.date || '';
@@ -324,10 +325,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
       star.title = '已收藏';
       star.dataset.fileFav = 'true';
+      restored[key] = true;
     }
   });
   
-  /* 第三步：从GitHub favorites.json覆盖（服务器是最终真相来源）*/
+  /* 第三步：从GitHub favorites.json补充——只对那些localStorage没有记录的文章生效 */
   try{
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + Date.now(), false);
@@ -335,6 +337,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     if(xhr.status === 200){
       var serverFavs = JSON.parse(xhr.responseText);
       stars.forEach(function(star){
+        var idx = star.dataset.idx;
+        var date = star.dataset.date || '';
+        var key = 'fav_' + date + '_' + idx;
+        /* 如果localStorage已经有这条记录，跳过（localStorage权威）*/
+        if(restored[key]) return;
         var title = star.dataset.title;
         var link = star.dataset.link;
         for(var fi = 0; fi < serverFavs.length; fi++){
@@ -379,7 +386,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
         star.innerHTML = '☆'; star.title = '点击收藏';
         star.style.color = '#ccc'; star.style.textShadow = 'none';
         star.dataset.fileFav = 'false';
-        navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:false}))
+        try{ navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:false})); }catch(ex){}
       } else {
         localStorage.setItem(key, JSON.stringify({
           title: title, link: link, cnTitle: cnTitle,
@@ -388,7 +395,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
         star.innerHTML = '★'; star.title = '已收藏';
         star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
         star.dataset.fileFav = 'true';
-        navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true}))
+        try{ navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true})); }catch(ex){}
       }
     };
   });
