@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日文献订阅 - 2026-05-22</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+
+/* Section dividers - each section has its own bg color to clearly separate */
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-other{background:#f5f5f5;border:1px solid #e0e0e0}
+
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+
+.paper-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.paper-card{position:relative}
+.paper-card .star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer}
+
+/* English title */
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+
+/* Chinese subtitle below English title */
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px}
+.meta-oil{background:#d32f2f;color:#fff;font-weight:600}
+.meta-ai{background:#6a1b9a;color:#fff}
+.meta-md{background:#00695c;color:#fff}
+.meta-review{background:#e65100;color:#fff}
+
+.authors{font-size:12px;color:#999;margin-bottom:8px;line-height:1.4}
+
+.summary{font-size:13.5px;color:#333;line-height:1.8;margin-bottom:10px;background:#f8f9fa;padding:12px 14px;border-radius:8px;border-left:3px solid #1565c0;flex:1}
+
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.link-btn{display:inline-block;padding:5px 14px;border-radius:16px;font-size:12px;text-decoration:none;font-weight:500;transition:all .15s}
+.link-pdf{background:#d93025;color:#fff}
+.link-pdf:hover{background:#b3261e}
+.link-abs{background:#1565c0;color:#fff}
+.link-abs:hover{background:#0d47a1}
+
+.insight{background:#fff5f5;border-left:4px solid #d32f2f;padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12.5px;color:#b71c1c;line-height:1.65}
+.insight strong{color:#c62828}
+
+.footer{text-align:center;padding:24px;color:#aaa;font-size:12px;border-top:1px solid #eee;margin-top:36px}
+</style>
+</head>
+<body>
+<div style="max-width:1400px;width:96%;margin:0 auto;padding:20px 20px 0">
+<div style="background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center">
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../../碎片化信息盒.html">🏠 首页</a>
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../文献追踪.html">📰 文献追踪</a>
+<span style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;color:#006064;background:#e0f2f1;font-weight:600;white-space:nowrap">📄 2026-05-22</span>
+</div>
+</div>
+<div class="container">
+<div class="header">
+<div class="sub">📚 每日文献订阅</div>
+<h1>计算材料学 · 人工智能 · 分子模拟</h1>
+<div class="date">📅 2026-05-22 | 共13篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">13</div><div class="label">论文</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">8</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">5</div><div class="label">🧪 分子模拟</div></div>
+</div>
+</div>
+
+<!-- ===================== OILFIELD ===================== -->
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学（重点标注）</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="true" data-idx="0" data-date="2026-05-22" data-title="Component-dependent transport and spatial distribution of crude oil fractions confined in kerogen nanopore" data-link="https://www.sciencedirect.com/science/article/pii/S1995822626002694" data-cn="原油组分在干酪根纳米孔中的传输与空间分布" data-journal="油田化学分子模拟Petroleum Science" data-authors="SD Yuan, JC Fang | Petroleum Science (Elsevier) 2026">★</span><a href="https://www.sciencedirect.com/science/article/pii/S1995822626002694" target="_blank">Component-dependent transport and spatial distribution of crude oil fractions confined in kerogen nanopore</a></div>
+<div class="paper-title-cn">原油组分在干酪根纳米孔中的传输与空间分布</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Petroleum Science</span></div>
+<div class="authors">SD Yuan, JC Fang | Petroleum Science (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>采用分子动力学模拟（GROMACS），系统研究了稠油四组分——饱和分、芳香分、胶质、沥青质——在干酪根纳米孔隙中的受限传输行为。通过计算各组分在孔隙中的自扩散系数、径向分布函数和密度分布，定量揭示了不同组分在纳米限域空间中的迁移能力差异。<br><br>
+<strong>核心发现：</strong>（1）沥青质的自扩散系数在所有组分中最低，表明其受纳米限域效应最显著，这与其分子量大、芳香核心的强π-π堆积能力有关；（2）不同组分在孔隙中的空间分布呈现明显的分层特征——沥青质倾向于聚集在孔隙表面附近，而饱和分和芳香分更多地分布在孔隙中心区域；（3）这种分层分布直接影响页岩油的开采效率和采收率。<br><br>
+<strong>方法论参考：</strong>该研究的力场参数选择（CHARMM/OPLS-AA对比）、模拟退火流程、以及扩散系数分析方法，与你正在进行的稠油致粘机理研究的MD模拟设置高度一致，可为你构建PL19-3区块稠油四组分模型提供直接的参数参考。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>直接关联你的稠油致粘项目——同样处理四组分在限域空间的行为差异。其沥青质扩散受限的定量结论，可用于佐证你关于沥青质聚集体网络是稠油高粘度核心来源的假设。建议重点阅读其力场参数优选和扩散系数计算部分的设置。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S1995822626002694" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="true" data-idx="1" data-date="2026-05-22" data-title="Alteration of Calcite Wettability by Asphaltenes and Its Reversal by Surfactants" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c00861" data-cn="沥青质对方解石润湿性的改变及表面活性剂的逆转机制" data-journal="油田化学分子模拟Langmuir" data-authors="J Tetteh, AE Shoukry, L Qin, J Kubelka, M Piri | Langmuir (ACS) 2026">★</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c00861" target="_blank">Alteration of Calcite Wettability by Asphaltenes and Its Reversal by Surfactants</a></div>
+<div class="paper-title-cn">沥青质对方解石润湿性的改变及表面活性剂的逆转机制</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Langmuir</span></div>
+<div class="authors">J Tetteh, AE Shoukry, L Qin, J Kubelka, M Piri | Langmuir (ACS) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>结合接触角实验与分子动力学模拟（GROMACS, 50 ns NPT平衡），系统研究了沥青质在方解石（CaCO₃）表面的吸附行为及其对润湿性的影响，并进一步考察了不同类型表面活性剂对润湿性逆转的效果和微观机制。<br><br>
+<strong>核心发现：</strong>（1）沥青质通过π-π堆积和疏水相互作用在方解石表面形成致密吸附层，使表面由亲水（接触角~30°）转变为强亲油（接触角~120°）；（2）特定类型的阴离子表面活性剂可有效插入沥青质吸附层，破坏沥青质-方解石之间的相互作用，使表面恢复亲水性；（3）MD模拟显示，表面活性剂的脱附效率与其分子结构（亲水头基大小、疏水尾链长度）密切相关。<br><br>
+<strong>实验-模拟协同方法：</strong>该研究采用的实验表征（接触角测量）+ MD模拟（吸附构型分析、结合能计算）相结合的研究范式，与你正在进行的含剂体系乳化液聚并行为测试项目的方法论高度吻合。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>直接关联你的乳化液聚并行为测试项目——沥青质在固体表面的吸附-脱附机制是理解油-水-岩石三相界面行为的核心。该文关于表面活性剂分子结构-性能关系的结论，可为你的降粘剂/破乳剂理性设计提供指导。其MD模拟参数（50 ns平衡时间、力场选择）也可作为你后续模拟的参考基准。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c00861" target="_blank">📄 全文 (ACS)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== AI/ML ===================== -->
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML方法</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="2" data-date="2026-05-22" data-title="Spatial statistics for screening molecular structures" data-link="https://arxiv.org/abs/2605.17147" data-cn="基于空间统计学的分子结构筛选方法" data-journal="AI/MLarXiv" data-authors="P Ray, SR Kalidindi | arXiv:2605.17147">☆</span><a href="https://arxiv.org/abs/2605.17147" target="_blank">Spatial statistics for screening molecular structures</a></div>
+<div class="paper-title-cn">基于空间统计学的分子结构筛选方法</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">arXiv</span></div>
+<div class="authors">P Ray, SR Kalidindi | arXiv:2605.17147</div>
+<div class="summary">
+<strong>研究内容：</strong>提出将材料科学中成熟的空间统计学描述符（n-point spatial correlations）作为中间表示层，结合图神经网络（GNN）和3D CNN，实现分子结构的高效筛选。<br><br>
+<strong>创新点：</strong>传统方法直接在原始原子图上操作，计算量大且对结构噪声敏感。该工作引入空间统计描述符作为特征工程手段，大幅降低特征维度（降维幅度达10-100倍），同时保留了决定材料性能的关键结构信息。<br><br>
+<strong>潜在应用：</strong>该方法可用于大规模分子库的预筛选，加速新型功能分子的发现过程。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://arxiv.org/pdf/2605.17147" target="_blank">📄 PDF</a><a class="link-btn link-abs" href="https://arxiv.org/abs/2605.17147" target="_blank">🔗 摘要</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="3" data-date="2026-05-22" data-title="Tensor Channel Equivariant Graph Neural Networks for Molecular Polarizability Prediction" data-link="https://arxiv.org/abs/2605.16891" data-cn="张量通道等变图神经网络用于分子极化率预测" data-journal="AI/ML分子模拟arXiv" data-authors="JP Filling, D Franzen, M Wand | arXiv:2605.16891">☆</span><a href="https://arxiv.org/abs/2605.16891" target="_blank">Tensor Channel Equivariant Graph Neural Networks for Molecular Polarizability Prediction</a></div>
+<div class="paper-title-cn">张量通道等变图神经网络用于分子极化率预测</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">arXiv</span></div>
+<div class="authors">JP Filling, D Franzen, M Wand | arXiv:2605.16891</div>
+<div class="summary">
+<strong>研究内容：</strong>基于PaiNN架构提出张量通道等变图神经网络（Tensor Channel Equivariant GNN），直接预测分子的3×3极化率张量，并严格保证输出在任意旋转操作下的等变性。<br><br>
+<strong>核心意义：</strong>分子极化率描述了分子在外电场下电子云的变形能力，是理解分子间色散力、溶剂化效应和光学性质的关键物理量。在QM9等标准数据集上达到了SOTA精度。<br><br>
+<strong>对你的关联：</strong>色散力（特别是π-π堆积中的London色散作用）是稠油沥青质聚集体形成和稳定的核心驱动力。该模型可迁移用于预测不同结构沥青质分子的极化率张量，从而定量比较不同沥青质分子间的色散相互作用强度，为理解沥青质聚集倾向性提供新视角。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://arxiv.org/pdf/2605.16891" target="_blank">📄 PDF</a><a class="link-btn link-abs" href="https://arxiv.org/abs/2605.16891" target="_blank">🔗 摘要</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="4" data-date="2026-05-22" data-title="Molecular design of electrolyte additives for aqueous zinc-ion batteries via reinforcement learning and quantum chemistry calculations" data-link="https://pubs.aip.org/aip/jcp/article/164/19/194302/3391432" data-cn="强化学习结合量子化学计算设计水系锌离子电池电解液添加剂" data-journal="AI/MLJ. Chem. Phys." data-authors="B Wang, GL Chai, Z Hou | J. Chem. Phys. (AIP) 2026">☆</span><a href="https://pubs.aip.org/aip/jcp/article/164/19/194302/3391432" target="_blank">Molecular design of electrolyte additives for aqueous zinc-ion batteries via reinforcement learning and quantum chemistry calculations</a></div>
+<div class="paper-title-cn">强化学习结合量子化学计算设计水系锌离子电池电解液添加剂</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">J. Chem. Phys.</span></div>
+<div class="authors">B Wang, GL Chai, Z Hou | J. Chem. Phys. (AIP) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>将强化学习（RL）与第一性原理计算（DFT）相结合，构建了自动化分子设计工作流，用于新型水系锌离子电池电解液添加剂的筛选和优化。<br><br>
+<strong>工作流程：</strong>RL智能体遍历化学空间→DFT计算候选分子的电子结构性质→MD模拟验证最优候选分子在Zn²⁺溶剂化鞘层中的动态行为。最终筛选出的添加剂分子优先占据Zn²⁺的第一溶剂化鞘层，有效抑制枝晶生长。<br><br>
+<strong>方法论价值：</strong>该工作展示了AI+DFT+MD三位一体的自动化材料设计范式，其核心框架（探索→计算→验证）可迁移到油田化学中的药剂分子设计任务中。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://pubs.aip.org/aip/jcp/article/164/19/194302/3391432" target="_blank">📄 全文 (AIP)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="5" data-date="2026-05-22" data-title="A data-driven Fourier-mixture neural-network method for density estimation" data-link="https://arxiv.org/abs/2605.18019" data-cn="数据驱动的傅里叶混合神经网络密度估计方法" data-journal="AI/MLarXiv" data-authors="DM Dang, V Entoma | arXiv:2605.18019">☆</span><a href="https://arxiv.org/abs/2605.18019" target="_blank">A data-driven Fourier-mixture neural-network method for density estimation</a></div>
+<div class="paper-title-cn">数据驱动的傅里叶混合神经网络密度估计方法</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">arXiv</span></div>
+<div class="authors">DM Dang, V Entoma | arXiv:2605.18019</div>
+<div class="summary">
+<strong>研究内容：</strong>提出一种基于特征函数（characteristic function）的傅里叶域神经网络密度估计方法。通过在傅里叶域进行学习（而非实空间），利用傅里叶变换的全局信息捕获能力，在多种分布类型上展现出优于传统核密度估计（KDE）和归一化流（Normalizing Flows）的性能。<br><br>
+<strong>潜在应用：</strong>在分子模拟领域，可用于自由能景观的密度估计、分子构象系综的统计分析、以及增强采样方法中偏置势的构建等场景。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://arxiv.org/pdf/2605.18019" target="_blank">📄 PDF</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="6" data-date="2026-05-22" data-title="Machine-Learning Predictions of Photoluminescence in Molecules Exhibiting Thermally Activated Delayed Fluorescence with Implicit Experimental Validation" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00425" data-cn="机器学习预测热激活延迟荧光（TADF）分子的光致发光性质" data-journal="AI/MLJ. Chem. Inf. Model." data-authors="D Huang, JM Cole | J. Chem. Inf. Model. (ACS) 2026">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00425" target="_blank">Machine-Learning Predictions of Photoluminescence in Molecules Exhibiting Thermally Activated Delayed Fluorescence with Implicit Experimental Validation</a></div>
+<div class="paper-title-cn">机器学习预测热激活延迟荧光（TADF）分子的光致发光性质</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">J. Chem. Inf. Model.</span></div>
+<div class="authors">D Huang, JM Cole | J. Chem. Inf. Model. (ACS) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>训练异构图神经网络（HGNN）模型，预测TADF分子的光致发光量子产率等关键光物理性质。HGNN在传统分子图神经网络的基础上，区分不同类型的原子（C、N、O、S等）和化学键，从而捕获杂原子和官能团对发光性能的差异化影响。<br><br>
+<strong>方法亮点：</strong>结合公开数据集与自行测量的实验数据，验证了模型在实际场景中的泛化能力。HGNN的架构设计思路（区分不同类型的节点和边）可迁移到分子构效关系建模等任务中。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00425" target="_blank">📄 全文 (ACS)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="7" data-date="2026-05-22" data-title="Deep learning and process simulation-enabled discovery of high-performance MOFs for CO₂/CH₄ separation: An integrated molecular-to-process screening framework" data-link="https://www.sciencedirect.com/science/article/pii/S1385894726047637" data-cn="深度学习+过程模拟发现高性能MOF用于CO₂/CH₄分离" data-journal="AI/MLChem. Eng. J." data-authors="D Jung, H Yang, D Kim et al. | Chem. Eng. J. (Elsevier) 2026">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S1385894726047637" target="_blank">Deep learning and process simulation-enabled discovery of high-performance MOFs for CO₂/CH₄ separation: An integrated molecular-to-process screening framework</a></div>
+<div class="paper-title-cn">深度学习+过程模拟发现高性能MOF用于CO₂/CH₄分离</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">Chem. Eng. J.</span></div>
+<div class="authors">D Jung, H Yang, D Kim et al. | Chem. Eng. J. (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>建立了从分子级到过程级的集成筛选框架，用于高通量发现高性能金属有机框架（MOF）吸附剂材料。<br><br>
+<strong>方法体系：</strong>（1）分子级：晶格常数增强的图神经网络（GNN）预筛，从大规模MOF数据库中快速筛选候选结构；（2）过程级：通过Aspen流程模拟评估候选材料在工业CO₂/CH₄分离条件下的性能；（3）跨尺度关联：建立微观结构描述符与宏观分离性能之间的映射关系。<br><br>
+<strong>对材料的启示：</strong>该跨尺度筛选思路可借鉴——如果你需要对大量候选降粘剂/破乳剂分子进行筛选，可采用类似的"ML预筛→MD精确验证→实验测试"策略。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S1385894726047637" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== MOLECULAR SIMULATION ===================== -->
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟与力场方法</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="8" data-date="2026-05-22" data-title="Fully elucidating catalyst-driven combustion mechanisms in double-base propellants through molecular dynamics simulations" data-link="https://www.sciencedirect.com/science/article/pii/S0016236126015954" data-cn="深度学习力场+MD全面解析双基推进剂中催化剂驱动的燃烧反应机理" data-journal="分子模拟AI/MLFuel" data-authors="M Wen, J Han, X Zhang et al. | Fuel (Elsevier) 2027">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0016236126015954" target="_blank">Fully elucidating catalyst-driven combustion mechanisms in double-base propellants through molecular dynamics simulations</a></div>
+<div class="paper-title-cn">深度学习力场+MD全面解析双基推进剂中催化剂驱动的燃烧反应机理</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">Fuel</span></div>
+<div class="authors">M Wen, J Han, X Zhang et al. | Fuel (Elsevier) 2027</div>
+<div class="summary">
+<strong>研究内容：</strong>将深度学习神经网络力场（NNP）与大尺度分子动力学模拟相结合，系统研究了双基推进剂体系中催化剂驱动的燃烧反应微观机理。<br><br>
+<strong>技术路线：</strong>（1）用DFT计算高精度训练数据；（2）训练神经网络力场（NNP）达到接近DFT的精度；（3）用训练好的NNP进行大规模（百万原子级）MD模拟，覆盖纳秒级时间尺度；（4）通过反应网络分析揭示催化剂在燃烧前沿的原子级作用细节。<br><br>
+<strong>对你研究的参考价值：</strong>该工作展示了"DFT→NNP→大尺度MD"的完整技术路线，与你目前用DFT方法支撑稠油分子模拟的思路一致。NNP的训练策略（训练集构建、主动学习采样、精度验证流程）值得你仔细参考——未来如果要做稠油体系的反应性力场，这篇的方法论可直接借鉴。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S0016236126015954" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="9" data-date="2026-05-22" data-title="Integrated Machine Learning and Molecular Dynamics for Functional Nanoparticle Design: Synthesis, Characterization, Force-Field Development, and Property Prediction" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.5c05632" data-cn="集成机器学习与分子动力学设计功能性纳米粒子" data-journal="AI/ML分子模拟Langmuir" data-authors="M Moirangthem et al. | Langmuir (ACS) 2026">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.5c05632" target="_blank">Integrated Machine Learning and Molecular Dynamics for Functional Nanoparticle Design: Synthesis, Characterization, Force-Field Development, and Property Prediction</a></div>
+<div class="paper-title-cn">集成机器学习与分子动力学设计功能性纳米粒子</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Langmuir</span></div>
+<div class="authors">M Moirangthem et al. | Langmuir (ACS) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>建立了从实验合成到力场开发再到性质预测的完整ML+MD工作流。具体包括：实验合成和表征→基于DFT数据训练机器学习力场（MLFF）→MLFF的RMSE相比DFT直接计算降低5-10倍→用MLFF驱动大尺度MD模拟，预测纳米粒子的自组装和界面行为。<br><br>
+<strong>闭环验证：</strong>形成了"实验→MLFF训练→MD预测→实验验证"的完整闭环，体现了计算与实验紧密结合的研究范式。<br><br>
+<strong>对你研究的参考价值：</strong>如果你计划在稠油体系或驱油剂体系中引入ML力场以加速模拟，该文的工作流设计（特别是MLFF训练集的主动学习构建策略）是很好的参考范本。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.5c05632" target="_blank">📄 全文 (ACS)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="10" data-date="2026-05-22" data-title="Machine Learning Interatomic Potentials for Energy Materials: Architectures, Training Strategies, and Applications" data-link="https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/aenm.71046" data-cn="机器学习原子间势在能源材料中的应用——架构、训练策略与应用综述" data-journal="综述AI/MLAdv. Energy Mater." data-authors="IK Park, S Pourasad, J Mun et al. | Advanced Energy Materials (Wiley) 2026">☆</span><a href="https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/aenm.71046" target="_blank">Machine Learning Interatomic Potentials for Energy Materials: Architectures, Training Strategies, and Applications</a></div>
+<div class="paper-title-cn">机器学习原子间势在能源材料中的应用——架构、训练策略与应用综述</div>
+<div class="paper-meta"><span class="meta-tag meta-review">综述</span><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">Adv. Energy Mater.</span></div>
+<div class="authors">IK Park, S Pourasad, J Mun et al. | Advanced Energy Materials (Wiley) 2026</div>
+<div class="summary">
+<strong>综述内容：</strong>全面回顾了机器学习原子间势（MLIPs）在能源材料领域的最新研究进展。覆盖以下方面：<br><br>
+<strong>架构演进：</strong>从早期的浅层神经网络（Behler-Parrinello NN）到当前主流的等变图神经网络（MACE、NequIP、CHGNet、M3GNet、SevenNet等），系统比较了各种架构在精度、效率、可迁移性方面的优缺点。<br><br>
+<strong>训练策略：</strong>主动学习数据采集（curriculum learning、Query-by-Committee等策略）、多任务学习（同时预测能量、力、应力、偶极矩等）、不确定性量化（ensemble方法、贝叶斯NN等）。<br><br>
+<strong>应用案例：</strong>电池材料中的离子扩散机理、催化领域的表面反应路径搜索、储氢材料中的H₂扩散行为。<br><br>
+<strong>推荐理由：</strong>如果你考虑为稠油体系构建高精度ML力场，这篇综述可作为技术选型的起点——它系统比较了各种MLIP架构的适用场景，帮你避免走弯路。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/aenm.71046" target="_blank">📄 全文 (Wiley)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="11" data-date="2026-05-22" data-title="Predicting temperature-dependent optoelectronic properties of semiconductor defects with equivariant neural networks" data-link="https://www.nature.com/articles/s41524-026-02111-z" data-cn="等变图神经网络预测半导体缺陷的温变光电性质" data-journal="AI/MLnpj Comput. Mater." data-authors="X Zhu, P Rinke, DA Egger | npj Computational Materials (Nature) 2026">☆</span><a href="https://www.nature.com/articles/s41524-026-02111-z" target="_blank">Predicting temperature-dependent optoelectronic properties of semiconductor defects with equivariant neural networks</a></div>
+<div class="paper-title-cn">等变图神经网络预测半导体缺陷的温变光电性质</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">npj Comput. Mater.</span></div>
+<div class="authors">X Zhu, P Rinke, DA Egger | npj Computational Materials (Nature) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>利用等变图神经网络，直接从分子动力学（MD）模拟生成的原子轨迹中预测半导体材料中缺陷的光电性质随温度的变化。<br><br>
+<strong>方法：</strong>等变GNN读取不同温度下MD轨迹的原子构型→预测缺陷能级位置和光学跃迁矩阵元→全程考虑温度效应（晶格振动、热膨胀、电子-声子耦合）。<br><br>
+<strong>精度表现：</strong>缺陷能级预测误差约数十meV量级，接近第一性原理GW方法的精度，但计算成本降低了数个数量级。<br><br>
+<strong>方法论价值：</strong>展示了"MD采样构型→等变GNN预测性质→考虑温度效应"的通用框架，这一范式可扩展到其他材料体系的性质预测中。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.nature.com/articles/s41524-026-02111-z" target="_blank">📄 全文 (Nature)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== OTHER ===================== -->
+<div class="section-wrap section-other">
+<h2 class="section-title">📐 其他</h2>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="12" data-date="2026-05-22" data-title="Humidity sensor based on PEDOT:PSS/CeO₂ composite material for respiratory monitoring of anesthetized patients" data-link="https://www.sciencedirect.com/science/article/pii/S0169433226014662" data-cn="PEDOT:PSS/CeO₂复合材料湿度传感器用于麻醉患者呼吸监测" data-journal="Appl. Surf. Sci." data-authors="J Yang et al. | Applied Surface Science (Elsevier) 2026">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0169433226014662" target="_blank">Humidity sensor based on PEDOT:PSS/CeO₂ composite material for respiratory monitoring of anesthetized patients</a></div>
+<div class="paper-title-cn">PEDOT:PSS/CeO₂复合材料湿度传感器用于麻醉患者呼吸监测</div>
+<div class="paper-meta"><span class="meta-tag">Appl. Surf. Sci.</span></div>
+<div class="authors">J Yang et al. | Applied Surface Science (Elsevier) 2026</div>
+<div class="summary">实验制备湿度传感器并辅以DFT计算分析水分子吸附机理，结合CNN算法实现呼吸监测。与本方向关联度较低，仅供参考。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S0169433226014662" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<p>Hermes Agent 每日自动检索 · 30个固定关键词 · Google Scholar</p>
+<p>期刊过滤: ACS / Nature / Science / Wiley / RSC / Elsevier / AIP·APS / arXiv | 仅供学术研究使用</p>
+</div>
+</div>
+
+<br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
+
+<script>
+/* ★ 收藏功能 v2 - 内联data属性，无btoa/DOM遍历依赖 */
+(function(){
+  var stars = document.querySelectorAll('.star-btn');
+  stars.forEach(function(star){
+    var idx = star.dataset.idx;
+    var title = star.dataset.title;
+    var link = star.dataset.link;
+    var cnTitle = star.dataset.cn || '';
+    var journal = star.dataset.journal || '';
+    var authors = star.dataset.authors || '';
+    var date = star.dataset.date || '';
+    var key = 'fav_' + date + '_' + idx;
+
+    var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
+    var isFav = stored && stored.title;
+
+    star.innerHTML = isFav ? '★' : '☆';
+    star.style.color = isFav ? '#f5a623' : '#ccc';
+    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+    star.title = isFav ? '已收藏' : '点击收藏';
+
+    star.onclick = function(e){
+      e.stopPropagation(); e.preventDefault();
+      var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
+      var wasFav = stored && stored.title;
+      if(wasFav){
+        localStorage.removeItem(key);
+        star.innerHTML = '☆'; star.title = '点击收藏';
+        star.style.color = '#ccc'; star.style.textShadow = 'none';
+        star.dataset.fileFav = 'false';
+        /* 通知服务端取消收藏 */
+        try{ fetch('http://localhost:7898/fav', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:false})}); }catch(ex){}
+      } else {
+        localStorage.setItem(key, JSON.stringify({
+          title: title, link: link, cnTitle: cnTitle,
+          journal: journal, authors: authors, date: date
+        }));
+        star.innerHTML = '★'; star.title = '已收藏';
+        star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
+        star.dataset.fileFav = 'true';
+        /* 通知服务端收藏 */
+        try{ fetch('http://localhost:7898/fav', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true})}); }catch(ex){}
+      }
+    };
+  });
+})();
+</script></body>
+</html>
