@@ -6,7 +6,7 @@
     "journal": "油田化学 ⭐分子模拟Petroleum Science",
     "authors": "SD Yuan, JC Fang | Petroleum Science (Elsevier) 2026",
     "date": "2026-05-22",
-    "starred": true
+    "starred": false
   },
   {
     "title": "Alteration of Calcite Wettability by Asphaltenes and Its Reversal by Surfactants",
@@ -15,7 +15,7 @@
     "journal": "油田化学 ⭐分子模拟Langmuir",
     "authors": "J Tetteh, AE Shoukry, L Qin, J Kubelka, M Piri | Langmuir (ACS) 2026",
     "date": "2026-05-22",
-    "starred": true
+    "starred": false
   },
   {
     "title": "Spatial statistics for screening molecular structures",
@@ -141,7 +141,7 @@
     "journal": "",
     "authors": "",
     "date": "",
-    "starred": true
+    "starred": false
   },
   {
     "title": "test_proxy",
@@ -150,7 +150,7 @@
     "journal": "",
     "authors": "",
     "date": "",
-    "starred": true
+    "starred": false
   },
   {
     "title": "BROWSER_TEST_PAPER",
@@ -159,7 +159,7 @@
     "journal": "测试",
     "authors": "测试",
     "date": "2026-05-22",
-    "starred": true
+    "starred": false
   },
   {
     "title": "sendBeacon_test",
@@ -168,7 +168,7 @@
     "journal": "",
     "authors": "",
     "date": "",
-    "starred": true
+    "starred": false
   },
   {
     "title": "browser_fetch_test",
@@ -177,6 +177,6 @@
     "journal": "",
     "authors": "",
     "date": "",
-    "starred": true
+    "starred": false
   }
 ]
