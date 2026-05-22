@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate quarterly精选 pages — localStorage, local fav_server, GitHub triple fallback."""
+"""Generate quarterly精选 pages — localStorage + GitHub API + raw fallback."""
 
 import os, json
 
@@ -63,7 +63,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link {"active" if qi==4 else ""}" href="4季度精选.html">❄️ Q4</a>
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">localStorage即时 + 本地fav_server + GitHub跨设备同步</div>
+<div class="footer">localStorage即时 + GitHub双fallback</div>
 </div>
 <script>
 (function(){{
@@ -138,32 +138,19 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   }}
   render(paperMap);
 
-  /* 第二步：从本地 fav_server 读取（同机器，快） */
-  try {{
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:7898/fav', false);
-    xhr.send();
-    if(xhr.status === 200){{
-      processFavs(JSON.parse(xhr.responseText));
-    }}
-  }} catch(e){{}}
-  if(Object.keys(paperMap).length === 0 && !rendered){{
-    listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献阅读页面点击☆收藏，就会出现在这里</div>';
-  }}
-
-  /* 第三步：从 GitHub 补充（跨设备） */
-  function fetchGitHub(url, cb){{
+  /* 第二步：从 GitHub API 读取（跨设备持久化，无CDN缓存） */
+  function fetchAndParse(url, cb){{
     fetch(url + '?t=' + new Date().getTime())
       .then(function(r){{ return r.json(); }})
       .then(cb)
       .catch(function(){{}});
   }}
-  /* API（无CDN）→ raw（更易访问） */
-  fetchGitHub('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', function(data){{
+  fetchAndParse('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', function(data){{
     try {{ processFavs(JSON.parse(atob(data.content))); }} catch(e){{}}
   }});
+  /* 靠后fallback：raw CDN */
   setTimeout(function(){{
-    fetchGitHub('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json', processFavs);
+    fetchAndParse('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json', processFavs);
   }}, 500);
 }})();
 </script>
@@ -173,6 +160,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html — localStorage + localhost + GitHub triple")
+    print(f"✓ {qi}季度精选.html")
 
-print("\nDone! 三层fallback: localStorage→localhost→GitHub")
+print("\nDone! localStorage → GitHub API → raw fallback")

@@ -329,7 +329,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     }
   });
   
-  /* 第三步：从本地 fav_server 读取（同机器加速） */
+  /* 第三步：从 GitHub API 读取（跨设备持久化，无CDN缓存） */
   function applyServerData(favs, restored){
     favs.forEach(function(f){
       if(!f.starred) return;
@@ -348,16 +348,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     });
   }
   try{
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:7898/fav', false);
-    xhr.send();
-    if(xhr.status === 200){
-      applyServerData(JSON.parse(xhr.responseText), restored);
-    }
-  }catch(ex){}
-  
-  /* 第四步：从 GitHub 补充（跨设备持久化） */
-  try{
     var xhr2 = new XMLHttpRequest();
     xhr2.open('GET', 'https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', false);
     xhr2.send();
@@ -366,6 +356,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       applyServerData(JSON.parse(atob(apiResp.content)), restored);
     }
   }catch(ex2){}
+  /* 靠后fallback：raw CDN */
   try{
     var xhr3 = new XMLHttpRequest();
     xhr3.open('GET', 'https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + Date.now(), false);
