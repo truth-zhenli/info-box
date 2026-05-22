@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate quarterly精选 pages — localStorage-first, GitHub-supplement.
-Instant same-browser response + cross-browser durability."""
+"""Generate quarterly精选 pages — localStorage-first, GitHub-API-supplement.
+Instant same-browser response + cross-browser durability (via GitHub API, no CDN cache)."""
 
 import os, json
 
@@ -63,7 +63,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link {"active" if qi==4 else ""}" href="4季度精选.html">❄️ Q4</a>
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">数据实时读取 localStorage + favorites.json · 点星星即刻生效</div>
+<div class="footer">localStorage即时响应 + GitHub API实时持久化 · 清缓存不丢失</div>
 </div>
 <script>
 (function(){{
@@ -116,11 +116,11 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   }}
   render(paperMap);
 
-  /* 第二步：从 GitHub favorites.json 补充（跨设备/浏览器持久化） */
-  var ts = new Date().getTime();
-  fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + ts)
+  /* 第二步：从 GitHub API 补充（跨设备持久化，无CDN缓存，实时） */
+  fetch('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json?t=' + new Date().getTime())
     .then(function(r){{ return r.json(); }})
-    .then(function(favs){{
+    .then(function(data){{
+      var favs = JSON.parse(atob(data.content));
       var changed = false;
       favs.forEach(function(p){{
         if(!p.starred || !p.date) return;
@@ -154,6 +154,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html — localStorage-first + GitHub supplement")
+    print(f"✓ {qi}季度精选.html — localStorage + GitHub API (no CDN)")
 
-print("\nDone! 季度精选页：localStorage即时响应 + GitHub跨设备持久化")
+print("\nDone! 季度精选页：localStorage即时响应 + GitHub API实时持久化")
