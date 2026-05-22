@@ -21,54 +21,58 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .nav-link.active{background:#006064;color:#fff;font-weight:600}
 
 /* 年份标题 */
-.year-title{font-size:22px;font-weight:700;color:#006064;margin:12px 0 10px;display:flex;align-items:center;gap:10px}
+.year-title{font-size:20px;font-weight:700;color:#006064;margin:14px 0 10px;display:flex;align-items:center;gap:10px}
 .year-title small{font-size:13px;font-weight:400;color:#999;opacity:.8}
 
-/* 月份网格 3行×4列 */
-.month-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.month-card{background:#fff;border-radius:12px;padding:16px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer;transition:all .2s;text-align:center;border:2px solid transparent;position:relative}
+/* 季度四列布局 */
+.quarter-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:10px}
+.quarter-col{display:flex;flex-direction:column;gap:8px}
+.quarter-label{font-size:13px;font-weight:700;color:#006064;text-align:center;padding:4px;background:#e0f2f1;border-radius:8px 8px 0 0;margin-bottom:2px}
+
+.month-card{background:#fff;border-radius:10px;padding:14px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer;transition:all .2s;text-align:center;border:2px solid #f0f0f0}
 .month-card:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(0,0,0,.1)}
 .month-card.has-data{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-color:#00897b}
 .month-card.no-data{background:#fafafa;color:#ccc;cursor:default;border-color:#eee}
-.month-card .month-name{font-size:16px;font-weight:600}
-.month-card .month-count{font-size:12px;color:#888;margin-top:4px}
+.month-card .month-name{font-size:14px;font-weight:600}
+.month-card .month-count{font-size:11px;color:#888;margin-top:3px}
 .month-card.has-data .month-count{color:#006064;font-weight:600}
-.month-card .fav-count{font-size:11px;color:#e65100;margin-top:2px;display:none}
-.month-card .fav-count.has-fav{display:block}
 
-/* 展开的每日列表 */
-.month-days{display:none;background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+/* 季度精选入口 */
+.fav-entry{display:block;background:linear-gradient(135deg,#fff8e1,#ffecb3);border:2px solid #f5a623;border-radius:10px;padding:12px 8px;text-align:center;text-decoration:none;color:#e65100;font-size:13px;font-weight:600;transition:all .2s;margin-top:4px}
+.fav-entry:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(0,0,0,.1);background:linear-gradient(135deg,#ffe082,#ffd54f)}
+.fav-entry .count{font-size:11px;font-weight:400;opacity:.7;display:block;margin-top:2px}
+
+/* 每日展开 */
+.month-days{display:none;background:#fff;border-radius:12px;padding:12px 16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .month-days.open{display:block}
-.day-item{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0;gap:10px}
+.day-item{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid #f0f0f0;gap:8px}
 .day-item:last-child{border-bottom:none}
-.day-badge{display:inline-block;background:#e0f2f1;color:#006064;padding:2px 12px;border-radius:6px;font-size:12px;font-weight:600;min-width:50px;text-align:center}
-.day-link{color:#2980b9;text-decoration:none;font-size:14px;flex:1}
+.day-badge{display:inline-block;background:#e0f2f1;color:#006064;padding:2px 10px;border-radius:5px;font-size:11px;font-weight:600;min-width:44px;text-align:center}
+.day-link{color:#2980b9;text-decoration:none;font-size:13px;flex:1}
 .day-link:hover{color:#e74c3c;text-decoration:underline}
-.day-desc{font-size:12px;color:#999;flex-shrink:0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.day-fav{font-size:13px;color:#e65100;min-width:18px;text-align:center}
+.day-desc{font-size:11px;color:#999;flex-shrink:0;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.day-fav{font-size:12px;color:#f5a623;min-width:16px;text-align:center}
 
 /* 页脚 */
-.footer{text-align:center;color:#ccc;font-size:12px;margin-top:30px}
+.footer{text-align:center;color:#bbb;font-size:12px;margin-top:30px}
+.visitor-badge{display:inline-block;margin-top:6px;font-size:11px;color:#ccc}
+.visitor-badge img{vertical-align:middle;border-radius:4px}
 
 /* ===== 移动端 ===== */
-@media (max-width: 700px){
-  .month-grid{grid-template-columns:repeat(3,1fr)}
-  .day-desc{max-width:120px}
+@media (max-width: 800px){
+  .quarter-row{grid-template-columns:repeat(2,1fr)}
+  .day-desc{max-width:100px}
 }
 @media (max-width: 480px){
   body{padding:12px 10px}
-  .month-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .month-card{padding:14px 8px}
+  .quarter-row{grid-template-columns:repeat(2,1fr);gap:6px}
+  .month-card{padding:10px 6px}
   .header{padding:16px 18px;border-radius:10px;margin-bottom:14px}
   .header h1{font-size:18px}
   .nav-bar{padding:8px 6px;gap:2px;border-radius:8px}
   .nav-link{padding:6px 8px;font-size:11px}
   .day-desc{display:none}
-}
-@media (max-width: 360px){
-  .month-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-bar{flex-direction:column;align-items:stretch}
-  .nav-link{text-align:center}
+  .quarter-label{font-size:11px}
 }
 </style>
 </head>
@@ -76,7 +80,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <div class="container">
 <div class="header">
   <h1>📰 文献追踪</h1>
-  <div class="sub">每日文献推送 · 点击月份查看每日列表 · ☆收藏好文章</div>
+  <div class="sub">按季度查看 · 点击月份展开每日列表 · ☆收藏好文章 · ★自动进入季度精选</div>
 </div>
 <div class="nav-bar">
   <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
@@ -91,15 +95,27 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
 <div id="year-view"></div>
 
-<div class="footer">📬 每天6:00自动推送 · 看到好文章点☆收藏，找我整理精选集</div>
+<div class="footer">
+  📬 每天6:00自动推送 · 看到好文章点☆收藏，自动进入季度精选
+  <div class="visitor-badge"><img src="https://visitor-badge.laobi.icu/badge?page_id=truth-zhenli.info-box" alt="访客"></div>
+</div>
 </div>
 
 <script>
 /* ========== 数据 ========== */
 const DATA = [
-  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"32篇·4专题"},
+  {date:"2026-05-22", title:"稠油致粘/降粘机理 + 乳化液聚并 + 机器学习", link:"../文献追踪/2026-05-22.html", desc:"16篇·4专题"},
 
 ];
+
+/* 季度定义 */
+const QUARTERS = [
+  {q:1, label:'一季度', months:[1,2,3], emoji:'🌸', color:'#e91e63'},
+  {q:2, label:'二季度', months:[4,5,6], emoji:'☀️', color:'#ff6f00'},
+  {q:3, label:'三季度', months:[7,8,9], emoji:'🍂', color:'#2e7d32'},
+  {q:4, label:'四季度', months:[10,11,12], emoji:'❄️', color:'#1565c0'}
+];
+const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
 /* ========== 渲染 ========== */
 function render(){
@@ -114,40 +130,53 @@ function render(){
     years[y].push(d);
   });
 
-  // 月份名称
-  const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-
   Object.keys(years).sort().reverse().forEach(year => {
-    html += `<div class="year-title">${year}年 <small>共 ${years[year].length} 期</small></div>`;
-    html += '<div class="month-grid">';
+    const yearData = years[year];
+    html += `<div class="year-title">${year}年 <small>共 ${yearData.length} 期</small></div>`;
 
     // 按月份统计
     const byMonth = {};
-    years[year].forEach(d => {
+    yearData.forEach(d => {
       const m = parseInt(d.date.slice(5,7));
       if(!byMonth[m]) byMonth[m] = [];
       byMonth[m].push(d);
     });
 
-    for(let m = 1; m <= 12; m++){
-      const items = byMonth[m] || [];
-      const hasData = items.length > 0;
-      const cls = hasData ? 'month-card has-data' : 'month-card no-data';
-      html += `<div class="${cls}" data-year="${year}" data-month="${m}">`;
-      html += `<div class="month-name">${monthNames[m-1]}</div>`;
-      if(hasData){
-        const totalPapers = items.reduce((sum, d) => {
-          const match = d.desc && d.desc.match(/(\d+)篇/);
-          return sum + (match ? parseInt(match[1]) : 0);
-        }, 0);
-        html += `<div class="month-count">${items.length}期 · ${totalPapers}篇</div>`;
-        html += `<div class="fav-count" data-month="${m}">☆ 0收藏</div>`;
-      } else {
-        html += `<div class="month-count">—</div>`;
-      }
-      html += '</div>';
-    }
-    html += '</div>';
+    html += '<div class="quarter-row">';
+
+    QUARTERS.forEach(q => {
+      html += '<div class="quarter-col">';
+      html += `<div class="quarter-label">${q.emoji} ${q.label}</div>`;
+
+      // 该季度三个月
+      q.months.forEach(m => {
+        const items = byMonth[m] || [];
+        const hasData = items.length > 0;
+        const cls = hasData ? 'month-card has-data' : 'month-card no-data';
+        html += `<div class="${cls}" data-year="${year}" data-month="${m}">`;
+        html += `<div class="month-name">${MONTH_NAMES[m-1]}</div>`;
+        if(hasData){
+          const totalPapers = items.reduce((sum, d) => {
+            const match = d.desc && d.desc.match(/(\d+)篇/);
+            return sum + (match ? parseInt(match[1]) : 0);
+          }, 0);
+          html += `<div class="month-count">${items.length}期 · ${totalPapers}篇</div>`;
+        } else {
+          html += `<div class="month-count">—</div>`;
+        }
+        html += '</div>';
+      });
+
+      // 季度精选入口
+      html += `<a class="fav-entry" href="${q.q}季度精选.html" target="_blank">`;
+      html += `★ ${q.label}精选`;
+      html += `<span class="count" data-q="${q.q}">加载中...</span>`;
+      html += `</a>`;
+
+      html += '</div>'; // quarter-col
+    });
+
+    html += '</div>'; // quarter-row
 
     // 每个月份的展开区域
     for(let m = 1; m <= 12; m++){
@@ -156,7 +185,6 @@ function render(){
       html += `<div class="month-days" data-year="${year}" data-month="${m}">`;
       items.sort((a,b) => b.date.localeCompare(a.date)).forEach(d => {
         const day = d.date.slice(5);
-        // 检查该期是否有收藏
         html += `<div class="day-item">`;
         html += `<span class="day-badge">${day}</span>`;
         html += `<a class="day-link" href="${d.link}" target="_blank">${d.title}</a>`;
@@ -170,7 +198,7 @@ function render(){
 
   root.innerHTML = html;
 
-  // 统计收藏数
+  // 更新收藏统计
   updateFavCounts();
 }
 
@@ -183,47 +211,51 @@ document.addEventListener('click', function(e){
   const target = document.querySelector(`.month-days[data-year="${year}"][data-month="${month}"]`);
   if(!target) return;
   const isOpen = target.classList.contains('open');
-  // 关闭其他
   document.querySelectorAll('.month-days.open').forEach(el => el.classList.remove('open'));
   if(!isOpen) target.classList.add('open');
 });
 
 /* ========== 收藏统计 ========== */
 function updateFavCounts(){
-  const totalFavs = {};
+  // 统计每个季度的收藏数
+  const qCounts = {1:0, 2:0, 3:0, 4:0};
+
   for(let i = 0; i < localStorage.length; i++){
     const key = localStorage.key(i);
-    if(key && key.startsWith('fav_') && localStorage.getItem(key) === 'true'){
-      const month = parseInt(key.split('_')[1].slice(0,6)); // fav_202605_hash
-      const ym = key.split('_')[1].slice(0,6); // 202605
-      if(!totalFavs[ym]) totalFavs[ym] = 0;
-      totalFavs[ym]++;
+    if(key && key.startsWith('fav_')){
+      try{
+        const val = JSON.parse(localStorage.getItem(key));
+        if(val && val.date){
+          // 从日期判断所属季度
+          const m = parseInt(val.date.slice(5,7));
+          const q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
+          qCounts[q]++;
+        }
+      }catch(e){}
     }
   }
 
-  // 更新月份卡片收藏数
-  document.querySelectorAll('.fav-count').forEach(el => {
-    const m = el.dataset.month;
-    const year = el.closest('.month-grid')?.previousElementSibling?.textContent?.slice(0,4) || '2026';
-    const ym = year + String(m).padStart(2,'0');
-    const fav = totalFavs[ym] || 0;
-    if(fav > 0){
-      el.textContent = `★ ${fav}收藏`;
-      el.classList.add('has-fav');
-    }
+  document.querySelectorAll('.fav-entry .count').forEach(el => {
+    const q = parseInt(el.dataset.q);
+    const c = qCounts[q] || 0;
+    el.textContent = c > 0 ? `★ ${c}篇` : '暂无收藏';
+    if(c > 0) el.style.color = '#e65100';
   });
 
-  // 更新每日收藏标识
+  // 每日收藏标识
   document.querySelectorAll('.day-fav').forEach(el => {
     const date = el.dataset.date;
     let count = 0;
     for(let i = 0; i < localStorage.length; i++){
       const key = localStorage.key(i);
-      if(key && key.startsWith('fav_') && key.includes(date) && localStorage.getItem(key) === 'true'){
-        count++;
+      if(key && key.startsWith('fav_')){
+        try{
+          const val = JSON.parse(localStorage.getItem(key));
+          if(val && val.date && val.date === date) count++;
+        }catch(e){}
       }
     }
-    el.textContent = count > 0 ? `★${count}` : '';
+    el.textContent = count > 0 ? '★' : '';
   });
 }
 
