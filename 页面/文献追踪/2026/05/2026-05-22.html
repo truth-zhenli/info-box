@@ -299,73 +299,47 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
 
 <script>
-/* ★ 收藏功能 v4 - localStorage > GitHub 覆盖（GitHub只补充新浏览器第一次加载）*/
+/* ★ 收藏功能 v3 — 全走 GitHub API（不用 localhost） */
 (function(){
-  var stars = document.querySelectorAll('.star-btn');
-  var restored = {};
-  
-  /* 第一步：全部初始化为未收藏 */
-  stars.forEach(function(star){
-    star.innerHTML = '☆';
-    star.style.color = '#ccc';
-    star.style.textShadow = 'none';
-    star.title = '点击收藏';
-    star.dataset.fileFav = 'false';
-  });
-  
-  /* 第二步：从localStorage恢复（localStorage是权威，GitHub不能覆盖它）*/
-  stars.forEach(function(star){
-    var idx = star.dataset.idx;
-    var date = star.dataset.date || '';
-    var key = 'fav_' + date + '_' + idx;
-    var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
-    if(stored && stored.title){
-      star.innerHTML = '★';
-      star.style.color = '#f5a623';
-      star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
-      star.title = '已收藏';
-      star.dataset.fileFav = 'true';
-      restored[key] = true;
-    }
-  });
-  /* 第三步：从 GitHub API 读取（跨设备持久化，无CDN缓存） */
-  function applyServerData(favs, restored){
-    favs.forEach(function(f){
-      if(!f.starred) return;
-      stars.forEach(function(star){
-        var key = 'fav_' + (star.dataset.date || '') + '_' + star.dataset.idx;
-        if(restored[key]) return;
-        if(star.dataset.title === f.title && star.dataset.link === f.link){
-          star.innerHTML = '★';
-          star.style.color = '#f5a623';
-          star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
-          star.title = '已收藏';
-          star.dataset.fileFav = 'true';
-          restored[key] = true;
+  var GH_TOKEN = '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';
+  var GH_REPO = 'truth-zhenli/info-box';
+  var GH_PATH = 'favorites.json';
+
+  function saveStarToGitHub(data){
+    fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
+      headers: {'Authorization': 'Bearer ' + GH_TOKEN}
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(fileInfo){
+      if(!fileInfo || !fileInfo.content) return;
+      var favs = JSON.parse(atob(fileInfo.content));
+      var sha = fileInfo.sha;
+      var found = false;
+      for(var i = 0; i < favs.length; i++){
+        if(favs[i].title === data.title && favs[i].link === data.link){
+          favs[i].starred = data.starred;
+          found = true;
+          break;
         }
-      });
-    });
+      }
+      if(!found) favs.push(data);
+      fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + GH_TOKEN,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: data.starred ? '⭐ 收藏: ' + data.title.slice(0,50) : '⭐ 取消收藏: ' + data.title.slice(0,50),
+          content: btoa(unescape(encodeURIComponent(JSON.stringify(favs, null, 2)))),
+          sha: sha
+        })
+      }).catch(function(){});
+    })
+    .catch(function(){});
   }
-  try{
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open('GET', 'https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', false);
-    xhr2.send();
-    if(xhr2.status === 200){
-      var apiResp = JSON.parse(xhr2.responseText);
-      applyServerData(JSON.parse(atob(apiResp.content)), restored);
-    }
-  }catch(ex2){}
-  /* 靠后fallback：raw CDN */
-  try{
-    var xhr3 = new XMLHttpRequest();
-    xhr3.open('GET', 'https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?t=' + Date.now(), false);
-    xhr3.send();
-    if(xhr3.status === 200){
-      applyServerData(JSON.parse(xhr3.responseText), restored);
-    }
-  }catch(ex3){}
-  
-  /* 第四步：绑定点击事件 */
+
+  var stars = document.querySelectorAll('.star-btn');
   stars.forEach(function(star){
     var idx = star.dataset.idx;
     var title = star.dataset.title;
@@ -375,29 +349,56 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     var authors = star.dataset.authors || '';
     var date = star.dataset.date || '';
     var key = 'fav_' + date + '_' + idx;
-    
+
+    var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
+    var isFav = stored && stored.title;
+
+    star.textContent = isFav ? '★' : '☆';
+    star.style.color = isFav ? '#f5a623' : '#ccc';
+    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+    star.title = isFav ? '已收藏' : '点击收藏';
+
+    /* 异步从 GitHub API 恢复 */
+    if(!isFav){
+      fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_PATH, {
+        headers: {'Authorization': 'Bearer ' + GH_TOKEN}
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(!data || !data.content) return;
+        var all = JSON.parse(atob(data.content));
+        for(var fi = 0; fi < all.length; fi++){
+          if(all[fi].title === title && all[fi].link === link && all[fi].starred){
+            localStorage.setItem(key, JSON.stringify(all[fi]));
+            star.textContent = '★';
+            star.style.color = '#f5a623';
+            star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
+            star.title = '已收藏';
+            break;
+          }
+        }
+      })
+      .catch(function(){});
+    }
+
     star.onclick = function(e){
       e.stopPropagation(); e.preventDefault();
       var stored = (function(){ try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }})();
       var wasFav = stored && stored.title;
       if(wasFav){
         localStorage.removeItem(key);
-        star.innerHTML = '☆'; star.title = '点击收藏';
+        star.textContent = '☆'; star.title = '点击收藏';
         star.style.color = '#ccc'; star.style.textShadow = 'none';
-        star.dataset.fileFav = 'false';
-        try{ navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:false})); }catch(ex){}
+        saveStarToGitHub({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date, starred:false});
       } else {
-        localStorage.setItem(key, JSON.stringify({
-          title: title, link: link, cnTitle: cnTitle,
-          journal: journal, authors: authors, date: date
-        }));
-        star.innerHTML = '★'; star.title = '已收藏';
+        localStorage.setItem(key, JSON.stringify({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date}));
+        star.textContent = '★'; star.title = '已收藏';
         star.style.color = '#f5a623'; star.style.textShadow = '0 0 4px rgba(245,166,35,0.5)';
-        star.dataset.fileFav = 'true';
-        try{ navigator.sendBeacon('http://localhost:7898/fav', JSON.stringify({title:title,link:link,cnTitle:cnTitle,journal:journal,authors:authors,date:date,starred:true})); }catch(ex){}
+        saveStarToGitHub({title:title, link:link, cnTitle:cnTitle, journal:journal, authors:authors, date:date, starred:true});
       }
     };
   });
 })();
-</script></body>
+</script>
+</body>
 </html>
