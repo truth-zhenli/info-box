@@ -33,8 +33,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .paper-source a:hover{text-decoration:underline}
 
 .footer{text-align:center;color:#ccc;font-size:12px;margin-top:30px}
-.visitor-badge{display:inline-block;margin-top:6px;font-size:11px;color:#ccc}
-.visitor-badge img{vertical-align:middle;border-radius:4px}
 
 @media (max-width:480px){
   body{padding:12px 10px}
@@ -53,24 +51,22 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   <div class="sub">10月 · 11月 · 12月 — 你收藏的好文章</div>
 </div>
 <div class="nav-bar">
-  <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
-  <a class="nav-link" href="文献追踪.html">📰 文献追踪</a>
-  <a class="nav-link active" href="1季度精选.html" class="nav-link">🌸 Q1</a>
-  <a class="nav-link" href="2季度精选.html">☀️ Q2</a>
-  <a class="nav-link" href="3季度精选.html">🍂 Q3</a>
-  <a class="nav-link" href="4季度精选.html" class="nav-link active">❄️ Q4</a>
-</div>
+    <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
+    <a class="nav-link" href="文献追踪.html">📰 文献追踪</a>
+    <a class="nav-link" href="1季度精选.html">🌸 Q1</a>
+    <a class="nav-link" href="2季度精选.html">☀️ Q2</a>
+    <a class="nav-link" href="3季度精选.html">🍂 Q3</a>
+    <a class="nav-link active" href="4季度精选.html">❄️ Q4</a>
+  </div>
 
 <div id="list"></div>
 
-<div class="footer">
-  在文献页面点★收藏，文章会自动出现在这里
-  </div>
+<div class="footer">在文献页面点★收藏，文章会自动出现在这里</div>
 </div>
 
 <script>
 (function(){
-  var quarter = 4; // Q4: Month 10-12
+  var quarter = 4;
   var listEl = document.getElementById('list');
   var papers = [];
 
@@ -94,17 +90,16 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     return;
   }
 
-  // 按日期排序（最新在前）
   papers.sort(function(a,b){ return b.date.localeCompare(a.date); });
 
   var html = '';
   papers.forEach(function(p){
     html += '<div class="paper-card">';
     html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + p.title + '</a></div>';
-    if(p.cnTitle) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
+    if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + p.journal + '</span></div>';
     if(p.authors) html += '<div class="paper-authors">' + p.authors + '</div>';
     html += '<div class="paper-date">📅 ' + p.date + '</div>';
-    html += '<div class="paper-source">🔗 <a href="' + p.link + '" target="_blank">' + p.link.replace(/https?:\/\//,'').slice(0,60) + '...</a></div>';
+    html += '<div class="paper-source">🔗 <a href="' + p.link + '" target="_blank">' + (p.link.replace(/https?:\/\//,'').slice(0,60) || '原文链接') + '</a></div>';
     html += '</div>';
   });
 
