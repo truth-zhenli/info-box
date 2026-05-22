@@ -146,7 +146,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
       .catch(function(){{}});
   }}
   fetchAndParse('https://api.github.com/repos/truth-zhenli/info-box/contents/favorites.json', function(data){{
-    try {{ processFavs(JSON.parse(atob(data.content))); }} catch(e){{}}
+    try {{ processFavs(JSON.parse(decodeURIComponent(escape(atob(data.content))))); }} catch(e){{}}
   }});
   /* 靠后fallback：raw CDN */
   setTimeout(function(){{
