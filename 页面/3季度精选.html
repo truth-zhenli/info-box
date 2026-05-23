@@ -124,7 +124,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   render();
 
   // 从 raw.githubusercontent.com 拉 JSON（无 atob，无乱码）
-  fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?_=' + Date.now())
+  fetch('../favorites.json?_=' + Date.now())
     .then(function(r){ return r.json(); })
     .then(processFavs)
     .catch(function(){});

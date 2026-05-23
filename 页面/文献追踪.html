@@ -224,6 +224,26 @@ function render(){
 
 /* ========== 收藏统计 ========== */
 function updateFavCounts(){
+  /* 先从 localStorage 即时显示 */
+  countFromLocalStorage();
+
+  /* 再从线上 favorites.json 同步（跨设备） */
+  fetch('../favorites.json?_=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(all){
+      var qCounts = {1:0, 2:0, 3:0, 4:0};
+      all.forEach(function(p){
+        if(!p.starred || !p.date) return;
+        var m = parseInt(p.date.slice(5,7));
+        var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
+        qCounts[q]++;
+      });
+      updateUI(qCounts);
+    })
+    .catch(function(){});
+}
+
+function countFromLocalStorage(){
   var qCounts = {1:0, 2:0, 3:0, 4:0};
   for(var i = 0; i < localStorage.length; i++){
     var key = localStorage.key(i);
@@ -238,6 +258,10 @@ function updateFavCounts(){
       }catch(e){}
     }
   }
+  updateUI(qCounts);
+}
+
+function updateUI(qCounts){
   document.querySelectorAll('.fav-entry .count').forEach(function(el){
     var q = parseInt(el.dataset.q);
     var c = qCounts[q] || 0;

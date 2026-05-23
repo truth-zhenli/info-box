@@ -3,7 +3,7 @@
     "title": "Component-dependent transport and spatial distribution of crude oil fractions confined in kerogen nanopore",
     "link": "https://www.sciencedirect.com/science/article/pii/S1995822626002694",
     "cnTitle": "原油组分在干酪根纳米孔中的传输与空间分布",
-    "journal": "油田化学 ⭐分子模拟Petroleum Science",
+    "journal": "油田化学分子模拟Petroleum Science",
     "authors": "SD Yuan, JC Fang | Petroleum Science (Elsevier) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -12,7 +12,7 @@
     "title": "Alteration of Calcite Wettability by Asphaltenes and Its Reversal by Surfactants",
     "link": "https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c00861",
     "cnTitle": "沥青质对方解石润湿性的改变及表面活性剂的逆转机制",
-    "journal": "油田化学 ⭐分子模拟Langmuir",
+    "journal": "油田化学分子模拟Langmuir",
     "authors": "J Tetteh, AE Shoukry, L Qin, J Kubelka, M Piri | Langmuir (ACS) 2026",
     "date": "2026-05-22",
     "starred": false
@@ -30,7 +30,7 @@
     "title": "Tensor Channel Equivariant Graph Neural Networks for Molecular Polarizability Prediction",
     "link": "https://arxiv.org/abs/2605.16891",
     "cnTitle": "张量通道等变图神经网络用于分子极化率预测",
-    "journal": "AI/MLarXiv",
+    "journal": "AI/ML分子模拟arXiv",
     "authors": "JP Filling, D Franzen, M Wand | arXiv:2605.16891",
     "date": "2026-05-22",
     "starred": false
