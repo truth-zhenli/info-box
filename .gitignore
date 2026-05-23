@@ -1,9 +1,8 @@
 # Resilio Sync
 .sync/
 
-# User's local files (月报, 中期检查, 绘本等)
+# User's local project files
 月报/
 中期检查/
 5岁*
 油溶性*
-fav_server.py
