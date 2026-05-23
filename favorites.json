@@ -30,7 +30,7 @@
     "title": "Tensor Channel Equivariant Graph Neural Networks for Molecular Polarizability Prediction",
     "link": "https://arxiv.org/abs/2605.16891",
     "cnTitle": "张量通道等变图神经网络用于分子极化率预测",
-    "journal": "AI/ML分子模拟arXiv",
+    "journal": "AI/MLarXiv",
     "authors": "JP Filling, D Franzen, M Wand | arXiv:2605.16891",
     "date": "2026-05-22",
     "starred": false
@@ -63,7 +63,7 @@
     "starred": false
   },
   {
-    "title": "Deep learning and process simulation-enabled discovery of high-performance MOFs for COâ/CHâ separation: An integrated molecular-to-process screening framework",
+    "title": "Deep learning and process simulation-enabled discovery of high-performance MOFs for CO₂/CH₄ separation: An integrated molecular-to-process screening framework",
     "link": "https://www.sciencedirect.com/science/article/pii/S1385894726047637",
     "cnTitle": "深度学习+过程模拟发现高性能MOF用于CO₂/CH₄分离",
     "journal": "AI/MLChem. Eng. J.",
@@ -108,7 +108,7 @@
     "starred": true
   },
   {
-    "title": "Humidity sensor based on PEDOT:PSS/CeOâ composite material for respiratory monitoring of anesthetized patients",
+    "title": "Humidity sensor based on PEDOT:PSS/CeO₂ composite material for respiratory monitoring of anesthetized patients",
     "link": "https://www.sciencedirect.com/science/article/pii/S0169433226014662",
     "cnTitle": "PEDOT:PSS/CeO₂复合材料湿度传感器用于麻醉患者呼吸监测",
     "journal": "Appl. Surf. Sci.",
