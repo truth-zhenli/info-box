@@ -93,14 +93,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../碎片化信息盒.html" style="color:#999;font-size:12px;text-decoration:none">← 返回碎片化信息盒</a></div>
 </div>
 <script>
-/* ★ 收藏功能 v10 — 保存 favorites.json 到本地 */
+/* ★ 收藏功能 v11 — showSaveFilePicker + IndexedDB 持久化 */
 (function(){
   var stars = document.querySelectorAll('.star-btn');
   if(!stars.length) return;
 
   var SAVE_DELAY = 2000;
   var saveTimer = null;
-  var savedFileHandle = null;
+  var fileHandle = null;
+
+  /* ===== IndexedDB 存储文件句柄 ===== */
+  function openDB(){
+    return new Promise(function(resolve, reject){
+      var req = indexedDB.open('star-fav-handle', 1);
+      req.onupgradeneeded = function(e){
+        var db = e.target.result;
+        if(!db.objectStoreNames.contains('handles'))
+          db.createObjectStore('handles');
+      };
+      req.onsuccess = function(e){ resolve(e.target.result); };
+      req.onerror = function(e){ reject(e.target.error); };
+    });
+  }
+  function loadHandle(){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var tx = db.transaction('handles', 'readonly');
+        var req = tx.objectStore('handles').get('fav-file');
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ resolve(null); };
+      });
+    }).catch(function(){ return null; });
+  }
+  function saveHandle(handle){
+    return openDB().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction('handles', 'readwrite');
+        tx.objectStore('handles').put(handle, 'fav-file');
+        tx.oncomplete = resolve;
+        tx.onerror = reject;
+      });
+    }).catch(function(){});
+  }
 
   function applyStar(star, isFav){
     star.textContent = isFav ? '★' : '☆';
@@ -121,32 +155,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
   function doSave(){
     var favs = buildFavs();
     var json = JSON.stringify(favs, null, 2);
-    var blob = new Blob([json], {type:'application/json;charset=utf-8'});
 
-    if(window.showSaveFilePicker && !/Firefox|Safari/.test(navigator.userAgent)){
-      if(savedFileHandle){
-        savedFileHandle.requestPermission({mode:'readwrite'}).then(function(p){
-          if(p!=='granted'){savedFileHandle=null;doSave();return;}
-          savedFileHandle.createWritable().then(function(w){w.write(json).then(function(){w.close();});});
-        });
-        return;
-      }
+    if(fileHandle){
+      fileHandle.requestPermission({mode:'readwrite'}).then(function(perm){
+        if(perm!=='granted'){fileHandle=null;doSave();return;}
+        fileHandle.createWritable().then(function(w){w.write(json).then(function(){w.close();});});
+      });
+      return;
+    }
+
+    if(window.showSaveFilePicker){
       window.showSaveFilePicker({suggestedName:'favorites.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
-        .then(function(h){savedFileHandle=h;return h.createWritable();})
-        .then(function(w){w.write(json).then(function(){w.close();});})
-        .catch(function(e){if(e.name==='AbortError')return;fallbackDownload(blob);});
+        .then(function(handle){fileHandle=handle;saveHandle(handle);return handle.createWritable();})
+        .then(function(w){return w.write(json).then(function(){w.close();});})
+        .catch(function(e){if(e.name==='AbortError')return;fallbackDownload(json);});
     } else {
-      fallbackDownload(blob);
+      fallbackDownload(json);
     }
   }
 
-  function fallbackDownload(blob){
+  function fallbackDownload(json){
+    var blob=new Blob([json],{type:'application/json;charset=utf-8'});
     var url=URL.createObjectURL(blob);
     var a=document.createElement('a');a.href=url;a.download='favorites.json';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }
 
+  /* 恢复星星 */
   stars.forEach(function(star,i){
     var key='fav_'+star.dataset.date+'_'+i;
     var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();
@@ -154,18 +190,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     else{applyStar(star,(star.getAttribute('data-star')||'')==='★');}
   });
 
+  /* 加载已保存的句柄 */
+  loadHandle().then(function(h){if(h)fileHandle=h;});
+
+  /* 绑定点击 */
   stars.forEach(function(star,i){
     star.onclick=function(e){
       e.stopPropagation();e.preventDefault();
-      applyStar(star,star.textContent!=='★');
+      var wasFav=star.textContent==='★';
+      applyStar(star,!wasFav);
       var key='fav_'+star.dataset.date+'_'+i;
-      if(star.textContent==='☆')localStorage.removeItem(key);
+      if(wasFav)localStorage.removeItem(key);
       else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));
+      if(!fileHandle&&window.showSaveFilePicker){doSave();return;}
       if(saveTimer)clearTimeout(saveTimer);
       saveTimer=setTimeout(doSave,SAVE_DELAY);
     };
   });
-  console.log('★ Stars loaded');
+  console.log('⭐ v11');
 })();
 </script>
 </body>
