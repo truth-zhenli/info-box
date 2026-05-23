@@ -8,7 +8,7 @@ Chinese will display correctly since the JSON is served as UTF-8.
 import os, json
 from datetime import datetime
 
-BASE = "/home/administrator/info-box"
+BASE = "/mnt/d/LZ&AI"
 
 quarters = [
     {"q": 1, "emoji": "🌸", "label": "一季度", "months": [1,2,3], "color": "#e91e63", "bg": "linear-gradient(135deg,#c2185b 0%,#e91e63 100%)", "monthNames": "1月 · 2月 · 3月"},

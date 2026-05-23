@@ -2,24 +2,19 @@
 """
 sync_stars.py — 将本地收藏星星刷入所有文献 HTML
 
-读取用户本地的 favorites.json（D:\LZ&AI\ 下），将 ★/☆ 状态刷入
-GitHub 仓库中所有现有的文献 HTML 文件。
+读取 D:\LZ&AI\favorites.json（Resilio Sync 同步），将 ★/☆ 状态刷入
+所有现有的文献 HTML 文件。
 
 用法:
   python3 scripts/sync_stars.py
-
-依赖:
-  - favorites.json 在 /mnt/d/LZ&AI/favorites.json
-  - 仓库在 /home/administrator/info-box/
 """
 
 import json
 import os
 import re
-import sys
 
 LOCAL_FAV_PATH = "/mnt/d/LZ&AI/favorites.json"
-REPO_BASE = "/home/administrator/info-box"
+REPO_BASE = "/mnt/d/LZ&AI"
 LITERATURE_DIR = os.path.join(REPO_BASE, "页面", "文献追踪")
 
 
