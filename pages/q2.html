@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❄️ 2026年四季度精选 - 碎片化信息盒</title>
+<title>☀️ 2026年二季度精选 - 碎片化信息盒</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}
 .container{max-width:900px;margin:0 auto}
-.header{background:linear-gradient(135deg,#0d47a1 0%,#1565c0 100%);color:#fff;padding:22px 26px;border-radius:14px;margin-bottom:18px}
+.header{background:linear-gradient(135deg,#e65100 0%,#ff6f00 100%);color:#fff;padding:22px 26px;border-radius:14px;margin-bottom:18px}
 .header h1{font-size:20px;font-weight:700}
 .header .sub{font-size:13px;opacity:.7;margin-top:3px}
 .nav-bar{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
 .nav-link{display:inline-block;padding:5px 10px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap}
 .nav-link:hover{background:#eef2f7;color:#1a1a2e}
-.nav-link.active{background:#1565c0;color:#fff;font-weight:600}
+.nav-link.active{background:#ff6f00;color:#fff;font-weight:600}
 .empty-tip{text-align:center;color:#ccc;font-size:14px;padding:60px 0}
 .empty-tip .big{font-size:48px;display:block;margin-bottom:12px}
-.paper-card{background:#fff;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #1565c0;position:relative}
-.paper-month-tag{position:absolute;top:12px;right:12px;background:#1565c0;color:#fff;font-size:11px;padding:2px 8px;border-radius:8px}
+.paper-card{background:#fff;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #ff6f00;position:relative}
+.paper-month-tag{position:absolute;top:12px;right:12px;background:#ff6f00;color:#fff;font-size:11px;padding:2px 8px;border-radius:8px}
 .paper-title{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;padding-right:60px}
 .paper-title a{color:#0f3460;text-decoration:none}
 .paper-title a:hover{text-decoration:underline}
 .paper-cn{font-size:12px;color:#666;margin-bottom:6px}
 .paper-meta{font-size:11px;color:#888;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:4px}
-.meta-tag{display:inline-block;background:#fce4ec;color:#1565c0;padding:2px 8px;border-radius:8px;font-size:11px}
+.meta-tag{display:inline-block;background:#fce4ec;color:#ff6f00;padding:2px 8px;border-radius:8px;font-size:11px}
 .paper-authors{font-size:11px;color:#999;margin-bottom:2px}
 .paper-date{font-size:11px;color:#aaa}
 .loading{text-align:center;color:#aaa;font-size:14px;padding:40px 0}
@@ -35,16 +35,16 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <body>
 <div class="container">
 <div class="header">
-  <h1>❄️ 2026年四季度精选</h1>
-  <div class="sub">10月 · 11月 · 12月</div>
+  <h1>☀️ 2026年二季度精选</h1>
+  <div class="sub">4月 · 5月 · 6月</div>
 </div>
 <div class="nav-bar">
-    <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
-    <a class="nav-link" href="文献追踪.html">📰 文献追踪</a>
-    <a class="nav-link " href="1季度精选.html">🌸 Q1</a>
-    <a class="nav-link " href="2季度精选.html">☀️ Q2</a>
-    <a class="nav-link " href="3季度精选.html">🍂 Q3</a>
-    <a class="nav-link active" href="4季度精选.html">❄️ Q4</a>
+    <a class="nav-link" href="../index.html">🏠 首页</a>
+    <a class="nav-link" href="papers.html">📰 文献追踪</a>
+    <a class="nav-link " href="q1.html">🌸 Q1</a>
+    <a class="nav-link active" href="q2.html">☀️ Q2</a>
+    <a class="nav-link " href="q3.html">🍂 Q3</a>
+    <a class="nav-link " href="q4.html">❄️ Q4</a>
 
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
@@ -53,7 +53,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 <script>
 (function(){
   var listEl = document.getElementById('list');
-  var allowedMonths = [10, 11, 12];
+  var allowedMonths = [4, 5, 6];
   var paperMap = {};
 
   function render(){

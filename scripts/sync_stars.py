@@ -13,9 +13,9 @@ import json
 import os
 import re
 
-LOCAL_FAV_PATH = "/mnt/d/LZ&AI/碎片化信息盒/favorites.json"
-REPO_BASE = "/mnt/d/LZ&AI/碎片化信息盒"
-LITERATURE_DIR = os.path.join(REPO_BASE, "页面", "文献追踪")
+LOCAL_FAV_PATH = "/mnt/d/LZ&AI/info-box/favorites.json"
+REPO_BASE = "/mnt/d/LZ&AI/info-box"
+LITERATURE_DIR = os.path.join(REPO_BASE, "pages", "papers")
 
 
 def load_favs():

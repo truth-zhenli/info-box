@@ -8,7 +8,7 @@ Chinese will display correctly since the JSON is served as UTF-8.
 import os, json
 from datetime import datetime
 
-BASE = "/mnt/d/LZ&AI/碎片化信息盒"
+BASE = "/mnt/d/LZ&AI/info-box"
 
 quarters = [
     {"q": 1, "emoji": "🌸", "label": "一季度", "months": [1,2,3], "color": "#e91e63", "bg": "linear-gradient(135deg,#c2185b 0%,#e91e63 100%)", "monthNames": "1月 · 2月 · 3月"},
@@ -34,7 +34,7 @@ for q in quarters:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{q["emoji"]} {year}年{q["label"]}精选 - 碎片化信息盒</title>
+<title>{q["emoji"]} {year}年{q["label"]}精选 - info-box</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}}
@@ -70,8 +70,8 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   <div class="sub">{q["monthNames"]}</div>
 </div>
 <div class="nav-bar">
-    <a class="nav-link" href="../碎片化信息盒.html">🏠 首页</a>
-    <a class="nav-link" href="文献追踪.html">📰 文献追踪</a>
+    <a class="nav-link" href="../index.html">🏠 首页</a>
+    <a class="nav-link" href="papers.html">📰 文献追踪</a>
 {nav_links}
   </div>
 <div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
@@ -160,7 +160,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 </body>
 </html>'''
 
-    out_path = os.path.join(BASE, "页面", f"{qi}季度精选.html")
+    out_path = os.path.join(BASE, "pages", f"{qi}季度精选.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✓ {qi}季度精选.html")
