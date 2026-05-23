@@ -25,7 +25,7 @@ for q in quarters:
     for oq in quarters:
         oqi = oq["q"]
         active = "active" if oqi == qi else ""
-        nav_links += f'    <a class="nav-link {active}" href="{oqi}季度精选.html">{oq["emoji"]} Q{oqi}</a>\n'
+        nav_links += f'    <a class="nav-link {active}" href="q{oqi}.html">{oq["emoji"]} {oq["label"]}</a>\n'
 
     year = datetime.now().year
 
@@ -151,7 +151,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   render();
 
   // 从 raw.githubusercontent.com 拉 JSON（无 atob，无乱码）
-  fetch('https://raw.githubusercontent.com/truth-zhenli/info-box/main/favorites.json?_=' + Date.now())
+  fetch('../favorites.json?_=' + Date.now())
     .then(function(r){{ return r.json(); }})
     .then(processFavs)
     .catch(function(){{}});
@@ -160,7 +160,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 </body>
 </html>'''
 
-    out_path = os.path.join(BASE, "pages", f"{qi}季度精选.html")
+    out_path = os.path.join(BASE, "pages", f"q{qi}.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✓ {qi}季度精选.html")
