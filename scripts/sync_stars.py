@@ -13,8 +13,8 @@ import json
 import os
 import re
 
-LOCAL_FAV_PATH = "/mnt/d/LZ&AI/favorites.json"
-REPO_BASE = "/mnt/d/LZ&AI"
+LOCAL_FAV_PATH = "/mnt/d/LZ&AI/碎片化信息盒/favorites.json"
+REPO_BASE = "/mnt/d/LZ&AI/碎片化信息盒"
 LITERATURE_DIR = os.path.join(REPO_BASE, "页面", "文献追踪")
 
 
