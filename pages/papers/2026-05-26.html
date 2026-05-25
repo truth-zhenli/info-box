@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日文献订阅 - 2026-05-26</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+
+/* Section dividers */
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-other{background:#f5f5f5;border:1px solid #e0e0e0}
+
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-other .section-title{border-left-color:#555}
+
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+
+.paper-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.paper-card{position:relative}
+.paper-card .star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer}
+
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px}
+.meta-oil{background:#d32f2f;color:#fff;font-weight:600}
+.meta-ai{background:#6a1b9a;color:#fff}
+.meta-md{background:#00695c;color:#fff}
+.meta-review{background:#e65100;color:#fff}
+
+.authors{font-size:12px;color:#999;margin-bottom:8px;line-height:1.4}
+
+.summary{font-size:13.5px;color:#333;line-height:1.8;margin-bottom:10px;background:#f8f9fa;padding:12px 14px;border-radius:8px;border-left:3px solid #1565c0;flex:1}
+
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.link-btn{display:inline-block;padding:5px 14px;border-radius:16px;font-size:12px;text-decoration:none;font-weight:500;transition:all .15s}
+.link-pdf{background:#d93025;color:#fff}
+.link-pdf:hover{background:#b3261e}
+.link-abs{background:#1565c0;color:#fff}
+.link-abs:hover{background:#0d47a1}
+
+.insight{background:#fff5f5;border-left:4px solid #d32f2f;padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12.5px;color:#b71c1c;line-height:1.65}
+.insight strong{color:#c62828}
+
+.footer{text-align:center;padding:24px;color:#aaa;font-size:12px;border-top:1px solid #eee;margin-top:36px}
+</style>
+</head>
+<body>
+<div style="max-width:1400px;width:96%;margin:0 auto;padding:20px 20px 0">
+<div style="background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center">
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../index.html">🏠 首页</a>
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../papers.html">📰 文献追踪</a>
+<span style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;color:#006064;background:#e0f2f1;font-weight:600;white-space:nowrap">📄 2026-05-26</span>
+</div>
+</div>
+<div class="container">
+<div class="header">
+<div class="sub">📚 每日文献订阅</div>
+<h1>人工智能 · 分子模拟 · 稠油开采</h1>
+<div class="date">📅 2026-05-26 | 共10篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">10</div><div class="label">论文</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">4</div><div class="label">🧪 分子模拟</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">📐 其他</div></div>
+</div>
+</div>
+
+<!-- ===================== OILFIELD ===================== -->
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学（重点标注）</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="0" data-date="2026-05-26" data-title="Thermo-electric-chemical synergy strategies for ultra-heavy oil recovery: field evidence from Chunhui Oilfield" data-link="https://link.springer.com/article/10.1186/s44147-026-01048-w" data-cn="热-电-化学协同策略用于超稠油开采：春晖油田现场证据" data-journal="Journal of Engineering and Applied Science" data-authors="H Yang, Z Li, Z Luo | Journal of Engineering and Applied Science (Springer) 2026" data-star="☆">☆</span><a href="https://link.springer.com/article/10.1186/s44147-026-01048-w" target="_blank">Thermo-electric-chemical synergy strategies for ultra-heavy oil recovery: field evidence from Chunhui Oilfield</a></div>
+<div class="paper-title-cn">热-电-化学协同策略用于超稠油开采：春晖油田现场证据</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag">Springer</span></div>
+<div class="authors">H Yang, Z Li, Z Luo | Journal of Engineering and Applied Science (Springer) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对新疆春晖油田浅层超稠油（粘度达百万厘泊）开采难题，系统分析了多轮次热采生产数据，创新性地在第三轮吞吐周期中为两口典型试验井（P1、P3）部署300 kW中频井筒电加热装置，加热段覆盖油层至井底（180-350 m），实时监测能耗、温度场演化和产油性能。<br><br>
+<strong>核心发现：</strong>（1）提出了"热电耦合"概念并定量化，引入综合能效系数描述蒸汽与电加热的协同效应；（2）现场数据揭示了一个关键的生产-温度响应拐点70-75°C——通过分段线性回归（F检验，P&lt;0.01，基于3口井126组有效生产数据）客观识别并验证，标志着原油流动从粘度主导变为流动性主导；（3）探索了低温阶段降粘剂的协同机制，提出"热采（蒸汽/电）为基础、化学增强为补充、接力式生产模式"的热-电-化学协同开发策略。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该文首次将井筒电加热与蒸汽吞吐结合形成热电耦合辅助模式，填补了浅层超稠油低温阶段化学降粘与热电辅助协同研究的空白。其发现的70-75°C流动性转变拐点和综合能效评价方法对你的稠油降粘剂/破乳剂研究有直接影响——降粘剂在低温段（低于拐点）的作用空间更大，可据此设计分段注入策略。此外，现场数据的系统分析方法论值得你在实验数据处理中借鉴。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://link.springer.com/article/10.1186/s44147-026-01048-w" target="_blank">📄 全文 (Springer)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="1" data-date="2026-05-26" data-title="INTERFACE TEMPERATURE AS PRIMARY UNKNOWN IN OPERATOR SPLITTING SCHEMES FOR NON-ISOTHERMAL FLOW" data-link="https://www.researchgate.net/profile/Helio-Souto/publication/405052480_INTERFACE_TEMPERATURE_AS_PRIMARY_UNKNOWN_IN_OPERATOR_SPLITTING_SCHEMES_FOR_NON-ISOTHERMAL_FLOW.pdf" data-cn="算子分裂方案中界面温度作为主要未知量的非等温流动模拟" data-journal="ResearchGate" data-authors="CEV da Veiga, R do Carmo Simplicio | ResearchGate 2026" data-star="☆">☆</span><a href="https://www.researchgate.net/profile/Helio-Souto/publication/405052480_INTERFACE_TEMPERATURE_AS_PRIMARY_UNKNOWN_IN_OPERATOR_SPLITTING_SCHEMES_FOR_NON-ISOTHERMAL_FLOW.pdf" target="_blank">INTERFACE TEMPERATURE AS PRIMARY UNKNOWN IN OPERATOR SPLITTING SCHEMES FOR NON-ISOTHERMAL FLOW</a></div>
+<div class="paper-title-cn">算子分裂方案中界面温度作为主要未知量的非等温稠油流动模拟方法</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag">ResearchGate</span></div>
+<div class="authors">CEV da Veiga, R do Carmo Simplicio | ResearchGate 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对稠油油藏非等温流动的数值模拟需求，开发了一种将界面温度作为主要未知量的算子分裂数值方案。方法整合了控制体积-有限差分（CV-FD）方法，将非等温稠油流动的能量方程和动量方程通过算子分裂策略解耦求解，其中界面温度作为关键耦合变量。<br><br>
+<strong>核心创新：</strong>（1）将界面温度提升为主要未知量而非传统方法中的辅助变量，提高了温度-粘度耦合求解的精度和稳定性；（2）算子分裂方案允许对热传导和对流项采用不同的时间步长，显著提升计算效率；（3）在多种稠油油藏操作条件（注蒸汽温度、注入速率、生产压差等）下测试了模拟器的鲁棒性，验证了方法对高粘度比（稠油vs热水）极端条件下的适应性。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该文的数值方法直接服务于稠油热采模拟——非等温流动中温度-粘度耦合是核心物理过程。对于你的分子模拟研究，虽然尺度不同（宏观vs分子），但界面温度作为耦合变量的概念可启发你在MD模拟中处理油-水界面温度梯度问题。此外，算子分裂的思想也可用于多尺度模拟中的时间步长优化。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.researchgate.net/profile/Helio-Souto/publication/405052480_INTERFACE_TEMPERATURE_AS_PRIMARY_UNKNOWN_IN_OPERATOR_SPLITTING_SCHEMES_FOR_NON-ISOTHERMAL_FLOW.pdf" target="_blank">📄 全文 (ResearchGate PDF)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== AI/ML ===================== -->
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML方法</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="2" data-date="2026-05-26" data-title="Geometry-Informed AI for Scientific Discovery" data-link="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_23_weber.pdf" data-cn="几何知识驱动的AI科学发现" data-journal="Daedalus" data-authors="M Weber | Daedalus (American Academy of Arts & Sciences) 2026" data-star="☆">☆</span><a href="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_23_weber.pdf" target="_blank">Geometry-Informed AI for Scientific Discovery</a></div>
+<div class="paper-title-cn">几何知识驱动的AI科学发现</div>
+<div class="paper-meta"><span class="meta-tag meta-review">综述</span><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">Daedalus</span></div>
+<div class="authors">M Weber | Daedalus (American Academy of Arts & Sciences) 2026</div>
+<div class="summary">
+<strong>文章内容：</strong>这篇发表于Daedalus（美国人文与科学院院刊）的4页短论提出了一条不同于大模型范式的AI科学发现路径——几何知识驱动AI（Geometry-Informed AI）。核心主张：当前基于Transformer的AI模型虽强大但数据/计算需求极高且缺乏可解释性，而几何知识驱动的AI通过将已知几何结构（对称性、物理定律、低维流形）直接编码进模型架构，能够产生更小、更高效、更具可解释性的模型。<br><br>
+<strong>具体应用案例：</strong>（1）等变模型用于材料发现（将分子对称性嵌入GNN）；（2）物理信息驱动的天气预报；（3）几何单细胞数据分析（发育谱系追踪）；（4）可解释性星系表征用于天文学；（5）几何感知的cryo-EM三维重构用于结构生物学。最后讨论了数学与AI的双向关系——数学原理改进AI，AI工具辅助数学发现。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>"几何知识驱动"的理念对稠油分子模拟有直接启示——沥青质分子的π-π堆积、烷基链空间构象、油水界面曲率等都具有明确的几何结构，将这些几何先验编码进机器学习模型可大幅提升小样本下的预测能力。文章提出的"等变模型"（equivariant model）思路可应用于稠油分子构效关系建模。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_23_weber.pdf" target="_blank">📄 全文 (Daedalus PDF)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="3" data-date="2026-05-26" data-title="AI & the Discovery of Molecules through Autonomous Laboratories" data-link="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_25_coley.pdf" data-cn="AI与自主实验室驱动的分子发现" data-journal="Daedalus" data-authors="C Coley | Daedalus (American Academy of Arts & Sciences) 2026" data-star="☆">☆</span><a href="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_25_coley.pdf" target="_blank">AI & the Discovery of Molecules through Autonomous Laboratories</a></div>
+<div class="paper-title-cn">AI与自主实验室驱动的分子发现</div>
+<div class="paper-meta"><span class="meta-tag meta-review">综述</span><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">Daedalus</span></div>
+<div class="authors">C Coley | Daedalus (American Academy of Arts & Sciences) 2026</div>
+<div class="summary">
+<strong>文章内容：</strong>MIT Connor Coley团队在Daedalus发表的前瞻性论述，聚焦AI分子设计中的"执行鸿沟"（execution gap）问题——AI加速了分子设计，但瓶颈转移到物理合成与测试环节，许多AI设计的分子需要数月才能合成且实际性能不达预期。自主实验室（autonomous laboratories）被定位为弥合数字设计与物理实验之间鸿沟的"具身AI系统"。<br><br>
+<strong>三个攻关方向：</strong>（1）更好的合成路径规划——AI不仅要设计分子，还要规划可实现的合成路线；（2）更丰富的实时感知——在实验过程中进行原位表征和实时反馈；（3）仪器协调与故障自适应调度系统。成功指标并非吞吐量，而是自主实验室在多紧设计-测试循环中加速学习的效率。展望了未来场景：实验室从每个实验中学习，自主运行，人类科学家专注于目标设定和伦理把关。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>"执行鸿沟"的概念同样适用于油田化学药剂开发——AI可以快速设计降粘剂/破乳剂分子，但合成和性能测试是瓶颈。自主实验室理念启发你思考：能否构建油田化学的高通量实验-模拟闭环？MD模拟预测→合成验证→反馈优化的迭代流程正是这一理念的小尺度实现。该文提出的合成路径规划思路对药剂分子可合成性评估有参考价值。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_25_coley.pdf" target="_blank">📄 全文 (Daedalus PDF)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="4" data-date="2026-05-26" data-title="Large-scale screening of high-entropy materials for superionic solid electrolytes" data-link="https://www.nature.com/articles/s41524-026-02116-8" data-cn="高通量筛选高熵材料用于超离子固态电解质" data-journal="npj Computational Materials" data-authors="J Choi, Y Jung | npj Computational Materials (Nature) 2026" data-star="☆">☆</span><a href="https://www.nature.com/articles/s41524-026-02116-8" target="_blank">Large-scale screening of high-entropy materials for superionic solid electrolytes</a></div>
+<div class="paper-title-cn">高通量筛选高熵材料用于超离子固态电解质</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag">npj Computational Materials</span></div>
+<div class="authors">J Choi, Y Jung | npj Computational Materials (Nature) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对固态电解质离子电导率偏低的应用瓶颈，系统研究了高熵材料（HEMs）作为提升离子电导率的组合策略。开发了一个迭代搜索框架，以93种已知锂离子导体为结构原型，通过高效识别化学兼容的替代元素，系统生成了113,098种高熵材料候选。<br><br>
+<strong>方法亮点：</strong>（1）逐步识别和替代元素的方案实现了对高熵组分空间的高效全覆盖；（2）采用机器学习模型与密度泛函理论（DFT）计算的组合策略系统筛选关键性质；（3）发现8种具有优异离子电导率的卤化物候选材料，并通过分子动力学（MD）模拟进一步验证。突出了高熵策略作为固态电解质优化方案的重要潜力。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该文"机器学习筛选→DFT验证→MD模拟确认"的迭代筛选策略可直接参考。在稠油化学中，类似的框架可用于从大量候选表面活性剂/降粘剂分子结构中快速筛选最优候选分子的组合策略。高熵概念虽针对固态电解质，但其"组合优化"的思想可用于油田化学药剂配方的多组分协同优化。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.nature.com/articles/s41524-026-02116-8" target="_blank">📄 全文 (Nature)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== MOLECULAR SIMULATION ===================== -->
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟与力场方法</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="5" data-date="2026-05-26" data-title="Accelerating molecular dynamics simulations using fast Ewald summation with prolates" data-link="https://www.nature.com/articles/s41467-026-73232-8" data-cn="利用扁球面波函数快速Ewald求和加速分子动力学模拟" data-journal="Nature Communications" data-authors="J Liang, L Lu, A Barnett, L Greengard, S Jiang | Nature Communications 2026" data-star="☆">☆</span><a href="https://www.nature.com/articles/s41467-026-73232-8" target="_blank">Accelerating molecular dynamics simulations using fast Ewald summation with prolates</a></div>
+<div class="paper-title-cn">利用扁球面波函数快速Ewald求和加速分子动力学模拟</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Nature Communications</span></div>
+<div class="authors">J Liang, L Lu, A Barnett, L Greengard, S Jiang | Nature Communications 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>长程库仑相互作用（静电）的计算是分子动力学（MD）的主要计算成本，即使使用PME（Particle Mesh Ewald）或PPPM（Particle-Particle-Particle-Mesh）方法亦然。该工作提出了ESP方法（Ewald Summation with Prolate spheroidal wave functions），利用扁球面波函数实现更高效的傅里叶表示，显著降低所需网格尺寸、全局通信和粒子-网格操作量，且不损失精度。<br><br>
+<strong>核心突破：</strong>（1）将ESP方法集成到LAMMPS和GROMACS两大主流开源MD软件包中；（2）在误差容限10⁻³-10⁻⁴下，静电相互作用加速约3倍，MD模拟整体加速约2.5倍（使用~10³核心）；（3）在10⁻⁵高精度下，远场静电力加速达到10倍，MD加速5倍；（4）改良代码在核心数增加时具有更好的强扩展性，并在长时间生物和材料模拟中得到验证。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该文方法直接提升MD模拟效率，对你使用LAMMPS/GROMACS进行稠油沥青质、油水界面等大体系模拟有实际意义。ESP方法已集成到LAMMPS和GROMACS中，可直接部署使用。如果你的模拟体系包含带电表面活性剂/破乳剂分子或带电矿物表面，长程静电计算将显著加速。特别推荐关注其高精度模式（10⁻⁵误差容限）——在计算界面张力等对静电力敏感的物理量时，可在可接受的额外成本下获得更高精度。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.nature.com/articles/s41467-026-73232-8" target="_blank">📄 全文 (Nature)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="6" data-date="2026-05-26" data-title="Computational freezing of pentadecane" data-link="https://www.sciencedirect.com/science/article/pii/S0927025626002697" data-cn="十五烷的计算机结晶模拟" data-journal="Computational Materials Science" data-authors="S Tsibranska-Gyoreva, S Iliev, D Cholakova, A Ivanova | Computational Materials Science (Elsevier) 2026" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0927025626002697" target="_blank">Computational freezing of pentadecane</a></div>
+<div class="paper-title-cn">十五烷的计算机结晶模拟</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Computational Materials Science</span></div>
+<div class="authors">S Tsibranska-Gyoreva, S Iliev, D Cholakova, A Ivanova | Computational Materials Science (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>采用分子动力学模拟研究了含十五烷（C₁₅H₃₂）体系的结晶过程。从晶体学数据构建了参考晶相和旋转相（rotator phase）结构，作为基准评估自发结晶形成的结构。模拟跟踪了从无序液态到有序晶态的完整相变路径，揭示了烷烃链的取向有序化和层状堆叠的动力学过程。<br><br>
+<strong>核心发现：</strong>（1）十五烷的结晶经历了中间旋转相——链轴方向有序但链间旋转无序的过渡态，这与实验观察到的"旋转相"一致；（2）模拟再现了实验测得的晶格参数和相变温度，验证了力场模型对长链烷烃结晶行为的描述能力；（3）揭示了结晶动力学高度依赖于冷却速率——快速冷却导致非晶态或缺陷晶相，慢速冷却促进完美晶格形成。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>十五烷作为长链烷烃模型，其结晶行为的MD模拟方法论可直接迁移到稠油蜡晶析出研究。稠油中蜡晶的形成是影响流变性的关键因素，该文关于旋转相中间态和冷却速率对结晶质量影响的发现，对你理解稠油中蜡晶的微观结构（正构烷烃链取向和堆叠方式）有直接的类比参考价值。力场选择和模拟方案设置也可直接借鉴。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S0927025626002697" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="7" data-date="2026-05-26" data-title="Molecular Simulation Study of CH4 Adsorption and CO2 Sequestration in Montmorillonite" data-link="https://www.sciencedirect.com/science/article/pii/S2949891026002204" data-cn="蒙脱石中CH₄吸附与CO₂埋存的分子模拟研究" data-journal="Geoenergy Science and Engineering" data-authors="J Chen, X Yang, X Zhang, Y Wang, X Huo, H Pang | Geoenergy Science and Engineering (Elsevier) 2026" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S2949891026002204" target="_blank">Molecular Simulation Study of CH4 Adsorption and CO2 Sequestration in Montmorillonite</a></div>
+<div class="paper-title-cn">蒙脱石中CH₄吸附与CO₂埋存的分子模拟研究</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Geoenergy Science and Engineering</span></div>
+<div class="authors">J Chen, X Yang, X Zhang, Y Wang, X Huo, H Pang | Geoenergy Science and Engineering (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>结合辽河坳陷实际地质场景，借助分子模拟技术研究了蒙脱石（蒙皂石族黏土矿物）中CH₄吸附和CO₂封存的微观机制。构建了不同水化状态（0-12个水分子/层间）的蒙脱石层间模型，通过GCMC和MD模拟揭示了层间水含量对气体吸附行为的调控规律。<br><br>
+<strong>核心发现：</strong>（1）0-12个水分子范围被确定为气体吸附最敏感的水化区间——水分子占据层间空间后显著改变CH₄的吸附位点和吸附能；（2）CO₂在蒙脱石层间具有比CH₄更强的吸附亲和力，验证了CO₂驱替CH₄（CO₂-ECBM）的可行性；（3）层间阳离子（Na⁺, Ca²⁺）的类型和价态对CO₂吸附容量有显著影响，高价阳离子（Ca²⁺）促进CO₂吸附。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>蒙脱石是储层中最重要的黏土矿物之一，其层间结构和表面性质直接影响稠油开采中的润湿性和驱替效率。该文关于层间水分子对气体吸附调控的发现——特别是最敏感水化区间的概念——对理解稠油储层中黏土矿物-原油-水三相相互作用有重要参考价值。GCMC+MD联合研究吸附的方法论可直接迁移到沥青质在黏土矿物表面吸附的研究中。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S2949891026002204" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="8" data-date="2026-05-26" data-title="Study of Rock-Dust Composite Wetting-Type Dust Suppressants Based on Molecular Dynamics Simulations" data-link="https://www.sciencedirect.com/science/article/pii/S0957582026006464" data-cn="基于分子动力学模拟的岩尘复合润湿型抑尘剂研究" data-journal="Process Safety and Environmental Protection" data-authors="M Wang, J Chen, J Li, X Gao, Z Wan, W Qiao, T Li | Process Safety and Environmental Protection (Elsevier) 2026" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0957582026006464" target="_blank">Study of Rock-Dust Composite Wetting-Type Dust Suppressants Based on Molecular Dynamics Simulations</a></div>
+<div class="paper-title-cn">基于分子动力学模拟的岩尘复合润湿型抑尘剂研究</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Process Safety and Environmental Protection</span></div>
+<div class="authors">M Wang, J Chen, J Li, X Gao, Z Wan, W Qiao, T Li | Process Safety and Environmental Protection (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对现有岩尘抑尘剂润湿性和保水性差的问题，研发了一种高效长效的复合抑尘剂，并利用分子动力学模拟揭示了其微观润湿机制。通过MD模拟分析了表面活性剂分子在岩尘表面的吸附构型、吸附能和润湿角变化，从分子层面解释了复合抑尘剂改善润湿性的机理。<br><br>
+<strong>核心发现：</strong>（1）复合抑尘剂中表面活性剂分子的亲水头基与矿物表面形成氢键网络，疏水尾链暴露形成有序的类Langmuir-Blodgett膜结构；（2）表面活性剂在岩尘表面的吸附显著降低了固-液界面张力，使接触角从112°降至32°；（3）聚合物组分的加入通过空间位阻效应延缓了水分蒸发，将保水时间延长3-4倍。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该文MD模拟表面活性剂在固体表面吸附的方法论与稠油化学密切相关——降粘剂/破乳剂在油-水-岩石三相界面的吸附行为是核心问题。其发现的表面活性剂头基-矿物氢键吸附机制和疏水尾链自组装结构的分析方法，可直接应用于研究破乳剂在油水界面的吸附和排列行为。此外，"实验合成+MD机理揭示+性能验证"的研究范式也值得采纳。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S0957582026006464" target="_blank">📄 全文 (ScienceDirect)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== OTHER ===================== -->
+<div class="section-wrap section-other">
+<h2 class="section-title">📐 其他</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-file-fav="false" data-idx="9" data-date="2026-05-26" data-title="Molecular Simulation Study on Adsorption and Diffusion Characteristics of CH4 in Cylindrical/Slit Pores of Lignite" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c01323" data-cn="褐煤圆柱/狭缝孔隙中CH₄吸附与扩散特性的分子模拟研究" data-journal="Langmuir" data-authors="B Jia, J Lin, X Mao, D Zhang, H Zhang | Langmuir (ACS) 2026" data-star="☆">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c01323" target="_blank">Molecular Simulation Study on Adsorption and Diffusion Characteristics of CH4 in Cylindrical/Slit Pores of Lignite</a></div>
+<div class="paper-title-cn">褐煤圆柱/狭缝孔隙中CH₄吸附与扩散特性的分子模拟研究</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Langmuir</span></div>
+<div class="authors">B Jia, J Lin, X Mao, D Zhang, H Zhang | Langmuir (ACS) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>采用GCMC和分子动力学模拟（Materials Studio），系统研究了褐煤中不同孔隙几何形状（圆柱形vs狭缝形）和孔径（1、3、5 nm）对CH₄吸附和扩散特性的影响。特别关注了含氧官能团（C=O、C-O-C、-OH）在不同孔隙构型中的差异化作用。<br><br>
+<strong>核心发现：</strong>（1）狭缝孔比圆柱孔更有利于CH₄吸附（比表面积更大）；（2）圆柱孔的等温吸附热比狭缝孔高1.3-1.4倍，体现了更强的气-固相互作用；（3）含氧官能团与CH₄的相互作用强度排序：C=O > C-O-C > -OH；（4）CH₄在狭缝孔中的扩散系数是圆柱孔的1.3-3.5倍；（5）CH₄在褐煤孔隙中呈现过渡扩散和Knudsen流的混合传输机制。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>孔隙几何形状对流体行为的差异化影响是该文的核心方法论亮点——"圆柱vs狭缝"的对比分析范式可直接迁移到稠油在储层纳米孔隙（黏土矿物层间、有机质纳米孔）中的存储和传输行为研究。其含氧官能团-气体分子相互作用能排序方法也为评价稠油中极性组分与矿物表面的相互作用提供了分析框架。Materials Studio参数设置（力场、截止半径）可作为参考。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c01323" target="_blank">📄 全文 (ACS)</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+<p>Hermes Agent 每日自动检索 · 30个固定关键词 · Google Scholar</p>
+<p>期刊过滤: ACS / Nature / Science / Wiley / RSC / Elsevier / AIP·APS / Springer / arXiv | 仅供学术研究使用</p>
+</div>
+</div>
+
+<br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../index.html" style="color:#999;font-size:12px;text-decoration:none">← 返回首页</a></div>
+<script>
+/* ★ 收藏功能 v12 — 读取+合并+写入，不丢数据 */
+(function(){
+  var stars = document.querySelectorAll('.star-btn');
+  if(!stars.length) return;
+
+  var SAVE_DELAY = 2000;
+  var saveTimer = null;
+  var fileHandle = null;
+
+  /* IndexedDB */
+  function openDB(){
+    return new Promise(function(res, rej){
+      var req = indexedDB.open('star-fav-handle', 1);
+      req.onupgradeneeded = function(e){
+        var db = e.target.result;
+        if(!db.objectStoreNames.contains('handles')) db.createObjectStore('handles');
+      };
+      req.onsuccess = function(e){ res(e.target.result); };
+      req.onerror = function(e){ rej(e.target.error); };
+    });
+  }
+  function loadHandle(){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var tx = db.transaction('handles','readonly');
+        var req = tx.objectStore('handles').get('fav-file');
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ resolve(null); };
+      });
+    }).catch(function(){ return null; });
+  }
+  function saveHandle(handle){
+    return openDB().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction('handles','readwrite');
+        tx.objectStore('handles').put(handle, 'fav-file');
+        tx.oncomplete = resolve; tx.onerror = reject;
+      });
+    }).catch(function(){});
+  }
+
+  function readFile(handle){
+    return handle.getFile().then(function(f){ return f.text(); }).then(function(t){
+      try{return JSON.parse(t);}catch(e){return [];}
+    }).catch(function(){return [];});
+  }
+  function writeFile(handle, data){
+    var json = JSON.stringify(data, null, 2);
+    return handle.requestPermission({mode:'readwrite'}).then(function(p){
+      if(p!=='granted') throw new Error('denied');
+      return handle.createWritable();
+    }).then(function(w){return w.write(json).then(function(){return w.close();});});
+  }
+
+  function mergeStars(master){
+    if(!master) master = [];
+    var map = {}; master.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+    stars.forEach(function(s){
+      var k = s.dataset.title+'|||'+s.dataset.link;
+      var f = s.textContent === '★';
+      if(map[k]){ map[k].starred = f; }
+      else {
+        map[k] = {title:s.dataset.title,link:s.dataset.link,cnTitle:s.dataset.cn||'',journal:s.dataset.journal||'',authors:s.dataset.authors||'',date:s.dataset.date||'',starred:f};
+      }
+    });
+    return Object.values(map);
+  }
+
+  function doSave(){
+    if(!fileHandle) return;
+    readFile(fileHandle).then(function(ex){
+      return writeFile(fileHandle, mergeStars(ex));
+    }).catch(function(){});
+  }
+
+  function setupHandle(){
+    return window.showSaveFilePicker({suggestedName:'favorites.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
+      .then(function(h){fileHandle=h;saveHandle(h);return readFile(h);})
+      .then(function(ex){return writeFile(fileHandle, mergeStars(ex));})
+      .catch(function(e){if(e.name==='AbortError')return;fallback();});
+  }
+
+  function fallback(){
+    var data = mergeStars([]); var json = JSON.stringify(data,null,2);
+    var blob = new Blob([json],{type:'application/json;charset=utf-8'});
+    var url = URL.createObjectURL(blob); var a = document.createElement('a');
+    a.href = url; a.download = 'favorites.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},2000);
+    alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
+  }
+
+  function applyStar(star, isFav){
+    star.textContent = isFav ? '★' : '☆';
+    star.style.color = isFav ? '#f5a623' : '#ccc';
+    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+    star.title = isFav ? '已收藏' : '点击收藏';
+  }
+
+  /* 恢复星星 */
+  stars.forEach(function(star,i){
+    var key='fav_'+star.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();
+    if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}
+    else{applyStar(star,(star.getAttribute('data-star')||'')==='★');}
+  });
+
+  /* 加载句柄，同步数据 */
+  loadHandle().then(function(h){
+    if(!h) return;
+    fileHandle = h;
+    readFile(h).then(function(ex){
+      var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+      stars.forEach(function(star,i){
+        var k = star.dataset.title+'|||'+star.dataset.link;
+        if(map[k]){
+          applyStar(star, map[k].starred === true);
+          var lk = 'fav_'+star.dataset.date+'_'+i;
+          if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
+          else localStorage.removeItem(lk);
+        }
+      });
+    }).catch(function(){});
+  });
+
+  /* 绑定点击 */
+  stars.forEach(function(star,i){
+    star.onclick=function(e){
+      e.stopPropagation();e.preventDefault();
+      var wasFav=star.textContent==='★';
+      applyStar(star,!wasFav);
+      var key='fav_'+star.dataset.date+'_'+i;
+      if(wasFav)localStorage.removeItem(key);
+      else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));
+      if(!fileHandle&&window.showSaveFilePicker){setupHandle();return;}
+      if(!fileHandle){fallback();return;}
+      if(saveTimer)clearTimeout(saveTimer);
+      saveTimer=setTimeout(doSave,SAVE_DELAY);
+    };
+  });
+  console.log('⭐ v12');
+})();
+</script>
+</body>
+</html>
