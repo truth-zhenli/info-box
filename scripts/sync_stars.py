@@ -1,154 +1,200 @@
 #!/usr/bin/env python3
 """
-sync_stars.py — 将本地收藏星星刷入所有文献 HTML
-
-读取 D:\LZ&AI\favorites.json（Resilio Sync 同步），将 ★/☆ 状态刷入
-所有现有的文献 HTML 文件。
-
-用法:
-  python3 scripts/sync_stars.py
+⭐ Star Syncer — 读取 Resilio Sync 同步来的 favorites.json，
+   与 git HEAD 版本合并（HEAD为主，新收藏叠加），
+   更新所有 HTML 星星状态，重新生成季度精选。
+   
+   重要：不修改 WSL 上的 favorites.json（避免与 Resilio Sync 冲突）
 """
-
 import json
-import os
+import subprocess
+import sys
 import re
+from pathlib import Path
 
-LOCAL_FAV_PATH = "/mnt/d/LZ&AI/info-box/favorites.json"
-REPO_BASE = "/mnt/d/LZ&AI/info-box"
-LITERATURE_DIR = os.path.join(REPO_BASE, "pages", "papers")
+REPO_DIR = Path(__file__).resolve().parent.parent
+FAV_JSON = REPO_DIR / "favorites.json"
+PAPERS_DIR = REPO_DIR / "pages" / "papers"
 
+def get_git_head_favs():
+    try:
+        out = subprocess.check_output(
+            ["git", "show", "HEAD:favorites.json"],
+            cwd=str(REPO_DIR), stderr=subprocess.DEVNULL
+        )
+        return json.loads(out)
+    except (subprocess.CalledProcessError, json.JSONDecodeError):
+        return []
 
-def load_favs():
-    """加载本地 favorites.json，返回完整数据 + lookup map。"""
-    if not os.path.exists(LOCAL_FAV_PATH):
-        print(f"⚠️ 本地 favorites.json 不存在: {LOCAL_FAV_PATH}")
-        print(f"   从仓库复制一份作为初始版本。")
-        return _copy_from_repo()
+def get_disk_favs():
+    if not FAV_JSON.exists():
+        return []
+    with open(FAV_JSON, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-    with open(LOCAL_FAV_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+def merge_favs(head, disk):
+    """HEAD为主，disk中新收藏叠加"""
+    head_idx = {i["title"] + "|||" + i["link"]: i for i in head}
+    disk_idx = {i["title"] + "|||" + i["link"]: i for i in disk}
+    
+    merged = []
+    for key, item in head_idx.items():
+        if key in disk_idx and disk_idx[key].get("starred"):
+            item["starred"] = True
+        merged.append(item)
+    
+    seen = {i["title"] + "|||" + i["link"] for i in merged}
+    for key, item in disk_idx.items():
+        if key not in seen:
+            merged.append(item)
+            seen.add(key)
+    
+    return merged
 
-    fav_map = {}
-    for item in data:
-        key = f"{item.get('title','')}|||{item.get('link','')}"
-        fav_map[key] = item.get("starred", False)
+def get_html_files():
+    """扫描所有日期HTML文件"""
+    files = []
+    # 扫描 pages/papers/YYYY/MM/YYYY-MM-DD.html
+    for f in sorted(PAPERS_DIR.rglob("????/??/????-??-??.html")):
+        if f.suffix == ".html":
+            files.append(f)
+    # 也扫描平铺的旧路径
+    for f in sorted(PAPERS_DIR.parent.glob("????-??-??.html")):
+        if f.name not in [p.name for p in files]:
+            files.append(f)
+    return files
 
-    print(f"📖 读取本地 favorites.json: {len(data)} 条")
-    return data, fav_map
+def update_html_stars(html_path, fav_map):
+    """在 HTML 中更新 data-star 属性"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    orig = content
+    for link, should_star in fav_map.items():
+        if link not in content:
+            continue
+        
+        idx = content.find(link)
+        star_start = content.rfind('<span class="star-btn"', 0, idx)
+        if star_start == -1:
+            continue
+        
+        star_end = content.find("</span>", star_start)
+        block = content[star_start:star_end]
+        
+        new_char = "★" if should_star else "☆"
+        
+        # 替换 data-star 属性值
+        if 'data-star="★"' in block:
+            content = content[:star_start] + block.replace('data-star="★"', f'data-star="{new_char}"') + content[star_end:]
+        elif 'data-star="☆"' in block:
+            content = content[:star_start] + block.replace('data-star="☆"', f'data-star="{new_char}"') + content[star_end:]
+        
+        # 替换显示字符（>★< 或 >☆<）
+        star_end2 = content.find("</span>", star_start)
+        block2 = content[star_start:star_end2]
+        last_gt = block2.rfind(">")
+        old_d = block2[last_gt+1:]
+        if old_d in ("★", "☆"):
+            content = content[:star_start+last_gt+1] + new_char + content[star_start+last_gt+2:]
+    
+    if content != orig:
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True, len(re.findall(r'data-star="★"', content))
+    return False, len(re.findall(r'data-star="★"', content))
 
-
-def _copy_from_repo():
-    """仓库版复制到本地（首次使用）。"""
-    repo_fav = os.path.join(REPO_BASE, "favorites.json")
-    if not os.path.exists(repo_fav):
-        print("⚠️ 仓库也没有 favorites.json，跳过")
-        return [], {}
-
-    with open(repo_fav, "r", encoding="utf-8") as src:
-        data = json.load(src)
-
-    os.makedirs(os.path.dirname(LOCAL_FAV_PATH), exist_ok=True)
-    with open(LOCAL_FAV_PATH, "w", encoding="utf-8") as dst:
-        json.dump(data, dst, ensure_ascii=False, indent=2)
-
-    print(f"📋 从仓库复制到本地: {len(data)} 条")
-    fav_map = {}
-    for item in data:
-        key = f"{item.get('title','')}|||{item.get('link','')}"
-        fav_map[key] = item.get("starred", False)
-    return data, fav_map
-
-
-def star_state(fav_map, title, link):
-    key = f"{title}|||{link}"
-    return "★" if fav_map.get(key) else "☆"
-
-
-def sync_file(filepath, fav_map):
-    """同步单个 HTML 文件的星星状态。返回是否修改。"""
-    with open(filepath, "r", encoding="utf-8") as f:
-        html = f.read()
-
-    original = html
-    changes = 0
-
-    # Match star-btn and update both textContent AND data-star attribute
-    # Pattern: <span class="star-btn" ...>★</span> or ☆
-    pattern = r'(<span class="star-btn"[^>]*?)>([★☆])(</span>)'
-
-    def repl(m):
-        nonlocal changes
-        prefix = m.group(1)  # everything before >
-        current = m.group(2)
-        suffix = m.group(3)
-
-        # Extract title and link from data attributes
-        title_match = re.search(r'data-title="([^"]*?)"', prefix)
-        link_match = re.search(r'data-link="([^"]*?)"', prefix)
-        title = title_match.group(1) if title_match else ""
-        link = link_match.group(1) if link_match else ""
-
-        wanted = star_state(fav_map, title, link)
-        if wanted != current:
-            changes += 1
-
-        # Always ensure data-star attribute is set
-        if 'data-star="' in prefix:
-            prefix = re.sub(r'data-star="[★☆]"', f'data-star="{wanted}"', prefix)
-        else:
-            prefix += f' data-star="{wanted}"'
-
-        return f"{prefix}>{wanted}{suffix}"
-
-    html = re.sub(pattern, repl, html)
-
-    if html != original:
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(html)
-        name = os.path.basename(filepath)
-        print(f"  ✏️ {name}: 更新 {changes} 个星星")
-        return True
-    return False
-
+def update_papers_html_count():
+    """更新 papers.html 中的论文统计计数"""
+    papers_file = REPO_DIR / "pages" / "papers.html"
+    if not papers_file.exists():
+        return
+    
+    # 读取所有日期页面，统计每页论文数
+    date_counts = {}
+    for f in sorted(PAPERS_DIR.rglob("????/??/????-??-??.html")):
+        if f.suffix != ".html":
+            continue
+        date_str = f.stem  # YYYY-MM-DD
+        with open(f, "r", encoding="utf-8") as fh:
+            content = fh.read()
+        # 统计论文卡片数：通过 star-btn 数量
+        count = content.count('<span class="star-btn"')
+        date_counts[date_str] = count
+    
+    with open(papers_file, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    orig = content
+    for date_str, count in date_counts.items():
+        # 更新 papers:X 字段
+        old = f'date:"{date_str}", title:"', 
+        pattern = rf'date:"{re.escape(date_str)}",[^}}]*papers:(\d+)'
+        m = re.search(pattern, content)
+        if m and int(m.group(1)) != count:
+            content = content.replace(
+                f'date:"{date_str}", title:"',
+                f'date:"{date_str}", papers:{count}, title:"',
+                1
+            ) if 'papers:' not in content[content.find(f'date:"{date_str}"'):content.find(f'date:"{date_str}"')+80] else content
+    
+    if content != orig:
+        # Simple approach: just find and replace the papers count
+        pass  # Skip for now - papers count is a nice-to-have
 
 def main():
     print("=" * 40)
     print("⭐ Star Syncer")
     print("=" * 40)
-
-    data, fav_map = load_favs()
-    if not fav_map:
-        print("⚠️ 无收藏数据，跳过")
+    
+    head = get_git_head_favs()
+    disk = get_disk_favs()
+    
+    print(f"📖 git HEAD: {len(head)} 条")
+    print(f"📖 工作副本: {len(disk)} 条")
+    
+    if not head and not disk:
+        print("❌ 无可用的 favorites.json")
         return
-
-    # 扫描所有文献 HTML
-    if not os.path.exists(LITERATURE_DIR):
-        print(f"⚠️ 找不到文献目录: {LITERATURE_DIR}")
-        return
-
-    html_files = []
-    for root, dirs, files in os.walk(LITERATURE_DIR):
-        for f in files:
-            if f.endswith(".html"):
-                html_files.append(os.path.join(root, f))
-
-    if not html_files:
-        print("⚠️ 没有 HTML 文件")
-        return
-
-    print(f"🔍 扫描到 {len(html_files)} 个 HTML 文件")
-    changed = 0
-    for fp in sorted(html_files):
-        if sync_file(fp, fav_map):
-            changed += 1
-    print(f"✅ {changed}/{len(html_files)} 个文件有更新")
-
-    # 同步 favorites.json 到仓库
-    repo_fav = os.path.join(REPO_BASE, "favorites.json")
-    with open(repo_fav, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"📋 favorites.json 已同步到仓库 ({len(data)} 条)")
-
+    
+    merged = merge_favs(head, disk)
+    starred = [i for i in merged if i.get("starred")]
+    print(f"📝 合并: {len(merged)} 条, 收藏 {len(starred)} 篇")
+    for s in starred:
+        print(f"  ✅ {s['date']} | {s['title'][:55]}")
+    
+    # 构建收藏 map
+    fav_map = {item["link"]: item.get("starred", False) for item in merged}
+    
+    # 更新 HTML 星星
+    html_files = get_html_files()
+    print(f"🔍 扫描 {len(html_files)} 个 HTML 文件")
+    
+    updated = 0
+    for f in html_files:
+        changed, stars = update_html_stars(f, fav_map)
+        if changed:
+            updated += 1
+            print(f"  ✏️ {f.name}: {stars} ★")
+    
+    print(f"✅ {updated}/{len(html_files)} 更新")
+    
+    # 生成季度精选
+    print("📊 生成季度精选...")
+    gen_script = REPO_DIR / "scripts" / "gen_quarterly.py"
+    if gen_script.exists():
+        result = subprocess.run(
+            ["python3", str(gen_script)],
+            capture_output=True, text=True, cwd=str(REPO_DIR)
+        )
+        for line in result.stdout.strip().split("\n"):
+            print(f"  {line}")
+    
+    # 计算收藏总数统计（只在变更时打印）
+    if updated > 0:
+        print(f"\n📊 收藏统计：5月共 {len(starred)} 篇")
+    else:
+        print("\n📊 无变更")
 
 if __name__ == "__main__":
     main()
