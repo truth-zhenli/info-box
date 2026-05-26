@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Generate dynamic quarterly精选 pages — fetch favorites.json at runtime.
+"""Generate quarterly 精选 pages — pre-rendered from favorites.json.
 
-No atob/base64 nonsense — just fetch raw JSON from GitHub.
-Chinese will display correctly since the JSON is served as UTF-8.
+Strategy: embed paper data directly in HTML so no XHR/fetch needed for local use.
+Also keep localStorage reading for real-time updates after clicking stars,
+and fetch as fallback for GitHub Pages online.
 """
-
 import os, json
 from datetime import datetime
 
@@ -17,9 +17,64 @@ quarters = [
     {"q": 4, "emoji": "❄️", "label": "四季度", "months": [10,11,12], "color": "#1565c0", "bg": "linear-gradient(135deg,#0d47a1 0%,#1565c0 100%)", "monthNames": "10月 · 11月 · 12月"},
 ]
 
+# Load favorites
+fav_path = os.path.join(BASE, "favorites.json")
+fav_data = []
+if os.path.exists(fav_path):
+    with open(fav_path, "r", encoding="utf-8") as f:
+        fav_data = json.load(f)
+
+def escape_js(s):
+    """Escape string for embedding in JS string literal."""
+    if not s:
+        return ""
+    return s.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n").replace("\r", "")
+
+year = datetime.now().year
+
 for q in quarters:
     qi = q["q"]
-    months_json = json.dumps(q["months"])
+    months = q["months"]
+    # Filter starred papers for this quarter
+    papers = [p for p in fav_data if p.get("starred") and p.get("date")]
+    papers = [p for p in papers if int(p["date"].split("-")[1]) in months]
+
+    # Build paper cards HTML
+    if papers:
+        papers_sorted = sorted(papers, key=lambda p: p["date"], reverse=True)
+        cards_html = ""
+        for p in papers_sorted:
+            m = int(p["date"].split("-")[1])
+            title = escape_js(p.get("title", ""))
+            link = escape_js(p.get("link", ""))
+            cn = escape_js(p.get("cnTitle", ""))
+            journal = escape_js(p.get("journal", ""))
+            authors = escape_js(p.get("authors", ""))
+            date = p.get("date", "")
+            cards_html += f'''<div class="paper-card">
+    <div class="paper-month-tag">{m}月</div>
+    <div class="paper-title"><a href="{link}" target="_blank">{title}</a></div>
+    <div class="paper-cn">{cn}</div>
+    <div class="paper-meta"><span class="meta-tag">{journal}</span></div>
+    <div class="paper-authors">{authors}</div>
+    <div class="paper-date">📅 {date}</div>
+  </div>
+'''
+    else:
+        cards_html = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div>'
+
+    # Build embedded JS data for localStorage fallback / fetch
+    embedded_papers = []
+    for p in papers:
+        embedded_papers.append({
+            "title": p.get("title", ""),
+            "link": p.get("link", ""),
+            "cnTitle": p.get("cnTitle", ""),
+            "journal": p.get("journal", ""),
+            "authors": p.get("authors", ""),
+            "date": p.get("date", ""),
+        })
+    embedded_json = json.dumps(embedded_papers, ensure_ascii=False)
 
     nav_links = ""
     for oq in quarters:
@@ -27,14 +82,12 @@ for q in quarters:
         active = "active" if oqi == qi else ""
         nav_links += f'    <a class="nav-link {active}" href="q{oqi}.html">{oq["emoji"]} {oq["label"]}</a>\n'
 
-    year = datetime.now().year
-
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{q["emoji"]} {year}年{q["label"]}精选 - info-box</title>
+<title>{q["emoji"]} {year}年{q["label"]}精选 - 碎片化信息盒</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8;padding:30px 20px}}
@@ -58,7 +111,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 .meta-tag{{display:inline-block;background:#fce4ec;color:{q["color"]};padding:2px 8px;border-radius:8px;font-size:11px}}
 .paper-authors{{font-size:11px;color:#999;margin-bottom:2px}}
 .paper-date{{font-size:11px;color:#aaa}}
-.loading{{text-align:center;color:#aaa;font-size:14px;padding:40px 0}}
 .footer{{text-align:center;color:#ccc;font-size:12px;margin-top:30px}}
 @media (max-width:480px){{body{{padding:12px 10px}}.header{{padding:16px 16px}}.header h1{{font-size:17px}}.nav-bar{{padding:8px 6px}}.nav-link{{font-size:11px;padding:5px 7px}}.paper-card{{padding:14px 14px}}.paper-title{{padding-right:50px}}}}
 </style>
@@ -74,61 +126,22 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     <a class="nav-link" href="papers.html">📰 文献追踪</a>
 {nav_links}
   </div>
-<div id="list"><div class="loading">⏳ 加载收藏数据...</div></div>
-<div class="footer">实时渲染 — 点星星后自动更新</div>
+<div id="list">{cards_html}</div>
+<div class="footer">预渲染版 · 点星星后刷新页面即可更新</div>
 </div>
 <script>
 (function(){{
+  // 预渲染的收藏数据（由 gen_quarterly.py 生成）
+  var EMBEDDED_FAVS = {embedded_json};
+  if(EMBEDDED_FAVS.length > 0){{
+    // 预渲染已经在 HTML 中，无需额外操作
+  }}
+
+  // 从 localStorage 读取即时更新的星星（用户本会话中点过的）
   var listEl = document.getElementById('list');
-  var allowedMonths = {months_json};
   var paperMap = {{}};
+  var allowedMonths = {json.dumps(months)};
 
-  function render(){{
-    var keys = Object.keys(paperMap);
-    if(keys.length === 0){{
-      listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div>';
-      return;
-    }}
-    var sorted = keys.sort(function(a,b){{ return paperMap[b].date.localeCompare(paperMap[a].date); }});
-    var html = '';
-    sorted.forEach(function(k){{
-      var p = paperMap[k];
-      var m = parseInt(p.date.split('-')[1]);
-      html += '<div class="paper-card">';
-      html += '<div class="paper-month-tag">' + m + '月</div>';
-      html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + escapeHtml(p.title) + '</a></div>';
-      if(p.cnTitle) html += '<div class="paper-cn">' + escapeHtml(p.cnTitle) + '</div>';
-      if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + escapeHtml(p.journal) + '</span></div>';
-      if(p.authors) html += '<div class="paper-authors">' + escapeHtml(p.authors) + '</div>';
-      html += '<div class="paper-date">📅 ' + p.date + '</div>';
-      html += '</div>';
-    }});
-    listEl.innerHTML = html;
-  }}
-
-  function escapeHtml(s){{
-    if(!s) return '';
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }}
-
-  function processFavs(favs){{
-    favs.forEach(function(p){{
-      if(!p.starred || !p.date) return;
-      var m = parseInt(p.date.split('-')[1]);
-      if(allowedMonths.indexOf(m) < 0) return;
-      var uid = p.title + '|||' + p.link;
-      if(!paperMap[uid]){{
-        paperMap[uid] = {{
-          title: p.title, link: p.link,
-          cnTitle: p.cnTitle || '', journal: p.journal || '',
-          authors: p.authors || '', date: p.date
-        }};
-      }}
-    }});
-    render();
-  }}
-
-  // 从 localStorage 读取（即时）
   for(var i = 0; i < localStorage.length; i++){{
     var key = localStorage.key(i);
     if(key && key.indexOf('fav_') === 0){{
@@ -138,31 +151,48 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
           var m = parseInt(val.date.split('-')[1]);
           if(allowedMonths.indexOf(m) >= 0){{
             var uid = val.title + '|||' + val.link;
-            paperMap[uid] = {{
-              title: val.title, link: val.link,
-              cnTitle: val.cnTitle || '', journal: val.journal || '',
-              authors: val.authors || '', date: val.date
-            }};
+            if(!paperMap[uid]){{
+              paperMap[uid] = {{
+                title: val.title, link: val.link,
+                cnTitle: val.cn || '', journal: val.journal || '',
+                authors: val.authors || '', date: val.date
+              }};
+            }}
           }}
         }}
       }}catch(e){{}}
     }}
   }}
-  render();
 
-  // 从本地favorites.json加载（兼容file://和https://）
-  function loadFavs(){{
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../favorites.json?_=' + Date.now(), true);
-    xhr.overrideMimeType('application/json');
-    xhr.onload = function(){{
-      if(xhr.status === 0 || xhr.status === 200){{
-        try{{ processFavs(JSON.parse(xhr.responseText)); }}catch(e){{}}
-      }}
-    }};
-    xhr.send();
+  // 只有在有 localStorage 数据且和预渲染不一致时才重新渲染
+  if(Object.keys(paperMap).length > 0){{
+    renderFromMap();
   }}
-  loadFavs();
+
+  function renderFromMap(){{
+    var keys = Object.keys(paperMap);
+    if(keys.length === 0) return;
+    var sorted = keys.sort(function(a,b){{ return paperMap[b].date.localeCompare(paperMap[a].date); }});
+    var html = '';
+    sorted.forEach(function(k){{
+      var p = paperMap[k];
+      var m = parseInt(p.date.split('-')[1]);
+      html += '<div class=\"paper-card\">';
+      html += '<div class=\"paper-month-tag\">' + m + '月</div>';
+      html += '<div class=\"paper-title\"><a href=\"' + p.link + '\" target=\"_blank\">' + escapeHtml(p.title) + '</a></div>';
+      if(p.cnTitle) html += '<div class=\"paper-cn\">' + escapeHtml(p.cnTitle) + '</div>';
+      if(p.journal) html += '<div class=\"paper-meta\"><span class=\"meta-tag\">' + escapeHtml(p.journal) + '</span></div>';
+      if(p.authors) html += '<div class=\"paper-authors\">' + escapeHtml(p.authors) + '</div>';
+      html += '<div class=\"paper-date\">📅 ' + p.date + '</div>';
+      html += '</div>';
+    }});
+    listEl.innerHTML = html;
+  }}
+
+  function escapeHtml(s){{
+    if(!s) return '';
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }}
 }})();
 </script>
 </body>
@@ -171,6 +201,6 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
     out_path = os.path.join(BASE, "pages", f"q{qi}.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"✓ {qi}季度精选.html")
+    print(f"✓ q{qi}.html ({len(papers)} 篇收藏)")
 
-print("\nDone! 动态渲染版季度精选已生成 ✅")
+print("\nDone! 预渲染版季度精选已生成 ✅")
