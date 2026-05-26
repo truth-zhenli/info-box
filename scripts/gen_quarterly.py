@@ -203,4 +203,25 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
         f.write(html)
     print(f"✓ q{qi}.html ({len(papers)} 篇收藏)")
 
+# 更新 papers.html 中的 PRERENDERED_COUNTS
+papers_path = os.path.join(BASE, "pages", "papers.html")
+if os.path.exists(papers_path):
+    with open(papers_path, "r", encoding="utf-8") as f:
+        papers_html = f.read()
+    
+    import re
+    counts = {}
+    for q in quarters:
+        qi = q["q"]
+        months = q["months"]
+        counts[qi] = len([p for p in fav_data if p.get("starred") and p.get("date") and int(p["date"].split("-")[1]) in months])
+    
+    pairs = ",".join(f"{k}:{counts[k]}" for k in sorted(counts.keys()))
+    new_str = f"var PRERENDERED_COUNTS = {{{pairs}}}"
+    
+    papers_html = re.sub(r'var PRERENDERED_COUNTS = \{[^}]+\}', new_str, papers_html)
+    with open(papers_path, "w", encoding="utf-8") as f:
+        f.write(papers_html)
+    print(f"✓ papers.html 计数已更新: {counts}")
+
 print("\nDone! 预渲染版季度精选已生成 ✅")
