@@ -150,11 +150,19 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   }}
   render();
 
-  // 从 raw.githubusercontent.com 拉 JSON（无 atob，无乱码）
-  fetch('../favorites.json?_=' + Date.now())
-    .then(function(r){{ return r.json(); }})
-    .then(processFavs)
-    .catch(function(){{}});
+  // 从本地favorites.json加载（兼容file://和https://）
+  function loadFavs(){{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../favorites.json?_=' + Date.now(), true);
+    xhr.overrideMimeType('application/json');
+    xhr.onload = function(){{
+      if(xhr.status === 0 || xhr.status === 200){{
+        try{{ processFavs(JSON.parse(xhr.responseText)); }}catch(e){{}}
+      }}
+    }};
+    xhr.send();
+  }}
+  loadFavs();
 }})();
 </script>
 </body>
