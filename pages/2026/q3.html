@@ -38,12 +38,12 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   <div class="sub">7月 · 8月 · 9月</div>
 </div>
 <div class="nav-bar">
-    <a class="nav-link" href="../../index.html?v=202605261146">🏠 首页</a>
-    <a class="nav-link" href="../papers.html?v=202605261146">📰 文献追踪</a>
-    <a class="nav-link" href="q1.html?v=202605261146">🌸 一季度</a>
-    <a class="nav-link" href="q2.html?v=202605261146">☀️ 二季度</a>
-    <a class="nav-link active" href="q3.html?v=202605261146">🍂 三季度</a>
-    <a class="nav-link" href="q4.html?v=202605261146">❄️ 四季度</a>
+    <a class="nav-link" href="../../index.html?v=202605261147">🏠 首页</a>
+    <a class="nav-link" href="../papers.html?v=202605261147">📰 文献追踪</a>
+    <a class="nav-link" href="q1.html?v=202605261147">🌸 一季度</a>
+    <a class="nav-link" href="q2.html?v=202605261147">☀️ 二季度</a>
+    <a class="nav-link active" href="q3.html?v=202605261147">🍂 三季度</a>
+    <a class="nav-link" href="q4.html?v=202605261147">❄️ 四季度</a>
   </div>
 <div id="list"><div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div></div>
 <div class="footer">预渲染版 · 点星星后刷新页面即可更新</div>
@@ -111,7 +111,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
       var m = parseInt(p.date.split('-')[1]);
       html += '<div class="paper-card">';
       html += '<div class="paper-month-tag">' + m + '月</div>';
-      html += '<div class="paper-title"><a href="' + p.link + '?v=202605261146" target="_blank">' + escapeHtml(p.title) + '</a></div>';
+      html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + escapeHtml(p.title) + '</a></div>';
       if(p.cnTitle) html += '<div class="paper-cn">' + escapeHtml(p.cnTitle) + '</div>';
       if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + escapeHtml(p.journal) + '</span></div>';
       if(p.authors) html += '<div class="paper-authors">' + escapeHtml(p.authors) + '</div>';

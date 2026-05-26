@@ -17,21 +17,34 @@ def get_version():
 
 def add_version_to_html(content, v):
     """Add ?v=HASH to all internal relative links in HTML."""
-    def add_v(match):
-        href = match.group(1)
-        # Skip external, protocol-relative, anchors, mailto, javascript, tel
-        if any(href.startswith(p) for p in ["http://", "https://", "//", "#", "mailto:", "javascript:", "tel:"]):
-            return match.group(0)
-        # Already has a version parameter?
-        if "?v=" in href:
-            # Replace existing version
-            href = re.sub(r'\?v=[^"]*', f"?v={v}", href)
-            return f'href="{href}"'
-        # Add version
-        sep = "&" if "?" in href else "?"
-        return f'href="{href}{sep}v={v}"'
+    # Strip script tags first — only modify hrefs in HTML content, not JS
+    result = []
+    in_script = False
+    for line in content.split('\n'):
+        if '<script' in line:
+            in_script = True
+        if in_script:
+            result.append(line)
+            if '</script>' in line:
+                in_script = False
+            continue
 
-    return re.sub(r'href="([^"]*)"', add_v, content)
+        def add_v(match):
+            href = match.group(1)
+            # Skip external, protocol-relative, anchors, mailto, javascript, tel
+            if any(href.startswith(p) for p in ["http://", "https://", "//", "#", "mailto:", "javascript:", "tel:"]):
+                return match.group(0)
+            # Already has a version parameter?
+            if "?v=" in href:
+                # Replace existing version
+                href = re.sub(r'\?v=[^"]*', f"?v={v}", href)
+                return f'href="{href}"'
+            # Add version
+            sep = "&" if "?" in href else "?"
+            return f'href="{href}{sep}v={v}"'
+
+        result.append(re.sub(r'href="([^"]*)"', add_v, line))
+    return '\n'.join(result)
 
 def main():
     v = get_version()
