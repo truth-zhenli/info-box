@@ -21,8 +21,10 @@ CUR_HASH=$(md5sum favorites.json | cut -d' ' -f1)
 # 没变化就跳过
 [ "$CUR_HASH" = "$LAST" ] && exit 0
 
-# 运行 sync_stars.py
+# 运行 sync_stars.py、gen_quarterly.py、add_version.py（缓存刷新）
 python3 scripts/sync_stars.py 2>&1 | tail -10
+python3 scripts/gen_quarterly.py 2>&1 | tail -10
+python3 scripts/add_version.py 2>&1 | tail -10
 
 # 检查 git 是否有变更
 if git diff --quiet; then
