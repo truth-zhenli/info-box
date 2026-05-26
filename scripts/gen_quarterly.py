@@ -122,8 +122,8 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
   <div class="sub">{q["monthNames"]}</div>
 </div>
 <div class="nav-bar">
-    <a class="nav-link" href="../index.html">🏠 首页</a>
-    <a class="nav-link" href="papers.html">📰 文献追踪</a>
+    <a class="nav-link" href="../../index.html">🏠 首页</a>
+    <a class="nav-link" href="../papers.html">📰 文献追踪</a>
 {nav_links}
   </div>
 <div id="list">{cards_html}</div>
@@ -198,7 +198,7 @@ body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backg
 </body>
 </html>'''
 
-    out_path = os.path.join(BASE, "pages", f"q{qi}.html")
+    out_path = os.path.join(BASE, "pages", str(year), f"q{qi}.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✓ q{qi}.html ({len(papers)} 篇收藏)")
@@ -210,18 +210,27 @@ if os.path.exists(papers_path):
         papers_html = f.read()
     
     import re
-    counts = {}
-    for q in quarters:
-        qi = q["q"]
-        months = q["months"]
-        counts[qi] = len([p for p in fav_data if p.get("starred") and p.get("date") and int(p["date"].split("-")[1]) in months])
+    # 按年份统计各季度收藏数
+    from collections import defaultdict
+    year_counts = defaultdict(lambda: {1:0, 2:0, 3:0, 4:0})
+    for p in fav_data:
+        if not p.get("starred") or not p.get("date"):
+            continue
+        y = p["date"].split("-")[0]
+        m = int(p["date"].split("-")[1])
+        q = 1 if m <= 3 else 2 if m <= 6 else 3 if m <= 9 else 4
+        year_counts[y][q] += 1
     
-    pairs = ",".join(f"{k}:{counts[k]}" for k in sorted(counts.keys()))
-    new_str = f"var PRERENDERED_COUNTS = {{{pairs}}}"
+    # 构建 {2026:{1:0,2:5,3:0,4:0}} 格式
+    year_pairs = []
+    for y in sorted(year_counts.keys()):
+        q_pairs = ",".join(f"{k}:{year_counts[y][k]}" for k in sorted(year_counts[y].keys()))
+        year_pairs.append(f"{y}:{{{q_pairs}}}")
+    new_str = "var PRERENDERED_COUNTS = {" + ",".join(year_pairs) + "}"
     
-    papers_html = re.sub(r'var PRERENDERED_COUNTS = \{[^}]+\}', new_str, papers_html)
+    papers_html = re.sub(r'var PRERENDERED_COUNTS = \{[^}]*\{[^}]*\}[^}]*\}', new_str, papers_html)
     with open(papers_path, "w", encoding="utf-8") as f:
         f.write(papers_html)
-    print(f"✓ papers.html 计数已更新: {counts}")
+    print(f"✓ papers.html 计数已更新: { {y: dict(year_counts[y]) for y in sorted(year_counts.keys())} }")
 
 print("\nDone! 预渲染版季度精选已生成 ✅")

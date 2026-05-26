@@ -209,9 +209,9 @@ function render(){
       });
 
       /* 季度精选入口 */
-      html += '<a class="fav-entry" href="q' + q.q + '.html" target="_blank">';
+      html += '<a class="fav-entry" href="' + year + '/q' + q.q + '.html" target="_blank">';
       html += '★ ' + q.label + '精选';
-      html += '<span class="count" data-q="' + q.q + '">加载中...</span>';
+      html += '<span class="count" data-year="' + year + '" data-q="' + q.q + '">加载中...</span>';
       html += '</a>';
 
       html += '</div>'; /* quarter-col */
@@ -227,10 +227,8 @@ function render(){
 /* ========== 收藏统计 ========== */
 function updateFavCounts(){
   /* 预渲染收藏计数（由 gen_quarterly.py 更新） */
-  var PRERENDERED_COUNTS = {1:0,2:5,3:0,4:0};
+  var PRERENDERED_COUNTS = {2026:{1:0,2:5,3:0,4:0}};
   updateUI(PRERENDERED_COUNTS);
-
-  /* 再从 localStorage 和 favorites.json 同步 */
 
   /* 再从线上 favorites.json 同步（跨设备，兼容file://和https://） */
   function loadFavCount(){
@@ -241,14 +239,17 @@ function updateFavCounts(){
       if(xhr.status === 0 || xhr.status === 200){
         try{
           var all = JSON.parse(xhr.responseText);
-          var qCounts = {1:0, 2:0, 3:0, 4:0};
+          var counts = {};
           all.forEach(function(p){
             if(!p.starred || !p.date) return;
+            var y = p.date.slice(0,4);
             var m = parseInt(p.date.slice(5,7));
             var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
-            qCounts[q]++;
+            if(!counts[y]) counts[y] = {};
+            if(!counts[y][q]) counts[y][q] = 0;
+            counts[y][q]++;
           });
-          updateUI(qCounts);
+          updateUI(counts);
         }catch(e){}
       }
     };
@@ -275,10 +276,11 @@ function countFromLocalStorage(){
   updateUI(qCounts);
 }
 
-function updateUI(qCounts){
+function updateUI(counts){
   document.querySelectorAll('.fav-entry .count').forEach(function(el){
+    var y = el.dataset.year;
     var q = parseInt(el.dataset.q);
-    var c = qCounts[q] || 0;
+    var c = (counts[y] && counts[y][q]) || 0;
     el.textContent = c > 0 ? '★ ' + c + '篇' : '暂无收藏';
     if(c > 0) el.style.color = '#e65100';
   });
