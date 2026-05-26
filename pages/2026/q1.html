@@ -41,10 +41,9 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     <a class="nav-link" href="../../index.html">🏠 首页</a>
     <a class="nav-link" href="../papers.html">📰 文献追踪</a>
     <a class="nav-link active" href="q1.html">🌸 一季度</a>
-    <a class="nav-link " href="q2.html">☀️ 二季度</a>
-    <a class="nav-link " href="q3.html">🍂 三季度</a>
-    <a class="nav-link " href="q4.html">❄️ 四季度</a>
-
+    <a class="nav-link" href="q2.html">☀️ 二季度</a>
+    <a class="nav-link" href="q3.html">🍂 三季度</a>
+    <a class="nav-link" href="q4.html">❄️ 四季度</a>
   </div>
 <div id="list"><div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div></div>
 <div class="footer">预渲染版 · 点星星后刷新页面即可更新</div>
@@ -57,7 +56,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     // 预渲染已经在 HTML 中，无需额外操作
   }
 
-  // 从 localStorage 读取即时更新的星星（用户本会话中点过的）
+  // 直接从 localStorage 构建本季度收藏
   var listEl = document.getElementById('list');
   var paperMap = {};
   var allowedMonths = [1, 2, 3];
@@ -84,18 +83,31 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     }
   }
 
-  // 只有在有 localStorage 数据且和预渲染不一致时才重新渲染
-  if(Object.keys(paperMap).length > 0){
-    renderFromMap();
+  // 合并本地和预渲染数据——localStorage 有就用它（补充预渲染中没有的），
+  // 没有 localStorage 就用预渲染的
+  var newKeys = Object.keys(paperMap).filter(function(k){
+    return !EMBEDDED_FAVS.some(function(p){ return p.title + '|||' + p.link === k; });
+  });
+
+  if(newKeys.length > 0){
+    // 有新增本地收藏——合并后重新渲染
+    var merged = {};
+    EMBEDDED_FAVS.forEach(function(p){
+      merged[p.title + '|||' + p.link] = p;
+    });
+    Object.keys(paperMap).forEach(function(k){
+      if(!merged[k]) merged[k] = paperMap[k];
+    });
+    renderFromMap(merged);
   }
 
-  function renderFromMap(){
-    var keys = Object.keys(paperMap);
+  function renderFromMap(map){
+    var keys = Object.keys(map);
     if(keys.length === 0) return;
-    var sorted = keys.sort(function(a,b){ return paperMap[b].date.localeCompare(paperMap[a].date); });
+    var sorted = keys.sort(function(a,b){ return map[b].date.localeCompare(map[a].date); });
     var html = '';
     sorted.forEach(function(k){
-      var p = paperMap[k];
+      var p = map[k];
       var m = parseInt(p.date.split('-')[1]);
       html += '<div class="paper-card">';
       html += '<div class="paper-month-tag">' + m + '月</div>';
