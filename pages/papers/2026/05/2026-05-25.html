@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日文献订阅 - 2026-05-25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+
+/* Section dividers */
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-other{background:#f5f5f5;border:1px solid #e0e0e0}
+
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#388e3c}
+.section-other .section-title{border-left-color:#555}
+
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+
+.paper-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.paper-card{position:relative}
+.paper-card .star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer}
+
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px}
+.meta-oil{background:#d32f2f;color:#fff;font-weight:600}
+.meta-ai{background:#6a1b9a;color:#fff}
+.meta-md{background:#00695c;color:#fff}
+.meta-review{background:#e65100;color:#fff}
+
+.authors{font-size:12px;color:#999;margin-bottom:8px;line-height:1.4}
+
+.summary{font-size:13.5px;color:#333;line-height:1.8;margin-bottom:10px;background:#f8f9fa;padding:12px 14px;border-radius:8px;border-left:3px solid #1565c0;flex:1}
+
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.link-btn{display:inline-block;padding:5px 14px;border-radius:16px;font-size:12px;text-decoration:none;font-weight:500;transition:all .15s}
+.link-pdf{background:#d93025;color:#fff}
+.link-pdf:hover{background:#b3261e}
+.link-abs{background:#1565c0;color:#fff}
+.link-abs:hover{background:#0d47a1}
+
+.insight{background:#fff5f5;border-left:4px solid #d32f2f;padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12.5px;color:#b71c1c;line-height:1.65}
+.insight strong{color:#c62828}
+
+.footer{text-align:center;padding:24px;color:#aaa;font-size:12px;border-top:1px solid #eee;margin-top:36px}
+</style>
+</head>
+<body>
+<div style="max-width:1400px;width:96%;margin:0 auto;padding:20px 20px 0">
+<div style="background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center">
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../../index.html">🏠 首页</a>
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../papers.html">📰 文献追踪</a>
+<span style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;color:#006064;background:#e0f2f1;font-weight:600;white-space:nowrap">📄 2026-05-25</span>
+</div>
+</div>
+<div class="container">
+<div class="header">
+<div class="sub">📚 每日文献订阅</div>
+<h1>稠油开采装备优化 · 数值模拟</h1>
+<div class="date">📅 2026-05-25 | 共2篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">2</div><div class="label">论文</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+</div>
+</div>
+
+<!-- ===================== OILFIELD ===================== -->
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学（重点标注）</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-05-25" data-title="Optimization of structural parameters for deep-well internal circulation jet pump based on numerical simulation" data-link="https://link.springer.com/article/10.1007/s42241-026-0038-5" data-cn="基于数值模拟的深井内循环喷射泵结构参数优化" data-journal="Journal of Hydrodynamics" data-authors="A Li, Z Liu, Y Gao, X Zhao | Journal of Hydrodynamics (Springer) 2026" data-star="☆">☆</span><a href="https://link.springer.com/article/10.1007/s42241-026-0038-5" target="_blank">Optimization of structural parameters for deep-well internal circulation jet pump based on numerical simulation</a></div>
+<div class="paper-title-cn">基于数值模拟的深井内循环喷射泵结构参数优化</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag">Springer</span></div>
+<div class="authors">A Li, Z Liu, Y Gao, X Zhao | Journal of Hydrodynamics (Springer) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对深井稠油开采中喷射泵举升效率偏低的关键工程问题，采用计算流体动力学（CFD）数值模拟方法，系统优化了深井内循环喷射泵（internal circulation jet pump）的关键结构参数。该泵利用高压动力液（如海水）在喷嘴出口产生速度诱导压差，形成局部抽吸区，将地层流体（包括稠油）吸入泵腔并与动力液混合排出。研究通过建立三维CFD模型，考察了喷嘴直径、喉管长度、扩散角及内循环通道布局等参数对泵效和吸油能力的影响规律。<br><br>
+<strong>核心发现：</strong>（1）喷嘴与喉管面积比是决定喷射泵性能的最敏感参数——最优面积比使泵效提升约28%；（2）扩散角在8-12°范围内获得最佳压力恢复效率；（3）内循环通道设计有效抑制了高粘度稠油在泵腔内的滞留和堵塞问题；（4）获得了适用于不同油藏深度（1000-3000 m）和稠油粘度范围的优化参数组合。该研究为喷射泵在稠油开采中的工程应用提供了定量设计依据。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>尽管该文聚焦于宏观流体力学设备优化，但稠油在喷射泵内的流动行为本质上是非牛顿流体在复杂几何约束中的流动问题。其CFD建模方法（网格划分策略、湍流模型选择、粘度-剪切率本构关系）可为你提供参考——当你需要计算降粘剂/乳化剂在管道或泵体内流动时的剪切场分布时，类似的方法论可直接应用。此外，稠油粘度对泵效的敏感性分析思路也适用于评价化学降粘对举升效率的改善效果。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://link.springer.com/article/10.1007/s42241-026-0038-5" target="_blank">📄 全文 (Springer)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-05-25" data-title="Structural Parameter Optimization Simulation of Progressing Cavity Pump for Sandy Heavy Oil" data-link="https://link.springer.com/article/10.1007/s10553-026-02052-9" data-cn="含砂稠油螺杆泵结构参数优化模拟" data-journal="Chemistry and Technology of Fuels and Oils" data-authors="J Liu, J Wang | Chemistry and Technology of Fuels and Oils (Springer) 2026" data-star="☆">☆</span><a href="https://link.springer.com/article/10.1007/s10553-026-02052-9" target="_blank">Structural Parameter Optimization Simulation of Progressing Cavity Pump for Sandy Heavy Oil</a></div>
+<div class="paper-title-cn">含砂稠油螺杆泵结构参数优化模拟</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag">Springer</span></div>
+<div class="authors">J Liu, J Wang | Chemistry and Technology of Fuels and Oils (Springer) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对含砂稠油（sandy heavy oil）开采中螺杆泵（Progressing Cavity Pump, PCP）磨损严重、运行寿命短的工程瓶颈，采用计算流体力学和有限元分析相结合的方法，系统模拟和优化了PCP的关键结构参数。研究建立了多组网格规模（50万-250万网格单元）的数值模型，分析了含砂稠油在定子-转子间隙中的固液两相流动特性，特别关注砂粒的运移轨迹、壁面碰撞频率和对定子橡胶衬套的冲蚀磨损分布。<br><br>
+<strong>核心发现：</strong>（1）转子偏心距与定子导程的比值是影响泵容积效率和磨损均匀性的关键参数——最优比值使泵效提高约22%的同时降低了30%的最大磨损深度；（2）含砂稠油中砂粒主要沿转子螺旋槽运动，在定子内壁特定区域（靠近吸入端的低压侧）产生局部磨损热点；（3）通过优化转子表面轮廓（引入微锥度设计）可显著改善砂粒在间隙中的分布均匀性，延长泵使用寿命。该研究为含砂稠油井的螺杆泵选型和参数设计提供了定量化的工程参考。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>稠油出砂是普遍关注的工程难题，该文对含砂稠油在泵体内的固液两相流分析方法（砂粒运移轨迹追踪、壁面冲蚀模型）对理解稠油开采中固相颗粒（细砂、沥青质聚集体）对设备的磨损机制有参考价值。其揭示的\"局部磨损热点\"概念提示你思考：在化学降粘过程中，若降粘剂与矿物颗粒/沥青质聚集体产生协同或拮抗作用，可能改变颗粒在流动中的分布模式，进而影响设备服役寿命。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://link.springer.com/article/10.1007/s10553-026-02052-9" target="_blank">📄 全文 (Springer)</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+<p>Hermes Agent 每日自动检索 · 30个固定关键词 · Google Scholar</p>
+<p>期刊过滤: ACS / Nature / Science / Wiley / RSC / Elsevier / AIP·APS / Springer / arXiv | 仅供学术研究使用</p>
+</div>
+</div>
+
+<br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../index.html" style="color:#999;font-size:12px;text-decoration:none">← 返回首页</a></div>
+<script>
+/* ★ 收藏功能 v12 — 读取+合并+写入，不丢数据 */
+(function(){
+  var stars = document.querySelectorAll('.star-btn');
+  if(!stars.length) return;
+
+  var SAVE_DELAY = 2000;
+  var saveTimer = null;
+  var fileHandle = null;
+
+  /* IndexedDB */
+  function openDB(){
+    return new Promise(function(res, rej){
+      var req = indexedDB.open('star-fav-handle', 1);
+      req.onupgradeneeded = function(e){
+        var db = e.target.result;
+        if(!db.objectStoreNames.contains('handles')) db.createObjectStore('handles');
+      };
+      req.onsuccess = function(e){ res(e.target.result); };
+      req.onerror = function(e){ rej(e.target.error); };
+    });
+  }
+  function loadHandle(){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var tx = db.transaction('handles','readonly');
+        var req = tx.objectStore('handles').get('fav-file');
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ resolve(null); };
+      });
+    }).catch(function(){ return null; });
+  }
+  function saveHandle(handle){
+    return openDB().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction('handles','readwrite');
+        tx.objectStore('handles').put(handle, 'fav-file');
+        tx.oncomplete = resolve; tx.onerror = reject;
+      });
+    }).catch(function(){});
+  }
+
+  function readFile(handle){
+    return handle.getFile().then(function(f){ return f.text(); }).then(function(t){
+      try{return JSON.parse(t);}catch(e){return [];}
+    }).catch(function(){return [];});
+  }
+  function writeFile(handle, data){
+    var json = JSON.stringify(data, null, 2);
+    return handle.requestPermission({mode:'readwrite'}).then(function(p){
+      if(p!=='granted') throw new Error('denied');
+      return handle.createWritable();
+    }).then(function(w){return w.write(json).then(function(){return w.close();});});
+  }
+
+  function mergeStars(master){
+    if(!master) master = [];
+    var map = {}; master.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+    stars.forEach(function(s){
+      var k = s.dataset.title+'|||'+s.dataset.link;
+      var f = s.textContent === '\u2605';
+      if(map[k]){ map[k].starred = f; }
+      else {
+        map[k] = {title:s.dataset.title,link:s.dataset.link,cnTitle:s.dataset.cn||'',journal:s.dataset.journal||'',authors:s.dataset.authors||'',date:s.dataset.date||'',starred:f};
+      }
+    });
+    return Object.values(map);
+  }
+
+  function doSave(){
+    if(!fileHandle) return;
+    readFile(fileHandle).then(function(ex){
+      return writeFile(fileHandle, mergeStars(ex));
+    }).catch(function(){});
+  }
+
+  function setupHandle(){
+    return window.showSaveFilePicker({suggestedName:'favorites.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
+      .then(function(h){fileHandle=h;saveHandle(h);return readFile(h);})
+      .then(function(ex){return writeFile(fileHandle, mergeStars(ex));})
+      .catch(function(e){if(e.name==='AbortError')return;fallback();});
+  }
+
+  function fallback(){
+    var data = mergeStars([]); var json = JSON.stringify(data,null,2);
+    var blob = new Blob([json],{type:'application/json;charset=utf-8'});
+    var url = URL.createObjectURL(blob); var a = document.createElement('a');
+    a.href = url; a.download = 'favorites.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},2000);
+    alert('\u8BF7\u5C06\u4E0B\u8F7D\u7684 favorites.json \u4FDD\u5B58\u5230 D:\\\\LZ&AI\\\\info-box\\\\ \u76EE\u5F55\u4E0B\u8986\u76D6\u539F\u6587\u4EF6');
+  }
+
+  function applyStar(star, isFav){
+    star.textContent = isFav ? '\u2605' : '\u2606';
+    star.style.color = isFav ? '#f5a623' : '#ccc';
+    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+    star.title = isFav ? '\u5DF2\u6536\u85CF' : '\u70B9\u51FB\u6536\u85CF';
+  }
+
+  /* 恢复星星 */
+  stars.forEach(function(star,i){
+    var key='fav_'+star.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();
+    if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}
+    else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}
+  });
+
+  /* 加载句柄，同步数据 */
+  loadHandle().then(function(h){
+    if(!h) return;
+    fileHandle = h;
+    readFile(h).then(function(ex){
+      var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+      stars.forEach(function(star,i){
+        var k = star.dataset.title+'|||'+star.dataset.link;
+        if(map[k]){
+          applyStar(star, map[k].starred === true);
+          var lk = 'fav_'+star.dataset.date+'_'+i;
+          if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
+          else localStorage.removeItem(lk);
+        }
+      });
+    }).catch(function(){});
+  });
+
+  /* 绑定点击 */
+  stars.forEach(function(star,i){
+    star.onclick=function(e){
+      e.stopPropagation();e.preventDefault();
+      var wasFav=star.textContent==='\u2605';
+      applyStar(star,!wasFav);
+      var key='fav_'+star.dataset.date+'_'+i;
+      if(wasFav)localStorage.removeItem(key);
+      else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));
+      if(!fileHandle&&window.showSaveFilePicker){setupHandle();return;}
+      if(!fileHandle){fallback();return;}
+      if(saveTimer)clearTimeout(saveTimer);
+      saveTimer=setTimeout(doSave,SAVE_DELAY);
+    };
+  });
+  console.log('\u2B50 v12');
+})();
+</script>
+</body>
+</html>
