@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日文献订阅 - 2026-05-29</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+
+/* Section dividers */
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-other{background:#f5f5f5;border:1px solid #e0e0e0}
+
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#2e7d32}
+.section-other .section-title{border-left-color:#555}
+
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+
+.paper-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.paper-card{position:relative}
+.paper-card .star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer}
+
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px}
+.meta-oil{background:#d32f2f;color:#fff;font-weight:600}
+.meta-ai{background:#6a1b9a;color:#fff}
+.meta-md{background:#00695c;color:#fff}
+.meta-review{background:#e65100;color:#fff}
+
+.authors{font-size:12px;color:#999;margin-bottom:8px;line-height:1.4}
+
+.summary{font-size:13.5px;color:#333;line-height:1.8;margin-bottom:10px;background:#f8f9fa;padding:12px 14px;border-radius:8px;border-left:3px solid #1565c0;flex:1}
+
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.link-btn{display:inline-block;padding:5px 14px;border-radius:16px;font-size:12px;text-decoration:none;font-weight:500;transition:all .15s}
+.link-pdf{background:#d93025;color:#fff}
+.link-pdf:hover{background:#b3261e}
+.link-abs{background:#1565c0;color:#fff}
+.link-abs:hover{background:#0d47a1}
+
+.insight{background:#fff5f5;border-left:4px solid #d32f2f;padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12.5px;color:#b71c1c;line-height:1.65}
+.insight strong{color:#c62828}
+
+.footer{text-align:center;padding:24px;color:#aaa;font-size:12px;border-top:1px solid #eee;margin-top:36px}
+</style>
+</head>
+<body>
+<div style="max-width:1400px;width:96%;margin:0 auto;padding:20px 20px 0">
+<div style="background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:3px;justify-content:center">
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../../index.html">🏠 首页</a>
+<a style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap" href="../../../papers.html">📰 文献追踪</a>
+<span style="display:inline-block;padding:5px 9px;border-radius:6px;font-size:12px;color:#006064;background:#e0f2f1;font-weight:600;white-space:nowrap">📄 2026-05-29</span>
+</div>
+</div>
+<div class="container">
+<div class="header">
+<div class="sub">📚 每日文献订阅</div>
+<h1>稠油催化改质 · 机器学习 · 分子动力学 · 计算生物</h1>
+<div class="date">📅 2026-05-29 | 共6篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">6</div><div class="label">论文</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🧬 计算生物</div></div>
+</div>
+</div>
+
+<!-- ===================== OILFIELD ===================== -->
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学（重点标注）</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-05-29" data-title="Low-Temperature in Situ Upgrading of Ultra-Deep Heavy Oil Using Ni-Ce/MOF-OTf Superacid Catalysts" data-link="https://onlinelibrary.wiley.com/doi/full/10.1002/ece2.70080" data-cn="Ni-Ce/MOF-OTf超强酸催化剂的超深层稠油低温原位改质" data-journal="EcoEnergy" data-authors="L Wang, JX Guo, Q Huang, K Li, C Li, Y Wu | EcoEnergy (Wiley) 2026" data-star="☆">☆</span><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ece2.70080" target="_blank">Low-Temperature in Situ Upgrading of Ultra-Deep Heavy Oil Using Ni–Ce/MOF–OTf Superacid Catalysts to Enhance Energy Utilization and Sustainability</a></div>
+<div class="paper-title-cn">Ni-Ce/MOF-OTf超强酸催化剂的超深层稠油低温原位改质</div>
+<div class="paper-meta"><span class="meta-tag meta-oil">油田化学</span><span class="meta-tag">EcoEnergy</span></div>
+<div class="authors">L Wang, JX Guo, Q Huang, K Li, C Li, Y Wu | EcoEnergy (Wiley) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对超深层稠油粘度极高、流动性差、常规开采能耗大的问题，开发了一种基于UiO-66(Ce)型BTC框架的三氟甲磺酸功能化Ni-Ce/MOF超强酸催化剂（Ni-Ce/MOF-OTf）。通过两步后合成修饰（酸活化+三氟甲磺酸基团接枝），将强Brønsted酸性与过渡金属催化活性整合到MOF骨架中。利用自主研发的多参数耦合储层物理模拟装置，在近储层条件下系统模拟了催化剂注入、原位催化改质和产物采出的全过程。<br><br>
+<strong>核心发现：</strong>Ni-Ce/MOF-OTf在低温条件下（低于300°C）即表现出优异的稠油催化裂解活性，有效降低了稠油粘度和重质组分含量。超强酸位点（OTf基团）与Ni-Ce双金属的协同作用是低温催化活性的关键，MOF多孔结构提供了良好的传质通道和活性位分散性。
+</div>
+<div class="insight"><strong>🔬 对你研究的帮助：</strong>该工作展示了MOF基超强酸催化剂在稠油原位改质中的应用潜力——低温条件（<300°C）即实现显著降粘，避免了传统高温热裂解的能耗问题。MOF催化剂的可设计性（孔径、酸性、双金属位点）为稠油降粘剂开发提供了新思路。多参数耦合储层模拟装置的设计方案可直接用于稠油开采的模拟验证。</div>
+<div class="links"><a class="link-btn link-pdf" href="https://onlinelibrary.wiley.com/doi/full/10.1002/ece2.70080" target="_blank">📄 全文 (Wiley)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== AI/ML ===================== -->
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/机器学习</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-05-29" data-title="Toward Data-Driven Lithium Metal Batteries: Machine Learning for Materials Design, Mechanistic Insight, and Autonomous Optimization" data-link="https://doi.org/10.1016/j.ensm.2026.105252" data-cn="数据驱动的锂金属电池：机器学习用于材料设计、机理洞察与自主优化" data-journal="Energy Storage Materials" data-authors="Y Lou, H Zhao, J Li, W Xu, C Weng, J Li, L Pan | Energy Storage Materials (Elsevier) 2026" data-star="☆">☆</span><a href="https://doi.org/10.1016/j.ensm.2026.105252" target="_blank">Toward Data-Driven Lithium Metal Batteries: Machine Learning for Materials Design, Mechanistic Insight, and Autonomous Optimization</a></div>
+<div class="paper-title-cn">数据驱动的锂金属电池：机器学习用于材料设计、机理洞察与自主优化</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag meta-review">综述</span><span class="meta-tag">Energy Storage Materials</span></div>
+<div class="authors">Y Lou, H Zhao, J Li, W Xu, C Weng, J Li, L Pan | Energy Storage Materials (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>这篇综述系统总结了机器学习在锂金属电池（LMB）研究中的最新进展，从三个关键视角展开：材料设计、界面过程分析和寿命预测。ML模型在电解质发现、固体电解质界面（SEI）形成机制解析、锂枝晶生长机理理解以及电池退化预测方面展现出独特优势。<br><br>
+<strong>核心发现：</strong>传统实验和计算方法难以捕捉LMB中多尺度、动态的复杂界面过程。ML通过数据驱动的材料发现、机理洞察和性能预测，显著加速了LMB开发。特别是ML与高通量实验和自主实验室（self-driving labs）的结合，可形成闭环发现范式，实现先进电池技术的快速迭代。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://doi.org/10.1016/j.ensm.2026.105252" target="_blank">📄 全文 (Elsevier)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-05-29" data-title="Structural and Elastic Properties of beta-HMX from a Machine Learning Force Field" data-link="https://doi.org/10.1016/j.mtcomm.2026.115423" data-cn="基于机器学习力场的beta-HMX结构及弹性性质研究" data-journal="Materials Today Communications" data-authors="S LI, H QIANG, X WANG, Z WANG | Materials Today Communications (Elsevier) 2026" data-star="☆">☆</span><a href="https://doi.org/10.1016/j.mtcomm.2026.115423" target="_blank">Structural and Elastic Properties of Cyclotetramethylene Tetranitramine (β-HMX) from a Machine Learning Force Field</a></div>
+<div class="paper-title-cn">基于机器学习力场的beta-HMX结构及弹性性质研究</div>
+<div class="paper-meta"><span class="meta-tag meta-ai">AI/ML</span><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Materials Today Communications</span></div>
+<div class="authors">S LI, H QIANG, X WANG, Z WANG | Materials Today Communications (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>基于高阶等变消息传递框架（equivariant message-passing）开发了机器学习力场（ML-FF），用于研究β-环四亚甲基四硝胺（β-HMX）的结构和弹性性质。采用主动学习策略构建高质量训练数据集，使ML-FF在能量、原子力和应力预测方面达到接近密度泛函理论（DFT）的精度。<br><br>
+<strong>核心发现：</strong>与传统力场相比，ML-FF在描述分子结构、分子间相互作用和表面能方面与DFT计算和实验数据吻合更好。进一步研究了β-HMX在静水压力和空位缺陷下的弹性响应：体积模量和剪切模量随压力增大而增大，随缺陷浓度增大而减小。高压下空位缺陷对剪切模量的影响比体积模量更显著，表明剪切变形对结构缺陷更为敏感。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://doi.org/10.1016/j.mtcomm.2026.115423" target="_blank">📄 全文 (Elsevier, OA)</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================== COMP BIO ===================== -->
+<div class="section-wrap section-bio">
+<h2 class="section-title">🧬 计算生物学</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-05-29" data-title="Allosteric Mechanisms of PTM Regulation in Human cGAS Catalytic Activity from MD Simulations" data-link="https://doi.org/10.1016/j.jsb.2026.108328" data-cn="翻译后修饰调控人cGAS催化活性的别构机制：分子动力学模拟研究" data-journal="Journal of Structural Biology" data-authors="M Gul, M Fakhar, W Li | Journal of Structural Biology (Elsevier) 2026" data-star="☆">☆</span><a href="https://doi.org/10.1016/j.jsb.2026.108328" target="_blank">Allosteric Mechanisms of Post-Translational Modification Regulation in Human Cyclic GMP–AMP Synthase Catalytic Activity from Molecular Dynamics Simulations</a></div>
+<div class="paper-title-cn">翻译后修饰调控人cGAS催化活性的别构机制：分子动力学模拟研究</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Journal of Structural Biology</span></div>
+<div class="authors">M Gul, M Fakhar, W Li | Journal of Structural Biology (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>人cGAS（环GMP-AMP合酶）的翻译后修饰（PTM）调控机制尚不清楚。该研究构建了cGAS催化核心与dsDNA和ATP的复合物体系，比较了野生型与S305磷酸化、K384/K394/K414乙酰化修饰的单体体系，以及聚焦K394乙酰化的2:2 cGAS-DNA二聚体体系。单体模拟发现PTM以位点特异性方式调控cGAS：S305磷酸化和K414乙酰化通过扰乱催化口袋环境削弱ATP结合，K414通过螺旋α7重排产生别构效应；K384乙酰化改变锌指/DNA接触区域。<br><br>
+<strong>核心发现：</strong>在1000 ns二聚体模拟中，WT_WT二聚体保持最稳定的DNA结合和ATP口袋组织，WT_acK394呈现中等扰动，acK394_acK394显示出最强的DNA-蛋白质接触和ATP口袋稳定性下降。K394乙酰化在二聚体中的失稳效应比单体中更显著，揭示了PTM通过残基特异性效应重塑cGAS的分子机制。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://doi.org/10.1016/j.jsb.2026.108328" target="_blank">📄 全文 (Elsevier)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-05-29" data-title="Exploratory MD Study of pH-Dependent beta-Strand Propensity in Abeta Oligomeric Assemblies" data-link="https://www.sciencedirect.com/science/article/pii/S0301010426002077" data-cn="pH依赖性Abeta低聚物组装中beta-链倾向性的分子动力学探索" data-journal="Chemical Physics" data-authors="HF Zein | Chemical Physics (Elsevier) 2026" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0301010426002077" target="_blank">Exploratory Molecular Dynamics Study of pH-Dependent β-Strand Propensity in aβ(14–23) Oligomeric Assemblies</a></div>
+<div class="paper-title-cn">pH依赖性Abeta低聚物组装中beta-链倾向性的分子动力学探索</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Chemical Physics</span></div>
+<div class="authors">HF Zein | Chemical Physics (Elsevier) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>采用全原子分子动力学模拟，系统研究pH值如何影响Aβ(14-23)肽段低聚物组装中的早期β-结构形成。在多个pH条件下对六聚体体系进行了三重100 ns模拟，分析了β-链倾向性、二级结构分布和分子间相互作用的变化。<br><br>
+<strong>核心发现：</strong>pH值对Aβ低聚体的β-折叠形成具有显著影响：酸性条件促进了特定残基区域的β-链构象转变，改变了低聚体的聚集路径和稳定性。该研究为理解阿尔茨海默病中Aβ聚集的pH依赖性提供了原子层面的结构基础，但研究也指出需要更长的模拟时间尺度来充分捕获聚集动力学过程（100 ns对于完全平衡可能不够）。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.sciencedirect.com/science/article/pii/S0301010426002077" target="_blank">📄 全文 (Elsevier)</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="5" data-date="2026-05-29" data-title="Molecular Docking, MD Simulation, DFT, and ADMET Prediction of 3-Carbonyl-3-Hydroxyl-Isoindolin-1-ones as MAO-B Inhibitors" data-link="https://www.benthamdirect.com/content/journals/cad/10.2174/0115734099417682251124070748" data-cn="分子对接、MD模拟、DFT和ADMET预测：3-羰基-3-羟基-异吲哚啉-1-酮作为MAO-B抑制剂" data-journal="Current Computer-Aided Drug Design" data-authors="K Madaan, R Singh | Current CADD (Bentham) 2026" data-star="☆">☆</span><a href="https://www.benthamdirect.com/content/journals/cad/10.2174/0115734099417682251124070748" target="_blank">Molecular Docking, Molecular Dynamics Simulation, DFT, and ADMET Prediction of 3-Carbonyl-3-Hydroxyl-Isoindolin-1-ones, Revealing Potential Inhibitors of MAO-B</a></div>
+<div class="paper-title-cn">分子对接、MD模拟、DFT和ADMET预测：3-羰基-3-羟基-异吲哚啉-1-酮作为MAO-B抑制剂</div>
+<div class="paper-meta"><span class="meta-tag meta-md">分子模拟</span><span class="meta-tag">Current CADD</span></div>
+<div class="authors">K Madaan, R Singh | Current Computer-Aided Drug Design (Bentham) 2026</div>
+<div class="summary">
+<strong>研究内容：</strong>针对帕金森病（PD）靶点单胺氧化酶B（MAO-B），对3-羰基-3-羟基-异吲哚啉-1-酮类化合物进行系统评估。首先通过分子对接筛选候选化合物，筛选出最优候选物后采用500 ns分子动力学模拟（Desmond）、MM-GBSA结合自由能计算（Prime）、DFT量子化学分析和ADMET药代动力学预测进行全面评价。<br><br>
+<strong>核心发现：</strong>两个最优候选化合物在500 ns MD模拟中表现出稳定的结合构象和有利的结合自由能，DFT计算验证了其电子结构和反应活性。ADMET预测显示良好的药代动力学特性和安全性。该研究建立了从虚拟筛选到MD验证再到ADMET评价的完整药物设计流程。
+</div>
+<div class="links"><a class="link-btn link-pdf" href="https://www.benthamdirect.com/content/journals/cad/10.2174/0115734099417682251124070748" target="_blank">📄 全文 (Bentham)</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+<p>Hermes Agent 每日自动检索 · 30个固定关键词 · Google Scholar</p>
+<p>期刊过滤: ACS / Nature / Science / Wiley / RSC / Elsevier / AIP·APS / Springer / arXiv | 仅供学术研究使用</p>
+</div>
+</div>
+
+<br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../index.html" style="color:#999;font-size:12px;text-decoration:none">← 返回首页</a></div>
+<script>
+/* ★ 收藏功能 v12 — 读取+合并+写入，不丢数据 */
+(function(){
+  var stars = document.querySelectorAll('.star-btn');
+  if(!stars.length) return;
+
+  var SAVE_DELAY = 2000;
+  var saveTimer = null;
+  var fileHandle = null;
+
+  /* IndexedDB */
+  function openDB(){
+    return new Promise(function(res, rej){
+      var req = indexedDB.open('star-fav-handle', 1);
+      req.onupgradeneeded = function(e){
+        var db = e.target.result;
+        if(!db.objectStoreNames.contains('handles')) db.createObjectStore('handles');
+      };
+      req.onsuccess = function(e){ res(e.target.result); };
+      req.onerror = function(e){ rej(e.target.error); };
+    });
+  }
+  function loadHandle(){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var tx = db.transaction('handles','readonly');
+        var req = tx.objectStore('handles').get('fav-file');
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ resolve(null); };
+      });
+    }).catch(function(){ return null; });
+  }
+  function saveHandle(handle){
+    return openDB().then(function(db){
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction('handles','readwrite');
+        tx.objectStore('handles').put(handle, 'fav-file');
+        tx.oncomplete = resolve; tx.onerror = reject;
+      });
+    }).catch(function(){});
+  }
+
+  function readFile(handle){
+    return handle.getFile().then(function(f){ return f.text(); }).then(function(t){
+      try{return JSON.parse(t);}catch(e){return [];}
+    }).catch(function(){return [];});
+  }
+  function writeFile(handle, data){
+    var json = JSON.stringify(data, null, 2);
+    return handle.requestPermission({mode:'readwrite'}).then(function(p){
+      if(p!=='granted') throw new Error('denied');
+      return handle.createWritable();
+    }).then(function(w){return w.write(json).then(function(){return w.close();});});
+  }
+
+  function mergeStars(master){
+    if(!master) master = [];
+    var map = {}; master.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+    stars.forEach(function(s){
+      var k = s.dataset.title+'|||'+s.dataset.link;
+      var f = s.textContent === '★';
+      if(map[k]){ map[k].starred = f; }
+      else {
+        map[k] = {title:s.dataset.title,link:s.dataset.link,cnTitle:s.dataset.cn||'',journal:s.dataset.journal||'',authors:s.dataset.authors||'',date:s.dataset.date||'',starred:f};
+      }
+    });
+    return Object.values(map);
+  }
+
+  function doSave(){
+    if(!fileHandle) return;
+    readFile(fileHandle).then(function(ex){
+      return writeFile(fileHandle, mergeStars(ex));
+    }).catch(function(){});
+  }
+
+  function setupHandle(){
+    return window.showSaveFilePicker({suggestedName:'favorites.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
+      .then(function(h){fileHandle=h;saveHandle(h);return readFile(h);})
+      .then(function(ex){return writeFile(fileHandle, mergeStars(ex));})
+      .catch(function(e){if(e.name==='AbortError')return;fallback();});
+  }
+
+  function fallback(){
+    var data = mergeStars([]); var json = JSON.stringify(data,null,2);
+    var blob = new Blob([json],{type:'application/json;charset=utf-8'});
+    var url = URL.createObjectURL(blob); var a = document.createElement('a');
+    a.href = url; a.download = 'favorites.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},2000);
+    alert('请将下载的 favorites.json 保存到 D:\\LZ&AI\\info-box\\ 目录下覆盖原文件');
+  }
+
+  function applyStar(star, isFav){
+    star.textContent = isFav ? '★' : '☆';
+    star.style.color = isFav ? '#f5a623' : '#ccc';
+    star.style.textShadow = isFav ? '0 0 4px rgba(245,166,35,0.5)' : 'none';
+    star.title = isFav ? '已收藏' : '点击收藏';
+  }
+
+  /* 恢复星星 */
+  stars.forEach(function(star,i){
+    var key='fav_'+star.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();
+    if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}
+    else{applyStar(star,(star.getAttribute('data-star')||'')==='★');}
+  });
+
+  /* 加载句柄，同步数据 */
+  loadHandle().then(function(h){
+    if(!h) return;
+    fileHandle = h;
+    readFile(h).then(function(ex){
+      var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+      stars.forEach(function(star,i){
+        var k = star.dataset.title+'|||'+star.dataset.link;
+        if(map[k]){
+          applyStar(star, map[k].starred === true);
+          var lk = 'fav_'+star.dataset.date+'_'+i;
+          if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
+          else localStorage.removeItem(lk);
+        }
+      });
+    }).catch(function(){});
+  });
+
+  /* 绑定点击 */
+  stars.forEach(function(star,i){
+    star.onclick=function(e){
+      e.stopPropagation();e.preventDefault();
+      var wasFav=star.textContent==='★';
+      applyStar(star,!wasFav);
+      var key='fav_'+star.dataset.date+'_'+i;
+      if(wasFav)localStorage.removeItem(key);
+      else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));
+      if(!fileHandle&&window.showSaveFilePicker){setupHandle();return;}
+      if(!fileHandle){fallback();return;}
+      if(saveTimer)clearTimeout(saveTimer);
+      saveTimer=setTimeout(doSave,SAVE_DELAY);
+    };
+  });
+  console.log('⭐ v12');
+})();
+</script>
+</body>
+</html>
