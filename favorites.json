@@ -78,7 +78,7 @@
     "journal": "npj Computational Materials",
     "authors": "J Choi, Y Jung | npj Computational Materials (Nature) 2026",
     "date": "2026-05-26",
-    "starred": false
+    "starred": true
   },
   {
     "title": "Accelerating molecular dynamics simulations using fast Ewald summation with prolates",
