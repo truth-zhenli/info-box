@@ -70,5 +70,68 @@
     "authors": "L Quitte, M Leclercq, G Moroy, A Droit",
     "date": "2026-06-29",
     "starred": false
+  },
+  {
+    "title": "Thermo-electric-chemical synergy strategies for ultra-heavy oil recovery: field evidence from Chunhui Oilfield",
+    "link": "https://link.springer.com/article/10.1186/s44147-026-01048-w",
+    "cnTitle": "热-电-化学协同策略用于超稠油开采：春晖油田现场证据",
+    "journal": "Journal of Engineering and Applied Science",
+    "authors": "H Yang, Z Li, Z Luo | Journal of Engineering and Applied Science (Springer) 2026",
+    "date": "2026-05-26",
+    "starred": true
+  },
+  {
+    "title": "Accelerating molecular dynamics simulations using fast Ewald summation with prolates",
+    "link": "https://www.nature.com/articles/s41467-026-73232-8",
+    "cnTitle": "利用扁球面波函数快速Ewald求和加速分子动力学模拟",
+    "journal": "Nature Communications",
+    "authors": "J Liang, L Lu, A Barnett, L Greengard, S Jiang | Nature Communications 2026",
+    "date": "2026-05-26",
+    "starred": true
+  },
+  {
+    "title": "Molecular Simulation Study of CH4 Adsorption and CO2 Sequestration in Montmorillonite",
+    "link": "https://www.sciencedirect.com/science/article/pii/S2949891026002204",
+    "cnTitle": "蒙脱石中CH4吸附与CO2埋存的分子模拟研究",
+    "journal": "Geoenergy Science and Engineering",
+    "authors": "J Chen, X Yang, X Zhang, Y Wang, X Huo, H Pang | Geoenergy Science and Engineering (Elsevier) 2026",
+    "date": "2026-05-26",
+    "starred": true
+  },
+  {
+    "title": "Molecular Modeling of Protein-Peptide Complexes Mimicking Factor Xa-Prothrombin Using AlphaFold-Multimer and Molecular Dynamics Simulations for Functional Prediction",
+    "link": "https://doi.org/10.1021/acs.jcim.5c02774",
+    "cnTitle": "AlphaFold-Multimer与MD模拟联用预测Factor Xa-凝血酶原蛋白-肽复合物",
+    "journal": "Journal of Chemical Information and Modeling",
+    "authors": "D Veizaj, DA Poole III, KL Cheung, JV Flier | JCIM (ACS) 2026",
+    "date": "2026-05-30",
+    "starred": true
+  },
+  {
+    "title": "Molecular Simulation Study on Adsorption and Diffusion Characteristics of CH4 in Cylindrical/Slit Pores of Lignite",
+    "link": "https://pubs.acs.org/doi/abs/10.1021/acs.langmuir.6c01323",
+    "cnTitle": "褐煤圆柱/狭缝孔隙中CH4吸附与扩散特性的分子模拟研究",
+    "journal": "Langmuir",
+    "authors": "B Jia, J Lin, X Mao, D Zhang, H Zhang | Langmuir (ACS) 2026",
+    "date": "2026-05-26",
+    "starred": true
+  },
+  {
+    "title": "Computational freezing of pentadecane",
+    "link": "https://www.sciencedirect.com/science/article/pii/S0927025626002697",
+    "cnTitle": "十五烷的计算机结晶模拟",
+    "journal": "Computational Materials Science",
+    "authors": "S Tsibranska-Gyoreva, S Iliev, D Cholakova, A Ivanova | Computational Materials Science (Elsevier) 2026",
+    "date": "2026-05-26",
+    "starred": true
+  },
+  {
+    "title": "Large-scale screening of high-entropy materials for superionic solid electrolytes",
+    "link": "https://www.nature.com/articles/s41524-026-02116-8",
+    "cnTitle": "高通量筛选高熵材料用于超离子固态电解质",
+    "journal": "npj Computational Materials",
+    "authors": "J Choi, Y Jung | npj Computational Materials (Nature) 2026",
+    "date": "2026-05-26",
+    "starred": true
   }
 ]
