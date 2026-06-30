@@ -155,8 +155,8 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   <div class="sub">__MONTH_NAMES__</div>
 </div>
 <div class="nav-bar">
-    <a class="nav-link" href="../../index.html">🏠 首页</a>
-    <a class="nav-link" href="../papers.html">📰 文献追踪</a>
+    <a class="nav-link" href="../../../../index.html">🏠 首页</a>
+    <a class="nav-link" href="../../../papers.html">📰 文献追踪</a>
 __NAV_LINKS__
   </div>
 <div id="list">__CARDS_HTML__</div>
@@ -239,7 +239,7 @@ for q in quarters:
     html = html.replace("__CARDS_HTML__", cards_html)
     html = html.replace("__JS_SCRIPT__", js)
 
-    out_path = os.path.join(BASE, "pages", str(year), f"q{qi}.html")
+    out_path = os.path.join(BASE, "pages", "papers", str(year), "fav", f"q{qi}.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✓ q{qi}.html ({len(papers)} 篇收藏)")
