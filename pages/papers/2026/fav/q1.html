@@ -58,7 +58,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   function renderFromFavs(all){
     var papers = all.filter(function(p){ return p.starred && p.date; })
                     .filter(function(p){ var m=parseInt(p.date.split('-')[1]); return MONTHS.indexOf(m) >= 0; });
-    if(papers.length === 0) return;
+    if(papers.length === 0){
+      listEl.innerHTML = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div>';
+      return;
+    }
     papers.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
     var html = '';
     papers.forEach(function(p){

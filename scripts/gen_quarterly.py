@@ -45,7 +45,10 @@ JS_SCRIPT = """<script>
   function renderFromFavs(all){
     var papers = all.filter(function(p){ return p.starred && p.date; })
                     .filter(function(p){ var m=parseInt(p.date.split('-')[1]); return MONTHS.indexOf(m) >= 0; });
-    if(papers.length === 0) return;
+    if(papers.length === 0){
+      listEl.innerHTML = '<div class=\"empty-tip\"><span class=\"big\">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div>';
+      return;
+    }
     papers.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
     var html = '';
     papers.forEach(function(p){
@@ -228,6 +231,14 @@ if os.path.exists(papers_path):
     papers_html = papers_html.replace(
         "__PRERENDERED_COUNTS_JSON__", new_str, 1
     )
+    # Also handle the case where placeholder was already replaced (regex fallback)
+    if "__PRERENDERED_COUNTS_JSON__" not in papers_html:
+        import re
+        papers_html = re.sub(
+            r'var PRERENDERED_COUNTS = \{.*?\};?',
+            f"var PRERENDERED_COUNTS = {new_str};",
+            papers_html, count=1
+        )
     with open(papers_path, "w", encoding="utf-8") as f:
         f.write(papers_html)
     print(f"✓ papers.html 计数已更新: { {y: dict(year_counts[y]) for y in sorted(year_counts.keys())} }")
