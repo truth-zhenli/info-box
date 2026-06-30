@@ -46,86 +46,11 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     <a class="nav-link active" href="q4.html">❄️ 四季度</a>
   </div>
 <div id="list"><div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div></div>
-<div class="footer">预渲染版 · 点星星后刷新页面即可更新</div>
+<div class="footer">预渲染版 · 星星数据来自 favorites.json</div>
 </div>
 <script>
-(function(){
-  // 预渲染的收藏数据（由 gen_quarterly.py 生成）
-  var EMBEDDED_FAVS = [];
-  if(EMBEDDED_FAVS.length > 0){
-    // 预渲染已经在 HTML 中，无需额外操作
-  }
-
-  // 直接从 localStorage 构建本季度收藏
-  var listEl = document.getElementById('list');
-  var paperMap = {};
-  var allowedMonths = [10, 11, 12];
-
-  for(var i = 0; i < localStorage.length; i++){
-    var key = localStorage.key(i);
-    if(key && key.indexOf('fav_') === 0){
-      try{
-        var val = JSON.parse(localStorage.getItem(key));
-        if(val && val.title && val.date){
-          var m = parseInt(val.date.split('-')[1]);
-          if(allowedMonths.indexOf(m) >= 0){
-            var uid = val.title + '|||' + val.link;
-            if(!paperMap[uid]){
-              paperMap[uid] = {
-                title: val.title, link: val.link,
-                cnTitle: val.cn || '', journal: val.journal || '',
-                authors: val.authors || '', date: val.date
-              };
-            }
-          }
-        }
-      }catch(e){}
-    }
-  }
-
-  // 合并本地和预渲染数据——localStorage 有就用它（补充预渲染中没有的），
-  // 没有 localStorage 就用预渲染的
-  var newKeys = Object.keys(paperMap).filter(function(k){
-    return !EMBEDDED_FAVS.some(function(p){ return p.title + '|||' + p.link === k; });
-  });
-
-  if(newKeys.length > 0){
-    // 有新增本地收藏——合并后重新渲染
-    var merged = {};
-    EMBEDDED_FAVS.forEach(function(p){
-      merged[p.title + '|||' + p.link] = p;
-    });
-    Object.keys(paperMap).forEach(function(k){
-      if(!merged[k]) merged[k] = paperMap[k];
-    });
-    renderFromMap(merged);
-  }
-
-  function renderFromMap(map){
-    var keys = Object.keys(map);
-    if(keys.length === 0) return;
-    var sorted = keys.sort(function(a,b){ return map[b].date.localeCompare(map[a].date); });
-    var html = '';
-    sorted.forEach(function(k){
-      var p = map[k];
-      var m = parseInt(p.date.split('-')[1]);
-      html += '<div class="paper-card">';
-      html += '<div class="paper-month-tag">' + m + '月</div>';
-      html += '<div class="paper-title"><a href="' + p.link + '" target="_blank">' + escapeHtml(p.title) + '</a></div>';
-      if(p.cnTitle) html += '<div class="paper-cn">' + escapeHtml(p.cnTitle) + '</div>';
-      if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + escapeHtml(p.journal) + '</span></div>';
-      if(p.authors) html += '<div class="paper-authors">' + escapeHtml(p.authors) + '</div>';
-      html += '<div class="paper-date">📅 ' + p.date + '</div>';
-      html += '</div>';
-    });
-    listEl.innerHTML = html;
-  }
-
-  function escapeHtml(s){
-    if(!s) return '';
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-})();
+// 季度精选 — 纯预渲染版
+// v13 系统下星星写入 favorites.json，不读 localStorage
 </script>
 </body>
 </html>

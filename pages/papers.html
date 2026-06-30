@@ -245,73 +245,12 @@ function render(){
   updateFavCounts();
 }
 
-/* ========== 收藏统计 ========== */
+/* ========== 收藏统计（纯预渲染）========== */
 /* 预渲染收藏计数（由 gen_quarterly.py 更新） */
 var PRERENDERED_COUNTS = {};
 
 function updateFavCounts(){
   updateUI(PRERENDERED_COUNTS);
-
-  /* 再从线上 favorites.json 同步（跨设备，兼容file://和https://） */
-  function loadFavCount(){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../favorites.json?_=' + Date.now(), true);
-    xhr.overrideMimeType('application/json');
-    xhr.onload = function(){
-      if(xhr.status === 0 || xhr.status === 200){
-        try{
-          var all = JSON.parse(xhr.responseText);
-          var counts = {};
-          all.forEach(function(p){
-            if(!p.starred || !p.date) return;
-            var y = p.date.slice(0,4);
-            var m = parseInt(p.date.slice(5,7));
-            var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
-            if(!counts[y]) counts[y] = {};
-            if(!counts[y][q]) counts[y][q] = 0;
-            counts[y][q]++;
-          });
-          updateUI(counts);
-          return;
-        }catch(e){}
-      }
-      /* XHR失败（file://下被CORS拦截）→ 从localStorage读取 */
-      countFromLocalStorage();
-    };
-    xhr.onerror = function(){ countFromLocalStorage(); };
-    xhr.send();
-  }
-  loadFavCount();
-}
-
-function countFromLocalStorage(){
-  var qCounts = {};
-  for(var i = 0; i < localStorage.length; i++){
-    var key = localStorage.key(i);
-    if(key && key.startsWith('fav_')){
-      try{
-        var val = JSON.parse(localStorage.getItem(key));
-        if(val && val.date){
-          var y = val.date.slice(0,4);
-          var m = parseInt(val.date.slice(5,7));
-          var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
-          if(!qCounts[y]) qCounts[y] = {};
-          if(!qCounts[y][q]) qCounts[y][q] = 0;
-          qCounts[y][q]++;
-        }
-      }catch(e){}
-    }
-  }
-  /* 合并：取 localStorage 和预渲染计数的较大值 */
-  for(var y in PRERENDERED_COUNTS){
-    if(!qCounts[y]) qCounts[y] = {};
-    for(var q in PRERENDERED_COUNTS[y]){
-      var localN = qCounts[y][q] || 0;
-      var preN = PRERENDERED_COUNTS[y][q] || 0;
-      qCounts[y][q] = Math.max(localN, preN);
-    }
-  }
-  updateUI(qCounts);
 }
 
 function updateUI(counts){
