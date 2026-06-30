@@ -271,25 +271,32 @@ function updateFavCounts(){
             counts[y][q]++;
           });
           updateUI(counts);
+          return;
         }catch(e){}
       }
+      /* XHR失败（file://下被CORS拦截）→ 从localStorage读取 */
+      countFromLocalStorage();
     };
+    xhr.onerror = function(){ countFromLocalStorage(); };
     xhr.send();
   }
   loadFavCount();
 }
 
 function countFromLocalStorage(){
-  var qCounts = {1:0, 2:0, 3:0, 4:0};
+  var qCounts = {};
   for(var i = 0; i < localStorage.length; i++){
     var key = localStorage.key(i);
     if(key && key.startsWith('fav_')){
       try{
         var val = JSON.parse(localStorage.getItem(key));
         if(val && val.date){
+          var y = val.date.slice(0,4);
           var m = parseInt(val.date.slice(5,7));
           var q = m <= 3 ? 1 : m <= 6 ? 2 : m <= 9 ? 3 : 4;
-          qCounts[q]++;
+          if(!qCounts[y]) qCounts[y] = {};
+          if(!qCounts[y][q]) qCounts[y][q] = 0;
+          qCounts[y][q]++;
         }
       }catch(e){}
     }
