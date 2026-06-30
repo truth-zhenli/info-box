@@ -75,17 +75,40 @@ JS_SCRIPT = """<script>
     return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  // Try XHR to read favorites.json live
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '../../../../favorites.json?_=' + Date.now(), true);
-  xhr.overrideMimeType('application/json');
-  xhr.onload = function(){
-    if(xhr.status === 0 || xhr.status === 200){
-      try{ renderFromFavs(JSON.parse(xhr.responseText)); }catch(e){}
-    }
-  };
-  xhr.onerror = function(){};
-  xhr.send();
+  // 通过目录句柄读 favorites.json（file:// 下 XHR 被禁，但目录句柄可用）
+  function openDB(){
+    return new Promise(function(res, rej){
+      var req = indexedDB.open('star-fav-dir', 1);
+      req.onupgradeneeded = function(e){
+        var db = e.target.result;
+        if(!db.objectStoreNames.contains('handles')) db.createObjectStore('handles');
+      };
+      req.onsuccess = function(e){ res(e.target.result); };
+      req.onerror = function(e){ rej(e.target.error); };
+    });
+  }
+
+  function readFav(){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var tx = db.transaction('handles','readonly');
+        var req = tx.objectStore('handles').get('fav-dir');
+        req.onsuccess = function(){ resolve(req.result); };
+        req.onerror = function(){ resolve(null); };
+      });
+    }).then(function(dir){
+      if(!dir) return null;
+      return dir.getFileHandle('favorites.json')
+        .then(function(fh){ return fh.getFile(); })
+        .then(function(f){ return f.text(); })
+        .then(function(t){ try{return JSON.parse(t);}catch(e){return null;} })
+        .catch(function(){ return null; });
+    }).catch(function(){ return null; });
+  }
+
+  readFav().then(function(data){
+    if(data && Array.isArray(data)) renderFromFavs(data);
+  });
 })();
 </script>"""
 
