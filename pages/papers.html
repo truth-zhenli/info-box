@@ -246,9 +246,10 @@ function render(){
 }
 
 /* ========== 收藏统计 ========== */
+/* 预渲染收藏计数（由 gen_quarterly.py 更新） */
+var PRERENDERED_COUNTS = {2026:{1:0,2:8,3:0,4:0}};
+
 function updateFavCounts(){
-  /* 预渲染收藏计数（由 gen_quarterly.py 更新） */
-  var PRERENDERED_COUNTS = {2026:{1:0,2:8,3:0,4:0}};
   updateUI(PRERENDERED_COUNTS);
 
   /* 再从线上 favorites.json 同步（跨设备，兼容file://和https://） */
@@ -299,6 +300,15 @@ function countFromLocalStorage(){
           qCounts[y][q]++;
         }
       }catch(e){}
+    }
+  }
+  /* 合并：取 localStorage 和预渲染计数的较大值 */
+  for(var y in PRERENDERED_COUNTS){
+    if(!qCounts[y]) qCounts[y] = {};
+    for(var q in PRERENDERED_COUNTS[y]){
+      var localN = qCounts[y][q] || 0;
+      var preN = PRERENDERED_COUNTS[y][q] || 0;
+      qCounts[y][q] = Math.max(localN, preN);
     }
   }
   updateUI(qCounts);
