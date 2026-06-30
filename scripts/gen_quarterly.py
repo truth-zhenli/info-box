@@ -266,9 +266,13 @@ if os.path.exists(papers_path):
     for y in sorted(year_counts.keys()):
         q_pairs = ",".join(f"{k}:{year_counts[y][k]}" for k in sorted(year_counts[y].keys()))
         year_pairs.append(f"{y}:{{{q_pairs}}}")
-    new_str = "var PRERENDERED_COUNTS = {" + ",".join(year_pairs) + "}"
+    new_str = "var PRERENDERED_COUNTS = {" + ",".join(year_pairs) + "};"
 
-    papers_html = re.sub(r'var PRERENDERED_COUNTS = \{[^}]*\{[^}]*\}[^}]*\}', new_str, papers_html)
+    # Match both empty {} and populated {year:{...}} — with or without trailing ;
+    papers_html = re.sub(
+        r'var PRERENDERED_COUNTS = \{.*?\};?',
+        new_str, papers_html, count=1
+    )
     with open(papers_path, "w", encoding="utf-8") as f:
         f.write(papers_html)
     print(f"✓ papers.html 计数已更新: { {y: dict(year_counts[y]) for y in sorted(year_counts.keys())} }")

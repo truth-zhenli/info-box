@@ -221,19 +221,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 
 <br><div style="max-width:1400px;width:96%;margin:0 auto;padding:0 20px 30px;text-align:center"><a href="../../../../index.html" style="color:#999;font-size:12px;text-decoration:none">← 返回首页</a></div>
 <script>
-/* 收藏功能 v12 — 读取+合并+写入，不丢数据 */
+/* 收藏功能 v13 -- 目录权限 + 取消即删除 */
 (function(){
   var stars = document.querySelectorAll('.star-btn');
   if(!stars.length) return;
 
   var SAVE_DELAY = 2000;
   var saveTimer = null;
-  var fileHandle = null;
+  var dirHandle = null;
 
   /* IndexedDB */
   function openDB(){
     return new Promise(function(res, rej){
-      var req = indexedDB.open('star-fav-handle', 1);
+      var req = indexedDB.open('star-fav-dir', 1);
       req.onupgradeneeded = function(e){
         var db = e.target.result;
         if(!db.objectStoreNames.contains('handles')) db.createObjectStore('handles');
@@ -242,75 +242,120 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       req.onerror = function(e){ rej(e.target.error); };
     });
   }
-  function loadHandle(){
+  function clearDB(){
+    try { indexedDB.deleteDatabase('star-fav-dir'); } catch(e){}
+  }
+  function loadDirHandle(){
     return openDB().then(function(db){
       return new Promise(function(resolve){
         var tx = db.transaction('handles','readonly');
-        var req = tx.objectStore('handles').get('fav-file');
+        var req = tx.objectStore('handles').get('fav-dir');
         req.onsuccess = function(){ resolve(req.result); };
         req.onerror = function(){ resolve(null); };
       });
     }).catch(function(){ return null; });
   }
-  function saveHandle(handle){
+  function saveDirHandle(handle){
     return openDB().then(function(db){
       return new Promise(function(resolve, reject){
         var tx = db.transaction('handles','readwrite');
-        tx.objectStore('handles').put(handle, 'fav-file');
+        tx.objectStore('handles').put(handle, 'fav-dir');
         tx.oncomplete = resolve; tx.onerror = reject;
       });
     }).catch(function(){});
   }
 
-  function readFile(handle){
-    return handle.getFile().then(function(f){ return f.text(); }).then(function(t){
-      try{return JSON.parse(t);}catch(e){return [];}
-    }).catch(function(){return [];});
+  function readFavJson(){
+    if(!dirHandle) return Promise.resolve([]);
+    return dirHandle.getFileHandle('favorites.json')
+      .then(function(fh){ return fh.getFile(); })
+      .then(function(f){ return f.text(); })
+      .then(function(t){ try{return JSON.parse(t);}catch(e){return [];} })
+      .catch(function(){ return []; });
   }
-  function writeFile(handle, data){
-    var json = JSON.stringify(data, null, 2);
-    return handle.requestPermission({mode:'readwrite'}).then(function(p){
-      if(p!=='granted') throw new Error('denied');
-      return handle.createWritable();
-    }).then(function(w){return w.write(json).then(function(){return w.close();});});
+  function writeFavJson(data){
+    if(!dirHandle) return Promise.reject('no dir');
+    return dirHandle.getFileHandle('favorites.json', {create: true})
+      .then(function(fh){
+        return fh.requestPermission({mode:'readwrite'}).then(function(p){
+          if(p!=='granted') throw new Error('denied');
+          return fh.createWritable();
+        }).then(function(w){
+          return w.write(JSON.stringify(data, null, 2)).then(function(){ return w.close(); });
+        });
+      });
   }
 
   function mergeStars(master){
-    if(!master) master = [];
-    var map = {}; master.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+    /* 逻辑：当前页点亮的保留，没点亮的删掉；其他页点亮的保留 */
+    if(!Array.isArray(master)) master = [];
+    var starredFromOther = {};
+    master.forEach(function(i){ starredFromOther[i.title+'|||'+i.link] = i; });
+
+    var result = [];
+    var seenOnPage = {};
+
     stars.forEach(function(s){
       var k = s.dataset.title+'|||'+s.dataset.link;
-      var f = s.textContent === '\u2605';
-      if(map[k]){ map[k].starred = f; }
-      else {
-        map[k] = {title:s.dataset.title,link:s.dataset.link,cnTitle:s.dataset.cn||'',journal:s.dataset.journal||'',authors:s.dataset.authors||'',date:s.dataset.date||'',starred:f};
+      seenOnPage[k] = true;
+      var isFav = s.textContent === '\u2605';
+      if(isFav){
+        result.push({
+          title: s.dataset.title,
+          link: s.dataset.link,
+          cnTitle: s.dataset.cn||'',
+          journal: s.dataset.journal||'',
+          authors: s.dataset.authors||'',
+          date: s.dataset.date||'',
+          starred: true
+        });
+      }
+      /* 取消点亮 → 不加入result → 相当于从 favorites.json 删掉 */
+    });
+
+    /* 保留其他页面上仍然点亮的条目 */
+    Object.keys(starredFromOther).forEach(function(k){
+      if(!seenOnPage[k] && starredFromOther[k].starred){
+        result.push(starredFromOther[k]);
       }
     });
-    return Object.values(map);
+
+    return result;
   }
 
   function doSave(){
-    if(!fileHandle) return;
-    readFile(fileHandle).then(function(ex){
-      return writeFile(fileHandle, mergeStars(ex));
-    }).catch(function(){});
+    if(!dirHandle) return;
+    readFavJson().then(function(ex){
+      return writeFavJson(mergeStars(ex));
+    }).catch(function(){
+      dirHandle = null;
+      clearDB();
+    });
   }
 
   function setupHandle(){
-    return window.showSaveFilePicker({suggestedName:'favorites.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
-      .then(function(h){fileHandle=h;saveHandle(h);return readFile(h);})
-      .then(function(ex){return writeFile(fileHandle, mergeStars(ex));})
-      .catch(function(e){if(e.name==='AbortError')return;fallback();});
+    return window.showDirectoryPicker()
+      .then(function(dir){
+        dirHandle = dir;
+        saveDirHandle(dir);
+        return doSave();
+      })
+      .catch(function(e){
+        if(e.name==='AbortError') return;
+        fallback();
+      });
   }
 
   function fallback(){
-    var data = mergeStars([]); var json = JSON.stringify(data,null,2);
+    var data = mergeStars([]);
+    var json = JSON.stringify(data,null,2);
     var blob = new Blob([json],{type:'application/json;charset=utf-8'});
-    var url = URL.createObjectURL(blob); var a = document.createElement('a');
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
     a.href = url; a.download = 'favorites.json';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
-    alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
+    alert('请将下载的 favorites.json 保存到 D:\\LZ&AI\\info-box\\ 目录下覆盖原文件');
   }
 
   function applyStar(star, isFav){
@@ -328,19 +373,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
     else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}
   });
 
-  /* 加载句柄，同步数据 */
-  loadHandle().then(function(h){
-    if(!h) return;
-    fileHandle = h;
-    readFile(h).then(function(ex){
+  /* 加载目录句柄，同步 favorites.json → 页面 */
+  loadDirHandle().then(function(dir){
+    if(!dir) return;
+    dirHandle = dir;
+    readFavJson().then(function(ex){
       var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
       stars.forEach(function(star,i){
         var k = star.dataset.title+'|||'+star.dataset.link;
-        if(map[k]){
-          applyStar(star, map[k].starred === true);
+        if(map[k] && map[k].starred){
+          applyStar(star, true);
           var lk = 'fav_'+star.dataset.date+'_'+i;
-          if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
-          else localStorage.removeItem(lk);
+          localStorage.setItem(lk, JSON.stringify(map[k]));
         }
       });
     }).catch(function(){});
@@ -353,15 +397,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
       var wasFav=star.textContent==='\u2605';
       applyStar(star,!wasFav);
       var key='fav_'+star.dataset.date+'_'+i;
-      if(wasFav)localStorage.removeItem(key);
+      if(wasFav) localStorage.removeItem(key);
       else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));
-      if(!fileHandle&&window.showSaveFilePicker){setupHandle();return;}
-      if(!fileHandle){fallback();return;}
-      if(saveTimer)clearTimeout(saveTimer);
+
+      if(!dirHandle && window.showDirectoryPicker){ setupHandle(); return; }
+      if(!dirHandle){ fallback(); return; }
+      if(saveTimer) clearTimeout(saveTimer);
       saveTimer=setTimeout(doSave,SAVE_DELAY);
     };
   });
-  console.log('\u2b50 v12');
+  console.log('\u2b50 v13');
 })();
 </script>
 </body>
