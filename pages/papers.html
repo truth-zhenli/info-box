@@ -248,7 +248,7 @@ function render(){
 /* ========== 收藏统计 ========== */
 function updateFavCounts(){
   /* 预渲染收藏计数（由 gen_quarterly.py 更新） */
-  var PRERENDERED_COUNTS = {2026:{1:0,2:7,3:0,4:0}};
+  var PRERENDERED_COUNTS = {2026:{1:0,2:1,3:0,4:0}};
   updateUI(PRERENDERED_COUNTS);
 
   /* 再从线上 favorites.json 同步（跨设备，兼容file://和https://） */
