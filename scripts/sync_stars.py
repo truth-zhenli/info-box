@@ -79,6 +79,40 @@ def update_html_stars(html_path, fav_map):
     return False, len(re.findall(r'data-star="★"', content))
 
 
+def cleanup_orphan_stars(html_path, known_links):
+    """清除 HTML 中不在 favorites.json 里的残余星星"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    orig = content
+    # 找到所有 data-star="★" 的 star-btn（data-link 可能在 data-star 前或后）
+    star_pattern = r'<span class="star-btn"[^>]*data-link="([^"]*)"[^>]*data-star="★"[^>]*>'
+    alt_pattern = r'<span class="star-btn"[^>]*data-star="★"[^>]*data-link="([^"]*)"[^>]*>'
+    for m in list(re.finditer(star_pattern, content)) + list(re.finditer(alt_pattern, content)):
+        link = m.group(1)
+        if link in known_links:
+            continue
+        # 这个星星不在 favorites.json 中 → 取消它
+        star_start = m.start()
+        star_end = content.find("</span>", star_start)
+        block = content[star_start:star_end]
+        # 替换 data-star
+        content = content[:star_start] + block.replace('data-star="★"', 'data-star="☆"') + content[star_end:]
+        # 替换显示字符
+        star_end2 = content.find("</span>", star_start)
+        block2 = content[star_start:star_end2]
+        last_gt = block2.rfind(">")
+        old_d = block2[last_gt + 1:]
+        if old_d in ("★", "☆"):
+            content = content[:star_start + last_gt + 1] + "☆" + content[star_start + last_gt + 2:]
+
+    if content != orig:
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True
+    return False
+
+
 def main():
     print("=" * 40)
     print("⭐ Star Syncer v2")
@@ -109,6 +143,21 @@ def main():
         total_stars += stars
 
     print(f"✅ {updated}/{len(html_files)} 更新，共 {total_stars} ★")
+
+    # 清除 HTML 中不在 favorites.json 里的残余星星
+    known_links = set(fav_map.keys())
+    cleaned = 0
+    for f in html_files:
+        if cleanup_orphan_stars(f, known_links):
+            cleaned += 1
+    if cleaned > 0:
+        print(f"🧹 清除 {cleaned} 个页面的残余星星")
+        # 重新统计
+        total_stars = 0
+        for f in html_files:
+            c = f.read_text(encoding='utf-8')
+            total_stars += c.count('data-star="★"')
+        print(f"  清理后共 {total_stars} ★")
 
     # 生成季度精选（由 gen_quarterly.py 负责）
     print("📊 生成季度精选...")
