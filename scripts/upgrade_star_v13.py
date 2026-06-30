@@ -177,10 +177,13 @@ STAR_JS_V13 = """<script>
       var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
       stars.forEach(function(star,i){
         var k = star.dataset.title+'|||'+star.dataset.link;
+        var lk = 'fav_'+star.dataset.date+'_'+i;
         if(map[k] && map[k].starred){
           applyStar(star, true);
-          var lk = 'fav_'+star.dataset.date+'_'+i;
           localStorage.setItem(lk, JSON.stringify(map[k]));
+        } else {
+          applyStar(star, false);
+          localStorage.removeItem(lk);
         }
       });
     }).catch(function(){});
