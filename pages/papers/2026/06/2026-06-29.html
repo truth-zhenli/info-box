@@ -3,63 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📰 文献追踪 - 2026-06-29</title>
+<title>学术文献追踪 - 2026-06-29</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f0eb;color:#333;line-height:1.8}
-.nav-bar{background:#fff;border-bottom:1px solid #e0ddd7;padding:10px 14px;display:flex;flex-wrap:wrap;gap:3px;justify-content:center;position:sticky;top:0;z-index:50}
-.nav-link{display:inline-block;padding:5px 11px;border-radius:6px;font-size:12.5px;text-decoration:none;color:#555;transition:all .15s;white-space:nowrap}
-.nav-link:hover{background:#eef2f7;color:#1a1a2e}
-.nav-link.active{background:#006064;color:#fff;font-weight:600}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
 .container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
-h1{font-size:22px;color:#006064;margin-bottom:16px}
-.date{color:#888;font-size:13px;margin:-12px 0 20px}
-.section-wrap{margin-bottom:24px}
-.section-title{font-size:16px;color:#333;padding:10px 14px;background:#f5f5f5;border-radius:10px;margin-bottom:12px;font-weight:600}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#2e7d32}
+.section-oil .section-title{border-left-color:#d32f2f}
 .papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:768px){.papers-grid{grid-template-columns:1fr}}
-.paper-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);position:relative;border-left:4px solid;transition:box-shadow .2s}
-.paper-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.1)}
-.paper-card.oil{background:#fff5f5;border-left-color:#ffcdd2}
-.paper-card.ai{background:#f3e5f5;border-left-color:#e1bee7}
-.paper-card.md{background:#e0f2f1;border-left-color:#b2dfdb}
-.paper-card.bio{background:#e8f5e9;border-left-color:#c8e6c9}
-.paper-title-en{font-size:14px;font-weight:600;line-height:1.5;margin-bottom:4px;padding-right:40px}
-.paper-title-en a{color:#1a0dab;text-decoration:none}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
 .paper-title-en a:hover{text-decoration:underline}
-.paper-title-cn{font-size:12.5px;color:#666;margin-bottom:8px;line-height:1.5}
-.paper-meta{margin-bottom:6px;display:flex;flex-wrap:wrap;gap:4px}
-.meta-tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:4px;background:#f0f0f0;color:#666}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
 .meta-oil{background:#ffebee;color:#c62828}
 .meta-ai{background:#f3e5f5;color:#6a1b9a}
 .meta-md{background:#e0f2f1;color:#00695c}
-.authors{font-size:11px;color:#999;margin-bottom:8px}
-.summary{font-size:13px;line-height:1.7;color:#444;margin-bottom:8px}
-.insight{font-size:12px;color:#555;background:#fff8e1;border-left:3px solid #ffa726;padding:8px 10px;border-radius:0 6px 6px 0;margin-bottom:8px}
-.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
-.star-btn:hover{transform:scale(1.15)}
-.links{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-.link-btn{display:inline-block;font-size:12px;padding:5px 12px;border-radius:6px;text-decoration:none;transition:all .15s}
-.link-abs{background:#e3f2fd;color:#1565c0}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
 .link-abs:hover{background:#bbdefb}
-.footer{text-align:center;color:#bbb;font-size:12px;margin-top:36px;padding:20px}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+
 </style>
 </head>
 <body>
-<div class="nav-bar">
-<a class="nav-link" href="../../../../index.html">🏠 首页</a>
-<a class="nav-link active" href="../../../papers.html">📰 文献追踪</a>
-</div>
 <div class="container">
-<h1>📰 文献追踪 · 2026-06-29</h1>
-<div class="date">周一 · PAW硤油交替注入·超深硤油CSI·碳量子点降粘·鲜味肽ML-MD·化学LLM·ML-X射线光谱·MD-ML相变材料·MSMP-CCR2蛋白</div>
+
+<div class="nav-bar">
+<span>🏠 <a href="../../../../index.html">首页</a></span>
+<span>📚 <a href="../../../papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-06-29</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年6月29日 · 周一 · 共 8 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">3</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🧪 分子模拟</div></div>
+
+</div>
+</div>
+
 <div class="section-wrap section-oil">
-<h2 class="section-title">🛢️ 油田化学 · PAW硤油交替注入·超深硤油CSI·碳量子点降粘</h2>
+<h2 class="section-title">🛢️ 油田化学 · 段塞尺寸、循环次·科威特北部超深特·碳量子点降黏剂的</h2>
 <div class="papers-grid">
 <div class="paper-card oil">
 <div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-06-29" data-title="Numerical Investigation of Slug Size, Number of Cycles and Injection Timing Effects on Polymer-Alternating-Water Efficiency in Heavy Oil Reservoirs" data-link="https://onepetro.org/SPEEURO/proceedings-abstract/26EURO/26EURO/800394" data-cn="段塞尺寸循环次数与注入时序对稠油油藏聚合物-水交替注入效率的数值研究" data-journal="SPE Europec (OnePetro)" data-authors="SDE Kingue, GD Avansi, AV Omekeh, PØ Andersen" data-star="☆">☆</span><a href="https://onepetro.org/SPEEURO/proceedings-abstract/26EURO/26EURO/800394" target="_blank">Numerical Investigation of Slug Size, Number of Cycles and Injection Timing Effects on Polymer-Alternating-Water Efficiency in Heavy Oil Reservoirs</a></div>
 <div class="paper-title-cn">段塞尺寸、循环次数与注入时序对稠油油藏聚合物-水交替注入效率的数值研究</div>
-<div class="paper-meta"><span class="meta-tag meta-oil">🛢️ 油田化学</span><span class="meta-tag">SPE Europec (OnePetro)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">SPE Europec (OnePetro)</span>
+</div>
 <div class="authors">SDE Kingue, GD Avansi, AV Omekeh, PØ Andersen | SPE Europec featured at 82nd EAGE Conference 2026</div>
 <div class="summary">本研究通过数值模拟系统研究了聚合物-水交替注入（PAW）技术中聚合物段塞尺寸、注入顺序和交替周期数对稠油油藏采收率的影响。基于已验证的均质高黏度岩心驱替模型，开展了参数敏感性分析。结果表明：<strong>聚合物先注</strong>可建立稳定的高黏度驱替前沿，延迟水突破，提高波及效率；水先注则形成高渗透通道，导致采收率下降2%-5%。交替周期数以<strong>2-4个</strong>为最优范围，过多周期会因黏性指进破坏聚合物段塞。聚合物富集段塞（聚合物-水比&gt;1:2）可增强流度控制，而贫段塞效果不佳。研究为稠油EOR项目中降低聚合物用量、降低注入风险提供了优化方案。</div>
 <div class="insight"><strong>🔗 关联分析：</strong>本项目涉及聚合物驱提高采收率技术，该PAW优化方法为硤油低成本化学驱提供了理论依据，特别是段塞设计和注入顺序对驱油效率的影响可直接指导现场方案优化。</div>
@@ -68,7 +95,10 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
 <div class="paper-card oil">
 <div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-06-29" data-title="Fostering a Recovery Process for an Ultra Deep-Extremely Heavy Oil Reservoir in North Kuwait" data-link="https://onepetro.org/SPEEURO/proceedings-abstract/26EURO/26EURO/800317" data-cn="科威特北部超深特稠油油藏采收工艺开发" data-journal="SPE Europec (OnePetro)" data-authors="B Baroon, JM Alvarez, H Ibrahim, A Alqattan" data-star="☆">☆</span><a href="https://onepetro.org/SPEEURO/proceedings-abstract/26EURO/26EURO/800317" target="_blank">Fostering a Recovery Process for an Ultra Deep-Extremely Heavy Oil Reservoir in North Kuwait</a></div>
 <div class="paper-title-cn">科威特北部超深特稠油油藏采收工艺开发</div>
-<div class="paper-meta"><span class="meta-tag meta-oil">🛢️ 油田化学</span><span class="meta-tag">SPE Europec (OnePetro)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">SPE Europec (OnePetro)</span>
+</div>
 <div class="authors">B Baroon, JM Alvarez, H Ibrahim, A Alqattan | SPE Europec featured at 82nd EAGE Conference 2026</div>
 <div class="summary">本文研究了科威特北部Burgan组超深稠油油藏（深度&gt;9000英尺，黏度20,000 mPa·s，<strong>沥青质含量高达35%</strong>）的开发策略。科威特石油公司通过类比油藏分析、岩心流体表征和数值模拟，筛选出<strong>循环溶剂注入（CSI）</strong>作为最具潜力的开发技术。采用砂填充模型的室内实验比较了不同溶剂组合（甲烷、丙烷富集、CO₂）的驱油性能。结果表明：丙烷富集溶剂效果最佳，单周期增量采收率超15%；即使贫溶剂也可获得5%以上增量。但丙烷过量会导致沥青质沉淀不利影响。该研究为超深特稠油藏的经济有效开发提供了关键实验数据和现场试验设计依据。</div>
 <div class="insight"><strong>🔗 关联分析：</strong>本项目面向极端条件硤油开发，该CSI方法对深层超硤油藏具有重要借鉴意义，特别是溶剂注入优化和沥青质控制方案可直接应用于类似油藏开发。</div>
@@ -77,7 +107,10 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
 <div class="paper-card oil">
 <div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-06-29" data-title="Synthesis and Performance Evaluation of Carbon Quantum Dot Viscosity Reducer for Enhanced Heavy Oil Recovery" data-link="https://link.springer.com/article/10.1007/s10553-026-02080-5" data-cn="碳量子点降黏剂的合成及其强化稠油采收性能评价" data-journal="Chemistry and Technology of Fuels and Oils (Springer)" data-authors="M Sun, R Liu, J Shi, Z Chen, Y Yang, K Liu, C Chen, Y Yu" data-star="☆">☆</span><a href="https://link.springer.com/article/10.1007/s10553-026-02080-5" target="_blank">Synthesis and Performance Evaluation of Carbon Quantum Dot Viscosity Reducer for Enhanced Heavy Oil Recovery</a></div>
 <div class="paper-title-cn">碳量子点降黏剂的合成及其强化稠油采收性能评价</div>
-<div class="paper-meta"><span class="meta-tag meta-oil">🛢️ 油田化学</span><span class="meta-tag">Chemistry and Technology of Fuels and Oils (Springer)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">Chemistry and Technology of Fuels and Oils (Springer)</span>
+</div>
 <div class="authors">M Sun, R Liu, J Shi, Z Chen, Y Yang, K Liu, C Chen, Y Yu | Chemistry and Technology of Fuels and Oils 2026</div>
 <div class="summary">本文以柠檬酸和尿素为原料，通过热解法制备了氮掺杂碳量子点（NCQDs），再经硅烷耦联剂KH550改性并与α-烯烃磺酸钠复配，合成新型碳量子点降黏剂（NCQD-S）。表征结果显示NCQD-S为准球形纳米颗粒，平均粒径约<strong>2.8 nm</strong>，具有良好分散性、类石墨结构和优异热稳定性。在0.1%质量浓度和7:3水油比条件下，乳化率达到<strong>100%</strong>，稠油降黏率超<strong>90%</strong>，乳状液具有优异稳定性。岩心驱替实验表明NCQD-S在水驱基础上累计提高采收率<strong>21.21%</strong>。该碳量子点降黏剂具有环保、稳定、降黏和驱油性能优异等优点，为稠油高效降黏和强化采油提供了新型纳米材料和技术途径。</div>
 <div class="insight"><strong>🔗 关联分析：</strong>该项目涉及纳米材料在硤油降粘中的应用，碳量子点作为新型环保纳米降粘剂，对项目纳米材料筛选和硤油化学驱方案设计具有直接参考价值。</div>
@@ -86,28 +119,37 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
 </div>
 </div>
 <div class="section-wrap section-ai">
-<h2 class="section-title">🤖 AI/ML · 鲜味肽ML-MD·化学LLM·ML-X射线光谱</h2>
+<h2 class="section-title">🤖 AI/ML · 基于肽组学和机器·化学材料领域专用·机器学习驱动的智</h2>
 <div class="papers-grid">
 <div class="paper-card ai">
-<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-06-29" data-title="A high-throughput strategy for screening umami peptides from Chouguiyu based on peptidomics and machine learning-assisted molecular simulation" data-link="https://www.sciencedirect.com/science/article/pii/S0963996926014894" data-cn="基于肽组学和机器学习辅助分子模拟从臭鳜鱼中高通量筛选鲜味肽" data-journal="Food Research International (Elsevier)" data-authors="S Lyu, S Xuan, F Yang, H Yu, D Meng, J Zhou" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0963996926014894" target="_blank">A high-throughput strategy for screening umami peptides from Chouguiyu based on peptidomics and machine learning-assisted molecular simulation</a></div>
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-06-29" data-title="A high-throughput strategy for screening umami peptides from Chouguiyu based on peptidomics and machine learning-assisted molecular simulation" data-link="https://www.sciencedirect.com/science/article/pii/S0963996926014894" data-cn="基于肽组学和机器学习辅助分子模拟从臭鳜鱼中高通量筛选鲜味肽" data-journal="Food Research International (Elsevier)" data-authors="S Lyu, S Xuan, F Yang, H Yu, D Meng, J Zhou" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0963996926014894" target="_blank">A high-throughput strategy for screening umami peptides from Chouguiyu based on peptidomics and machine learning-assisted molecular simulation</a></div>
 <div class="paper-title-cn">基于肽组学和机器学习辅助分子模拟从臭鳜鱼中高通量筛选鲜味肽</div>
-<div class="paper-meta"><span class="meta-tag meta-ai">🤖 AI/ML</span><span class="meta-tag">Food Research International (Elsevier)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Food Research International (Elsevier)</span>
+</div>
 <div class="authors">S Lyu, S Xuan, F Yang, H Yu, D Meng, J Zhou | Food Research International (Elsevier) 2026</div>
 <div class="summary">本研究提出了一种基于肽组学与机器学习辅助分子模拟的高通量筛选策略，从臭鳜鱼发酵体系中筛选鲜味肽。通过肽组学分析鉴定数千种潜在肽序列，采用<strong>虚拟筛选、分子对接、分子动力学模拟</strong>和电子舌验证系统评估候选肽的鲜味特征。机器学习模型基于已知鲜味肽数据集预测并优先筛选高潜力候选物。分子模拟结果表明，筛选出的所有肽均通过氢键和疏水相互作用与<strong>T1R1/T1R3鲜味受体</strong>稳定结合，结合自由能计算确认了良好的结合亲和力。该整合方法为从复杂食品发酵系统中发现新型鲜味肽提供了高效框架。</div>
 <div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0963996926014894" target="_blank">📖 全文链接</a></div>
 </div>
 <div class="paper-card ai">
-<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-06-29" data-title="Research Progress of Domain-Specific Large Language Models for Chemical Materials" data-link="https://www.sciencedirect.com/science/article/pii/S1004954126002211" data-cn="化学材料领域专用大语言模型研究进展" data-journal="Chinese Journal of Chemical Engineering (Elsevier)" data-authors="W Chen, L Li, H Xu, D Cheng" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S1004954126002211" target="_blank">Research Progress of Domain-Specific Large Language Models for Chemical Materials</a></div>
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-06-29" data-title="Research Progress of Domain-Specific Large Language Models for Chemical Materials" data-link="https://www.sciencedirect.com/science/article/pii/S1004954126002211" data-cn="化学材料领域专用大语言模型研究进展" data-journal="Chinese Journal of Chemical Engineering (Elsevier)" data-authors="W Chen, L Li, H Xu, D Cheng" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S1004954126002211" target="_blank">Research Progress of Domain-Specific Large Language Models for Chemical Materials</a></div>
 <div class="paper-title-cn">化学材料领域专用大语言模型研究进展</div>
-<div class="paper-meta"><span class="meta-tag meta-ai">🤖 AI/ML</span><span class="meta-tag">Chinese Journal of Chemical Engineering (Elsevier)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Chinese Journal of Chemical Engineering (Elsevier)</span>
+</div>
 <div class="authors">W Chen, L Li, H Xu, D Cheng | Chinese Journal of Chemical Engineering (Elsevier) 2026</div>
 <div class="summary">本文系统综述了面向化学材料领域的专用大语言模型（LLMs）研究进展。领域专用LLMs已成为将<strong>AI for Science</strong>转化为实用材料研究的关键推动力。文章介绍了LLM的基础概念及其在科学领域的适配范式，包括领域语料持续预训练和指令微调。综述了专用化学LLM在<strong>分子表示学习、性质预测、反应结果预测和材料发现</strong>等方面的应用进展。讨论了数据稀缺性、知识锚定、多模态融合（文本与分子图、光谱数据结合）和评估基准等关键技术挑战。研究表明，在分子性质预测和逆合成规划等专业任务上，领域微调模型持续优于通用大模型。</div>
 <div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S1004954126002211" target="_blank">📖 全文链接</a></div>
 </div>
 <div class="paper-card ai">
-<div class="paper-title-en"><span class="star-btn" data-idx="5" data-date="2026-06-29" data-title="Intelligent X-ray Spectroscopy through Machine Learning for Energy Materials Discovery and Characterization" data-link="https://www.sciencedirect.com/science/article/pii/S2468025726001755" data-cn="机器学习驱动的智能X射线光谱学用于能量材料发现与表征" data-journal="Green Energy and Environment (Elsevier)" data-authors="X Kong, F Meharban, L Tan, J Xu, X Wu, C Lin, S Chen" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S2468025726001755" target="_blank">Intelligent X-ray Spectroscopy through Machine Learning for Energy Materials Discovery and Characterization</a></div>
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-06-29" data-title="Intelligent X-ray Spectroscopy through Machine Learning for Energy Materials Discovery and Characterization" data-link="https://www.sciencedirect.com/science/article/pii/S2468025726001755" data-cn="机器学习驱动的智能X射线光谱学用于能量材料发现与表征" data-journal="Green Energy and Environment (Elsevier)" data-authors="X Kong, F Meharban, L Tan, J Xu, X Wu, C Lin, S Chen" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S2468025726001755" target="_blank">Intelligent X-ray Spectroscopy through Machine Learning for Energy Materials Discovery and Characterization</a></div>
 <div class="paper-title-cn">机器学习驱动的智能X射线光谱学用于能量材料发现与表征</div>
-<div class="paper-meta"><span class="meta-tag meta-ai">🤖 AI/ML</span><span class="meta-tag">Green Energy and Environment (Elsevier)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Green Energy and Environment (Elsevier)</span>
+</div>
 <div class="authors">X Kong, F Meharban, L Tan, J Xu, X Wu, C Lin, S Chen | Green Energy and Environment (Elsevier) 2026</div>
 <div class="summary">本综述全面回顾了机器学习（ML）与X射线光谱学协同应用于能量材料表征与发现的研究进展。高通量实验、原位/操作态测量及开放光谱数据库的快速发展产生了海量光谱数据，推动了ML方法的深度融合。文章首先讨论了材料分析中常用表征技术的ML描述符，总结了常用ML模型在X射线光谱分析和预测中的应用，重点介绍了ML驱动的X射线数据解释与预测的前沿工作流。系统调研了ML在<strong>X射线衍射（XRD）、X射线光电子能谱（XPS）和X射线吸收谱（XAS）</strong>中的最新应用，建立了统一的ML模型选择和部署框架。</div>
 <div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S2468025726001755" target="_blank">📖 全文链接</a></div>
@@ -115,26 +157,34 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
 </div>
 </div>
 <div class="section-wrap section-md">
-<h2 class="section-title">🧪 分子模拟 · MD-ML相变材料·MSMP-CCR2蛋白</h2>
+<h2 class="section-title">🧪 分子模拟 · 基于分子动力学模·通过分子动力学模</h2>
 <div class="papers-grid">
 <div class="paper-card md">
-<div class="paper-title-en"><span class="star-btn" data-idx="6" data-date="2026-06-29" data-title="Prediction for thermal properties of phase change materials based on molecular dynamics simulation and machine learning: A comprehensive review" data-link="https://www.sciencedirect.com/science/article/pii/S2095495626004341" data-cn="基于分子动力学模拟与机器学习的相变材料热性能预测综述" data-journal="Journal of Energy Chemistry (Elsevier)" data-authors="X Zhou, Y Ji, X Lu, M Tuluhong, Y Zhu, J Shen, S Zhu" data-star="★">★</span><a href="https://www.sciencedirect.com/science/article/pii/S2095495626004341" target="_blank">Prediction for thermal properties of phase change materials based on molecular dynamics simulation and machine learning: A comprehensive review</a></div>
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-06-29" data-title="Prediction for thermal properties of phase change materials based on molecular dynamics simulation and machine learning: A comprehensive review" data-link="https://www.sciencedirect.com/science/article/pii/S2095495626004341" data-cn="基于分子动力学模拟与机器学习的相变材料热性能预测综述" data-journal="Journal of Energy Chemistry (Elsevier)" data-authors="X Zhou, Y Ji, X Lu, M Tuluhong, Y Zhu, J Shen, S Zhu" data-star="★">★</span><a href="https://www.sciencedirect.com/science/article/pii/S2095495626004341" target="_blank">Prediction for thermal properties of phase change materials based on molecular dynamics simulation and machine learning: A comprehensive review</a></div>
 <div class="paper-title-cn">基于分子动力学模拟与机器学习的相变材料热性能预测综述</div>
-<div class="paper-meta"><span class="meta-tag meta-md">🧪 分子模拟</span><span class="meta-tag">Journal of Energy Chemistry (Elsevier)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Journal of Energy Chemistry (Elsevier)</span>
+</div>
 <div class="authors">X Zhou, Y Ji, X Lu, M Tuluhong, Y Zhu, J Shen, S Zhu | Journal of Energy Chemistry (Elsevier) 2026</div>
 <div class="summary">本综述全面考察了基于分子动力学（MD）模拟和机器学习方法预测相变材料（PCM）热性能的研究进展。相变材料在可再生能源集成和热管理中的热能储存系统里扮演关键角色。文章系统涵盖MD模拟预测PCM热性能的基础知识，包括力场选择、模拟方案设计和有限尺寸效应。重点讨论了基于DFT精度数据集构建的<strong>机器学习势函数（MLPs）</strong>，它弥合了第一性原理精度与经典MD模拟效率之间的差距。ML与MD的集成实现了多时间和长度尺度上的性能预测。综述还涵盖了从化学组成和结构直接预测PCM热性能的数据驱动方法，包括神经网络和集成学习模型。</div>
 <div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S2095495626004341" target="_blank">📖 全文链接</a></div>
 </div>
 <div class="paper-card md">
-<div class="paper-title-en"><span class="star-btn" data-idx="7" data-date="2026-06-29" data-title="Characterizing the MSMP-CCR2 Interaction through Molecular Dynamics Simulations and Machine Learning Approaches" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00048" data-cn="通过分子动力学模拟与机器学习方法表征MSMP-CCR2相互作用" data-journal="Journal of Chemical Information and Modeling (ACS)" data-authors="L Quitte, M Leclercq, G Moroy, A Droit" data-star="☆">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00048" target="_blank">Characterizing the MSMP-CCR2 Interaction through Molecular Dynamics Simulations and Machine Learning Approaches</a></div>
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-06-29" data-title="Characterizing the MSMP-CCR2 Interaction through Molecular Dynamics Simulations and Machine Learning Approaches" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00048" data-cn="通过分子动力学模拟与机器学习方法表征MSMP-CCR2相互作用" data-journal="Journal of Chemical Information and Modeling (ACS)" data-authors="L Quitte, M Leclercq, G Moroy, A Droit" data-star="☆">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00048" target="_blank">Characterizing the MSMP-CCR2 Interaction through Molecular Dynamics Simulations and Machine Learning Approaches</a></div>
 <div class="paper-title-cn">通过分子动力学模拟与机器学习方法表征MSMP-CCR2相互作用</div>
-<div class="paper-meta"><span class="meta-tag meta-md">🧪 分子模拟</span><span class="meta-tag">Journal of Chemical Information and Modeling (ACS)</span></div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Journal of Chemical Information and Modeling (ACS)</span>
+</div>
 <div class="authors">L Quitte, M Leclercq, G Moroy, A Droit | Journal of Chemical Information and Modeling (ACS) 2026</div>
 <div class="summary">本研究结合分子建模、分子动力学模拟和机器学习技术，阐明了MSMP蛋白与CCR2受体相互作用的分子结构基础。MSMP蛋白在前列腺癌、卵巢癌和乳腺癌等多种癌症中过表达，尤其在激素疗法和抗血管生成治疗耐药肿瘤中常见。MSMP与CCR2受体结合稳定了受体的活性构象，激活MAP激酶信号通路，促进肿瘤进展。研究使用<strong>AlphaFold2</strong>生成MSMP-CCR2-G蛋白复合物的高分辨率模型，经MD模拟优化，并与CCL2-CCR2复合物及未结合CCR2进行对比分析。<strong>结合自由能计算</strong>揭示了相似的能态特征，残基级别能量分解识别了关键相互作用残基。机器学习模型对MD轨迹进行分类，识别了稳定复合物构象的关键结构特征。</div>
 <div class="links"><a class="link-btn link-abs" href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.6c00048" target="_blank">📖 全文链接</a></div>
 </div>
 </div>
 </div>
+
+
 <br>
 <div style="text-align:center"><a href="../../../../index.html" style="color:#999;font-size:12px;text-decoration:none">← 返回首页</a></div>
 </div>
@@ -159,6 +209,9 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
       req.onsuccess = function(e){ res(e.target.result); };
       req.onerror = function(e){ rej(e.target.error); };
     });
+  }
+  function clearDB(){
+    try { indexedDB.deleteDatabase('star-fav-handle'); } catch(e){}
   }
   function loadHandle(){
     return openDB().then(function(db){
@@ -211,7 +264,15 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
     if(!fileHandle) return;
     readFile(fileHandle).then(function(ex){
       return writeFile(fileHandle, mergeStars(ex));
-    }).catch(function(){});
+    }).catch(function(){
+      /* 句柄失效 - 清除 IndexedDB，下次点星星重新弹窗 */
+      fileHandle = null;
+      clearDB();
+    });
+  }
+
+  function validateHandle(h){
+    return h.getFile().then(function(f){ return f.size >= 0; }).catch(function(){ return false; });
   }
 
   function setupHandle(){
@@ -228,7 +289,7 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
     a.href = url; a.download = 'favorites.json';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
-    alert('请将下载的 favorites.json 保存到 D:\\LZ&AI\\info-box\\ 目录下覆盖原文件');
+    alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
   }
 
   function applyStar(star, isFav){
@@ -246,22 +307,29 @@ h1{font-size:22px;color:#006064;margin-bottom:16px}
     else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}
   });
 
-  /* 加载句柄，同步数据 */
+  /* 加载句柄，同步数据 - 带句柄有效性验证 */
   loadHandle().then(function(h){
     if(!h) return;
-    fileHandle = h;
-    readFile(h).then(function(ex){
-      var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
-      stars.forEach(function(star,i){
-        var k = star.dataset.title+'|||'+star.dataset.link;
-        if(map[k]){
-          applyStar(star, map[k].starred === true);
-          var lk = 'fav_'+star.dataset.date+'_'+i;
-          if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
-          else localStorage.removeItem(lk);
-        }
-      });
-    }).catch(function(){});
+    validateHandle(h).then(function(valid){
+      if(!valid){
+        /* 句柄已失效 - 清除 IndexedDB */
+        clearDB();
+        return;
+      }
+      fileHandle = h;
+      readFile(h).then(function(ex){
+        var map = {}; ex.forEach(function(i){ map[i.title+'|||'+i.link] = i; });
+        stars.forEach(function(star,i){
+          var k = star.dataset.title+'|||'+star.dataset.link;
+          if(map[k]){
+            applyStar(star, map[k].starred === true);
+            var lk = 'fav_'+star.dataset.date+'_'+i;
+            if(map[k].starred) localStorage.setItem(lk, JSON.stringify(map[k]));
+            else localStorage.removeItem(lk);
+          }
+        });
+      }).catch(function(){});
+    });
   });
 
   /* 绑定点击 */
