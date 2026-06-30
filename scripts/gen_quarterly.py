@@ -36,82 +36,53 @@ def escape_js(s):
 # JS template — uses __VARS__ placeholders replaced below
 # NOT an f-string, so JS braces are literal
 JS_SCRIPT = """<script>
+// 季度精选 — 实时读 favorites.json + 预渲染兜底
 (function(){
-  // 预渲染的收藏数据（由 gen_quarterly.py 生成）
-  var EMBEDDED_FAVS = __EMBEDDED_JSON__;
-  if(EMBEDDED_FAVS.length > 0){
-    // 预渲染已经在 HTML 中，无需额外操作
-  }
-
-  // 直接从 localStorage 构建本季度收藏
+  var MONTHS = __ALLOWED_MONTHS__;
   var listEl = document.getElementById('list');
-  var paperMap = {};
-  var allowedMonths = __ALLOWED_MONTHS__;
+  if(!listEl) return;
 
-  for(var i = 0; i < localStorage.length; i++){
-    var key = localStorage.key(i);
-    if(key && key.indexOf('fav_') === 0){
-      try{
-        var val = JSON.parse(localStorage.getItem(key));
-        if(val && val.title && val.date){
-          var m = parseInt(val.date.split('-')[1]);
-          if(allowedMonths.indexOf(m) >= 0){
-            var uid = val.title + '|||' + val.link;
-            if(!paperMap[uid]){
-              paperMap[uid] = {
-                title: val.title, link: val.link,
-                cnTitle: val.cn || '', journal: val.journal || '',
-                authors: val.authors || '', date: val.date
-              };
-            }
-          }
-        }
-      }catch(e){}
-    }
-  }
-
-  // 合并本地和预渲染数据——localStorage 有就用它（补充预渲染中没有的），
-  // 没有 localStorage 就用预渲染的
-  var newKeys = Object.keys(paperMap).filter(function(k){
-    return !EMBEDDED_FAVS.some(function(p){ return p.title + '|||' + p.link === k; });
-  });
-
-  if(newKeys.length > 0){
-    // 有新增本地收藏——合并后重新渲染
-    var merged = {};
-    EMBEDDED_FAVS.forEach(function(p){
-      merged[p.title + '|||' + p.link] = p;
-    });
-    Object.keys(paperMap).forEach(function(k){
-      if(!merged[k]) merged[k] = paperMap[k];
-    });
-    renderFromMap(merged);
-  }
-
-  function renderFromMap(map){
-    var keys = Object.keys(map);
-    if(keys.length === 0) return;
-    var sorted = keys.sort(function(a,b){ return map[b].date.localeCompare(map[a].date); });
+  function renderFromFavs(all){
+    var papers = all.filter(function(p){ return p.starred && p.date; })
+                    .filter(function(p){ var m=parseInt(p.date.split('-')[1]); return MONTHS.indexOf(m) >= 0; });
+    if(papers.length === 0) return;
+    papers.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
     var html = '';
-    sorted.forEach(function(k){
-      var p = map[k];
-      var m = parseInt(p.date.split('-')[1]);
-      html += '<div class=\"paper-card\">';
-      html += '<div class=\"paper-month-tag\">' + m + '月</div>';
-      html += '<div class=\"paper-title\"><a href=\"' + p.link + '\" target=\"_blank\">' + escapeHtml(p.title) + '</a></div>';
-      if(p.cnTitle) html += '<div class=\"paper-cn\">' + escapeHtml(p.cnTitle) + '</div>';
-      if(p.journal) html += '<div class=\"paper-meta\"><span class=\"meta-tag\">' + escapeHtml(p.journal) + '</span></div>';
-      if(p.authors) html += '<div class=\"paper-authors\">' + escapeHtml(p.authors) + '</div>';
-      html += '<div class=\"paper-date\">📅 ' + p.date + '</div>';
+    papers.forEach(function(p){
+      var m = parseInt((p.date||'').split('-')[1]);
+      if(!m) return;
+      html += '<div class="paper-card">';
+      html += '<div class="paper-month-tag">' + m + '\\u6708</div>';
+      html += '<div class="paper-title"><a href="' + escAttr(p.link) + '" target="_blank">' + escHtml(p.title) + '</a></div>';
+      if(p.cnTitle) html += '<div class="paper-cn">' + escHtml(p.cnTitle) + '</div>';
+      if(p.journal) html += '<div class="paper-meta"><span class="meta-tag">' + escHtml(p.journal) + '</span></div>';
+      if(p.authors) html += '<div class="paper-authors">' + escHtml(p.authors) + '</div>';
+      html += '<div class="paper-date">\\ud83d\\udcc5 ' + (p.date||'') + '</div>';
       html += '</div>';
     });
     listEl.innerHTML = html;
   }
 
-  function escapeHtml(s){
+  function escHtml(s){
     if(!s) return '';
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;');
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+  function escAttr(s){
+    if(!s) return '';
+    return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Try XHR to read favorites.json live
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '../../../../favorites.json?_=' + Date.now(), true);
+  xhr.overrideMimeType('application/json');
+  xhr.onload = function(){
+    if(xhr.status === 0 || xhr.status === 200){
+      try{ renderFromFavs(JSON.parse(xhr.responseText)); }catch(e){}
+    }
+  };
+  xhr.onerror = function(){};
+  xhr.send();
 })();
 </script>"""
 
@@ -207,25 +178,10 @@ for q in quarters:
     else:
         cards_html = '<div class="empty-tip"><span class="big">🌟</span>还没有收藏的文章<br>在文献页面点击☆收藏，这里就会出现</div>'
 
-    # Build embedded JS data for localStorage fallback
-    embedded_papers = []
-    for p in papers:
-        embedded_papers.append({
-            "title": p.get("title", ""),
-            "link": p.get("link", ""),
-            "cnTitle": p.get("cnTitle", ""),
-            "journal": p.get("journal", ""),
-            "authors": p.get("authors", ""),
-            "date": p.get("date", ""),
-        })
-    embedded_json = json.dumps(embedded_papers, ensure_ascii=False)
-    allowed_months_js = json.dumps(months)
-
-    nav_links = make_nav_links(qi, year)
-
     # Build JS with substitutions
-    js = JS_SCRIPT.replace("__EMBEDDED_JSON__", embedded_json)
-    js = js.replace("__ALLOWED_MONTHS__", allowed_months_js)
+    allowed_months_js = json.dumps(months)
+    nav_links = make_nav_links(qi, year)
+    js = JS_SCRIPT.replace("__ALLOWED_MONTHS__", allowed_months_js)
 
     # Build full page
     html = BASE_HTML_TPL
@@ -266,12 +222,11 @@ if os.path.exists(papers_path):
     for y in sorted(year_counts.keys()):
         q_pairs = ",".join(f"{k}:{year_counts[y][k]}" for k in sorted(year_counts[y].keys()))
         year_pairs.append(f"{y}:{{{q_pairs}}}")
-    new_str = "var PRERENDERED_COUNTS = {" + ",".join(year_pairs) + "};"
+    new_str = "{" + ",".join(year_pairs) + "}"
 
-    # Match both empty {} and populated {year:{...}} — with or without trailing ;
-    papers_html = re.sub(
-        r'var PRERENDERED_COUNTS = \{.*?\};?',
-        new_str, papers_html, count=1
+    # Replace __PRERENDERED_COUNTS_JSON__ placeholder with actual data
+    papers_html = papers_html.replace(
+        "__PRERENDERED_COUNTS_JSON__", new_str, 1
     )
     with open(papers_path, "w", encoding="utf-8") as f:
         f.write(papers_html)
