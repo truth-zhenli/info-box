@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术文献追踪 - 2026-07-02</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#2e7d32}
+.section-oil .section-title{border-left-color:#d32f2f}
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.meta-oil{background:#ffebee;color:#c62828}
+.meta-ai{background:#f3e5f5;color:#6a1b9a}
+.meta-md{background:#e0f2f1;color:#00695c}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.link-abs:hover{background:#bbdefb}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav-bar">
+<span>🏠 <a href="../../../../index.html">首页</a></span>
+<span>📚 <a href="../../../papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-07-02</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年7月2日 · 周四 · 共 5 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">2</div><div class="label">🧪 分子模拟</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">🧬 计算生物</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">📐 其他</div></div>
+</div>
+</div>
+
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟 · SiO₂酸性腐蚀AIMD·ZrCuAl金属玻璃结构</h2>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-07-02" data-title="Atomistic mechanisms of non-monotonic acidic corrosion at the SiO2 surface: An ab initio molecular dynamics study" data-link="https://www.sciencedirect.com/science/article/pii/S0927025626004167" data-cn="SiO₂表面非单调酸性腐蚀的原子机制：从头算分子动力学研究" data-journal="Computational Materials Science, 2026" data-authors="M Liang, Z Ge, Y Liu, J Liu, X Wang, J Lyu, H Zhang, Y Li" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0927025626004167" target="_blank">Atomistic mechanisms of non-monotonic acidic corrosion at the SiO2 surface: An ab initio molecular dynamics study</a></div>
+<div class="paper-title-cn">SiO₂表面非单调酸性腐蚀的原子机制：从头算分子动力学研究</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Computational Materials Science (Elsevier)</span>
+</div>
+<div class="authors">M Liang, Z Ge, Y Liu, J Liu, X Wang, J Lyu, H Zhang, Y Li | Computational Materials Science 2026</div>
+<div class="summary">二氧化硅（SiO₂）是水泥和混凝土的核心组分，广泛应用于化工和土木工程领域，常作为防护或粘结相使用。本研究结合<strong>经典分子动力学（MD）和从头算分子动力学（AIMD）</strong>方法，系统揭示了HCl溶液在SiO₂表面的扩散行为和界面反应机制。研究发现酸性腐蚀呈现<strong>非单调</strong>特征——初始阶段腐蚀速率较快，随后因表面结构重构而减缓。作者通过分析原子尺度的扩散路径、界面水分子结构和化学键断裂/形成过程，阐明了这一非单调行为的微观起源。该工作为理解水泥基材料在酸性环境中的长期耐久性提供了原子级理论依据，对化工设备和民用基础设施的腐蚀防护设计具有重要参考价值。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0927025626004167" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-07-02" data-title="Evolution of short-range and medium-range order structures in ZrCu and ZrCuAl metallic glasses based on molecular dynamics simulations and its influence on glass forming ability and mechanical properties" data-link="https://www.sciencedirect.com/science/article/pii/S0022309326003145" data-cn="基于MD模拟的ZrCu和ZrCuAl金属玻璃中短程及中程有序结构演化及其对玻璃形成能力和力学性能的影响" data-journal="Journal of Non-Crystalline Solids, 2026" data-authors="L You, Z Long, R Wan, Y Cui, Z Yang, L Peng" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0022309326003145" target="_blank">Evolution of short-range and medium-range order structures in ZrCu and ZrCuAl metallic glasses based on molecular dynamics simulations and its influence on glass forming ability and mechanical properties</a></div>
+<div class="paper-title-cn">基于MD模拟的ZrCu和ZrCuAl金属玻璃中短程及中程有序结构演化及其对玻璃形成能力和力学性能的影响</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">J. Non-Crystalline Solids (Elsevier)</span>
+</div>
+<div class="authors">L You, Z Long, R Wan, Y Cui, Z Yang, L Peng | Journal of Non-Crystalline Solids 2026</div>
+<div class="summary">本研究采用<strong>分子动力学模拟</strong>系统研究了ZrCu和ZrCuAl金属玻璃中<strong>短程有序（SRO）和中程有序（MRO）结构</strong>的演化规律，及其对<strong>玻璃形成能力（GFA）</strong>和力学性能的影响。通过分析成分变化对原子尺度结构特征的影响，揭示了Al元素添加如何调控ZrCu合金中二十面体团簇等局域结构的比例和空间分布，进而影响非晶合金的热稳定性和力学行为。该工作为设计具有优异玻璃形成能力和力学性能的Zr基非晶合金提供了微观结构设计准则，对非晶合金的成分优化和性能调控具有重要指导意义。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0022309326003145" target="_blank">📖 全文链接</a></div>
+</div>
+</div>
+</div>
+
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML · AI增强计算纳米化学</h2>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-07-02" data-title="Artificial Intelligence-Integrated Computational Nanochemistry for Adsorption Studies" data-link="http://www.mocedes.org/ajcer/volume13/AJCER-2026-26-Husaini.pdf" data-cn="人工智能增强的计算纳米化学在吸附研究中的应用" data-journal="Arabian Journal of Chemical and Environmental Research, 2026" data-authors="M Husaini" data-star="☆">☆</span><a href="http://www.mocedes.org/ajcer/volume13/AJCER-2026-26-Husaini.pdf" target="_blank">Artificial Intelligence-Integrated Computational Nanochemistry for Adsorption Studies</a></div>
+<div class="paper-title-cn">人工智能增强的计算纳米化学在吸附研究中的应用</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Arab. J. Chem. Environ. Res.</span>
+</div>
+<div class="authors">M Husaini | Arabian Journal of Chemical and Environmental Research 2026</div>
+<div class="summary">本文综述了<strong>人工智能增强的计算纳米化学</strong>在吸附研究中的最新进展。传统的DFT和MD模拟虽然能提供原子级别的吸附机理洞察，但受限于高昂的计算成本，难以扩展到复杂或大规模体系。<strong>机器学习代理模型</strong>和神经网络的引入为克服这一瓶颈提供了新途径。本文系统讨论了AI方法在预测吸附剂材料性能、加速筛选高效吸附剂、以及揭示微观吸附机制方面的应用，涵盖从数据驱动的代理模型构建到AI与第一性原理计算协同工作流的完整框架。该综述为计算纳米化学领域利用AI加速材料发现提供了全面的方法论参考。</div>
+<div class="links"><a class="link-btn link-abs" href="http://www.mocedes.org/ajcer/volume13/AJCER-2026-26-Husaini.pdf" target="_blank">📖 全文链接</a></div>
+</div>
+</div>
+</div>
+
+<div class="section-wrap section-bio">
+<h2 class="section-title">🧬 计算生物 · GCase帕金森病稳定剂MD设计</h2>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-07-02" data-title="Structure-Based Identification of Allosteric Glucocerebrosidase Stabilizers from Xylia xylocarpa (Roxb.) Taub. for Parkinson's Disease Using LC-MS Profiling and Computational Analysis" data-link="https://europepmc.org/articles/pmc13258993" data-cn="基于结构的Xylia xylocarpa帕金森病别构GCase稳定剂鉴定：LC-MS分析与计算研究" data-journal="Plants (Basel), 2026" data-authors="Ebrahim Thaivalappil IA, Mohan A, Nadh AG, Raju R, Ahmed MG" data-star="☆">☆</span><a href="https://europepmc.org/articles/pmc13258993" target="_blank">Structure-Based Identification of Allosteric Glucocerebrosidase Stabilizers from Xylia xylocarpa (Roxb.) Taub. for Parkinson's Disease Using LC-MS Profiling and Computational Analysis</a></div>
+<div class="paper-title-cn">基于结构的Xylia xylocarpa帕金森病别构GCase稳定剂鉴定：LC-MS分析与计算研究</div>
+<div class="paper-meta">
+<span class="meta-tag">🧬 计算生物</span>
+<span class="meta-tag">Plants (MDPI)</span>
+</div>
+<div class="authors">Ebrahim Thaivalappil IA, Mohan A, Nadh AG, Raju R, Ahmed MG | Plants 2026</div>
+<div class="summary">帕金森病与溶酶体功能障碍密切相关，尤其是GCase酶（由GBA1基因编码）活性降低。本研究从药用植物<strong>Xylia xylocarpa</strong>中筛选GCase稳定剂，采用LC-QTOF-MS鉴定出19种代谢物，通过<strong>分子对接</strong>筛选13个低分子量化合物（<500 Da），发现6个化合物对GCase的预测结合亲和力高于参比激活剂。经药代动力学和ADMET筛选，确定<strong>Senbusine A</strong>为候选先导化合物。200 ns的<strong>分子动力学模拟</strong>显示Senbusine A与非催化性单体间界面形成稳定接触，可调控GCase结构稳定性。该工作为基于天然产物的帕金森病治疗策略提供了新思路，展示了<strong>LC-MS联合计算模拟</strong>在药物发现中的高效应用。</div>
+<div class="links"><a class="link-btn link-abs" href="https://europepmc.org/articles/pmc13258993" target="_blank">📖 全文链接</a></div>
+</div>
+</div>
+</div>
+
+<div class="section-wrap">
+<h2 class="section-title" style="border-left-color:#37474f;">📐 其他 · 电池电极孔网络设计</h2>
+<div class="papers-grid">
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-07-02" data-title="Bridging transport and structure: pore network design of high-rate thick battery electrodes" data-link="https://www.sciencedirect.com/science/article/pii/S0009250926012650" data-cn="桥接传输与结构：高倍率厚电池电极的孔网络设计" data-journal="Chemical Engineering Science, 2026" data-authors="P Huang, J Yang, H Liu, C Lian" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0009250926012650" target="_blank">Bridging transport and structure: pore network design of high-rate thick battery electrodes</a></div>
+<div class="paper-title-cn">桥接传输与结构：高倍率厚电池电极的孔网络设计</div>
+<div class="paper-meta">
+<span class="meta-tag" style="background:#eceff1;color:#37474f">📐 其他</span>
+<span class="meta-tag">Chem. Eng. Sci. (Elsevier)</span>
+</div>
+<div class="authors">P Huang, J Yang, H Liu, C Lian | Chemical Engineering Science 2026</div>
+<div class="summary">高倍率厚电池电极的设计需要同时优化离子传输和电子传导网络。本研究提出了一种<strong>计算框架</strong>，将放电容量（DLC）目标转化为可<strong>计算重构的三维多孔结构</strong>，系统研究了孔网络拓扑结构对电池倍率性能的影响。通过重建具有不同孔隙率、迂曲度和孔径分布的电极微结构，定量揭示了结构-性能关联，为满足快速充电功率需求提供了<strong>定量化计算路径</strong>。该工作展示了计算材料方法在电池电极设计中的强大潜力，为开发高能量密度兼顾高功率密度的下一代锂离子电池提供了理论基础和设计工具。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0009250926012650" target="_blank">📖 全文链接</a></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var SAVE_DELAY=2000,saveTimer=null,dirHandle=null;
+var stars=[].slice.call(document.querySelectorAll('.star-btn'));
+var DB_NAME='star-fav-dir',DB_VER=1,STORE='handles';
+function openDB(){return new Promise(function(res,rej){var r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=function(e){e.target.result.createObjectStore(STORE);};r.onsuccess=function(e){res(e.target.result);};r.onerror=function(){rej();};});}
+function saveDirHandle(dir){openDB().then(function(db){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(dir,'dirHandle');});}
+function loadDirHandle(){return openDB().then(function(db){return new Promise(function(res){var tx=db.transaction(STORE,'readonly');var r=tx.objectStore(STORE).get('dirHandle');r.onsuccess=function(){res(r.result);};r.onerror=function(){res(null);};});}).catch(function(){return null;});}
+function clearDB(){openDB().then(function(db){db.transaction(STORE,'readwrite').objectStore(STORE).clear();});}
+function validateHandle(h){return h.getFile().then(function(f){return f.size>=0;}).catch(function(){return false;});}
+function readFavJson(){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.getFile();}).then(function(file){return new Promise(function(res,rej){var reader=new FileReader();reader.onload=function(e){try{res(JSON.parse(e.target.result));}catch(ex){res([]);}};reader.onerror=function(){rej();};reader.readAsText(file);});});}
+function writeFavJson(data){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.createWritable({keepExistingData:false});}).then(function(w){return w.write(JSON.stringify(data,null,2)).then(function(){return w.close();});});}
+function mergeStars(existing){
+  var result=[],starredFromOther={},seenOnPage={};
+  (existing||[]).forEach(function(i){starredFromOther[i.title+'|||'+i.link]=i;});
+  stars.forEach(function(s,i){
+    var k=s.dataset.title+'|||'+s.dataset.link,lk='fav_'+s.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(lk));}catch(e){return null;}})();
+    if(st&&st.title===s.dataset.title&&st.starred!==false){
+      result.push({title:s.dataset.title,link:s.dataset.link,cn:s.dataset.cn,journal:s.dataset.journal,authors:s.dataset.authors,date:s.dataset.date,starred:true});
+      seenOnPage[k]=true;
+    } else if(starredFromOther[k]&&starredFromOther[k].starred){
+      result.push(starredFromOther[k]);
+      seenOnPage[k]=true;
+    }
+  });
+  Object.keys(starredFromOther).forEach(function(k){
+    if(!seenOnPage[k]&&starredFromOther[k].starred) result.push(starredFromOther[k]);
+  });
+  return result;
+}
+function doSave(){
+  if(!dirHandle) return;
+  readFavJson().then(function(ex){return writeFavJson(mergeStars(ex));}).catch(function(){dirHandle=null;clearDB();});
+}
+function setupHandle(){
+  return window.showDirectoryPicker().then(function(dir){dirHandle=dir;saveDirHandle(dir);return doSave();}).catch(function(e){if(e.name==='AbortError') return;fallback();});
+}
+function fallback(){
+  var data=mergeStars([]),json=JSON.stringify(data,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='favorites.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},2000);alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
+}
+function applyStar(star,isFav){star.textContent=isFav?'\u2605':'\u2606';star.style.color=isFav?'#f5a623':'#ccc';star.style.textShadow=isFav?'0 0 4px rgba(245,166,35,0.5)':'none';star.title=isFav?'已收藏':'点击收藏';}
+/* 恢复星星 */
+stars.forEach(function(star,i){var key='fav_'+star.dataset.date+'_'+i;var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}});
+/* 加载目录句柄，同步 favorites.json → 页面 */
+loadDirHandle().then(function(dir){if(!dir) return;dirHandle=dir;readFavJson().then(function(ex){var map={};ex.forEach(function(i){map[i.title+'|||'+i.link]=i;});stars.forEach(function(star,i){var k=star.dataset.title+'|||'+star.dataset.link,lk='fav_'+star.dataset.date+'_'+i;if(map[k]&&map[k].starred){applyStar(star,true);localStorage.setItem(lk,JSON.stringify(map[k]));}else{applyStar(star,false);localStorage.removeItem(lk);}});}).catch(function(){});});
+/* 绑定点击 */
+stars.forEach(function(star,i){star.onclick=function(e){e.stopPropagation();e.preventDefault();var wasFav=star.textContent==='\u2605';applyStar(star,!wasFav);var key='fav_'+star.dataset.date+'_'+i;if(wasFav)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));if(!dirHandle&&window.showDirectoryPicker){setupHandle();return;}if(!dirHandle){fallback();return;}if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(doSave,SAVE_DELAY);};});
+})();
+</script>
+</body>
+</html>
