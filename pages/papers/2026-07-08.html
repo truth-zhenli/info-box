@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术文献追踪 - 2026-07-08</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#2e7d32}
+.section-oil .section-title{border-left-color:#d32f2f}
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.meta-oil{background:#ffebee;color:#c62828}
+.meta-ai{background:#f3e5f5;color:#6a1b9a}
+.meta-md{background:#e0f2f1;color:#00695c}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.link-abs:hover{background:#bbdefb}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav-bar">
+<span>🏠 <a href="../../index.html">首页</a></span>
+<span>📚 <a href="../papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-07-08</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年7月8日 · 周三 · 共 7 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🧪 分子模拟</div></div>
+<div class="stat-box"><div class="num">2</div><div class="label">🧬 计算生物</div></div>
+</div>
+</div>
+
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学 · CO2驱MD·PTS微球MD</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-07-08" data-title="Adsorption and diffusion of shale oil on kerogen in CO2 flooding: molecular dynamics and NMR studies of temperature and multi-component effects" data-link="https://link.springer.com/article/10.1007/s13202-026-02174-0" data-cn="页岩油在干酪根上吸附与CO2驱扩散：温度与多组分效应的分子动力学与NMR研究" data-journal="Journal of Petroleum Exploration and Production, 2026" data-authors="J Zhang, Y Jia, Z Shen, J Tang, C Xiao, X Sun" data-star="☆">☆</span><a href="https://link.springer.com/article/10.1007/s13202-026-02174-0" target="_blank">Adsorption and diffusion of shale oil on kerogen in CO2 flooding: molecular dynamics and NMR studies of temperature and multi-component effects</a></div>
+<div class="paper-title-cn">页岩油在干酪根上吸附与CO2驱扩散：温度与多组分效应的分子动力学与NMR研究</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">Springer</span>
+</div>
+<div class="authors">J Zhang, Y Jia, Z Shen, J Tang, C Xiao, X Sun | Journal of Petroleum Exploration and Production, 2026</div>
+<div class="summary">CO2驱是提高页岩油采收率（EOR）的关键技术，但油藏中<strong>干酪根</strong>对页岩油组分的<strong>吸附</strong>行为严重制约驱替效率。本研究采用<strong>分子动力学（MD）模拟</strong>和核磁共振（NMR）实验相结合的方法，系统研究了页岩油在干酪根表面的吸附与<strong>扩散</strong>行为，揭示了温度和多组分效应对CO2驱替效果的影响规律。研究表明，不同页岩油组分在干酪根上的吸附强度存在显著差异——重质组分优先吸附于干酪根微孔中，CO2注入后通过竞争吸附和<strong>萃取作用</strong>释放吸附态烃类。特别地，研究提出了一种<strong>温度差异化CO2驱策略</strong>——轻质油藏383-403 K、重质油藏提高温度以促进重质组分解吸，为稠油油藏CO2驱开采提供了微观机理指导。</div>
+<div class="insight">🔗 关联分析：干酪根-页岩油-CO2三元体系的MD模拟方法与沥青质-降粘剂相互作用LD研究在方法论上高度相似——均涉及竞争吸附、扩散系数计算和自由能分析。该工作提出的温度差异化驱替策略可直接改写到稠油CO2驱/吞吐工艺的参数优化中。</div>
+<div class="links"><a class="link-btn link-abs" href="https://link.springer.com/article/10.1007/s13202-026-02174-0" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-07-08" data-title="Double-emulsion fabrication of dual-network PTS microspheres with temperature/salt resistance and delayed swelling: Molecular simulation and deep profile control application in reservoir deep zones" data-link="https://www.sciencedirect.com/science/article/pii/S1995822626004310" data-cn="双乳液法制备双网络PTS微球的耐温耐盐与延迟溶胀：分子模拟及深部调剖应用" data-journal="Petroleum Science, 2026" data-authors="QL Zuo, WF Pu, R Liu, ST Jiang, HL Liu" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S1995822626004310" target="_blank">Double-emulsion fabrication of dual-network PTS microspheres with temperature/salt resistance and delayed swelling: Molecular simulation and deep profile control application in reservoir deep zones</a></div>
+<div class="paper-title-cn">双乳液法制备双网络PTS微球的耐温耐盐与延迟溶胀：分子模拟及深部调剖应用</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">Petroleum Science (Elsevier)</span>
+</div>
+<div class="authors">QL Zuo, WF Pu, R Liu, ST Jiang, HL Liu | Petroleum Science, 2026</div>
+<div class="summary">聚合物微球<strong>深部调剖</strong>技术是改善油藏注水波及效率、提高<strong>原油采收率</strong>的重要手段，但传统PAM微球在高温高盐油藏中易过早膨胀失效。本研究采用双乳液法合成具有双网络结构的<strong>PTS微球</strong>，赋予其优异的<strong>耐温抗盐</strong>和<strong>延迟溶胀</strong>性能。工作通过<strong>分子动力学（MD）模拟</strong>对比了PTS和常规PAM微球在高温条件下的<strong>分子构象演化</strong>——PTS双网络通过共价交联和氢键协同作用抑制分子链热运动，延缓水化溶胀。驱替实验表明PTS微球可深入油藏深部（约10 m）后开始有效膨胀封堵，显著提高波及系数。该工作为开发适用于苛刻油藏条件的智能调剖材料提供了分子层面设计依据。</div>
+<div class="insight">🔗 关联分析：PTS微球的MD构象分析与沥青质聚集体结构模拟可相互借鉴——两种体系均涉及高分子/超分子网络在不同溶剂环境中的构象转变问题。PTS微球的延迟溶胀特性设计理念也可用于缓释型降粘剂的分子设计。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S1995822626004310" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML · MLIP核聚变材料</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-07-08" data-title="Machine learning interatomic potential for Li2TiO3 with comprehensive validation of lattice defect stability" data-link="https://www.sciencedirect.com/science/article/pii/S0927025626004118" data-cn="机器学习势用于Li2TiO3晶格缺陷稳定性的综合验证" data-journal="Computational Materials Science, 2026" data-authors="D Lee, T Oda" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0927025626004118" target="_blank">Machine learning interatomic potential for Li2TiO3 with comprehensive validation of lattice defect stability</a></div>
+<div class="paper-title-cn">机器学习势用于Li2TiO3晶格缺陷稳定性的综合验证</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Computational Materials Science (Elsevier)</span>
+</div>
+<div class="authors">D Lee, T Oda | Computational Materials Science, 2026</div>
+<div class="summary">钛酸锂（Li2TiO3）是核聚变反应堆中氚增殖包层的候选陶瓷材料，辐照诱导的<strong>晶格缺陷</strong>对材料服役性能影响显著，但第一性原理（DFT）计算难以处理大尺寸缺陷体系。本研究开发了基于<strong>机器学习</strong>的<strong>原子间势（MLIP）</strong>用于Li2TiO3的分子模拟，采用<strong>深度神经网络</strong>架构，训练集包含DFT计算的丰富原子构型。MLIP在保持DFT精度的同时可将模拟尺度扩大至数十万个原子。对Frenkel缺陷、空位团簇和间隙原子的形成能、迁移势垒和稳定性的MLMD模拟结果与DFT和实验吻合良好。该工作展示了ML势在核材料辐照损伤研究中的巨大潜力。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0927025626004118" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟 · TiO2复合材料MD·轴承钢MD</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-07-08" data-title="Tribological performance of TiO2 reinforced PI/CF composites under hygrothermal ageing: Insights from combined experiments and molecular dynamics simulations" data-link="https://www.sciencedirect.com/science/article/pii/S0301679X26007711" data-cn="湿热老化下TiO2增强PI/CF复合材料的摩擦学性能：实验与分子动力学模拟" data-journal="Tribology International, 2027" data-authors="Q Zhao, T Yin, Z Guo, G Wang, Q Ding, G Zhao, H Li" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0301679X26007711" target="_blank">Tribological performance of TiO2 reinforced PI/CF composites under hygrothermal ageing: Insights from combined experiments and molecular dynamics simulations</a></div>
+<div class="paper-title-cn">湿热老化下TiO2增强PI/CF复合材料的摩擦学性能：实验与分子动力学模拟</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Tribology International (Elsevier)</span>
+</div>
+<div class="authors">Q Zhao, T Yin, Z Guo, G Wang, Q Ding, G Zhao, H Li | Tribology International, 2027</div>
+<div class="summary">聚酰亚胺/碳纤维（PI/CF）复合材料在航空航天和化工设备中具有广泛应用，但在<strong>湿热老化</strong>环境下的摩擦磨损机理尚未明确。本研究将实验与<strong>反应力场分子动力学（ReaxFF MD）</strong>相结合，研究TiO2纳米颗粒增强PI/CF复合材料在湿热老化前后的<strong>摩擦学性能</strong>。实验表明TiO2添加量2-4 wt%时复合材料的摩擦系数和磨损率最低。ReaxFF MD模拟揭示了湿热环境下水分子的渗入导致PI基体的<strong>水解断链</strong>和界面脱粘的原子级机制；TiO2纳米颗粒则通过限制聚合物链运动和形成稳定摩擦层来缓解老化引起的性能退化。该工作为高性能复合材料在湿热工况下的寿命预测提供了多尺度理解。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0301679X26007711" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-07-08" data-title="Enhancing tribological property of M50 bearing steel at 300C via surface nanostructure induced by laser shock peening: Experiments and molecular dynamics simulation" data-link="https://www.sciencedirect.com/science/article/pii/S0301679X26007693" data-cn="激光冲击强化诱导表面纳米结构提高M50轴承钢300C摩擦学性能：实验与MD模拟" data-journal="Tribology International, 2026" data-authors="L Chen, Y Song, L Hua, J Lu, K Wu" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0301679X26007693" target="_blank">Enhancing tribological property of M50 bearing steel at 300C via surface nanostructure induced by laser shock peening: Experiments and molecular dynamics simulation</a></div>
+<div class="paper-title-cn">激光冲击强化诱导表面纳米结构提高M50轴承钢300C摩擦学性能：实验与MD模拟</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Tribology International (Elsevier)</span>
+</div>
+<div class="authors">L Chen, Y Song, L Hua, J Lu, K Wu | Tribology International, 2026</div>
+<div class="summary">航空发动机轴承钢（M50）在300C高温下的磨损问题是影响发动机寿命的关键因素。本文研究了<strong>激光冲击强化（LSP）</strong>工艺参数对M50轴承钢干摩擦学性能的影响，并结合<strong>分子动力学（MD）模拟</strong>揭示<strong>表面纳米结构</strong>增强<strong>耐磨性</strong>的机制。实验发现LSP处理可显著降低磨损率，且最佳参数为3次冲击+4.2 J脉冲能量。MD模拟表明LSP诱导的表面纳米化层由细小等轴晶粒组成，表面纳米晶粒通过<strong>晶界滑动</strong>和<strong>位错滑移</strong>共同协调变形，阻碍磨粒嵌入和微裂纹扩展。该工作为航空发动机用轴承钢的表面强化工艺设计提供了理论依据。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0301679X26007693" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-bio">
+<h2 class="section-title">🧬 计算生物 · TLR4分子对接·ODC酶MD</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="5" data-date="2026-07-08" data-title="Comparison of the binding mechanisms and bioactivities of kaempferol and galangin targeting the TLR4 protein: Multispectral analysis and molecular simulation" data-link="https://www.sciencedirect.com/science/article/pii/S1386142526009285" data-cn="山柰酚与高良姜素靶向TLR4蛋白的结合机制与生物活性比较：多光谱分析与分子模拟" data-journal="Spectrochimica Acta Part A, 2026" data-authors="Y Ning, K Wang, S Wei, D Gong, P Zhang, G Zhang" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S1386142526009285" target="_blank">Comparison of the binding mechanisms and bioactivities of kaempferol and galangin targeting the TLR4 protein: Multispectral analysis and molecular simulation</a></div>
+<div class="paper-title-cn">山柰酚与高良姜素靶向TLR4蛋白的结合机制与生物活性比较：多光谱分析与分子模拟</div>
+<div class="paper-meta">
+<span class="meta-tag" style="background:#e8f5e9;color:#2e7d32">🧬 计算生物</span>
+<span class="meta-tag">Spectrochimica Acta A (Elsevier)</span>
+</div>
+<div class="authors">Y Ning, K Wang, S Wei, D Gong, P Zhang, G Zhang | Spectrochimica Acta Part A, 2026</div>
+<div class="summary">天然黄酮类化合物因其广泛的生物活性备受关注，但其与免疫受体TLR4在<strong>分子水平</strong>的相互作用机制尚不清楚。本研究以结构相似的<strong>山柰酚（kaempferol）</strong>和<strong>高良姜素（galangin）</strong>为模型分子，采用<strong>多光谱分析</strong>（荧光、紫外-可见、圆二色光谱）和<strong>分子模拟</strong>（分子对接和MD模拟）系统研究了二者与<strong>TLR4蛋白</strong>的结合机制。结果表明两种黄酮都能以中等亲和力与TLR4结合，但山柰酚因额外的羟基形成更多氢键而具有更强的结合力和抗氧化活性。MD模拟进一步揭示了结合后蛋白构象变化的动态特征。该工作为基于黄酮骨架的TLR4调节剂设计提供了结构基础。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S1386142526009285" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="6" data-date="2026-07-08" data-title="Integrated molecular simulations reveal channel-guided PLP loading and prereactive preorganization in human ornithine decarboxylase" data-link="https://www.worldscientific.com/doi/abs/10.1142/S2737416526501012" data-cn="整合分子模拟揭示人鸟氨酸脱羧酶中通道引导的PLP装载与反应前预组织" data-journal="Journal of Computational Biophysics and Chemistry, 2026" data-authors="Y Lu, B Guo, Q Xue, Y Zhao, Z Zhang, L Pan" data-star="☆">☆</span><a href="https://www.worldscientific.com/doi/abs/10.1142/S2737416526501012" target="_blank">Integrated molecular simulations reveal channel-guided PLP loading and prereactive preorganization in human ornithine decarboxylase</a></div>
+<div class="paper-title-cn">整合分子模拟揭示人鸟氨酸脱羧酶中通道引导的PLP装载与反应前预组织</div>
+<div class="paper-meta">
+<span class="meta-tag" style="background:#e8f5e9;color:#2e7d32">🧬 计算生物</span>
+<span class="meta-tag">J. Comp. Biophy. Chem. (World Scientific)</span>
+</div>
+<div class="authors">Y Lu, B Guo, Q Xue, Y Zhao, Z Zhang, L Pan | Journal of Computational Biophysics and Chemistry, 2026</div>
+<div class="summary">鸟氨酸脱羧酶（ODC）是多胺生物合成中的关键酶，其辅因子<strong>磷酸吡哆醛（PLP）</strong>的装载机制直接影响酶活性。本研究采用整合<strong>分子模拟</strong>工作流（包括分子对接、<strong>分子动力学（MD）模拟</strong>和自由能计算），揭示了PLP进入人ODC活性位点的路径、能量特征和残基级决定因素。PLP装载并非被动扩散，而是通过酶内部的<strong>通道引导</strong>过程——一条由多个带电和疏水残基构成的通道从蛋白表面延伸至活性位点，选择性引导PLP进入。装载后，活性位点发生<strong>预组织构象变化</strong>，将催化残基和底物定向至最适合反应的位置。该工作为PLP依赖性酶的功能理解和理性设计提供了动态结构基础。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.worldscientific.com/doi/abs/10.1142/S2737416526501012" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var SAVE_DELAY=2000,saveTimer=null,dirHandle=null;
+var stars=[].slice.call(document.querySelectorAll('.star-btn'));
+var DB_NAME='star-fav-dir',DB_VER=1,STORE='handles';
+function openDB(){return new Promise(function(res,rej){var r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=function(e){e.target.result.createObjectStore(STORE);};r.onsuccess=function(e){res(e.target.result);};r.onerror=function(){rej();};});}
+function saveDirHandle(dir){openDB().then(function(db){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(dir,'dirHandle');});}
+function loadDirHandle(){return openDB().then(function(db){return new Promise(function(res){var tx=db.transaction(STORE,'readonly');var r=tx.objectStore(STORE).get('dirHandle');r.onsuccess=function(){res(r.result);};r.onerror=function(){res(null);};});}).catch(function(){return null;});}
+function clearDB(){openDB().then(function(db){db.transaction(STORE,'readwrite').objectStore(STORE).clear();});}
+function validateHandle(h){return h.getFile().then(function(f){return f.size>=0;}).catch(function(){return false;});}
+function readFavJson(){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.getFile();}).then(function(file){return new Promise(function(res,rej){var reader=new FileReader();reader.onload=function(e){try{res(JSON.parse(e.target.result));}catch(ex){res([]);}};reader.onerror=function(){rej();};reader.readAsText(file);});});}
+function writeFavJson(data){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.createWritable({keepExistingData:false});}).then(function(w){return w.write(JSON.stringify(data,null,2)).then(function(){return w.close();});});}
+function mergeStars(existing){
+  var result=[],starredFromOther={},seenOnPage={};
+  (existing||[]).forEach(function(i){starredFromOther[i.title+'|||'+i.link]=i;});
+  stars.forEach(function(s,i){
+    var k=s.dataset.title+'|||'+s.dataset.link,lk='fav_'+s.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(lk));}catch(e){return null;}})();
+    if(st&&st.title===s.dataset.title&&st.starred!==false){
+      result.push({title:s.dataset.title,link:s.dataset.link,cn:s.dataset.cn,journal:s.dataset.journal,authors:s.dataset.authors,date:s.dataset.date,starred:true});
+      seenOnPage[k]=true;
+    } else if(starredFromOther[k]&&starredFromOther[k].starred){
+      result.push(starredFromOther[k]);
+      seenOnPage[k]=true;
+    }
+  });
+  Object.keys(starredFromOther).forEach(function(k){
+    if(!seenOnPage[k]&&starredFromOther[k].starred) result.push(starredFromOther[k]);
+  });
+  return result;
+}
+function doSave(){
+  if(!dirHandle) return;
+  readFavJson().then(function(ex){return writeFavJson(mergeStars(ex));}).catch(function(){dirHandle=null;clearDB();});
+}
+function setupHandle(){
+  return window.showDirectoryPicker().then(function(dir){dirHandle=dir;saveDirHandle(dir);return doSave();}).catch(function(e){if(e.name==='AbortError') return;fallback();});
+}
+function fallback(){
+  var data=mergeStars([]),json=JSON.stringify(data,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='favorites.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},2000);alert('请将下载的 favorites.json 保存到 D:\\LZ&AI\\info-box\\ 目录下覆盖原文件');
+}
+function applyStar(star,isFav){star.textContent=isFav?'\u2605':'\u2606';star.style.color=isFav?'#f5a623':'#ccc';star.style.textShadow=isFav?'0 0 4px rgba(245,166,35,0.5)':'none';star.title=isFav?'已收藏':'点击收藏';}
+stars.forEach(function(star,i){var key='fav_'+star.dataset.date+'_'+i;var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}});
+loadDirHandle().then(function(dir){if(!dir) return;dirHandle=dir;readFavJson().then(function(ex){var map={};ex.forEach(function(i){map[i.title+'|||'+i.link]=i;});stars.forEach(function(star,i){var k=star.dataset.title+'|||'+star.dataset.link,lk='fav_'+star.dataset.date+'_'+i;if(map[k]&&map[k].starred){applyStar(star,true);localStorage.setItem(lk,JSON.stringify(map[k]));}else{applyStar(star,false);localStorage.removeItem(lk);}});}).catch(function(){});});
+stars.forEach(function(star,i){star.onclick=function(e){e.stopPropagation();e.preventDefault();var wasFav=star.textContent==='\u2605';applyStar(star,!wasFav);var key='fav_'+star.dataset.date+'_'+i;if(wasFav)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));if(!dirHandle&&window.showDirectoryPicker){setupHandle();return;}if(!dirHandle){fallback();return;}if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(doSave,SAVE_DELAY);};});
+})();
+</script>
+</body>
+</html>
