@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术文献追踪 - 2026-07-12</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-bio{background:#e8f5e9;border:1px solid #c8e6c9}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.section-bio .section-title{border-left-color:#2e7d32}
+.section-oil .section-title{border-left-color:#d32f2f}
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.meta-oil{background:#ffebee;color:#c62828}
+.meta-ai{background:#f3e5f5;color:#6a1b9a}
+.meta-md{background:#e0f2f1;color:#00695c}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.link-abs:hover{background:#bbdefb}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav-bar">
+<span>🏠 <a href="../../../../index.html">首页</a></span>
+<span>📚 <a href="../../../papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-07-12</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年7月12日 · 周日 · 共 3 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">1</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">0</div><div class="label">🧪 分子模拟</div></div>
+<div class="stat-box"><div class="num">0</div><div class="label">🧬 计算生物</div></div>
+</div>
+</div>
+
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学 · CO2冷采稠油·SAGD替代</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-07-12" data-title="CO2-Assisted Cold Production: A Sustainable Pathway Achieving Heavy Oil Recovery and Carbon Neutrality" data-link="https://ui.adsabs.harvard.edu/abs/2026opes.conf32583W/abstract" data-cn="CO2辅助冷采：实现稠油采收率与碳中和的可持续路径" data-journal="Oman Petroleum &amp; Energy Show, 2026" data-authors="Y Wang, L Zhong, A Yuan, Y Fu, Z Yang, Y Liu" data-star="☆">☆</span><a href="https://ui.adsabs.harvard.edu/abs/2026opes.conf32583W/abstract" target="_blank">CO2-Assisted Cold Production: A Sustainable Pathway Achieving Heavy Oil Recovery and Carbon Neutrality</a></div>
+<div class="paper-title-cn">CO2辅助冷采：实现稠油采收率与碳中和的可持续路径</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">Oman Petroleum &amp; Energy Show</span>
+</div>
+<div class="authors">Y Wang, L Zhong, A Yuan, Y Fu, Z Yang, Y Liu | Oman Petroleum &amp; Energy Show, 2026</div>
+<div class="summary">稠油冷采技术（Cold Production）是降低开发成本、减少碳排放的关键方向，但传统冷采面临采收率低的问题。本文提出了一种<strong>CO2辅助冷采</strong>（CO2-Assisted Cold Production）的新思路，将CO2注入与冷采工艺相结合，在<strong>提高稠油采收率</strong>的同时实现CO2地质封存，兼顾碳中性目标。研究分析了CO2溶解于稠油后引起的<strong>降粘效应</strong>、原油膨胀以及油藏驱替效率提升的协同机制。初步结果表明，CO2辅助冷采较传统冷采可显著提高产出量，同时将CO2封存于油藏中实现碳减排。该工作为稠油油藏的绿色开发提供了兼顾经济性和环保性的新方案。</div>
+<div class="insight">🔗 关联分析：CO2辅助冷采的降粘增能机制与沥青质降粘剂的作用机理具有类比性——二者均通过改变稠油的<strong>分子间相互作用</strong>和聚集状态实现粘度降低。CO2溶解诱导的原油膨胀效应可类比降粘剂的空间位阻效应。该工作提出的"CO2降粘+驱替"双效策略为稠油分子模拟中的CO2-沥青质相互作用研究提供了应用背景。</div>
+<div class="links"><a class="link-btn link-abs" href="https://ui.adsabs.harvard.edu/abs/2026opes.conf32583W/abstract" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-07-12" data-title="A Novel Alternative to SAGD: Enhancing Ultra-Heavy Oil Recovery with an Integrated Steam-CO2-Solvent Huff-N-Puff Process" data-link="https://ui.adsabs.harvard.edu/abs/2026opes.conf32408W/abstract" data-cn="SAGD的新型替代方案：蒸汽-CO2-溶剂一体化吞吐工艺提高超稠油采收率" data-journal="SPE Conference at Oman, 2026" data-authors="Y Wang, L Zhong, Y Fu, Z Yang, X Ouyang, H Long" data-star="☆">☆</span><a href="https://ui.adsabs.harvard.edu/abs/2026opes.conf32408W/abstract" target="_blank">A Novel Alternative to SAGD: Enhancing Ultra-Heavy Oil Recovery with an Integrated Steam-CO2-Solvent Huff-N-Puff Process</a></div>
+<div class="paper-title-cn">SAGD的新型替代方案：蒸汽-CO2-溶剂一体化吞吐工艺提高超稠油采收率</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">SPE Conference</span>
+</div>
+<div class="authors">Y Wang, L Zhong, Y Fu, Z Yang, X Ouyang, H Long | SPE Conference at Oman, 2026</div>
+<div class="summary">蒸汽辅助重力驱（SAGD）是开采超稠油的主流技术，但面临高能耗、高碳排放和蒸汽腔发育不良等挑战。本文提出了一种创新的<strong>蒸汽-CO2-溶剂一体化</strong>的<strong>吞吐（Huff-N-Puff）工艺</strong>，作为SAGD的替代方案。该工艺将<strong>蒸汽热能</strong>、<strong>CO2溶解降粘</strong>和<strong>溶剂萃取</strong>三种机制的协同效应整合到单一吞吐循环中：蒸汽提供热量降低原油粘度，CO2进一步溶解降粘并促进原油膨胀驱替，溶剂选择性溶解重质组分提高采出油品质。研究通过数值模拟和实验评价了各组分的最优配比和注入参数。该集成工艺在降低能耗和碳排放方面优于传统SAGD，尤其适用于薄层、高含水或低孔隙度等SAGD受限的油藏条件。</div>
+<div class="insight">🔗 关联分析：该蒸汽-CO2-溶剂一体化吞吐工艺的核心是三种降粘机制的热力学协同，这与稠油开采中<strong>降粘剂</strong>配方设计的分子级协同机理高度相似——蒸汽对应热降粘，CO2对应溶解降粘，溶剂对应稀释降粘。从分子模拟角度，该工艺可作为研究<strong>多组分降粘体系</strong>（热-化学-气体复合）在沥青质界面上协同行为的典型案例。</div>
+<div class="links"><a class="link-btn link-abs" href="https://ui.adsabs.harvard.edu/abs/2026opes.conf32408W/abstract" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML · 迁移学习高熵合金硬度预测</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-07-12" data-title="Leveraging transfer learning to address materials data scarcity: a case study on predicting hardness in additively manufactured high-entropy alloys" data-link="https://www.nature.com/articles/s41524-026-02210-x" data-cn="利用迁移学习应对材料数据稀缺：增材制造高熵合金硬度预测案例研究" data-journal="npj Computational Materials (Nature), 2026" data-authors="L Zhang, D Shin, DM Dimiduk, YS Choi" data-star="☆">☆</span><a href="https://www.nature.com/articles/s41524-026-02210-x" target="_blank">Leveraging transfer learning to address materials data scarcity: a case study on predicting hardness in additively manufactured high-entropy alloys</a></div>
+<div class="paper-title-cn">利用迁移学习应对材料数据稀缺：增材制造高熵合金硬度预测案例研究</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">npj Computational Materials (Nature)</span>
+</div>
+<div class="authors">L Zhang, D Shin, DM Dimiduk, YS Choi | npj Computational Materials, 2026</div>
+<div class="summary">增材制造（3D打印）<strong>高熵合金（HEA）</strong>在航空航天和极端工况下具有巨大潜力，但其工艺参数-微观结构-性能关系的复杂性导致实验数据极其稀缺，传统的经验模型和<strong>计算材料设计</strong>范式面临严重挑战。本研究提出利用<strong>迁移学习（Transfer Learning）</strong>策略，将从历史材料数据库（如传统铸造HEA、钢和其他合金）中学习到的知识迁移到增材制造HEA的小样本体系中，实现<strong>硬度预测</strong>。模型在有限增材制造数据上微调后，预测精度显著优于从头训练的基线模型，证明了迁移学习在<strong>材料数据稀缺</strong>场景下的有效性。该工作为数据驱动的材料发现提供了可推广的范式——当目标体系实验数据不足时，利用相关领域的丰富数据先训练再微调。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.nature.com/articles/s41524-026-02210-x" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var SAVE_DELAY=2000,saveTimer=null,dirHandle=null;
+var stars=[].slice.call(document.querySelectorAll('.star-btn'));
+var DB_NAME='star-fav-dir',DB_VER=1,STORE='handles';
+function openDB(){return new Promise(function(res,rej){var r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=function(e){e.target.result.createObjectStore(STORE);};r.onsuccess=function(e){res(e.target.result);};r.onerror=function(){rej();};});}
+function saveDirHandle(dir){openDB().then(function(db){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(dir,'dirHandle');});}
+function loadDirHandle(){return openDB().then(function(db){return new Promise(function(res){var tx=db.transaction(STORE,'readonly');var r=tx.objectStore(STORE).get('dirHandle');r.onsuccess=function(){res(r.result);};r.onerror=function(){res(null);};});}).catch(function(){return null;});}
+function clearDB(){openDB().then(function(db){db.transaction(STORE,'readwrite').objectStore(STORE).clear();});}
+function validateHandle(h){return h.getFile().then(function(f){return f.size>=0;}).catch(function(){return false;});}
+function readFavJson(){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.getFile();}).then(function(file){return new Promise(function(res,rej){var reader=new FileReader();reader.onload=function(e){try{res(JSON.parse(e.target.result));}catch(ex){res([]);}};reader.onerror=function(){rej();};reader.readAsText(file);});});}
+function writeFavJson(data){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.createWritable({keepExistingData:false});}).then(function(w){return w.write(JSON.stringify(data,null,2)).then(function(){return w.close();});});}
+function mergeStars(existing){
+  var result=[],starredFromOther={},seenOnPage={};
+  (existing||[]).forEach(function(i){starredFromOther[i.title+'|||'+i.link]=i;});
+  stars.forEach(function(s,i){
+    var k=s.dataset.title+'|||'+s.dataset.link,lk='fav_'+s.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(lk));}catch(e){return null;}})();
+    if(st&&st.title===s.dataset.title&&st.starred!==false){
+      result.push({title:s.dataset.title,link:s.dataset.link,cn:s.dataset.cn,journal:s.dataset.journal,authors:s.dataset.authors,date:s.dataset.date,starred:true});
+      seenOnPage[k]=true;
+    } else if(starredFromOther[k]&&starredFromOther[k].starred){
+      result.push(starredFromOther[k]);
+      seenOnPage[k]=true;
+    }
+  });
+  Object.keys(starredFromOther).forEach(function(k){
+    if(!seenOnPage[k]&&starredFromOther[k].starred) result.push(starredFromOther[k]);
+  });
+  return result;
+}
+function doSave(){
+  if(!dirHandle) return;
+  readFavJson().then(function(ex){return writeFavJson(mergeStars(ex));}).catch(function(){dirHandle=null;clearDB();});
+}
+function setupHandle(){
+  return window.showDirectoryPicker().then(function(dir){dirHandle=dir;saveDirHandle(dir);return doSave();}).catch(function(e){if(e.name==='AbortError') return;fallback();});
+}
+function fallback(){
+  var data=mergeStars([]),json=JSON.stringify(data,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='favorites.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},2000);alert('请将下载的 favorites.json 保存到 D:\\LZ&AI\\info-box\\ 目录下覆盖原文件');
+}
+function applyStar(star,isFav){star.textContent=isFav?'\u2605':'\u2606';star.style.color=isFav?'#f5a623':'#ccc';star.style.textShadow=isFav?'0 0 4px rgba(245,166,35,0.5)':'none';star.title=isFav?'已收藏':'点击收藏';}
+stars.forEach(function(star,i){var key='fav_'+star.dataset.date+'_'+i;var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}});
+loadDirHandle().then(function(dir){if(!dir) return;dirHandle=dir;readFavJson().then(function(ex){var map={};ex.forEach(function(i){map[i.title+'|||'+i.link]=i;});stars.forEach(function(star,i){var k=star.dataset.title+'|||'+star.dataset.link,lk='fav_'+star.dataset.date+'_'+i;if(map[k]&&map[k].starred){applyStar(star,true);localStorage.setItem(lk,JSON.stringify(map[k]));}else{applyStar(star,false);localStorage.removeItem(lk);}});}).catch(function(){});});
+stars.forEach(function(star,i){star.onclick=function(e){e.stopPropagation();e.preventDefault();var wasFav=star.textContent==='\u2605';applyStar(star,!wasFav);var key='fav_'+star.dataset.date+'_'+i;if(wasFav)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));if(!dirHandle&&window.showDirectoryPicker){setupHandle();return;}if(!dirHandle){fallback();return;}if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(doSave,SAVE_DELAY);};});
+})();
+</script>
+</body>
+</html>
