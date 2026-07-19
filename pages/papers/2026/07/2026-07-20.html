@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术文献追踪 - 2026-07-20</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.meta-oil{background:#ffebee;color:#c62828}
+.meta-ai{background:#f3e5f5;color:#6a1b9a}
+.meta-md{background:#e0f2f1;color:#00695c}
+.meta-biochem{background:#fff3e0;color:#e65100}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.link-abs:hover{background:#bbdefb}
+.link-pdf{background:#fce4ec;color:#c62828;border:1px solid #f8bbd0}
+.link-pdf:hover{background:#f8bbd0}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav-bar">
+<span>🏠 <a href="../../../../index.html">首页</a></span>
+<span>📚 <a href="../../../papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-07-20</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年7月20日 · 周一 · 共 8 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">2</div><div class="label">🛢️ 油田化学</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🧪 分子模拟</div></div>
+</div>
+</div>
+
+<div class="section-wrap section-oil">
+<h2 class="section-title">🛢️ 油田化学 · 蒸汽驱稠油调控·油纳米气泡MD</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-07-20" data-title="Experimental study on dynamic regulation of steam flooding for extra-heavy oil reservoirs" data-link="https://www.tandfonline.com/doi/abs/10.1080/12269328.2026.2702321" data-cn="超稠油藏蒸汽驱动态调控实验研究" data-journal="Geosystem Engineering, 2026" data-authors="C Zhao, G Li, Y Fu, Y Wang, Z Xia, H Ji, X Wang" data-star="☆">☆</span><a href="https://www.tandfonline.com/doi/abs/10.1080/12269328.2026.2702321" target="_blank">Experimental study on dynamic regulation of steam flooding for extra-heavy oil reservoirs</a></div>
+<div class="paper-title-cn">超稠油藏蒸汽驱动态调控实验研究</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">Geosystem Engineering</span>
+</div>
+<div class="authors">C Zhao, G Li, Y Fu, Y Wang, Z Xia, H Ji, X Wang | Geosystem Engineering (Taylor & Francis), 2026</div>
+<div class="summary">针对<strong>超稠油藏</strong>蒸汽驱开发过程中面临的<strong>蒸汽超覆</strong>和<strong>指进</strong>等突出问题，本文开展了系统的<strong>动态调控</strong>实验研究。通过三维物理模拟装置，模拟了不同蒸汽注入参数（温度、压力、干度、注入速率）和调控策略（间歇注汽、变速注汽、多轮次吞吐-驱替转换）下的驱替动态。重点分析了<strong>蒸汽腔扩展规律</strong>、<strong>温度场分布</strong>和<strong>产油动态</strong>，建立了蒸汽驱阶段划分和调控时机判断准则。结果表明：合理的动态调控可有效抑制蒸汽超覆，扩大蒸汽波及体积，使超稠油藏的原油采收率提高8-15个百分点。研究还发现，在蒸汽突破后进行<strong>注入参数优化调整</strong>（降低注汽速率、提高干度）可显著改善开发效果。该研究为<strong>超稠油藏蒸汽驱</strong>的现场实施方案设计和<strong>动态优化调控</strong>提供了直接依据。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.tandfonline.com/doi/abs/10.1080/12269328.2026.2702321" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-07-20" data-title="Effect of oil on stability and properties of aqueous nanobubbles: Experiments and molecular dynamics simulations" data-link="https://www.sciencedirect.com/science/article/pii/S0021979726013366" data-cn="油对水相纳米气泡稳定性和性质的影响：实验与分子动力学模拟" data-journal="J. Colloid Interface Sci., 2026" data-authors="J Kubelka, A Taman, M Piri" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0021979726013366" target="_blank">Effect of oil on stability and properties of aqueous nanobubbles: Experiments and molecular dynamics simulations</a></div>
+<div class="paper-title-cn">油对水相纳米气泡稳定性和性质的影响：实验与MD模拟</div>
+<div class="paper-meta">
+<span class="meta-tag meta-oil">🛢️ 油田化学</span>
+<span class="meta-tag">J. Colloid Interface Sci.</span>
+</div>
+<div class="authors">J Kubelka, A Taman, M Piri | Journal of Colloid and Interface Science, 2026</div>
+<div class="summary"><strong>纳米气泡（NBs）</strong>在<strong>石油工业</strong>中具有重要应用前景，但在含油环境中的行为尚不明确。本文结合<strong>实验</strong>与<strong>分子动力学（MD）模拟</strong>，系统研究了<strong>油的存在</strong>对水相纳米气泡稳定性、形貌和界面性质的影响。实验发现，油的存在显著改变了纳米气泡的尺寸分布和Zeta电位，油浓度适中时气泡稳定性增强，但过高浓度则导致气泡破裂。MD模拟揭示了<strong>油-水-气三相界面</strong>的微观结构：油分子优先吸附在气-水界面上，形成<strong>油膜包裹气泡</strong>的独特构型，这降低了界面张力并增加了气泡的<strong>Laplace压力承受能力</strong>。研究定量分析了不同油组分对气泡稳定性的差异化影响，为理解<strong>含油污水</strong>中纳米气泡的行为以及<strong>泡沫驱油</strong>中气泡在油藏多孔介质中的运移规律提供了分子尺度的新认识。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0021979726013366" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML · 世界模型自主发现·2D材料ML·风险约束ML筛选</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-07-20" data-title="From Observation to Insight: Mechanistic World Models and the Quest for Autonomous Discovery" data-link="https://arxiv.org/abs/2607.12474" data-cn="从观察到洞察：机制世界模型与自主发现探索" data-journal="arXiv preprint, 2026" data-authors="I Posner, A Lei, B Scholkopf" data-star="☆">☆</span><a href="https://arxiv.org/abs/2607.12474" target="_blank">From Observation to Insight: Mechanistic World Models and the Quest for Autonomous Discovery</a></div>
+<div class="paper-title-cn">从观察到洞察：机制世界模型与自主发现探索</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">arXiv</span>
+</div>
+<div class="authors">I Posner, A Lei, B Scholkopf | arXiv preprint arXiv:2607.12474, 2026</div>
+<div class="summary">近年来，<strong>基础模型（Foundation Models）</strong>在<strong>AI for Science</strong>领域取得了突破性进展，在蛋白质折叠、天气预报等任务上展现了卓越的预测能力。然而，本文指出：预测本身并不等同于科学发现，真正的科学洞察要求模型能够生成<strong>可解释的因果机制</strong>而非仅做模式匹配。作者提出了<strong>机制世界模型（Mechanistic World Models）</strong>的概念框架，旨在构建能够从观测数据中自主推断潜在生成机制、进行反事实推理并提出可验证假设的AI系统。文章回顾了<strong>因果发现</strong>、<strong>符号回归</strong>和<strong>可微分物理学</strong>等领域的最新进展，探讨了将深度学习与<strong>第一性原理</strong>约束有机结合的技术路线。该框架对<strong>稠油化学领域</strong>的自主科学发现——如自动揭示<strong>沥青质聚集</strong>与<strong>降粘剂</strong>的分子间作用机制、自动优化破乳剂配方等——具有前瞻性的指导意义。</div>
+<div class="links"><a class="link-btn link-abs" href="https://arxiv.org/abs/2607.12474" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-07-20" data-title="Experimental and Machine Learning-Assisted Discovery of 2D Materials for Hydrogen Evolution: From Fundamentals to Industrial Applications" data-link="https://www.sciencedirect.com/science/article/pii/S2589778026000254" data-cn="实验与机器学习辅助发现二维析氢材料" data-journal="EnergyChem, 2026" data-authors="E Gong, H Kim, CB Hiragond, J Lee, SI In" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S2589778026000254" target="_blank">Experimental and Machine Learning-Assisted Discovery of 2D Materials for Hydrogen Evolution</a></div>
+<div class="paper-title-cn">实验与机器学习辅助发现二维析氢材料</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">EnergyChem</span>
+</div>
+<div class="authors">E Gong, H Kim, CB Hiragond, J Lee, SI In | EnergyChem, 2026</div>
+<div class="summary"><strong>二维（2D）材料</strong>因其独特的电子结构和大的比表面积，在<strong>析氢反应（HER）</strong>电催化领域展现出巨大潜力。本文系统综述了<strong>实验</strong>与<strong>机器学习（ML）</strong>协同驱动下2D析氢材料的发现进展。从<strong>过渡金属硫族化物（TMDs）</strong>、<strong>MXenes</strong>到<strong>二维MOFs/COFs</strong>，全面地梳理了各类2D材料的HER催化性能与改性策略（掺杂、缺陷工程、异质结构建）。重点分析了ML在<strong>高通量筛选</strong>候选材料、<strong>预测吸附自由能（DG_H*）</strong>和<strong>指导实验合成</strong>方面的应用案例。讨论了从实验室到工业应用面临的稳定性和规模化挑战，以及<strong>闭环ML策略</strong>（预测-合成-测试-反馈）在加速2D电催化剂发现中的前景。该综述为在<strong>稠油催化降粘/改质催化剂</strong>开发中引入ML辅助筛选策略提供了系统的参考框架。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S2589778026000254" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-07-20" data-title="A risk-constrained machine learning method for reproducible and sensitive gas-sensing material screening" data-link="https://www.sciencedirect.com/science/article/pii/S0304389426018807" data-cn="风险约束机器学习方法用于可重复高灵敏气敏材料筛选" data-journal="J. Hazardous Materials, 2026" data-authors="Y Jiang, W Lin, L Yao, Z Jin, F Xu, W Xiao, J Hu..." data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0304389426018807" target="_blank">A risk-constrained machine learning method for reproducible and sensitive gas-sensing material screening</a></div>
+<div class="paper-title-cn">风险约束ML方法用于高灵敏气敏材料筛选</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">J. Hazardous Materials</span>
+</div>
+<div class="authors">Y Jiang, W Lin, L Yao, Z Jin, F Xu, W Xiao, J Hu... | Journal of Hazardous Materials, 2026</div>
+<div class="summary">气体传感材料的高通量筛选面临关键难题：<strong>灵敏度</strong>和<strong>可重复性</strong>往往难以兼得，仅追求灵敏度可能导致筛选出的材料在真实器件中因批次差异而失效。本文提出了一种<strong>风险约束的机器学习</strong>方法，在固定MEMS喷墨打印器件制造流程下，通过<strong>多目标贝叶斯优化</strong>框架同时优化材料的灵敏度和可重复性。该方法引入<strong>不确定性量化</strong>机制，在推荐候选材料时自动规避高度敏感但批次间波动大的高风险组合，显著提高了筛选结果的<strong>工程可靠性</strong>。在真实气体传感数据集上的验证表明：与传统单目标筛选策略相比，风险约束方法在保持高灵敏度的同时，将材料性能的变异系数降低约40%。该方法的<strong>风险感知筛选思想</strong>对<strong>化学降粘剂/破乳剂配方优化</strong>具有直接的方法论借鉴价值——不仅追求降粘率/脱水率最高，还要考虑不同批次原油条件下的性能鲁棒性。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0304389426018807" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟 · Pharmacon MD工具包·CoFe2O4 ML-MD·MD轨迹降维教程</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="5" data-date="2026-07-20" data-title="Pharmacon: A Molecular Dynamics Simulation Analysis Toolkit" data-link="https://pubs.acs.org/doi/full/10.1021/acs.jcim.6c00837" data-cn="Pharmacon：分子动力学模拟分析工具包" data-journal="JCIM (ACS), 2026" data-authors="K Georgiou, A Kolocouris" data-star="☆">☆</span><a href="https://pubs.acs.org/doi/full/10.1021/acs.jcim.6c00837" target="_blank">Pharmacon: A Molecular Dynamics Simulation Analysis Toolkit</a></div>
+<div class="paper-title-cn">Pharmacon：分子动力学模拟分析工具包</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">JCIM</span>
+</div>
+<div class="authors">K Georgiou, A Kolocouris | Journal of Chemical Information and Modeling (ACS), 2026</div>
+<div class="summary">本论文介绍了<strong>Pharmacon</strong>工具包，一个纯Python命令行软件包，用于分析生物大分子的<strong>分子动力学（MD）模拟</strong>。Pharmacon支持多种主流MD模拟引擎生成的轨迹，包括Amber、Gromacs、CHARMM、NAMD和OpenMM，完全基于Python编写，利用MDAnalysis进行轨迹处理、NumPy进行数据分析。该工具提供了简化的<strong>自动化工作流程</strong>，将大量繁琐耗时的后处理分析任务整合为单一命令行操作，使MD模拟结果分析更加便捷和可重复。作者以多种蛋白质复合物（包括三种膜蛋白和一种可溶性蛋白复合物）为测试案例，演示了Pharmacon在<strong>分子间相互作用</strong>和<strong>几何测量分析</strong>中的应用，并与其他工具包进行了对比验证。该工具显著降低了MD模拟后处理的门槛，其设计思想（模块化、可扩展、统一接口）可为<strong>稠油化学MD模拟</strong>中沥青质-降粘剂体系的自动化批处理分析提供有益的参考。</div>
+<div class="links"><a class="link-btn link-abs" href="https://pubs.acs.org/doi/full/10.1021/acs.jcim.6c00837" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="6" data-date="2026-07-20" data-title="Machine-learning molecular dynamics and DFT analysis of CoFe2O4 spinel stability and hydrogen recombination energetics" data-link="https://www.tandfonline.com/doi/abs/10.1080/08927022.2026.2699263" data-cn="CoFe2O4尖晶石稳定性与氢复合能的ML-MD及DFT分析" data-journal="Molecular Simulation, 2026" data-authors="R Arifin, Y Winardi, I Widaningrum, Abdurrouf..." data-star="☆">☆</span><a href="https://www.tandfonline.com/doi/abs/10.1080/08927022.2026.2699263" target="_blank">Machine-learning molecular dynamics and DFT analysis of CoFe2O4 spinel stability and hydrogen recombination energetics for high-temperature thermochemical hydrogen production</a></div>
+<div class="paper-title-cn">ML-MD与DFT分析CoFe2O4尖晶石稳定性及氢复合能</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Molecular Simulation</span>
+</div>
+<div class="authors">R Arifin, Y Winardi, I Widaningrum, Abdurrouf, Zulkarnain, R Asih, N Johari, Darminto | Molecular Simulation (Taylor & Francis), 2026</div>
+<div class="summary">本研究利用预训练的<strong>M3GNet图神经网络势函数</strong>进行<strong>机器学习分子动力学（MLMD）</strong>模拟，结合PBE水平的<strong>DFT表面计算</strong>，分析了CoFe2O4的结构稳定性及其(111)表面上两个预吸附氢原子的<strong>Langmuir-Hinshelwood复合解吸过程</strong>。两相MLMD模拟确定平衡熔化温度约为1350 K，完整晶体单相加热的表观转变温度为1700 K。DFT计算表明，原子H在Co位点（吸附能-2.04 eV）和O位点（吸附能-4.29 eV）上发生强化学吸附，O-H键长与实验一致；而分子H2仅发生弱物理吸附（吸附能-0.001 eV）。相邻Co/O位点上两个共吸附H原子的复合解吸活化能为0.46 eV，在1300 K下速率估计为1.6×1010 s-1，证实H-H复合反应在富氢条件下速率极快，不是限速步骤。该研究展示了<strong>GNN-ML力场</strong>在<strong>高温催化材料</strong>MD模拟中的应用价值，对<strong>稠油改质催化剂的表面反应机制</strong>研究具有方法学意义。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.tandfonline.com/doi/abs/10.1080/08927022.2026.2699263" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="7" data-date="2026-07-20" data-title="A Tutorial on Dimensionality Reduction and Clustering for Molecular Dynamics Trajectories: From Linear Algorithms to Deep Learning" data-link="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6c01016" data-cn="MD轨迹降维与聚类教程：从线性算法到深度学习" data-journal="JPCB (ACS), 2026" data-authors="X Wu, Z Zhang, D Shao, X Liu, J Xing, H Fu, W Cai, X Shao" data-star="☆">☆</span><a href="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6c01016" target="_blank">A Tutorial on Dimensionality Reduction and Clustering for Molecular Dynamics Trajectories: From Linear Algorithms to Deep Learning</a></div>
+<div class="paper-title-cn">MD轨迹降维与聚类教程：从线性算法到深度学习</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">J. Phys. Chem. B</span>
+</div>
+<div class="authors">X Wu, Z Zhang, D Shao, X Liu, J Xing, H Fu, W Cai, X Shao | The Journal of Physical Chemistry B (ACS), 2026</div>
+<div class="summary">本教程系统介绍了分析<strong>分子动力学（MD）模拟轨迹</strong>的方法，帮助用户在仅需少量先验知识的情况下识别关键<strong>亚稳态</strong>和<strong>中间态</strong>、提取描述慢运动特征的<strong>集体变量（CVs）</strong>并构建<strong>自由能景观</strong>。教程涵盖三类方法：线性降维方法（<strong>主成分分析PCA</strong>、<strong>时滞独立成分分析tICA</strong>）、小波增强方法（WE-tICA和WE-tAE）以及深度学习方法（<strong>DIKI</strong>，即关键中间态的深度识别）。通过丙氨酸三肽的构象转变和CLN025蛋白折叠两个案例研究，演示了如何运用这些方法识别亚稳态和提取慢运动集体自由度。教程假定读者具备MD模拟经验，熟悉Python编程和基础ML概念。所介绍的方法广泛适用于各类分子体系的轨迹分析，可为<strong>稠油体系中沥青质聚集/解聚轨迹分析</strong>以及<strong>表面活性剂在油水界面的自组装机制</strong>研究提供直接的方法学支撑。</div>
+<div class="links"><a class="link-btn link-abs" href="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6c01016" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var SAVE_DELAY=2000,saveTimer=null,dirHandle=null;
+var stars=[].slice.call(document.querySelectorAll('.star-btn'));
+var DB_NAME='star-fav-dir',DB_VER=1,STORE='handles';
+function openDB(){return new Promise(function(res,rej){var r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=function(e){e.target.result.createObjectStore(STORE);};r.onsuccess=function(e){res(e.target.result);};r.onerror=function(){rej();};});}
+function saveDirHandle(dir){openDB().then(function(db){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(dir,'dirHandle');});}
+function loadDirHandle(){return openDB().then(function(db){return new Promise(function(res){var tx=db.transaction(STORE,'readonly');var r=tx.objectStore(STORE).get('dirHandle');r.onsuccess=function(){res(r.result);};r.onerror=function(){res(null);};});}).catch(function(){return null;});}
+function clearDB(){openDB().then(function(db){db.transaction(STORE,'readwrite').objectStore(STORE).clear();});}
+function validateHandle(h){return h.getFile().then(function(f){return f.size>=0;}).catch(function(){return false;});}
+function readFavJson(){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.getFile();}).then(function(file){return new Promise(function(res,rej){var reader=new FileReader();reader.onload=function(e){try{res(JSON.parse(e.target.result));}catch(ex){res([]);}};reader.onerror=function(){rej();};reader.readAsText(file);});});}
+function writeFavJson(data){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.createWritable({keepExistingData:false});}).then(function(w){return w.write(JSON.stringify(data,null,2)).then(function(){return w.close();});});}
+function mergeStars(existing){
+  var result=[],starredFromOther={},seenOnPage={};
+  (existing||[]).forEach(function(i){starredFromOther[i.title+'|||'+i.link]=i;});
+  stars.forEach(function(s,i){
+    var k=s.dataset.title+'|||'+s.dataset.link,lk='fav_'+s.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(lk));}catch(e){return null;}})();
+    if(st&&st.title===s.dataset.title&&st.starred!==false){
+      result.push({title:s.dataset.title,link:s.dataset.link,cn:s.dataset.cn,journal:s.dataset.journal,authors:s.dataset.authors,date:s.dataset.date,starred:true});
+      seenOnPage[k]=true;
+    } else if(starredFromOther[k]&&starredFromOther[k].starred){
+      result.push(starredFromOther[k]);
+      seenOnPage[k]=true;
+    }
+  });
+  Object.keys(starredFromOther).forEach(function(k){
+    if(!seenOnPage[k]&&starredFromOther[k].starred) result.push(starredFromOther[k]);
+  });
+  return result;
+}
+function doSave(){
+  if(!dirHandle) return;
+  readFavJson().then(function(ex){return writeFavJson(mergeStars(ex));}).catch(function(){dirHandle=null;clearDB();});
+}
+function setupHandle(){
+  return window.showDirectoryPicker().then(function(dir){dirHandle=dir;saveDirHandle(dir);return doSave();}).catch(function(e){if(e.name==='AbortError') return;fallback();});
+}
+function fallback(){
+  var data=mergeStars([]),json=JSON.stringify(data,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='favorites.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},2000);alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
+}
+function applyStar(star,isFav){star.textContent=isFav?'\u2605':'\u2606';star.style.color=isFav?'#f5a623':'#ccc';star.style.textShadow=isFav?'0 0 4px rgba(245,166,35,0.5)':'none';star.title=isFav?'已收藏':'点击收藏';}
+stars.forEach(function(star,i){var key='fav_'+star.dataset.date+'_'+i;var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}});
+loadDirHandle().then(function(dir){if(!dir) return;dirHandle=dir;readFavJson().then(function(ex){var map={};ex.forEach(function(i){map[i.title+'|||'+i.link]=i;});stars.forEach(function(star,i){var k=star.dataset.title+'|||'+star.dataset.link,lk='fav_'+star.dataset.date+'_'+i;if(map[k]&&map[k].starred){applyStar(star,true);localStorage.setItem(lk,JSON.stringify(map[k]));}else{applyStar(star,false);localStorage.removeItem(lk);}});}).catch(function(){});});
+stars.forEach(function(star,i){star.onclick=function(e){e.stopPropagation();e.preventDefault();var wasFav=star.textContent==='\u2605';applyStar(star,!wasFav);var key='fav_'+star.dataset.date+'_'+i;if(wasFav)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));if(!dirHandle&&window.showDirectoryPicker){setupHandle();return;}if(!dirHandle){fallback();return;}if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(doSave,SAVE_DELAY);};});
+})();
+</script>
+</body>
+</html>
