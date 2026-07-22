@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术文献追踪 - 2026-07-22</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:1400px;width:96%;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:32px 30px;border-radius:14px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.7;margin-bottom:2px}
+.header .date{font-size:15px;opacity:.85;margin-top:6px}
+.stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.stat-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 20px;text-align:center}
+.stat-box .num{font-size:22px;font-weight:700}
+.stat-box .label{font-size:12px;opacity:.7;margin-top:2px}
+.section-wrap{padding:24px 20px;margin-bottom:28px;border-radius:14px}
+.section-oil{background:#fff5f5;border:1px solid #ffcdd2}
+.section-ai{background:#f3e5f5;border:1px solid #e1bee7}
+.section-md{background:#e0f2f1;border:1px solid #b2dfdb}
+.section-title{font-size:20px;font-weight:700;color:#1a1a2e;padding-left:12px;border-left:5px solid #0f3460;margin-bottom:14px}
+.section-oil .section-title{border-left-color:#d32f2f}
+.section-ai .section-title{border-left-color:#6a1b9a}
+.section-md .section-title{border-left-color:#00695c}
+.papers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1000px){.papers-grid{grid-template-columns:1fr}}
+.paper-card{background:#fff;border-radius:12px;padding:20px 20px 50px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #e8e8e8;display:flex;flex-direction:column;position:relative}
+.paper-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.1)}
+.star-btn{position:absolute;bottom:12px;right:12px;z-index:10;font-size:32px;cursor:pointer;color:#ccc;transition:all .15s;line-height:1;text-shadow:none;user-select:none}
+.star-btn:hover{transform:scale(1.15)}
+.paper-title-en{font-size:14px;font-weight:600;color:#0f3460;margin-bottom:4px;line-height:1.4;padding-right:40px}
+.paper-title-en a{color:#0f3460;text-decoration:none}
+.paper-title-en a:hover{text-decoration:underline}
+.paper-title-cn{font-size:13px;color:#666;margin-bottom:8px;font-weight:500;padding-left:2px}
+.paper-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px}
+.meta-tag{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.meta-oil{background:#ffebee;color:#c62828}
+.meta-ai{background:#f3e5f5;color:#6a1b9a}
+.meta-md{background:#e0f2f1;color:#00695c}
+.authors{font-size:12px;color:#999;margin-bottom:10px;line-height:1.4}
+.summary{font-size:13px;color:#444;margin-bottom:10px;line-height:1.7}
+.summary strong{color:#1a1a2e}
+.insight{font-size:13px;color:#333;background:#fff8e1;padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.7;border-left:3px solid #ffa000}
+.links{display:flex;gap:8px;margin-top:auto}
+.link-btn{display:inline-block;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:500;transition:all .2s}
+.link-abs{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.link-abs:hover{background:#bbdefb}
+.link-pdf{background:#fce4ec;color:#c62828;border:1px solid #f8bbd0}
+.link-pdf:hover{background:#f8bbd0}
+.nav-bar{background:#fff;border-radius:14px;padding:12px 24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav-bar a{color:#1565c0;text-decoration:none;font-weight:500}
+.nav-bar a:hover{text-decoration:underline}
+.nav-bar .nav-right{margin-left:auto;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="nav-bar">
+<span>🏠 <a href="../index.html">首页</a></span>
+<span>📚 <a href="papers.html">文献追踪</a></span>
+<span class="nav-right">📅 2026-07-22</span>
+</div>
+
+<div class="header">
+<h1>学术文献追踪</h1>
+<div class="sub">自动筛选自 Google Scholar Alerts</div>
+<div class="date">📅 2026年7月22日 · 周三 · 共 7 篇</div>
+<div class="stats">
+<div class="stat-box"><div class="num">4</div><div class="label">🤖 AI/ML</div></div>
+<div class="stat-box"><div class="num">3</div><div class="label">🧪 分子模拟</div></div>
+</div>
+</div>
+
+<div class="section-wrap section-ai">
+<h2 class="section-title">🤖 AI/ML · SINDy·物理约束ML·拓扑描述符·ML-MD铁电体</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="0" data-date="2026-07-22" data-title="Overcoming error-in-variable or stiffness problem in SINDy-like data-driven model discovery" data-link="https://dl.acm.org/doi/10.1145/3831701" data-cn="SINDy类数据驱动模型发现中的变量误差与刚性问题克服" data-journal="ACM Trans. AI for Science, 2026" data-authors="L Fung" data-star="☆">☆</span><a href="https://dl.acm.org/doi/10.1145/3831701" target="_blank">Overcoming error-in-variable or stiffness problem in SINDy-like data-driven model discovery</a></div>
+<div class="paper-title-cn">SINDy类数据驱动模型发现中的变量误差与刚性问题克服</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">ACM TAI for Science</span>
+</div>
+<div class="authors">L Fung | ACM Transactions on AI for Science, 2026</div>
+<div class="summary">尽管以<strong>SINDy</strong>为代表的机器学习方法在从时间序列数据中自动发现控制方程方面取得了显著进展，但在处理含噪声数据集时仍面临重大挑战。本文深入剖析了SINDy-like方法中两大核心难题——<strong>变量误差问题</strong>（error-in-variable，即输入输出变量同时含噪声）和<strong>刚性问题</strong>（stiffness，即多时间尺度动力学系统）——对模型发现准确性的影响。提出了针对性的改进策略，通过在稀疏回归框架中引入<strong>噪声鲁棒的正则化方案</strong>和<strong>自适应时间积分策略</strong>，有效提升了在复杂真实数据场景下的控制方程发现能力。</div>
+<div class="insight">💡 该工作对于将<strong>SINDy方法</strong>应用于稠油化学体系中的反应动力学建模（如沥青质热解ReaxFF结果的反应网络提取）具有重要方法学意义。ReaxFF MD产生的复杂反应网络和中间产物时间序列数据正好是SINDy类方法的应用场景，但需要解决ReaxFF高温模拟中固有的数据噪声问题。</div>
+<div class="links"><a class="link-btn link-abs" href="https://dl.acm.org/doi/10.1145/3831701" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="1" data-date="2026-07-22" data-title="Cross-material physics-informed machine learning framework for optimizing nanofiller loading in epoxy nanocomposites for high-voltage insulation" data-link="https://www.nature.com/articles/s41598-026-61831-w" data-cn="跨材料物理约束ML框架优化高压绝缘环氧纳米复合材料的纳米填料负载" data-journal="Scientific Reports, 2026" data-authors="M Ezzat, M Ramadan, MA Abd-Allah, SMA El-Gamal..." data-star="☆">☆</span><a href="https://www.nature.com/articles/s41598-026-61831-w" target="_blank">Cross-material physics-informed machine learning framework for optimizing nanofiller loading in epoxy nanocomposites for high-voltage insulation</a></div>
+<div class="paper-title-cn">跨材料物理约束ML框架优化高压绝缘环氧纳米复合材料的纳米填料负载</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Scientific Reports</span>
+</div>
+<div class="authors">M Ezzat, M Ramadan, MA Abd-Allah, SMA El-Gamal... | Scientific Reports, 2026</div>
+<div class="summary">本文提出了一种<strong>跨材料的物理约束机器学习框架</strong>，用于优化环氧纳米复合材料在高压绝缘应用中的纳米填料负载。传统ML模型通常仅针对单一材料体系训练，缺乏<strong>跨体系泛化能力</strong>。作者创新性地将<strong>物理约束</strong>（如填料分散的逾渗理论和介电击穿机制）嵌入ML模型中，使模型能够在不同纳米填料类型（纳米SiO2、Al2O3等）和基体配方之间迁移。使用从回收铝饮料罐合成的纳米填料作为<strong>可持续材料来源</strong>验证了框架的泛化性。</div>
+<div class="insight">💡 该方法对稠油化学中<strong>跨体系的ML建模</strong>（如不同原油组成的降粘剂/破乳剂效果预测）具有直接的迁移价值，展示了物理约束在提升ML模型<strong>可迁移性</strong>中的关键作用——在不重新训练的情况下预测新体系的物化性质。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.nature.com/articles/s41598-026-61831-w" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="2" data-date="2026-07-22" data-title="Persistent Homology using Nets: Topologically Informed Machine Learning Descriptors of Framework Materials" data-link="https://chemrxiv.org/doi/10.26434/chemrxiv.15006213" data-cn="基于网的持续同调：框架材料的拓扑信息ML描述符" data-journal="ChemRxiv, 2026" data-authors="C Kirkvold, G Gryn'ova" data-star="☆">☆</span><a href="https://chemrxiv.org/doi/10.26434/chemrxiv.15006213" target="_blank">Persistent Homology using Nets: Topologically Informed Machine Learning Descriptors of Framework Materials</a></div>
+<div class="paper-title-cn">基于网的持续同调：框架材料的拓扑信息ML描述符</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">ChemRxiv</span>
+</div>
+<div class="authors">C Kirkvold, G Gryn'ova | ChemRxiv, 2026 (preprint)</div>
+<div class="summary">框架材料（如<strong>MOFs、COFs、沸石</strong>）的性质与其拓扑结构密切相关，但传统描述符主要关注全局孔隙形态而非底层<strong>网拓扑</strong>。本文提出了一种基于<strong>持续同调（Persistent Homology）</strong>的新方法，通过将框架材料的网拓扑信息编码为<strong>拓扑描述符</strong>，用于机器学习性质预测。与仅刻画孔径分布的常规方法不同，该描述符能够捕捉框架中<strong>连接方式、节点拓扑和环结构</strong>等深层次结构特征。在多个框架材料性质预测任务上的验证表明，拓扑描述符显著提升了ML模型对<strong>气体吸附、分离和催化性能</strong>的预测精度。</div>
+<div class="insight">💡 该<strong>拓扑描述符</strong>方法对异质结构材料——如<strong>沥青质的纳米聚集体</strong>——的拓扑特征描述具有潜在的创新应用价值。沥青质聚集体具有复杂的层级结构和拓扑连通性，持续同调可提供传统径向分布函数无法捕捉的拓扑信息。</div>
+<div class="links"><a class="link-btn link-abs" href="https://chemrxiv.org/doi/10.26434/chemrxiv.15006213" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="3" data-date="2026-07-22" data-title="Ferroelectric switching in κ-Ga2O3 and polarization tuning in κ-Ga2O3/AlN heterostructures by first-principles and machine-learning molecular dynamics" data-link="https://www.sciencedirect.com/science/article/pii/S0927025626004374" data-cn="第一性原理和ML-MD研究κ-Ga2O3铁电开关及κ-Ga2O3/AlN异质结极化调控" data-journal="Comput. Mater. Sci., 2026" data-authors="H Zhang, X He, C Hu, P Tang, Y Li, Y Yang..." data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0927025626004374" target="_blank">Ferroelectric switching in κ-Ga2O3 and polarization tuning in κ-Ga2O3/AlN heterostructures by first-principles and machine-learning molecular dynamics</a></div>
+<div class="paper-title-cn">第一性原理与ML-MD研究κ-Ga2O3铁电开关和异质结极化调控</div>
+<div class="paper-meta">
+<span class="meta-tag meta-ai">🤖 AI/ML</span>
+<span class="meta-tag">Comput. Mater. Sci.</span>
+</div>
+<div class="authors">H Zhang, X He, C Hu, P Tang, Y Li, Y Yang... | Computational Materials Science, 2026</div>
+<div class="summary">本研究将<strong>第一性原理计算</strong>与基于<strong>机器学习原子间势的分子动力学模拟（ML-MD）</strong>相结合，系统研究了κ-Ga2O3的电子结构、结构稳定性和极化特性，以及κ-Ga2O3与AlN形成异质结时的界面效应。通过ML势实现了对<strong>铁电开关过程</strong>的长时间尺度和较大体系的MD模拟，揭示了极化翻转的原子尺度机制以及异质结界面对极化性能的调控作用。该工作展示了ML-MD在铁电材料研究中的强大能力——ML势在保持DFT精度的同时，将可模拟的时空尺度提升了一到两个数量级。</div>
+<div class="insight">💡 其<strong>ML-MD方法学</strong>对稠油化学中复杂<strong>有机-无机界面</strong>（如沥青质/矿物/水）的大规模MD模拟具有重要借鉴。开发针对沥青质/溶剂/矿物体系的专用ML势，可在保持DFT精度的前提下模拟更大体系的界面吸附和聚集行为。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0927025626004374" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap section-md">
+<h2 class="section-title">🧪 分子模拟 · 蛋白质MD+DL·熔盐MD·2D材料第一性原理</h2>
+<div class="papers-grid">
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="4" data-date="2026-07-22" data-title="Deciphering the Structural Dynamics of Chicken Albumin through Molecular Dynamics Simulations and Deep Learning" data-link="https://pubs.acs.org/doi/10.1021/acsomega.6c03484" data-cn="通过MD模拟和深度学习解析鸡白蛋白的结构动力学" data-journal="ACS Omega, 2026" data-authors="D Traiphothon, V Kaewbundit, J Niramitranon..." data-star="☆">☆</span><a href="https://pubs.acs.org/doi/10.1021/acsomega.6c03484" target="_blank">Deciphering the Structural Dynamics of Chicken Albumin through Molecular Dynamics Simulations and Deep Learning</a></div>
+<div class="paper-title-cn">通过MD模拟和深度学习解析鸡白蛋白的结构动力学</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">ACS Omega</span>
+</div>
+<div class="authors">D Traiphothon, V Kaewbundit, J Niramitranon... | ACS Omega, 2026</div>
+<div class="summary">本文结合<strong>分子动力学模拟</strong>与<strong>深度学习</strong>方法，系统解析了鸡白蛋白的结构动力学特征。利用MD模拟生成了蛋白质<strong>构象系综</strong>，随后使用<strong>深度学习模型</strong>（如变分自编码器或图神经网络）对模拟轨迹进行降维和模式识别，从高维构象空间中识别出关键的<strong>亚稳态构象态</strong>和<strong>构象转变路径</strong>。深度学习模型成功提取了MD轨迹中的<strong>慢变量</strong>，揭示了传统分析手段难以捕捉的微妙结构重排。该研究展示了MD+DL在生物大分子动力学分析中的<strong>协同优化</strong>——MD提供物理动力学采样，DL提供数据驱动的模式提取。</div>
+<div class="insight">💡 该<strong>MD+DL协同分析范式</strong>对于稠油化学中<strong>沥青质聚集动力学</strong>的构象分析具有方法论上的可迁移性。沥青质分子在溶剂中的聚集路径涉及大量构象态，深度学习降维可帮助识别关键的聚集态间转换，而传统顺序聚类等方法可能遗漏细微但重要的中间态。</div>
+<div class="links"><a class="link-btn link-abs" href="https://pubs.acs.org/doi/10.1021/acsomega.6c03484" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="5" data-date="2026-07-22" data-title="Unraveling the role of Nd2O3 in microstructure and transport properties of NdF3-LiF-Nd2O3 molten salt: insights from molecular dynamics simulation" data-link="https://www.sciencedirect.com/science/article/pii/S0022309326003418" data-cn="MD模拟揭示Nd2O3对NdF3-LiF-Nd2O3熔盐微结构和输运性质的影响" data-journal="J. Non-Crystalline Solids, 2026" data-authors="J Lin, H Ye, X Zhao, H Fan, R Wang, Z Xu" data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0022309326003418" target="_blank">Unraveling the role of Nd2O3 in microstructure and transport properties of NdF3-LiF-Nd2O3 molten salt: insights from molecular dynamics simulation</a></div>
+<div class="paper-title-cn">MD模拟揭示Nd2O3对NdF3-LiF-Nd2O3熔盐微结构和输运性质的影响</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">J. Non-Cryst. Solids</span>
+</div>
+<div class="authors">J Lin, H Ye, X Zhao, H Fan, R Wang, Z Xu | Journal of Non-Crystalline Solids, 2026</div>
+<div class="summary">本文通过<strong>分子动力学模拟</strong>系统研究了Nd2O3含量（1-5 wt%）对<strong>NdF3-LiF-Nd2O3熔盐体系</strong>的微结构和输运性质的影响。模拟结果表明，随着Nd2O3含量的增加，O2-离子在熔盐网络中的<strong>配位环境</strong>发生显著变化，影响了熔体的<strong>粘度</strong>、<strong>离子电导率</strong>和<strong>扩散系数</strong>等输运性质。熔盐体系的微观结构分析揭示了<strong>Nd-O-F络合物</strong>的形成及其对熔体网络<strong>连接性和拓扑结构</strong>的影响机制。该研究为稀土电解熔盐的组分优化和工艺参数设计提供了分子层面的理论指导。</div>
+<div class="insight">💡 其MD方法学对稠油化学中<strong>高温高压条件下电解质溶液</strong>（如驱替液、压裂液）的微观结构研究具有借鉴意义。熔盐MD中处理<strong>复杂离子相互作用</strong>和<strong>高浓度电解质溶液</strong>的技术可迁移至研究地层水/注入液在纳米孔隙中的微观行为。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0022309326003418" target="_blank">📖 全文链接</a></div>
+</div>
+
+<div class="paper-card">
+<div class="paper-title-en"><span class="star-btn" data-idx="6" data-date="2026-07-22" data-title="First-principles study on the regulation of photocatalytic performance in 2D Janus Al2STe: Stacking and strain engineering" data-link="https://www.sciencedirect.com/science/article/pii/S0927025626004416" data-cn="二维Janus Al2STe光催化性能调控的第一性原理研究" data-journal="Comput. Mater. Sci., 2026" data-authors="W Nie, B Zhai, Z Xie, Y Chen, Q Chen, Z Xu, F Zhang..." data-star="☆">☆</span><a href="https://www.sciencedirect.com/science/article/pii/S0927025626004416" target="_blank">First-principles study on the regulation of photocatalytic performance in 2D Janus Al2STe: Stacking and strain engineering</a></div>
+<div class="paper-title-cn">二维Janus Al2STe光催化性能调控的第一性原理研究：堆叠与应变工程</div>
+<div class="paper-meta">
+<span class="meta-tag meta-md">🧪 分子模拟</span>
+<span class="meta-tag">Comput. Mater. Sci.</span>
+</div>
+<div class="authors">W Nie, B Zhai, Z Xie, Y Chen, Q Chen, Z Xu, F Zhang... | Computational Materials Science, 2026</div>
+<div class="summary">二维<strong>Janus材料</strong>——具有不对称表面结构的二维材料——在压电材料和水分解光催化领域展现出巨大潜力。本文基于<strong>第一性原理计算</strong>，系统研究了一类新型二维Janus <strong>Al2STe</strong>材料的<strong>光催化性能调控策略</strong>。通过改变<strong>堆叠方式</strong>（AA、AB堆叠等）和施加<strong>机械应变</strong>，定量分析了不同构型下材料的<strong>带隙</strong>、<strong>带边位置</strong>、<strong>光吸收谱</strong>和<strong>载流子迁移率</strong>等关键光催化性质。研究发现，适当的压应变和特定的堆叠方式可以显著改善Al2STe的光吸收能力和载流子分离效率。该工作为二维Janus材料在光催化领域的理性设计提供了重要的理论基础。</div>
+<div class="insight">💡 该工作展示了<strong>第一性原理计算</strong>在材料设计中的核心作用——通过<strong>高通量DFT</strong>筛选不同构型和应变状态的物性，这种<strong>计算筛选+物理洞察</strong>的方法学对于稠油化学中表面活性剂和降粘剂的理性设计也有方法论参考价值。</div>
+<div class="links"><a class="link-btn link-abs" href="https://www.sciencedirect.com/science/article/pii/S0927025626004416" target="_blank">📖 全文链接</a></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var SAVE_DELAY=2000,saveTimer=null,dirHandle=null;
+var stars=[].slice.call(document.querySelectorAll('.star-btn'));
+var DB_NAME='star-fav-dir',DB_VER=1,STORE='handles';
+function openDB(){return new Promise(function(res,rej){var r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=function(e){e.target.result.createObjectStore(STORE);};r.onsuccess=function(e){res(e.target.result);};r.onerror=function(){rej();};});}
+function saveDirHandle(dir){openDB().then(function(db){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(dir,'dirHandle');});}
+function loadDirHandle(){return openDB().then(function(db){return new Promise(function(res){var tx=db.transaction(STORE,'readonly');var r=tx.objectStore(STORE).get('dirHandle');r.onsuccess=function(){res(r.result);};r.onerror=function(){res(null);};});}).catch(function(){return null;});}
+function clearDB(){openDB().then(function(db){db.transaction(STORE,'readwrite').objectStore(STORE).clear();});}
+function validateHandle(h){return h.getFile().then(function(f){return f.size>=0;}).catch(function(){return false;});}
+function readFavJson(){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.getFile();}).then(function(file){return new Promise(function(res,rej){var reader=new FileReader();reader.onload=function(e){try{res(JSON.parse(e.target.result));}catch(ex){res([]);}};reader.onerror=function(){rej();};reader.readAsText(file);});});}
+function writeFavJson(data){return dirHandle.getFileHandle('favorites.json',{create:true}).then(function(fh){return fh.createWritable({keepExistingData:false});}).then(function(w){return w.write(JSON.stringify(data,null,2)).then(function(){return w.close();});});}
+function mergeStars(existing){
+  var result=[],starredFromOther={},seenOnPage={};
+  (existing||[]).forEach(function(i){starredFromOther[i.title+'|||'+i.link]=i;});
+  stars.forEach(function(s,i){
+    var k=s.dataset.title+'|||'+s.dataset.link,lk='fav_'+s.dataset.date+'_'+i;
+    var st=(function(){try{return JSON.parse(localStorage.getItem(lk));}catch(e){return null;}})();
+    if(st&&st.title===s.dataset.title&&st.starred!==false){
+      result.push({title:s.dataset.title,link:s.dataset.link,cn:s.dataset.cn,journal:s.dataset.journal,authors:s.dataset.authors,date:s.dataset.date,starred:true});
+      seenOnPage[k]=true;
+    } else if(starredFromOther[k]&&starredFromOther[k].starred){
+      result.push(starredFromOther[k]);
+      seenOnPage[k]=true;
+    }
+  });
+  Object.keys(starredFromOther).forEach(function(k){
+    if(!seenOnPage[k]&&starredFromOther[k].starred) result.push(starredFromOther[k]);
+  });
+  return result;
+}
+function doSave(){
+  if(!dirHandle) return;
+  readFavJson().then(function(ex){return writeFavJson(mergeStars(ex));}).catch(function(){dirHandle=null;clearDB();});
+}
+function setupHandle(){
+  return window.showDirectoryPicker().then(function(dir){dirHandle=dir;saveDirHandle(dir);return doSave();}).catch(function(e){if(e.name==='AbortError') return;fallback();});
+}
+function fallback(){
+  var data=mergeStars([]),json=JSON.stringify(data,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='favorites.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},2000);alert('请将下载的 favorites.json 保存到 D:\\\\LZ&AI\\\\info-box\\\\ 目录下覆盖原文件');
+}
+function applyStar(star,isFav){star.textContent=isFav?'\u2605':'\u2606';star.style.color=isFav?'#f5a623':'#ccc';star.style.textShadow=isFav?'0 0 4px rgba(245,166,35,0.5)':'none';star.title=isFav?'已收藏':'点击收藏';}
+stars.forEach(function(star,i){var key='fav_'+star.dataset.date+'_'+i;var st=(function(){try{return JSON.parse(localStorage.getItem(key));}catch(e){return null;}})();if(st&&st.title===star.dataset.title){applyStar(star,st.starred!==false);}else{applyStar(star,(star.getAttribute('data-star')||'')==='\u2605');}});
+loadDirHandle().then(function(dir){if(!dir) return;dirHandle=dir;readFavJson().then(function(ex){var map={};ex.forEach(function(i){map[i.title+'|||'+i.link]=i;});stars.forEach(function(star,i){var k=star.dataset.title+'|||'+star.dataset.link,lk='fav_'+star.dataset.date+'_'+i;if(map[k]&&map[k].starred){applyStar(star,true);localStorage.setItem(lk,JSON.stringify(map[k]));}else{applyStar(star,false);localStorage.removeItem(lk);}});}).catch(function(){});});
+stars.forEach(function(star,i){star.onclick=function(e){e.stopPropagation();e.preventDefault();var wasFav=star.textContent==='\u2605';applyStar(star,!wasFav);var key='fav_'+star.dataset.date+'_'+i;if(wasFav)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify({title:star.dataset.title,link:star.dataset.link,cn:star.dataset.cn,journal:star.dataset.journal,authors:star.dataset.authors,date:star.dataset.date,starred:true}));if(!dirHandle&&window.showDirectoryPicker){setupHandle();return;}if(!dirHandle){fallback();return;}if(saveTimer)clearTimeout(saveTimer);saveTimer=setTimeout(doSave,SAVE_DELAY);};});
+})();
+</script>
+</body>
+</html>
